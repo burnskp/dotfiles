@@ -15,800 +15,806 @@
 # limitations under the License.
 
 if [ $commands[kubectl] ]; then
-  alias ktn="kubectl top nodes"
-  alias ktp="kubectl top pods"
+  if [ $commands[kubecolor] ]; then
+    KUBECTL=kubecolor
+  else
+    KUBECTL=kubectl
+  fi
 
-  alias k='kubectl'
+  alias ktn="$KUBECTL top nodes"
+  alias ktp="$KUBECTL top pods"
 
-  alias ka='kubectl apply --recursive -f'
-  alias kcu='kubectl config use-context'
-  alias kcg='kubectl config get-contexts'
-  alias kd='kubectl describe'
-  alias kdall='kubectl describe --all-namespaces'
-  alias kdcm='kubectl describe configmap'
-  alias kdcmall='kubectl describe configmap --all-namespaces'
-  alias kdcml='kubectl describe configmap -l'
-  alias kdcmn='kubectl describe configmap --namespace'
-  alias kddep='kubectl describe deployment'
-  alias kddepall='kubectl describe deployment --all-namespaces'
-  alias kddepl='kubectl describe deployment -l'
-  alias kddepn='kubectl describe deployment --namespace'
-  alias kdf='kubectl describe --recursive -f'
-  alias kding='kubectl describe ingress'
-  alias kdingall='kubectl describe ingress --all-namespaces'
-  alias kdingl='kubectl describe ingress -l'
-  alias kdingn='kubectl describe ingress --namespace'
-  alias kdl='kubectl describe -l'
-  alias kdn='kubectl describe --namespace'
-  alias kdno='kubectl describe nodes'
-  alias kdnol='kubectl describe nodes -l'
-  alias kdns='kubectl describe namespaces'
-  alias kdnsall='kubectl describe namespaces --all-namespaces'
-  alias kdnsl='kubectl describe namespaces -l'
-  alias kdpo='kubectl describe pods'
-  alias kdpoall='kubectl describe pods --all-namespaces'
-  alias kdpol='kubectl describe pods -l'
-  alias kdpon='kubectl describe pods --namespace'
-  alias kdsec='kubectl describe secret'
-  alias kdsecall='kubectl describe secret --all-namespaces'
-  alias kdsecl='kubectl describe secret -l'
-  alias kdsecn='kubectl describe secret --namespace'
-  alias kdsvc='kubectl describe service'
-  alias kdsvcall='kubectl describe service --all-namespaces'
-  alias kdsvcl='kubectl describe service -l'
-  alias kdsvcn='kubectl describe service --namespace'
-  alias kex='kubectl exec -i -t'
-  alias kexn='kubectl exec -i -t --namespace'
-  alias kg='kubectl get'
-  alias kgall='kubectl get --all-namespaces'
-  alias kgallojson='kubectl get --all-namespaces -o=json'
-  alias kgallowide='kubectl get --all-namespaces -o=wide'
-  alias kgallowidesl='kubectl get --all-namespaces -o=wide --show-labels'
-  alias kgalloyaml='kubectl get --all-namespaces -o=yaml'
-  alias kgallsl='kubectl get --all-namespaces --show-labels'
-  alias kgallslowide='kubectl get --all-namespaces --show-labels -o=wide'
-  alias kgallslw='kubectl get --all-namespaces --show-labels --watch'
-  alias kgallslwowide='kubectl get --all-namespaces --show-labels --watch -o=wide'
-  alias kgallw='kubectl get --all-namespaces --watch'
-  alias kgallwojson='kubectl get --all-namespaces --watch -o=json'
-  alias kgallwowide='kubectl get --all-namespaces --watch -o=wide'
-  alias kgallwowidesl='kubectl get --all-namespaces --watch -o=wide --show-labels'
-  alias kgallwoyaml='kubectl get --all-namespaces --watch -o=yaml'
-  alias kgallwsl='kubectl get --all-namespaces --watch --show-labels'
-  alias kgallwslowide='kubectl get --all-namespaces --watch --show-labels -o=wide'
-  alias kgcm='kubectl get configmap'
-  alias kgcmall='kubectl get configmap --all-namespaces'
-  alias kgcmallojson='kubectl get configmap --all-namespaces -o=json'
-  alias kgcmallowide='kubectl get configmap --all-namespaces -o=wide'
-  alias kgcmalloyaml='kubectl get configmap --all-namespaces -o=yaml'
-  alias kgcmallw='kubectl get configmap --all-namespaces --watch'
-  alias kgcmallwojson='kubectl get configmap --all-namespaces --watch -o=json'
-  alias kgcmallwowide='kubectl get configmap --all-namespaces --watch -o=wide'
-  alias kgcmallwoyaml='kubectl get configmap --all-namespaces --watch -o=yaml'
-  alias kgcml='kubectl get configmap -l'
-  alias kgcmn='kubectl get configmap --namespace'
-  alias kgcmojson='kubectl get configmap -o=json'
-  alias kgcmojsonall='kubectl get configmap -o=json --all-namespaces'
-  alias kgcmojsonl='kubectl get configmap -o=json -l'
-  alias kgcmojsonn='kubectl get configmap -o=json --namespace'
-  alias kgcmowide='kubectl get configmap -o=wide'
-  alias kgcmowideall='kubectl get configmap -o=wide --all-namespaces'
-  alias kgcmowidel='kubectl get configmap -o=wide -l'
-  alias kgcmowiden='kubectl get configmap -o=wide --namespace'
-  alias kgcmoyaml='kubectl get configmap -o=yaml'
-  alias kgcmoyamlall='kubectl get configmap -o=yaml --all-namespaces'
-  alias kgcmoyamll='kubectl get configmap -o=yaml -l'
-  alias kgcmoyamln='kubectl get configmap -o=yaml --namespace'
-  alias kgcmw='kubectl get configmap --watch'
-  alias kgcmwall='kubectl get configmap --watch --all-namespaces'
-  alias kgcmwallojson='kubectl get configmap --watch --all-namespaces -o=json'
-  alias kgcmwallowide='kubectl get configmap --watch --all-namespaces -o=wide'
-  alias kgcmwalloyaml='kubectl get configmap --watch --all-namespaces -o=yaml'
-  alias kgcmwl='kubectl get configmap --watch -l'
-  alias kgcmwn='kubectl get configmap --watch --namespace'
-  alias kgcmwojson='kubectl get configmap --watch -o=json'
-  alias kgcmwojsonall='kubectl get configmap --watch -o=json --all-namespaces'
-  alias kgcmwojsonl='kubectl get configmap --watch -o=json -l'
-  alias kgcmwojsonn='kubectl get configmap --watch -o=json --namespace'
-  alias kgcmwowide='kubectl get configmap --watch -o=wide'
-  alias kgcmwowideall='kubectl get configmap --watch -o=wide --all-namespaces'
-  alias kgcmwowidel='kubectl get configmap --watch -o=wide -l'
-  alias kgcmwowiden='kubectl get configmap --watch -o=wide --namespace'
-  alias kgcmwoyaml='kubectl get configmap --watch -o=yaml'
-  alias kgcmwoyamlall='kubectl get configmap --watch -o=yaml --all-namespaces'
-  alias kgcmwoyamll='kubectl get configmap --watch -o=yaml -l'
-  alias kgcmwoyamln='kubectl get configmap --watch -o=yaml --namespace'
-  alias kgdep='kubectl get deployment'
-  alias kgdepall='kubectl get deployment --all-namespaces'
-  alias kgdepallojson='kubectl get deployment --all-namespaces -o=json'
-  alias kgdepallowide='kubectl get deployment --all-namespaces -o=wide'
-  alias kgdepallowidesl='kubectl get deployment --all-namespaces -o=wide --show-labels'
-  alias kgdepalloyaml='kubectl get deployment --all-namespaces -o=yaml'
-  alias kgdepallsl='kubectl get deployment --all-namespaces --show-labels'
-  alias kgdepallslowide='kubectl get deployment --all-namespaces --show-labels -o=wide'
-  alias kgdepallslw='kubectl get deployment --all-namespaces --show-labels --watch'
-  alias kgdepallslwowide='kubectl get deployment --all-namespaces --show-labels --watch -o=wide'
-  alias kgdepallw='kubectl get deployment --all-namespaces --watch'
-  alias kgdepallwojson='kubectl get deployment --all-namespaces --watch -o=json'
-  alias kgdepallwowide='kubectl get deployment --all-namespaces --watch -o=wide'
-  alias kgdepallwowidesl='kubectl get deployment --all-namespaces --watch -o=wide --show-labels'
-  alias kgdepallwoyaml='kubectl get deployment --all-namespaces --watch -o=yaml'
-  alias kgdepallwsl='kubectl get deployment --all-namespaces --watch --show-labels'
-  alias kgdepallwslowide='kubectl get deployment --all-namespaces --watch --show-labels -o=wide'
-  alias kgdepl='kubectl get deployment -l'
-  alias kgdepn='kubectl get deployment --namespace'
-  alias kgdepojson='kubectl get deployment -o=json'
-  alias kgdepojsonall='kubectl get deployment -o=json --all-namespaces'
-  alias kgdepojsonl='kubectl get deployment -o=json -l'
-  alias kgdepojsonn='kubectl get deployment -o=json --namespace'
-  alias kgdepowide='kubectl get deployment -o=wide'
-  alias kgdepowideall='kubectl get deployment -o=wide --all-namespaces'
-  alias kgdepowideallsl='kubectl get deployment -o=wide --all-namespaces --show-labels'
-  alias kgdepowidel='kubectl get deployment -o=wide -l'
-  alias kgdepowiden='kubectl get deployment -o=wide --namespace'
-  alias kgdepowidesl='kubectl get deployment -o=wide --show-labels'
-  alias kgdepowideslall='kubectl get deployment -o=wide --show-labels --all-namespaces'
-  alias kgdepowidesll='kubectl get deployment -o=wide --show-labels -l'
-  alias kgdepowidesln='kubectl get deployment -o=wide --show-labels --namespace'
-  alias kgdepoyaml='kubectl get deployment -o=yaml'
-  alias kgdepoyamlall='kubectl get deployment -o=yaml --all-namespaces'
-  alias kgdepoyamll='kubectl get deployment -o=yaml -l'
-  alias kgdepoyamln='kubectl get deployment -o=yaml --namespace'
-  alias kgdepsl='kubectl get deployment --show-labels'
-  alias kgdepslall='kubectl get deployment --show-labels --all-namespaces'
-  alias kgdepslallowide='kubectl get deployment --show-labels --all-namespaces -o=wide'
-  alias kgdepslallw='kubectl get deployment --show-labels --all-namespaces --watch'
-  alias kgdepslallwowide='kubectl get deployment --show-labels --all-namespaces --watch -o=wide'
-  alias kgdepsll='kubectl get deployment --show-labels -l'
-  alias kgdepsln='kubectl get deployment --show-labels --namespace'
-  alias kgdepslowide='kubectl get deployment --show-labels -o=wide'
-  alias kgdepslowideall='kubectl get deployment --show-labels -o=wide --all-namespaces'
-  alias kgdepslowidel='kubectl get deployment --show-labels -o=wide -l'
-  alias kgdepslowiden='kubectl get deployment --show-labels -o=wide --namespace'
-  alias kgdepslw='kubectl get deployment --show-labels --watch'
-  alias kgdepslwall='kubectl get deployment --show-labels --watch --all-namespaces'
-  alias kgdepslwallowide='kubectl get deployment --show-labels --watch --all-namespaces -o=wide'
-  alias kgdepslwl='kubectl get deployment --show-labels --watch -l'
-  alias kgdepslwn='kubectl get deployment --show-labels --watch --namespace'
-  alias kgdepslwowide='kubectl get deployment --show-labels --watch -o=wide'
-  alias kgdepslwowideall='kubectl get deployment --show-labels --watch -o=wide --all-namespaces'
-  alias kgdepslwowidel='kubectl get deployment --show-labels --watch -o=wide -l'
-  alias kgdepslwowiden='kubectl get deployment --show-labels --watch -o=wide --namespace'
-  alias kgdepw='kubectl get deployment --watch'
-  alias kgdepwall='kubectl get deployment --watch --all-namespaces'
-  alias kgdepwallojson='kubectl get deployment --watch --all-namespaces -o=json'
-  alias kgdepwallowide='kubectl get deployment --watch --all-namespaces -o=wide'
-  alias kgdepwallowidesl='kubectl get deployment --watch --all-namespaces -o=wide --show-labels'
-  alias kgdepwalloyaml='kubectl get deployment --watch --all-namespaces -o=yaml'
-  alias kgdepwallsl='kubectl get deployment --watch --all-namespaces --show-labels'
-  alias kgdepwallslowide='kubectl get deployment --watch --all-namespaces --show-labels -o=wide'
-  alias kgdepwl='kubectl get deployment --watch -l'
-  alias kgdepwn='kubectl get deployment --watch --namespace'
-  alias kgdepwojson='kubectl get deployment --watch -o=json'
-  alias kgdepwojsonall='kubectl get deployment --watch -o=json --all-namespaces'
-  alias kgdepwojsonl='kubectl get deployment --watch -o=json -l'
-  alias kgdepwojsonn='kubectl get deployment --watch -o=json --namespace'
-  alias kgdepwowide='kubectl get deployment --watch -o=wide'
-  alias kgdepwowideall='kubectl get deployment --watch -o=wide --all-namespaces'
-  alias kgdepwowideallsl='kubectl get deployment --watch -o=wide --all-namespaces --show-labels'
-  alias kgdepwowidel='kubectl get deployment --watch -o=wide -l'
-  alias kgdepwowiden='kubectl get deployment --watch -o=wide --namespace'
-  alias kgdepwowidesl='kubectl get deployment --watch -o=wide --show-labels'
-  alias kgdepwowideslall='kubectl get deployment --watch -o=wide --show-labels --all-namespaces'
-  alias kgdepwowidesll='kubectl get deployment --watch -o=wide --show-labels -l'
-  alias kgdepwowidesln='kubectl get deployment --watch -o=wide --show-labels --namespace'
-  alias kgdepwoyaml='kubectl get deployment --watch -o=yaml'
-  alias kgdepwoyamlall='kubectl get deployment --watch -o=yaml --all-namespaces'
-  alias kgdepwoyamll='kubectl get deployment --watch -o=yaml -l'
-  alias kgdepwoyamln='kubectl get deployment --watch -o=yaml --namespace'
-  alias kgdepwsl='kubectl get deployment --watch --show-labels'
-  alias kgdepwslall='kubectl get deployment --watch --show-labels --all-namespaces'
-  alias kgdepwslallowide='kubectl get deployment --watch --show-labels --all-namespaces -o=wide'
-  alias kgdepwsll='kubectl get deployment --watch --show-labels -l'
-  alias kgdepwsln='kubectl get deployment --watch --show-labels --namespace'
-  alias kgdepwslowide='kubectl get deployment --watch --show-labels -o=wide'
-  alias kgdepwslowideall='kubectl get deployment --watch --show-labels -o=wide --all-namespaces'
-  alias kgdepwslowidel='kubectl get deployment --watch --show-labels -o=wide -l'
-  alias kgdepwslowiden='kubectl get deployment --watch --show-labels -o=wide --namespace'
-  alias kgf='kubectl get --recursive -f'
-  alias kging='kubectl get ingress'
-  alias kgingall='kubectl get ingress --all-namespaces'
-  alias kgingallojson='kubectl get ingress --all-namespaces -o=json'
-  alias kgingallowide='kubectl get ingress --all-namespaces -o=wide'
-  alias kgingalloyaml='kubectl get ingress --all-namespaces -o=yaml'
-  alias kgingallw='kubectl get ingress --all-namespaces --watch'
-  alias kgingallwojson='kubectl get ingress --all-namespaces --watch -o=json'
-  alias kgingallwowide='kubectl get ingress --all-namespaces --watch -o=wide'
-  alias kgingallwoyaml='kubectl get ingress --all-namespaces --watch -o=yaml'
-  alias kgingl='kubectl get ingress -l'
-  alias kgingn='kubectl get ingress --namespace'
-  alias kgingojson='kubectl get ingress -o=json'
-  alias kgingojsonall='kubectl get ingress -o=json --all-namespaces'
-  alias kgingojsonl='kubectl get ingress -o=json -l'
-  alias kgingojsonn='kubectl get ingress -o=json --namespace'
-  alias kgingowide='kubectl get ingress -o=wide'
-  alias kgingowideall='kubectl get ingress -o=wide --all-namespaces'
-  alias kgingowidel='kubectl get ingress -o=wide -l'
-  alias kgingowiden='kubectl get ingress -o=wide --namespace'
-  alias kgingoyaml='kubectl get ingress -o=yaml'
-  alias kgingoyamlall='kubectl get ingress -o=yaml --all-namespaces'
-  alias kgingoyamll='kubectl get ingress -o=yaml -l'
-  alias kgingoyamln='kubectl get ingress -o=yaml --namespace'
-  alias kgingw='kubectl get ingress --watch'
-  alias kgingwall='kubectl get ingress --watch --all-namespaces'
-  alias kgingwallojson='kubectl get ingress --watch --all-namespaces -o=json'
-  alias kgingwallowide='kubectl get ingress --watch --all-namespaces -o=wide'
-  alias kgingwalloyaml='kubectl get ingress --watch --all-namespaces -o=yaml'
-  alias kgingwl='kubectl get ingress --watch -l'
-  alias kgingwn='kubectl get ingress --watch --namespace'
-  alias kgingwojson='kubectl get ingress --watch -o=json'
-  alias kgingwojsonall='kubectl get ingress --watch -o=json --all-namespaces'
-  alias kgingwojsonl='kubectl get ingress --watch -o=json -l'
-  alias kgingwojsonn='kubectl get ingress --watch -o=json --namespace'
-  alias kgingwowide='kubectl get ingress --watch -o=wide'
-  alias kgingwowideall='kubectl get ingress --watch -o=wide --all-namespaces'
-  alias kgingwowidel='kubectl get ingress --watch -o=wide -l'
-  alias kgingwowiden='kubectl get ingress --watch -o=wide --namespace'
-  alias kgingwoyaml='kubectl get ingress --watch -o=yaml'
-  alias kgingwoyamlall='kubectl get ingress --watch -o=yaml --all-namespaces'
-  alias kgingwoyamll='kubectl get ingress --watch -o=yaml -l'
-  alias kgingwoyamln='kubectl get ingress --watch -o=yaml --namespace'
-  alias kgl='kubectl get -l'
-  alias kgn='kubectl get --namespace'
-  alias kgno='kubectl get nodes'
-  alias kgnol='kubectl get nodes -l'
-  alias kgnoojson='kubectl get nodes -o=json'
-  alias kgnoojsonl='kubectl get nodes -o=json -l'
-  alias kgnoowide='kubectl get nodes -o=wide'
-  alias kgnoowidel='kubectl get nodes -o=wide -l'
-  alias kgnooyaml='kubectl get nodes -o=yaml'
-  alias kgnooyamll='kubectl get nodes -o=yaml -l'
-  alias kgnow='kubectl get nodes --watch'
-  alias kgnowl='kubectl get nodes --watch -l'
-  alias kgnowojson='kubectl get nodes --watch -o=json'
-  alias kgnowojsonl='kubectl get nodes --watch -o=json -l'
-  alias kgnowowide='kubectl get nodes --watch -o=wide'
-  alias kgnowowidel='kubectl get nodes --watch -o=wide -l'
-  alias kgnowoyaml='kubectl get nodes --watch -o=yaml'
-  alias kgnowoyamll='kubectl get nodes --watch -o=yaml -l'
-  alias kgns='kubectl get namespaces'
-  alias kgnsall='kubectl get namespaces --all-namespaces'
-  alias kgnsallojson='kubectl get namespaces --all-namespaces -o=json'
-  alias kgnsallowide='kubectl get namespaces --all-namespaces -o=wide'
-  alias kgnsalloyaml='kubectl get namespaces --all-namespaces -o=yaml'
-  alias kgnsallw='kubectl get namespaces --all-namespaces --watch'
-  alias kgnsallwojson='kubectl get namespaces --all-namespaces --watch -o=json'
-  alias kgnsallwowide='kubectl get namespaces --all-namespaces --watch -o=wide'
-  alias kgnsallwoyaml='kubectl get namespaces --all-namespaces --watch -o=yaml'
-  alias kgnsl='kubectl get namespaces -l'
-  alias kgnsojson='kubectl get namespaces -o=json'
-  alias kgnsojsonall='kubectl get namespaces -o=json --all-namespaces'
-  alias kgnsojsonl='kubectl get namespaces -o=json -l'
-  alias kgnsowide='kubectl get namespaces -o=wide'
-  alias kgnsowideall='kubectl get namespaces -o=wide --all-namespaces'
-  alias kgnsowidel='kubectl get namespaces -o=wide -l'
-  alias kgnsoyaml='kubectl get namespaces -o=yaml'
-  alias kgnsoyamlall='kubectl get namespaces -o=yaml --all-namespaces'
-  alias kgnsoyamll='kubectl get namespaces -o=yaml -l'
-  alias kgnsw='kubectl get namespaces --watch'
-  alias kgnswall='kubectl get namespaces --watch --all-namespaces'
-  alias kgnswallojson='kubectl get namespaces --watch --all-namespaces -o=json'
-  alias kgnswallowide='kubectl get namespaces --watch --all-namespaces -o=wide'
-  alias kgnswalloyaml='kubectl get namespaces --watch --all-namespaces -o=yaml'
-  alias kgnswl='kubectl get namespaces --watch -l'
-  alias kgnswojson='kubectl get namespaces --watch -o=json'
-  alias kgnswojsonall='kubectl get namespaces --watch -o=json --all-namespaces'
-  alias kgnswojsonl='kubectl get namespaces --watch -o=json -l'
-  alias kgnswowide='kubectl get namespaces --watch -o=wide'
-  alias kgnswowideall='kubectl get namespaces --watch -o=wide --all-namespaces'
-  alias kgnswowidel='kubectl get namespaces --watch -o=wide -l'
-  alias kgnswoyaml='kubectl get namespaces --watch -o=yaml'
-  alias kgnswoyamlall='kubectl get namespaces --watch -o=yaml --all-namespaces'
-  alias kgnswoyamll='kubectl get namespaces --watch -o=yaml -l'
-  alias kgojson='kubectl get -o=json'
-  alias kgojsonall='kubectl get -o=json --all-namespaces'
-  alias kgojsonf='kubectl get -o=json --recursive -f'
-  alias kgojsonl='kubectl get -o=json -l'
-  alias kgojsonn='kubectl get -o=json --namespace'
-  alias kgowide='kubectl get -o=wide'
-  alias kgowideall='kubectl get -o=wide --all-namespaces'
-  alias kgowideallsl='kubectl get -o=wide --all-namespaces --show-labels'
-  alias kgowidef='kubectl get -o=wide --recursive -f'
-  alias kgowidel='kubectl get -o=wide -l'
-  alias kgowiden='kubectl get -o=wide --namespace'
-  alias kgowidesl='kubectl get -o=wide --show-labels'
-  alias kgowideslall='kubectl get -o=wide --show-labels --all-namespaces'
-  alias kgowideslf='kubectl get -o=wide --show-labels --recursive -f'
-  alias kgowidesll='kubectl get -o=wide --show-labels -l'
-  alias kgowidesln='kubectl get -o=wide --show-labels --namespace'
-  alias kgoyaml='kubectl get -o=yaml'
-  alias kgoyamlall='kubectl get -o=yaml --all-namespaces'
-  alias kgoyamlf='kubectl get -o=yaml --recursive -f'
-  alias kgoyamll='kubectl get -o=yaml -l'
-  alias kgoyamln='kubectl get -o=yaml --namespace'
-  alias kgpo='kubectl get pods'
-  alias kgpoall='kubectl get pods --all-namespaces'
-  alias kgpoallojson='kubectl get pods --all-namespaces -o=json'
-  alias kgpoallowide='kubectl get pods --all-namespaces -o=wide'
-  alias kgpoallowidesl='kubectl get pods --all-namespaces -o=wide --show-labels'
-  alias kgpoalloyaml='kubectl get pods --all-namespaces -o=yaml'
-  alias kgpoallsl='kubectl get pods --all-namespaces --show-labels'
-  alias kgpoallslowide='kubectl get pods --all-namespaces --show-labels -o=wide'
-  alias kgpoallslw='kubectl get pods --all-namespaces --show-labels --watch'
-  alias kgpoallslwowide='kubectl get pods --all-namespaces --show-labels --watch -o=wide'
-  alias kgpoallw='kubectl get pods --all-namespaces --watch'
-  alias kgpoallwojson='kubectl get pods --all-namespaces --watch -o=json'
-  alias kgpoallwowide='kubectl get pods --all-namespaces --watch -o=wide'
-  alias kgpoallwowidesl='kubectl get pods --all-namespaces --watch -o=wide --show-labels'
-  alias kgpoallwoyaml='kubectl get pods --all-namespaces --watch -o=yaml'
-  alias kgpoallwsl='kubectl get pods --all-namespaces --watch --show-labels'
-  alias kgpoallwslowide='kubectl get pods --all-namespaces --watch --show-labels -o=wide'
-  alias kgpol='kubectl get pods -l'
-  alias kgpon='kubectl get pods --namespace'
-  alias kgpoojson='kubectl get pods -o=json'
-  alias kgpoojsonall='kubectl get pods -o=json --all-namespaces'
-  alias kgpoojsonl='kubectl get pods -o=json -l'
-  alias kgpoojsonn='kubectl get pods -o=json --namespace'
-  alias kgpoowide='kubectl get pods -o=wide'
-  alias kgpoowideall='kubectl get pods -o=wide --all-namespaces'
-  alias kgpoowideallsl='kubectl get pods -o=wide --all-namespaces --show-labels'
-  alias kgpoowidel='kubectl get pods -o=wide -l'
-  alias kgpoowiden='kubectl get pods -o=wide --namespace'
-  alias kgpoowidesl='kubectl get pods -o=wide --show-labels'
-  alias kgpoowideslall='kubectl get pods -o=wide --show-labels --all-namespaces'
-  alias kgpoowidesll='kubectl get pods -o=wide --show-labels -l'
-  alias kgpoowidesln='kubectl get pods -o=wide --show-labels --namespace'
-  alias kgpooyaml='kubectl get pods -o=yaml'
-  alias kgpooyamlall='kubectl get pods -o=yaml --all-namespaces'
-  alias kgpooyamll='kubectl get pods -o=yaml -l'
-  alias kgpooyamln='kubectl get pods -o=yaml --namespace'
-  alias kgposl='kubectl get pods --show-labels'
-  alias kgposlall='kubectl get pods --show-labels --all-namespaces'
-  alias kgposlallowide='kubectl get pods --show-labels --all-namespaces -o=wide'
-  alias kgposlallw='kubectl get pods --show-labels --all-namespaces --watch'
-  alias kgposlallwowide='kubectl get pods --show-labels --all-namespaces --watch -o=wide'
-  alias kgposll='kubectl get pods --show-labels -l'
-  alias kgposln='kubectl get pods --show-labels --namespace'
-  alias kgposlowide='kubectl get pods --show-labels -o=wide'
-  alias kgposlowideall='kubectl get pods --show-labels -o=wide --all-namespaces'
-  alias kgposlowidel='kubectl get pods --show-labels -o=wide -l'
-  alias kgposlowiden='kubectl get pods --show-labels -o=wide --namespace'
-  alias kgposlw='kubectl get pods --show-labels --watch'
-  alias kgposlwall='kubectl get pods --show-labels --watch --all-namespaces'
-  alias kgposlwallowide='kubectl get pods --show-labels --watch --all-namespaces -o=wide'
-  alias kgposlwl='kubectl get pods --show-labels --watch -l'
-  alias kgposlwn='kubectl get pods --show-labels --watch --namespace'
-  alias kgposlwowide='kubectl get pods --show-labels --watch -o=wide'
-  alias kgposlwowideall='kubectl get pods --show-labels --watch -o=wide --all-namespaces'
-  alias kgposlwowidel='kubectl get pods --show-labels --watch -o=wide -l'
-  alias kgposlwowiden='kubectl get pods --show-labels --watch -o=wide --namespace'
-  alias kgpow='kubectl get pods --watch'
-  alias kgpowall='kubectl get pods --watch --all-namespaces'
-  alias kgpowallojson='kubectl get pods --watch --all-namespaces -o=json'
-  alias kgpowallowide='kubectl get pods --watch --all-namespaces -o=wide'
-  alias kgpowallowidesl='kubectl get pods --watch --all-namespaces -o=wide --show-labels'
-  alias kgpowalloyaml='kubectl get pods --watch --all-namespaces -o=yaml'
-  alias kgpowallsl='kubectl get pods --watch --all-namespaces --show-labels'
-  alias kgpowallslowide='kubectl get pods --watch --all-namespaces --show-labels -o=wide'
-  alias kgpowl='kubectl get pods --watch -l'
-  alias kgpown='kubectl get pods --watch --namespace'
-  alias kgpowojson='kubectl get pods --watch -o=json'
-  alias kgpowojsonall='kubectl get pods --watch -o=json --all-namespaces'
-  alias kgpowojsonl='kubectl get pods --watch -o=json -l'
-  alias kgpowojsonn='kubectl get pods --watch -o=json --namespace'
-  alias kgpowowide='kubectl get pods --watch -o=wide'
-  alias kgpowowideall='kubectl get pods --watch -o=wide --all-namespaces'
-  alias kgpowowideallsl='kubectl get pods --watch -o=wide --all-namespaces --show-labels'
-  alias kgpowowidel='kubectl get pods --watch -o=wide -l'
-  alias kgpowowiden='kubectl get pods --watch -o=wide --namespace'
-  alias kgpowowidesl='kubectl get pods --watch -o=wide --show-labels'
-  alias kgpowowideslall='kubectl get pods --watch -o=wide --show-labels --all-namespaces'
-  alias kgpowowidesll='kubectl get pods --watch -o=wide --show-labels -l'
-  alias kgpowowidesln='kubectl get pods --watch -o=wide --show-labels --namespace'
-  alias kgpowoyaml='kubectl get pods --watch -o=yaml'
-  alias kgpowoyamlall='kubectl get pods --watch -o=yaml --all-namespaces'
-  alias kgpowoyamll='kubectl get pods --watch -o=yaml -l'
-  alias kgpowoyamln='kubectl get pods --watch -o=yaml --namespace'
-  alias kgpowsl='kubectl get pods --watch --show-labels'
-  alias kgpowslall='kubectl get pods --watch --show-labels --all-namespaces'
-  alias kgpowslallowide='kubectl get pods --watch --show-labels --all-namespaces -o=wide'
-  alias kgpowsll='kubectl get pods --watch --show-labels -l'
-  alias kgpowsln='kubectl get pods --watch --show-labels --namespace'
-  alias kgpowslowide='kubectl get pods --watch --show-labels -o=wide'
-  alias kgpowslowideall='kubectl get pods --watch --show-labels -o=wide --all-namespaces'
-  alias kgpowslowidel='kubectl get pods --watch --show-labels -o=wide -l'
-  alias kgpowslowiden='kubectl get pods --watch --show-labels -o=wide --namespace'
-  alias kgsec='kubectl get secret'
-  alias kgsecall='kubectl get secret --all-namespaces'
-  alias kgsecallojson='kubectl get secret --all-namespaces -o=json'
-  alias kgsecallowide='kubectl get secret --all-namespaces -o=wide'
-  alias kgsecalloyaml='kubectl get secret --all-namespaces -o=yaml'
-  alias kgsecallw='kubectl get secret --all-namespaces --watch'
-  alias kgsecallwojson='kubectl get secret --all-namespaces --watch -o=json'
-  alias kgsecallwowide='kubectl get secret --all-namespaces --watch -o=wide'
-  alias kgsecallwoyaml='kubectl get secret --all-namespaces --watch -o=yaml'
-  alias kgsecl='kubectl get secret -l'
-  alias kgsecn='kubectl get secret --namespace'
-  alias kgsecojson='kubectl get secret -o=json'
-  alias kgsecojsonall='kubectl get secret -o=json --all-namespaces'
-  alias kgsecojsonl='kubectl get secret -o=json -l'
-  alias kgsecojsonn='kubectl get secret -o=json --namespace'
-  alias kgsecowide='kubectl get secret -o=wide'
-  alias kgsecowideall='kubectl get secret -o=wide --all-namespaces'
-  alias kgsecowidel='kubectl get secret -o=wide -l'
-  alias kgsecowiden='kubectl get secret -o=wide --namespace'
-  alias kgsecoyaml='kubectl get secret -o=yaml'
-  alias kgsecoyamlall='kubectl get secret -o=yaml --all-namespaces'
-  alias kgsecoyamll='kubectl get secret -o=yaml -l'
-  alias kgsecoyamln='kubectl get secret -o=yaml --namespace'
-  alias kgsecw='kubectl get secret --watch'
-  alias kgsecwall='kubectl get secret --watch --all-namespaces'
-  alias kgsecwallojson='kubectl get secret --watch --all-namespaces -o=json'
-  alias kgsecwallowide='kubectl get secret --watch --all-namespaces -o=wide'
-  alias kgsecwalloyaml='kubectl get secret --watch --all-namespaces -o=yaml'
-  alias kgsecwl='kubectl get secret --watch -l'
-  alias kgsecwn='kubectl get secret --watch --namespace'
-  alias kgsecwojson='kubectl get secret --watch -o=json'
-  alias kgsecwojsonall='kubectl get secret --watch -o=json --all-namespaces'
-  alias kgsecwojsonl='kubectl get secret --watch -o=json -l'
-  alias kgsecwojsonn='kubectl get secret --watch -o=json --namespace'
-  alias kgsecwowide='kubectl get secret --watch -o=wide'
-  alias kgsecwowideall='kubectl get secret --watch -o=wide --all-namespaces'
-  alias kgsecwowidel='kubectl get secret --watch -o=wide -l'
-  alias kgsecwowiden='kubectl get secret --watch -o=wide --namespace'
-  alias kgsecwoyaml='kubectl get secret --watch -o=yaml'
-  alias kgsecwoyamlall='kubectl get secret --watch -o=yaml --all-namespaces'
-  alias kgsecwoyamll='kubectl get secret --watch -o=yaml -l'
-  alias kgsecwoyamln='kubectl get secret --watch -o=yaml --namespace'
-  alias kgsl='kubectl get --show-labels'
-  alias kgslall='kubectl get --show-labels --all-namespaces'
-  alias kgslallowide='kubectl get --show-labels --all-namespaces -o=wide'
-  alias kgslallw='kubectl get --show-labels --all-namespaces --watch'
-  alias kgslallwowide='kubectl get --show-labels --all-namespaces --watch -o=wide'
-  alias kgslf='kubectl get --show-labels --recursive -f'
-  alias kgsll='kubectl get --show-labels -l'
-  alias kgsln='kubectl get --show-labels --namespace'
-  alias kgslowide='kubectl get --show-labels -o=wide'
-  alias kgslowideall='kubectl get --show-labels -o=wide --all-namespaces'
-  alias kgslowidef='kubectl get --show-labels -o=wide --recursive -f'
-  alias kgslowidel='kubectl get --show-labels -o=wide -l'
-  alias kgslowiden='kubectl get --show-labels -o=wide --namespace'
-  alias kgslw='kubectl get --show-labels --watch'
-  alias kgslwall='kubectl get --show-labels --watch --all-namespaces'
-  alias kgslwallowide='kubectl get --show-labels --watch --all-namespaces -o=wide'
-  alias kgslwf='kubectl get --show-labels --watch --recursive -f'
-  alias kgslwl='kubectl get --show-labels --watch -l'
-  alias kgslwn='kubectl get --show-labels --watch --namespace'
-  alias kgslwowide='kubectl get --show-labels --watch -o=wide'
-  alias kgslwowideall='kubectl get --show-labels --watch -o=wide --all-namespaces'
-  alias kgslwowidef='kubectl get --show-labels --watch -o=wide --recursive -f'
-  alias kgslwowidel='kubectl get --show-labels --watch -o=wide -l'
-  alias kgslwowiden='kubectl get --show-labels --watch -o=wide --namespace'
-  alias kgsvc='kubectl get service'
-  alias kgsvcall='kubectl get service --all-namespaces'
-  alias kgsvcallojson='kubectl get service --all-namespaces -o=json'
-  alias kgsvcallowide='kubectl get service --all-namespaces -o=wide'
-  alias kgsvcalloyaml='kubectl get service --all-namespaces -o=yaml'
-  alias kgsvcallw='kubectl get service --all-namespaces --watch'
-  alias kgsvcallwojson='kubectl get service --all-namespaces --watch -o=json'
-  alias kgsvcallwowide='kubectl get service --all-namespaces --watch -o=wide'
-  alias kgsvcallwoyaml='kubectl get service --all-namespaces --watch -o=yaml'
-  alias kgsvcl='kubectl get service -l'
-  alias kgsvcn='kubectl get service --namespace'
-  alias kgsvcojson='kubectl get service -o=json'
-  alias kgsvcojsonall='kubectl get service -o=json --all-namespaces'
-  alias kgsvcojsonl='kubectl get service -o=json -l'
-  alias kgsvcojsonn='kubectl get service -o=json --namespace'
-  alias kgsvcowide='kubectl get service -o=wide'
-  alias kgsvcowideall='kubectl get service -o=wide --all-namespaces'
-  alias kgsvcowidel='kubectl get service -o=wide -l'
-  alias kgsvcowiden='kubectl get service -o=wide --namespace'
-  alias kgsvcoyaml='kubectl get service -o=yaml'
-  alias kgsvcoyamlall='kubectl get service -o=yaml --all-namespaces'
-  alias kgsvcoyamll='kubectl get service -o=yaml -l'
-  alias kgsvcoyamln='kubectl get service -o=yaml --namespace'
-  alias kgsvcw='kubectl get service --watch'
-  alias kgsvcwall='kubectl get service --watch --all-namespaces'
-  alias kgsvcwallojson='kubectl get service --watch --all-namespaces -o=json'
-  alias kgsvcwallowide='kubectl get service --watch --all-namespaces -o=wide'
-  alias kgsvcwalloyaml='kubectl get service --watch --all-namespaces -o=yaml'
-  alias kgsvcwl='kubectl get service --watch -l'
-  alias kgsvcwn='kubectl get service --watch --namespace'
-  alias kgsvcwojson='kubectl get service --watch -o=json'
-  alias kgsvcwojsonall='kubectl get service --watch -o=json --all-namespaces'
-  alias kgsvcwojsonl='kubectl get service --watch -o=json -l'
-  alias kgsvcwojsonn='kubectl get service --watch -o=json --namespace'
-  alias kgsvcwowide='kubectl get service --watch -o=wide'
-  alias kgsvcwowideall='kubectl get service --watch -o=wide --all-namespaces'
-  alias kgsvcwowidel='kubectl get service --watch -o=wide -l'
-  alias kgsvcwowiden='kubectl get service --watch -o=wide --namespace'
-  alias kgsvcwoyaml='kubectl get service --watch -o=yaml'
-  alias kgsvcwoyamlall='kubectl get service --watch -o=yaml --all-namespaces'
-  alias kgsvcwoyamll='kubectl get service --watch -o=yaml -l'
-  alias kgsvcwoyamln='kubectl get service --watch -o=yaml --namespace'
-  alias kgw='kubectl get --watch'
-  alias kgwall='kubectl get --watch --all-namespaces'
-  alias kgwallojson='kubectl get --watch --all-namespaces -o=json'
-  alias kgwallowide='kubectl get --watch --all-namespaces -o=wide'
-  alias kgwallowidesl='kubectl get --watch --all-namespaces -o=wide --show-labels'
-  alias kgwalloyaml='kubectl get --watch --all-namespaces -o=yaml'
-  alias kgwallsl='kubectl get --watch --all-namespaces --show-labels'
-  alias kgwallslowide='kubectl get --watch --all-namespaces --show-labels -o=wide'
-  alias kgwf='kubectl get --watch --recursive -f'
-  alias kgwl='kubectl get --watch -l'
-  alias kgwn='kubectl get --watch --namespace'
-  alias kgwojson='kubectl get --watch -o=json'
-  alias kgwojsonall='kubectl get --watch -o=json --all-namespaces'
-  alias kgwojsonf='kubectl get --watch -o=json --recursive -f'
-  alias kgwojsonl='kubectl get --watch -o=json -l'
-  alias kgwojsonn='kubectl get --watch -o=json --namespace'
-  alias kgwowide='kubectl get --watch -o=wide'
-  alias kgwowideall='kubectl get --watch -o=wide --all-namespaces'
-  alias kgwowideallsl='kubectl get --watch -o=wide --all-namespaces --show-labels'
-  alias kgwowidef='kubectl get --watch -o=wide --recursive -f'
-  alias kgwowidel='kubectl get --watch -o=wide -l'
-  alias kgwowiden='kubectl get --watch -o=wide --namespace'
-  alias kgwowidesl='kubectl get --watch -o=wide --show-labels'
-  alias kgwowideslall='kubectl get --watch -o=wide --show-labels --all-namespaces'
-  alias kgwowideslf='kubectl get --watch -o=wide --show-labels --recursive -f'
-  alias kgwowidesll='kubectl get --watch -o=wide --show-labels -l'
-  alias kgwowidesln='kubectl get --watch -o=wide --show-labels --namespace'
-  alias kgwoyaml='kubectl get --watch -o=yaml'
-  alias kgwoyamlall='kubectl get --watch -o=yaml --all-namespaces'
-  alias kgwoyamlf='kubectl get --watch -o=yaml --recursive -f'
-  alias kgwoyamll='kubectl get --watch -o=yaml -l'
-  alias kgwoyamln='kubectl get --watch -o=yaml --namespace'
-  alias kgwsl='kubectl get --watch --show-labels'
-  alias kgwslall='kubectl get --watch --show-labels --all-namespaces'
-  alias kgwslallowide='kubectl get --watch --show-labels --all-namespaces -o=wide'
-  alias kgwslf='kubectl get --watch --show-labels --recursive -f'
-  alias kgwsll='kubectl get --watch --show-labels -l'
-  alias kgwsln='kubectl get --watch --show-labels --namespace'
-  alias kgwslowide='kubectl get --watch --show-labels -o=wide'
-  alias kgwslowideall='kubectl get --watch --show-labels -o=wide --all-namespaces'
-  alias kgwslowidef='kubectl get --watch --show-labels -o=wide --recursive -f'
-  alias kgwslowidel='kubectl get --watch --show-labels -o=wide -l'
-  alias kgwslowiden='kubectl get --watch --show-labels -o=wide --namespace'
-  alias klo='kubectl logs -f'
-  alias klon='kubectl logs -f --namespace'
-  alias klot='kubectl logs -f --tail=100'
-  alias klotn='kubectl logs -f --tail=100 --namespace'
-  alias kp='kubectl proxy'
-  alias kpf='kubectl port-forward'
-  alias krm='kubectl delete'
-  alias krmall='kubectl delete --all'
-  alias krmcm='kubectl delete configmap'
-  alias krmcmall='kubectl delete configmap --all'
-  alias krmcml='kubectl delete configmap -l'
-  alias krmcmn='kubectl delete configmap --namespace'
-  alias krmdep='kubectl delete deployment'
-  alias krmdepall='kubectl delete deployment --all'
-  alias krmdepl='kubectl delete deployment -l'
-  alias krmdepn='kubectl delete deployment --namespace'
-  alias krmf='kubectl delete --recursive -f'
-  alias krming='kubectl delete ingress'
-  alias krmingall='kubectl delete ingress --all'
-  alias krmingl='kubectl delete ingress -l'
-  alias krmingn='kubectl delete ingress --namespace'
-  alias krml='kubectl delete -l'
-  alias krmn='kubectl delete --namespace'
-  alias krmns='kubectl delete namespaces'
-  alias krmnsall='kubectl delete namespaces --all'
-  alias krmnsl='kubectl delete namespaces -l'
-  alias krmpo='kubectl delete pods'
-  alias krmpoall='kubectl delete pods --all'
-  alias krmpol='kubectl delete pods -l'
-  alias krmpon='kubectl delete pods --namespace'
-  alias krmsec='kubectl delete secret'
-  alias krmsecall='kubectl delete secret --all'
-  alias krmsecl='kubectl delete secret -l'
-  alias krmsecn='kubectl delete secret --namespace'
-  alias krmsvc='kubectl delete service'
-  alias krmsvcall='kubectl delete service --all'
-  alias krmsvcl='kubectl delete service -l'
-  alias krmsvcn='kubectl delete service --namespace'
-  alias krun='kubectl run --rm --restart=Never --image-pull-policy=IfNotPresent -i -t'
-  alias ksys='kubectl --namespace=kube-system'
-  alias ksysa='kubectl --namespace=kube-system apply --recursive -f'
-  alias ksysd='kubectl --namespace=kube-system describe'
-  alias ksysdcm='kubectl --namespace=kube-system describe configmap'
-  alias ksysdcml='kubectl --namespace=kube-system describe configmap -l'
-  alias ksysddep='kubectl --namespace=kube-system describe deployment'
-  alias ksysddepl='kubectl --namespace=kube-system describe deployment -l'
-  alias ksysding='kubectl --namespace=kube-system describe ingress'
-  alias ksysdingl='kubectl --namespace=kube-system describe ingress -l'
-  alias ksysdl='kubectl --namespace=kube-system describe -l'
-  alias ksysdpo='kubectl --namespace=kube-system describe pods'
-  alias ksysdpol='kubectl --namespace=kube-system describe pods -l'
-  alias ksysdsec='kubectl --namespace=kube-system describe secret'
-  alias ksysdsecl='kubectl --namespace=kube-system describe secret -l'
-  alias ksysdsvc='kubectl --namespace=kube-system describe service'
-  alias ksysdsvcl='kubectl --namespace=kube-system describe service -l'
-  alias ksysex='kubectl --namespace=kube-system exec -i -t'
-  alias ksysg='kubectl --namespace=kube-system get'
-  alias ksysgcm='kubectl --namespace=kube-system get configmap'
-  alias ksysgcml='kubectl --namespace=kube-system get configmap -l'
-  alias ksysgcmojson='kubectl --namespace=kube-system get configmap -o=json'
-  alias ksysgcmojsonl='kubectl --namespace=kube-system get configmap -o=json -l'
-  alias ksysgcmowide='kubectl --namespace=kube-system get configmap -o=wide'
-  alias ksysgcmowidel='kubectl --namespace=kube-system get configmap -o=wide -l'
-  alias ksysgcmoyaml='kubectl --namespace=kube-system get configmap -o=yaml'
-  alias ksysgcmoyamll='kubectl --namespace=kube-system get configmap -o=yaml -l'
-  alias ksysgcmw='kubectl --namespace=kube-system get configmap --watch'
-  alias ksysgcmwl='kubectl --namespace=kube-system get configmap --watch -l'
-  alias ksysgcmwojson='kubectl --namespace=kube-system get configmap --watch -o=json'
-  alias ksysgcmwojsonl='kubectl --namespace=kube-system get configmap --watch -o=json -l'
-  alias ksysgcmwowide='kubectl --namespace=kube-system get configmap --watch -o=wide'
-  alias ksysgcmwowidel='kubectl --namespace=kube-system get configmap --watch -o=wide -l'
-  alias ksysgcmwoyaml='kubectl --namespace=kube-system get configmap --watch -o=yaml'
-  alias ksysgcmwoyamll='kubectl --namespace=kube-system get configmap --watch -o=yaml -l'
-  alias ksysgdep='kubectl --namespace=kube-system get deployment'
-  alias ksysgdepl='kubectl --namespace=kube-system get deployment -l'
-  alias ksysgdepojson='kubectl --namespace=kube-system get deployment -o=json'
-  alias ksysgdepojsonl='kubectl --namespace=kube-system get deployment -o=json -l'
-  alias ksysgdepowide='kubectl --namespace=kube-system get deployment -o=wide'
-  alias ksysgdepowidel='kubectl --namespace=kube-system get deployment -o=wide -l'
-  alias ksysgdepowidesl='kubectl --namespace=kube-system get deployment -o=wide --show-labels'
-  alias ksysgdepowidesll='kubectl --namespace=kube-system get deployment -o=wide --show-labels -l'
-  alias ksysgdepoyaml='kubectl --namespace=kube-system get deployment -o=yaml'
-  alias ksysgdepoyamll='kubectl --namespace=kube-system get deployment -o=yaml -l'
-  alias ksysgdepsl='kubectl --namespace=kube-system get deployment --show-labels'
-  alias ksysgdepsll='kubectl --namespace=kube-system get deployment --show-labels -l'
-  alias ksysgdepslowide='kubectl --namespace=kube-system get deployment --show-labels -o=wide'
-  alias ksysgdepslowidel='kubectl --namespace=kube-system get deployment --show-labels -o=wide -l'
-  alias ksysgdepslw='kubectl --namespace=kube-system get deployment --show-labels --watch'
-  alias ksysgdepslwl='kubectl --namespace=kube-system get deployment --show-labels --watch -l'
-  alias ksysgdepslwowide='kubectl --namespace=kube-system get deployment --show-labels --watch -o=wide'
-  alias ksysgdepslwowidel='kubectl --namespace=kube-system get deployment --show-labels --watch -o=wide -l'
-  alias ksysgdepw='kubectl --namespace=kube-system get deployment --watch'
-  alias ksysgdepwl='kubectl --namespace=kube-system get deployment --watch -l'
-  alias ksysgdepwojson='kubectl --namespace=kube-system get deployment --watch -o=json'
-  alias ksysgdepwojsonl='kubectl --namespace=kube-system get deployment --watch -o=json -l'
-  alias ksysgdepwowide='kubectl --namespace=kube-system get deployment --watch -o=wide'
-  alias ksysgdepwowidel='kubectl --namespace=kube-system get deployment --watch -o=wide -l'
-  alias ksysgdepwowidesl='kubectl --namespace=kube-system get deployment --watch -o=wide --show-labels'
-  alias ksysgdepwowidesll='kubectl --namespace=kube-system get deployment --watch -o=wide --show-labels -l'
-  alias ksysgdepwoyaml='kubectl --namespace=kube-system get deployment --watch -o=yaml'
-  alias ksysgdepwoyamll='kubectl --namespace=kube-system get deployment --watch -o=yaml -l'
-  alias ksysgdepwsl='kubectl --namespace=kube-system get deployment --watch --show-labels'
-  alias ksysgdepwsll='kubectl --namespace=kube-system get deployment --watch --show-labels -l'
-  alias ksysgdepwslowide='kubectl --namespace=kube-system get deployment --watch --show-labels -o=wide'
-  alias ksysgdepwslowidel='kubectl --namespace=kube-system get deployment --watch --show-labels -o=wide -l'
-  alias ksysging='kubectl --namespace=kube-system get ingress'
-  alias ksysgingl='kubectl --namespace=kube-system get ingress -l'
-  alias ksysgingojson='kubectl --namespace=kube-system get ingress -o=json'
-  alias ksysgingojsonl='kubectl --namespace=kube-system get ingress -o=json -l'
-  alias ksysgingowide='kubectl --namespace=kube-system get ingress -o=wide'
-  alias ksysgingowidel='kubectl --namespace=kube-system get ingress -o=wide -l'
-  alias ksysgingoyaml='kubectl --namespace=kube-system get ingress -o=yaml'
-  alias ksysgingoyamll='kubectl --namespace=kube-system get ingress -o=yaml -l'
-  alias ksysgingw='kubectl --namespace=kube-system get ingress --watch'
-  alias ksysgingwl='kubectl --namespace=kube-system get ingress --watch -l'
-  alias ksysgingwojson='kubectl --namespace=kube-system get ingress --watch -o=json'
-  alias ksysgingwojsonl='kubectl --namespace=kube-system get ingress --watch -o=json -l'
-  alias ksysgingwowide='kubectl --namespace=kube-system get ingress --watch -o=wide'
-  alias ksysgingwowidel='kubectl --namespace=kube-system get ingress --watch -o=wide -l'
-  alias ksysgingwoyaml='kubectl --namespace=kube-system get ingress --watch -o=yaml'
-  alias ksysgingwoyamll='kubectl --namespace=kube-system get ingress --watch -o=yaml -l'
-  alias ksysgl='kubectl --namespace=kube-system get -l'
-  alias ksysgojson='kubectl --namespace=kube-system get -o=json'
-  alias ksysgojsonl='kubectl --namespace=kube-system get -o=json -l'
-  alias ksysgowide='kubectl --namespace=kube-system get -o=wide'
-  alias ksysgowidel='kubectl --namespace=kube-system get -o=wide -l'
-  alias ksysgowidesl='kubectl --namespace=kube-system get -o=wide --show-labels'
-  alias ksysgowidesll='kubectl --namespace=kube-system get -o=wide --show-labels -l'
-  alias ksysgoyaml='kubectl --namespace=kube-system get -o=yaml'
-  alias ksysgoyamll='kubectl --namespace=kube-system get -o=yaml -l'
-  alias ksysgpo='kubectl --namespace=kube-system get pods'
-  alias ksysgpol='kubectl --namespace=kube-system get pods -l'
-  alias ksysgpoojson='kubectl --namespace=kube-system get pods -o=json'
-  alias ksysgpoojsonl='kubectl --namespace=kube-system get pods -o=json -l'
-  alias ksysgpoowide='kubectl --namespace=kube-system get pods -o=wide'
-  alias ksysgpoowidel='kubectl --namespace=kube-system get pods -o=wide -l'
-  alias ksysgpoowidesl='kubectl --namespace=kube-system get pods -o=wide --show-labels'
-  alias ksysgpoowidesll='kubectl --namespace=kube-system get pods -o=wide --show-labels -l'
-  alias ksysgpooyaml='kubectl --namespace=kube-system get pods -o=yaml'
-  alias ksysgpooyamll='kubectl --namespace=kube-system get pods -o=yaml -l'
-  alias ksysgposl='kubectl --namespace=kube-system get pods --show-labels'
-  alias ksysgposll='kubectl --namespace=kube-system get pods --show-labels -l'
-  alias ksysgposlowide='kubectl --namespace=kube-system get pods --show-labels -o=wide'
-  alias ksysgposlowidel='kubectl --namespace=kube-system get pods --show-labels -o=wide -l'
-  alias ksysgposlw='kubectl --namespace=kube-system get pods --show-labels --watch'
-  alias ksysgposlwl='kubectl --namespace=kube-system get pods --show-labels --watch -l'
-  alias ksysgposlwowide='kubectl --namespace=kube-system get pods --show-labels --watch -o=wide'
-  alias ksysgposlwowidel='kubectl --namespace=kube-system get pods --show-labels --watch -o=wide -l'
-  alias ksysgpow='kubectl --namespace=kube-system get pods --watch'
-  alias ksysgpowl='kubectl --namespace=kube-system get pods --watch -l'
-  alias ksysgpowojson='kubectl --namespace=kube-system get pods --watch -o=json'
-  alias ksysgpowojsonl='kubectl --namespace=kube-system get pods --watch -o=json -l'
-  alias ksysgpowowide='kubectl --namespace=kube-system get pods --watch -o=wide'
-  alias ksysgpowowidel='kubectl --namespace=kube-system get pods --watch -o=wide -l'
-  alias ksysgpowowidesl='kubectl --namespace=kube-system get pods --watch -o=wide --show-labels'
-  alias ksysgpowowidesll='kubectl --namespace=kube-system get pods --watch -o=wide --show-labels -l'
-  alias ksysgpowoyaml='kubectl --namespace=kube-system get pods --watch -o=yaml'
-  alias ksysgpowoyamll='kubectl --namespace=kube-system get pods --watch -o=yaml -l'
-  alias ksysgpowsl='kubectl --namespace=kube-system get pods --watch --show-labels'
-  alias ksysgpowsll='kubectl --namespace=kube-system get pods --watch --show-labels -l'
-  alias ksysgpowslowide='kubectl --namespace=kube-system get pods --watch --show-labels -o=wide'
-  alias ksysgpowslowidel='kubectl --namespace=kube-system get pods --watch --show-labels -o=wide -l'
-  alias ksysgsec='kubectl --namespace=kube-system get secret'
-  alias ksysgsecl='kubectl --namespace=kube-system get secret -l'
-  alias ksysgsecojson='kubectl --namespace=kube-system get secret -o=json'
-  alias ksysgsecojsonl='kubectl --namespace=kube-system get secret -o=json -l'
-  alias ksysgsecowide='kubectl --namespace=kube-system get secret -o=wide'
-  alias ksysgsecowidel='kubectl --namespace=kube-system get secret -o=wide -l'
-  alias ksysgsecoyaml='kubectl --namespace=kube-system get secret -o=yaml'
-  alias ksysgsecoyamll='kubectl --namespace=kube-system get secret -o=yaml -l'
-  alias ksysgsecw='kubectl --namespace=kube-system get secret --watch'
-  alias ksysgsecwl='kubectl --namespace=kube-system get secret --watch -l'
-  alias ksysgsecwojson='kubectl --namespace=kube-system get secret --watch -o=json'
-  alias ksysgsecwojsonl='kubectl --namespace=kube-system get secret --watch -o=json -l'
-  alias ksysgsecwowide='kubectl --namespace=kube-system get secret --watch -o=wide'
-  alias ksysgsecwowidel='kubectl --namespace=kube-system get secret --watch -o=wide -l'
-  alias ksysgsecwoyaml='kubectl --namespace=kube-system get secret --watch -o=yaml'
-  alias ksysgsecwoyamll='kubectl --namespace=kube-system get secret --watch -o=yaml -l'
-  alias ksysgsl='kubectl --namespace=kube-system get --show-labels'
-  alias ksysgsll='kubectl --namespace=kube-system get --show-labels -l'
-  alias ksysgslowide='kubectl --namespace=kube-system get --show-labels -o=wide'
-  alias ksysgslowidel='kubectl --namespace=kube-system get --show-labels -o=wide -l'
-  alias ksysgslw='kubectl --namespace=kube-system get --show-labels --watch'
-  alias ksysgslwl='kubectl --namespace=kube-system get --show-labels --watch -l'
-  alias ksysgslwowide='kubectl --namespace=kube-system get --show-labels --watch -o=wide'
-  alias ksysgslwowidel='kubectl --namespace=kube-system get --show-labels --watch -o=wide -l'
-  alias ksysgsvc='kubectl --namespace=kube-system get service'
-  alias ksysgsvcl='kubectl --namespace=kube-system get service -l'
-  alias ksysgsvcojson='kubectl --namespace=kube-system get service -o=json'
-  alias ksysgsvcojsonl='kubectl --namespace=kube-system get service -o=json -l'
-  alias ksysgsvcowide='kubectl --namespace=kube-system get service -o=wide'
-  alias ksysgsvcowidel='kubectl --namespace=kube-system get service -o=wide -l'
-  alias ksysgsvcoyaml='kubectl --namespace=kube-system get service -o=yaml'
-  alias ksysgsvcoyamll='kubectl --namespace=kube-system get service -o=yaml -l'
-  alias ksysgsvcw='kubectl --namespace=kube-system get service --watch'
-  alias ksysgsvcwl='kubectl --namespace=kube-system get service --watch -l'
-  alias ksysgsvcwojson='kubectl --namespace=kube-system get service --watch -o=json'
-  alias ksysgsvcwojsonl='kubectl --namespace=kube-system get service --watch -o=json -l'
-  alias ksysgsvcwowide='kubectl --namespace=kube-system get service --watch -o=wide'
-  alias ksysgsvcwowidel='kubectl --namespace=kube-system get service --watch -o=wide -l'
-  alias ksysgsvcwoyaml='kubectl --namespace=kube-system get service --watch -o=yaml'
-  alias ksysgsvcwoyamll='kubectl --namespace=kube-system get service --watch -o=yaml -l'
-  alias ksysgw='kubectl --namespace=kube-system get --watch'
-  alias ksysgwl='kubectl --namespace=kube-system get --watch -l'
-  alias ksysgwojson='kubectl --namespace=kube-system get --watch -o=json'
-  alias ksysgwojsonl='kubectl --namespace=kube-system get --watch -o=json -l'
-  alias ksysgwowide='kubectl --namespace=kube-system get --watch -o=wide'
-  alias ksysgwowidel='kubectl --namespace=kube-system get --watch -o=wide -l'
-  alias ksysgwowidesl='kubectl --namespace=kube-system get --watch -o=wide --show-labels'
-  alias ksysgwowidesll='kubectl --namespace=kube-system get --watch -o=wide --show-labels -l'
-  alias ksysgwoyaml='kubectl --namespace=kube-system get --watch -o=yaml'
-  alias ksysgwoyamll='kubectl --namespace=kube-system get --watch -o=yaml -l'
-  alias ksysgwsl='kubectl --namespace=kube-system get --watch --show-labels'
-  alias ksysgwsll='kubectl --namespace=kube-system get --watch --show-labels -l'
-  alias ksysgwslowide='kubectl --namespace=kube-system get --watch --show-labels -o=wide'
-  alias ksysgwslowidel='kubectl --namespace=kube-system get --watch --show-labels -o=wide -l'
-  alias ksyslo='kubectl --namespace=kube-system logs -f'
-  alias ksyslot='kubectl --namespace=kube-system logs -f --tail=100'
-  alias ksysrm='kubectl --namespace=kube-system delete'
-  alias ksysrmall='kubectl --namespace=kube-system delete --all'
-  alias ksysrmcm='kubectl --namespace=kube-system delete configmap'
-  alias ksysrmcmall='kubectl --namespace=kube-system delete configmap --all'
-  alias ksysrmcml='kubectl --namespace=kube-system delete configmap -l'
-  alias ksysrmdep='kubectl --namespace=kube-system delete deployment'
-  alias ksysrmdepall='kubectl --namespace=kube-system delete deployment --all'
-  alias ksysrmdepl='kubectl --namespace=kube-system delete deployment -l'
-  alias ksysrming='kubectl --namespace=kube-system delete ingress'
-  alias ksysrmingall='kubectl --namespace=kube-system delete ingress --all'
-  alias ksysrmingl='kubectl --namespace=kube-system delete ingress -l'
-  alias ksysrml='kubectl --namespace=kube-system delete -l'
-  alias ksysrmpo='kubectl --namespace=kube-system delete pods'
-  alias ksysrmpoall='kubectl --namespace=kube-system delete pods --all'
-  alias ksysrmpol='kubectl --namespace=kube-system delete pods -l'
-  alias ksysrmsec='kubectl --namespace=kube-system delete secret'
-  alias ksysrmsecall='kubectl --namespace=kube-system delete secret --all'
-  alias ksysrmsecl='kubectl --namespace=kube-system delete secret -l'
-  alias ksysrmsvc='kubectl --namespace=kube-system delete service'
-  alias ksysrmsvcall='kubectl --namespace=kube-system delete service --all'
-  alias ksysrmsvcl='kubectl --namespace=kube-system delete service -l'
-  alias ksysrun='kubectl --namespace=kube-system run --rm --restart=Never --image-pull-policy=IfNotPresent -i -t'
+  alias k="$KUBECTL"
+
+  alias ka="$KUBECTL apply --recursive -f"
+  alias kcu="$KUBECTL config use-context"
+  alias kcg="$KUBECTL config get-contexts"
+  alias kd="$KUBECTL describe"
+  alias kdall="$KUBECTL describe --all-namespaces"
+  alias kdcm="$KUBECTL describe configmap"
+  alias kdcmall="$KUBECTL describe configmap --all-namespaces"
+  alias kdcml="$KUBECTL describe configmap -l"
+  alias kdcmn="$KUBECTL describe configmap --namespace"
+  alias kddep="$KUBECTL describe deployment"
+  alias kddepall="$KUBECTL describe deployment --all-namespaces"
+  alias kddepl="$KUBECTL describe deployment -l"
+  alias kddepn="$KUBECTL describe deployment --namespace"
+  alias kdf="$KUBECTL describe --recursive -f"
+  alias kding="$KUBECTL describe ingress"
+  alias kdingall="$KUBECTL describe ingress --all-namespaces"
+  alias kdingl="$KUBECTL describe ingress -l"
+  alias kdingn="$KUBECTL describe ingress --namespace"
+  alias kdl="$KUBECTL describe -l"
+  alias kdn="$KUBECTL describe --namespace"
+  alias kdno="$KUBECTL describe nodes"
+  alias kdnol="$KUBECTL describe nodes -l"
+  alias kdns="$KUBECTL describe namespaces"
+  alias kdnsall="$KUBECTL describe namespaces --all-namespaces"
+  alias kdnsl="$KUBECTL describe namespaces -l"
+  alias kdpo="$KUBECTL describe pods"
+  alias kdpoall="$KUBECTL describe pods --all-namespaces"
+  alias kdpol="$KUBECTL describe pods -l"
+  alias kdpon="$KUBECTL describe pods --namespace"
+  alias kdsec="$KUBECTL describe secret"
+  alias kdsecall="$KUBECTL describe secret --all-namespaces"
+  alias kdsecl="$KUBECTL describe secret -l"
+  alias kdsecn="$KUBECTL describe secret --namespace"
+  alias kdsvc="$KUBECTL describe service"
+  alias kdsvcall="$KUBECTL describe service --all-namespaces"
+  alias kdsvcl="$KUBECTL describe service -l"
+  alias kdsvcn="$KUBECTL describe service --namespace"
+  alias kex="$KUBECTL exec -i -t"
+  alias kexn="$KUBECTL exec -i -t --namespace"
+  alias kg="$KUBECTL get"
+  alias kgall="$KUBECTL get --all-namespaces"
+  alias kgallojson="$KUBECTL get --all-namespaces -o=json"
+  alias kgallowide="$KUBECTL get --all-namespaces -o=wide"
+  alias kgallowidesl="$KUBECTL get --all-namespaces -o=wide --show-labels"
+  alias kgalloyaml="$KUBECTL get --all-namespaces -o=yaml"
+  alias kgallsl="$KUBECTL get --all-namespaces --show-labels"
+  alias kgallslowide="$KUBECTL get --all-namespaces --show-labels -o=wide"
+  alias kgallslw="$KUBECTL get --all-namespaces --show-labels --watch"
+  alias kgallslwowide="$KUBECTL get --all-namespaces --show-labels --watch -o=wide"
+  alias kgallw="$KUBECTL get --all-namespaces --watch"
+  alias kgallwojson="$KUBECTL get --all-namespaces --watch -o=json"
+  alias kgallwowide="$KUBECTL get --all-namespaces --watch -o=wide"
+  alias kgallwowidesl="$KUBECTL get --all-namespaces --watch -o=wide --show-labels"
+  alias kgallwoyaml="$KUBECTL get --all-namespaces --watch -o=yaml"
+  alias kgallwsl="$KUBECTL get --all-namespaces --watch --show-labels"
+  alias kgallwslowide="$KUBECTL get --all-namespaces --watch --show-labels -o=wide"
+  alias kgcm="$KUBECTL get configmap"
+  alias kgcmall="$KUBECTL get configmap --all-namespaces"
+  alias kgcmallojson="$KUBECTL get configmap --all-namespaces -o=json"
+  alias kgcmallowide="$KUBECTL get configmap --all-namespaces -o=wide"
+  alias kgcmalloyaml="$KUBECTL get configmap --all-namespaces -o=yaml"
+  alias kgcmallw="$KUBECTL get configmap --all-namespaces --watch"
+  alias kgcmallwojson="$KUBECTL get configmap --all-namespaces --watch -o=json"
+  alias kgcmallwowide="$KUBECTL get configmap --all-namespaces --watch -o=wide"
+  alias kgcmallwoyaml="$KUBECTL get configmap --all-namespaces --watch -o=yaml"
+  alias kgcml="$KUBECTL get configmap -l"
+  alias kgcmn="$KUBECTL get configmap --namespace"
+  alias kgcmojson="$KUBECTL get configmap -o=json"
+  alias kgcmojsonall="$KUBECTL get configmap -o=json --all-namespaces"
+  alias kgcmojsonl="$KUBECTL get configmap -o=json -l"
+  alias kgcmojsonn="$KUBECTL get configmap -o=json --namespace"
+  alias kgcmowide="$KUBECTL get configmap -o=wide"
+  alias kgcmowideall="$KUBECTL get configmap -o=wide --all-namespaces"
+  alias kgcmowidel="$KUBECTL get configmap -o=wide -l"
+  alias kgcmowiden="$KUBECTL get configmap -o=wide --namespace"
+  alias kgcmoyaml="$KUBECTL get configmap -o=yaml"
+  alias kgcmoyamlall="$KUBECTL get configmap -o=yaml --all-namespaces"
+  alias kgcmoyamll="$KUBECTL get configmap -o=yaml -l"
+  alias kgcmoyamln="$KUBECTL get configmap -o=yaml --namespace"
+  alias kgcmw="$KUBECTL get configmap --watch"
+  alias kgcmwall="$KUBECTL get configmap --watch --all-namespaces"
+  alias kgcmwallojson="$KUBECTL get configmap --watch --all-namespaces -o=json"
+  alias kgcmwallowide="$KUBECTL get configmap --watch --all-namespaces -o=wide"
+  alias kgcmwalloyaml="$KUBECTL get configmap --watch --all-namespaces -o=yaml"
+  alias kgcmwl="$KUBECTL get configmap --watch -l"
+  alias kgcmwn="$KUBECTL get configmap --watch --namespace"
+  alias kgcmwojson="$KUBECTL get configmap --watch -o=json"
+  alias kgcmwojsonall="$KUBECTL get configmap --watch -o=json --all-namespaces"
+  alias kgcmwojsonl="$KUBECTL get configmap --watch -o=json -l"
+  alias kgcmwojsonn="$KUBECTL get configmap --watch -o=json --namespace"
+  alias kgcmwowide="$KUBECTL get configmap --watch -o=wide"
+  alias kgcmwowideall="$KUBECTL get configmap --watch -o=wide --all-namespaces"
+  alias kgcmwowidel="$KUBECTL get configmap --watch -o=wide -l"
+  alias kgcmwowiden="$KUBECTL get configmap --watch -o=wide --namespace"
+  alias kgcmwoyaml="$KUBECTL get configmap --watch -o=yaml"
+  alias kgcmwoyamlall="$KUBECTL get configmap --watch -o=yaml --all-namespaces"
+  alias kgcmwoyamll="$KUBECTL get configmap --watch -o=yaml -l"
+  alias kgcmwoyamln="$KUBECTL get configmap --watch -o=yaml --namespace"
+  alias kgdep="$KUBECTL get deployment"
+  alias kgdepall="$KUBECTL get deployment --all-namespaces"
+  alias kgdepallojson="$KUBECTL get deployment --all-namespaces -o=json"
+  alias kgdepallowide="$KUBECTL get deployment --all-namespaces -o=wide"
+  alias kgdepallowidesl="$KUBECTL get deployment --all-namespaces -o=wide --show-labels"
+  alias kgdepalloyaml="$KUBECTL get deployment --all-namespaces -o=yaml"
+  alias kgdepallsl="$KUBECTL get deployment --all-namespaces --show-labels"
+  alias kgdepallslowide="$KUBECTL get deployment --all-namespaces --show-labels -o=wide"
+  alias kgdepallslw="$KUBECTL get deployment --all-namespaces --show-labels --watch"
+  alias kgdepallslwowide="$KUBECTL get deployment --all-namespaces --show-labels --watch -o=wide"
+  alias kgdepallw="$KUBECTL get deployment --all-namespaces --watch"
+  alias kgdepallwojson="$KUBECTL get deployment --all-namespaces --watch -o=json"
+  alias kgdepallwowide="$KUBECTL get deployment --all-namespaces --watch -o=wide"
+  alias kgdepallwowidesl="$KUBECTL get deployment --all-namespaces --watch -o=wide --show-labels"
+  alias kgdepallwoyaml="$KUBECTL get deployment --all-namespaces --watch -o=yaml"
+  alias kgdepallwsl="$KUBECTL get deployment --all-namespaces --watch --show-labels"
+  alias kgdepallwslowide="$KUBECTL get deployment --all-namespaces --watch --show-labels -o=wide"
+  alias kgdepl="$KUBECTL get deployment -l"
+  alias kgdepn="$KUBECTL get deployment --namespace"
+  alias kgdepojson="$KUBECTL get deployment -o=json"
+  alias kgdepojsonall="$KUBECTL get deployment -o=json --all-namespaces"
+  alias kgdepojsonl="$KUBECTL get deployment -o=json -l"
+  alias kgdepojsonn="$KUBECTL get deployment -o=json --namespace"
+  alias kgdepowide="$KUBECTL get deployment -o=wide"
+  alias kgdepowideall="$KUBECTL get deployment -o=wide --all-namespaces"
+  alias kgdepowideallsl="$KUBECTL get deployment -o=wide --all-namespaces --show-labels"
+  alias kgdepowidel="$KUBECTL get deployment -o=wide -l"
+  alias kgdepowiden="$KUBECTL get deployment -o=wide --namespace"
+  alias kgdepowidesl="$KUBECTL get deployment -o=wide --show-labels"
+  alias kgdepowideslall="$KUBECTL get deployment -o=wide --show-labels --all-namespaces"
+  alias kgdepowidesll="$KUBECTL get deployment -o=wide --show-labels -l"
+  alias kgdepowidesln="$KUBECTL get deployment -o=wide --show-labels --namespace"
+  alias kgdepoyaml="$KUBECTL get deployment -o=yaml"
+  alias kgdepoyamlall="$KUBECTL get deployment -o=yaml --all-namespaces"
+  alias kgdepoyamll="$KUBECTL get deployment -o=yaml -l"
+  alias kgdepoyamln="$KUBECTL get deployment -o=yaml --namespace"
+  alias kgdepsl="$KUBECTL get deployment --show-labels"
+  alias kgdepslall="$KUBECTL get deployment --show-labels --all-namespaces"
+  alias kgdepslallowide="$KUBECTL get deployment --show-labels --all-namespaces -o=wide"
+  alias kgdepslallw="$KUBECTL get deployment --show-labels --all-namespaces --watch"
+  alias kgdepslallwowide="$KUBECTL get deployment --show-labels --all-namespaces --watch -o=wide"
+  alias kgdepsll="$KUBECTL get deployment --show-labels -l"
+  alias kgdepsln="$KUBECTL get deployment --show-labels --namespace"
+  alias kgdepslowide="$KUBECTL get deployment --show-labels -o=wide"
+  alias kgdepslowideall="$KUBECTL get deployment --show-labels -o=wide --all-namespaces"
+  alias kgdepslowidel="$KUBECTL get deployment --show-labels -o=wide -l"
+  alias kgdepslowiden="$KUBECTL get deployment --show-labels -o=wide --namespace"
+  alias kgdepslw="$KUBECTL get deployment --show-labels --watch"
+  alias kgdepslwall="$KUBECTL get deployment --show-labels --watch --all-namespaces"
+  alias kgdepslwallowide="$KUBECTL get deployment --show-labels --watch --all-namespaces -o=wide"
+  alias kgdepslwl="$KUBECTL get deployment --show-labels --watch -l"
+  alias kgdepslwn="$KUBECTL get deployment --show-labels --watch --namespace"
+  alias kgdepslwowide="$KUBECTL get deployment --show-labels --watch -o=wide"
+  alias kgdepslwowideall="$KUBECTL get deployment --show-labels --watch -o=wide --all-namespaces"
+  alias kgdepslwowidel="$KUBECTL get deployment --show-labels --watch -o=wide -l"
+  alias kgdepslwowiden="$KUBECTL get deployment --show-labels --watch -o=wide --namespace"
+  alias kgdepw="$KUBECTL get deployment --watch"
+  alias kgdepwall="$KUBECTL get deployment --watch --all-namespaces"
+  alias kgdepwallojson="$KUBECTL get deployment --watch --all-namespaces -o=json"
+  alias kgdepwallowide="$KUBECTL get deployment --watch --all-namespaces -o=wide"
+  alias kgdepwallowidesl="$KUBECTL get deployment --watch --all-namespaces -o=wide --show-labels"
+  alias kgdepwalloyaml="$KUBECTL get deployment --watch --all-namespaces -o=yaml"
+  alias kgdepwallsl="$KUBECTL get deployment --watch --all-namespaces --show-labels"
+  alias kgdepwallslowide="$KUBECTL get deployment --watch --all-namespaces --show-labels -o=wide"
+  alias kgdepwl="$KUBECTL get deployment --watch -l"
+  alias kgdepwn="$KUBECTL get deployment --watch --namespace"
+  alias kgdepwojson="$KUBECTL get deployment --watch -o=json"
+  alias kgdepwojsonall="$KUBECTL get deployment --watch -o=json --all-namespaces"
+  alias kgdepwojsonl="$KUBECTL get deployment --watch -o=json -l"
+  alias kgdepwojsonn="$KUBECTL get deployment --watch -o=json --namespace"
+  alias kgdepwowide="$KUBECTL get deployment --watch -o=wide"
+  alias kgdepwowideall="$KUBECTL get deployment --watch -o=wide --all-namespaces"
+  alias kgdepwowideallsl="$KUBECTL get deployment --watch -o=wide --all-namespaces --show-labels"
+  alias kgdepwowidel="$KUBECTL get deployment --watch -o=wide -l"
+  alias kgdepwowiden="$KUBECTL get deployment --watch -o=wide --namespace"
+  alias kgdepwowidesl="$KUBECTL get deployment --watch -o=wide --show-labels"
+  alias kgdepwowideslall="$KUBECTL get deployment --watch -o=wide --show-labels --all-namespaces"
+  alias kgdepwowidesll="$KUBECTL get deployment --watch -o=wide --show-labels -l"
+  alias kgdepwowidesln="$KUBECTL get deployment --watch -o=wide --show-labels --namespace"
+  alias kgdepwoyaml="$KUBECTL get deployment --watch -o=yaml"
+  alias kgdepwoyamlall="$KUBECTL get deployment --watch -o=yaml --all-namespaces"
+  alias kgdepwoyamll="$KUBECTL get deployment --watch -o=yaml -l"
+  alias kgdepwoyamln="$KUBECTL get deployment --watch -o=yaml --namespace"
+  alias kgdepwsl="$KUBECTL get deployment --watch --show-labels"
+  alias kgdepwslall="$KUBECTL get deployment --watch --show-labels --all-namespaces"
+  alias kgdepwslallowide="$KUBECTL get deployment --watch --show-labels --all-namespaces -o=wide"
+  alias kgdepwsll="$KUBECTL get deployment --watch --show-labels -l"
+  alias kgdepwsln="$KUBECTL get deployment --watch --show-labels --namespace"
+  alias kgdepwslowide="$KUBECTL get deployment --watch --show-labels -o=wide"
+  alias kgdepwslowideall="$KUBECTL get deployment --watch --show-labels -o=wide --all-namespaces"
+  alias kgdepwslowidel="$KUBECTL get deployment --watch --show-labels -o=wide -l"
+  alias kgdepwslowiden="$KUBECTL get deployment --watch --show-labels -o=wide --namespace"
+  alias kgf="$KUBECTL get --recursive -f"
+  alias kging="$KUBECTL get ingress"
+  alias kgingall="$KUBECTL get ingress --all-namespaces"
+  alias kgingallojson="$KUBECTL get ingress --all-namespaces -o=json"
+  alias kgingallowide="$KUBECTL get ingress --all-namespaces -o=wide"
+  alias kgingalloyaml="$KUBECTL get ingress --all-namespaces -o=yaml"
+  alias kgingallw="$KUBECTL get ingress --all-namespaces --watch"
+  alias kgingallwojson="$KUBECTL get ingress --all-namespaces --watch -o=json"
+  alias kgingallwowide="$KUBECTL get ingress --all-namespaces --watch -o=wide"
+  alias kgingallwoyaml="$KUBECTL get ingress --all-namespaces --watch -o=yaml"
+  alias kgingl="$KUBECTL get ingress -l"
+  alias kgingn="$KUBECTL get ingress --namespace"
+  alias kgingojson="$KUBECTL get ingress -o=json"
+  alias kgingojsonall="$KUBECTL get ingress -o=json --all-namespaces"
+  alias kgingojsonl="$KUBECTL get ingress -o=json -l"
+  alias kgingojsonn="$KUBECTL get ingress -o=json --namespace"
+  alias kgingowide="$KUBECTL get ingress -o=wide"
+  alias kgingowideall="$KUBECTL get ingress -o=wide --all-namespaces"
+  alias kgingowidel="$KUBECTL get ingress -o=wide -l"
+  alias kgingowiden="$KUBECTL get ingress -o=wide --namespace"
+  alias kgingoyaml="$KUBECTL get ingress -o=yaml"
+  alias kgingoyamlall="$KUBECTL get ingress -o=yaml --all-namespaces"
+  alias kgingoyamll="$KUBECTL get ingress -o=yaml -l"
+  alias kgingoyamln="$KUBECTL get ingress -o=yaml --namespace"
+  alias kgingw="$KUBECTL get ingress --watch"
+  alias kgingwall="$KUBECTL get ingress --watch --all-namespaces"
+  alias kgingwallojson="$KUBECTL get ingress --watch --all-namespaces -o=json"
+  alias kgingwallowide="$KUBECTL get ingress --watch --all-namespaces -o=wide"
+  alias kgingwalloyaml="$KUBECTL get ingress --watch --all-namespaces -o=yaml"
+  alias kgingwl="$KUBECTL get ingress --watch -l"
+  alias kgingwn="$KUBECTL get ingress --watch --namespace"
+  alias kgingwojson="$KUBECTL get ingress --watch -o=json"
+  alias kgingwojsonall="$KUBECTL get ingress --watch -o=json --all-namespaces"
+  alias kgingwojsonl="$KUBECTL get ingress --watch -o=json -l"
+  alias kgingwojsonn="$KUBECTL get ingress --watch -o=json --namespace"
+  alias kgingwowide="$KUBECTL get ingress --watch -o=wide"
+  alias kgingwowideall="$KUBECTL get ingress --watch -o=wide --all-namespaces"
+  alias kgingwowidel="$KUBECTL get ingress --watch -o=wide -l"
+  alias kgingwowiden="$KUBECTL get ingress --watch -o=wide --namespace"
+  alias kgingwoyaml="$KUBECTL get ingress --watch -o=yaml"
+  alias kgingwoyamlall="$KUBECTL get ingress --watch -o=yaml --all-namespaces"
+  alias kgingwoyamll="$KUBECTL get ingress --watch -o=yaml -l"
+  alias kgingwoyamln="$KUBECTL get ingress --watch -o=yaml --namespace"
+  alias kgl="$KUBECTL get -l"
+  alias kgn="$KUBECTL get --namespace"
+  alias kgno="$KUBECTL get nodes"
+  alias kgnol="$KUBECTL get nodes -l"
+  alias kgnoojson="$KUBECTL get nodes -o=json"
+  alias kgnoojsonl="$KUBECTL get nodes -o=json -l"
+  alias kgnoowide="$KUBECTL get nodes -o=wide"
+  alias kgnoowidel="$KUBECTL get nodes -o=wide -l"
+  alias kgnooyaml="$KUBECTL get nodes -o=yaml"
+  alias kgnooyamll="$KUBECTL get nodes -o=yaml -l"
+  alias kgnow="$KUBECTL get nodes --watch"
+  alias kgnowl="$KUBECTL get nodes --watch -l"
+  alias kgnowojson="$KUBECTL get nodes --watch -o=json"
+  alias kgnowojsonl="$KUBECTL get nodes --watch -o=json -l"
+  alias kgnowowide="$KUBECTL get nodes --watch -o=wide"
+  alias kgnowowidel="$KUBECTL get nodes --watch -o=wide -l"
+  alias kgnowoyaml="$KUBECTL get nodes --watch -o=yaml"
+  alias kgnowoyamll="$KUBECTL get nodes --watch -o=yaml -l"
+  alias kgns="$KUBECTL get namespaces"
+  alias kgnsall="$KUBECTL get namespaces --all-namespaces"
+  alias kgnsallojson="$KUBECTL get namespaces --all-namespaces -o=json"
+  alias kgnsallowide="$KUBECTL get namespaces --all-namespaces -o=wide"
+  alias kgnsalloyaml="$KUBECTL get namespaces --all-namespaces -o=yaml"
+  alias kgnsallw="$KUBECTL get namespaces --all-namespaces --watch"
+  alias kgnsallwojson="$KUBECTL get namespaces --all-namespaces --watch -o=json"
+  alias kgnsallwowide="$KUBECTL get namespaces --all-namespaces --watch -o=wide"
+  alias kgnsallwoyaml="$KUBECTL get namespaces --all-namespaces --watch -o=yaml"
+  alias kgnsl="$KUBECTL get namespaces -l"
+  alias kgnsojson="$KUBECTL get namespaces -o=json"
+  alias kgnsojsonall="$KUBECTL get namespaces -o=json --all-namespaces"
+  alias kgnsojsonl="$KUBECTL get namespaces -o=json -l"
+  alias kgnsowide="$KUBECTL get namespaces -o=wide"
+  alias kgnsowideall="$KUBECTL get namespaces -o=wide --all-namespaces"
+  alias kgnsowidel="$KUBECTL get namespaces -o=wide -l"
+  alias kgnsoyaml="$KUBECTL get namespaces -o=yaml"
+  alias kgnsoyamlall="$KUBECTL get namespaces -o=yaml --all-namespaces"
+  alias kgnsoyamll="$KUBECTL get namespaces -o=yaml -l"
+  alias kgnsw="$KUBECTL get namespaces --watch"
+  alias kgnswall="$KUBECTL get namespaces --watch --all-namespaces"
+  alias kgnswallojson="$KUBECTL get namespaces --watch --all-namespaces -o=json"
+  alias kgnswallowide="$KUBECTL get namespaces --watch --all-namespaces -o=wide"
+  alias kgnswalloyaml="$KUBECTL get namespaces --watch --all-namespaces -o=yaml"
+  alias kgnswl="$KUBECTL get namespaces --watch -l"
+  alias kgnswojson="$KUBECTL get namespaces --watch -o=json"
+  alias kgnswojsonall="$KUBECTL get namespaces --watch -o=json --all-namespaces"
+  alias kgnswojsonl="$KUBECTL get namespaces --watch -o=json -l"
+  alias kgnswowide="$KUBECTL get namespaces --watch -o=wide"
+  alias kgnswowideall="$KUBECTL get namespaces --watch -o=wide --all-namespaces"
+  alias kgnswowidel="$KUBECTL get namespaces --watch -o=wide -l"
+  alias kgnswoyaml="$KUBECTL get namespaces --watch -o=yaml"
+  alias kgnswoyamlall="$KUBECTL get namespaces --watch -o=yaml --all-namespaces"
+  alias kgnswoyamll="$KUBECTL get namespaces --watch -o=yaml -l"
+  alias kgojson="$KUBECTL get -o=json"
+  alias kgojsonall="$KUBECTL get -o=json --all-namespaces"
+  alias kgojsonf="$KUBECTL get -o=json --recursive -f"
+  alias kgojsonl="$KUBECTL get -o=json -l"
+  alias kgojsonn="$KUBECTL get -o=json --namespace"
+  alias kgowide="$KUBECTL get -o=wide"
+  alias kgowideall="$KUBECTL get -o=wide --all-namespaces"
+  alias kgowideallsl="$KUBECTL get -o=wide --all-namespaces --show-labels"
+  alias kgowidef="$KUBECTL get -o=wide --recursive -f"
+  alias kgowidel="$KUBECTL get -o=wide -l"
+  alias kgowiden="$KUBECTL get -o=wide --namespace"
+  alias kgowidesl="$KUBECTL get -o=wide --show-labels"
+  alias kgowideslall="$KUBECTL get -o=wide --show-labels --all-namespaces"
+  alias kgowideslf="$KUBECTL get -o=wide --show-labels --recursive -f"
+  alias kgowidesll="$KUBECTL get -o=wide --show-labels -l"
+  alias kgowidesln="$KUBECTL get -o=wide --show-labels --namespace"
+  alias kgoyaml="$KUBECTL get -o=yaml"
+  alias kgoyamlall="$KUBECTL get -o=yaml --all-namespaces"
+  alias kgoyamlf="$KUBECTL get -o=yaml --recursive -f"
+  alias kgoyamll="$KUBECTL get -o=yaml -l"
+  alias kgoyamln="$KUBECTL get -o=yaml --namespace"
+  alias kgpo="$KUBECTL get pods"
+  alias kgpoall="$KUBECTL get pods --all-namespaces"
+  alias kgpoallojson="$KUBECTL get pods --all-namespaces -o=json"
+  alias kgpoallowide="$KUBECTL get pods --all-namespaces -o=wide"
+  alias kgpoallowidesl="$KUBECTL get pods --all-namespaces -o=wide --show-labels"
+  alias kgpoalloyaml="$KUBECTL get pods --all-namespaces -o=yaml"
+  alias kgpoallsl="$KUBECTL get pods --all-namespaces --show-labels"
+  alias kgpoallslowide="$KUBECTL get pods --all-namespaces --show-labels -o=wide"
+  alias kgpoallslw="$KUBECTL get pods --all-namespaces --show-labels --watch"
+  alias kgpoallslwowide="$KUBECTL get pods --all-namespaces --show-labels --watch -o=wide"
+  alias kgpoallw="$KUBECTL get pods --all-namespaces --watch"
+  alias kgpoallwojson="$KUBECTL get pods --all-namespaces --watch -o=json"
+  alias kgpoallwowide="$KUBECTL get pods --all-namespaces --watch -o=wide"
+  alias kgpoallwowidesl="$KUBECTL get pods --all-namespaces --watch -o=wide --show-labels"
+  alias kgpoallwoyaml="$KUBECTL get pods --all-namespaces --watch -o=yaml"
+  alias kgpoallwsl="$KUBECTL get pods --all-namespaces --watch --show-labels"
+  alias kgpoallwslowide="$KUBECTL get pods --all-namespaces --watch --show-labels -o=wide"
+  alias kgpol="$KUBECTL get pods -l"
+  alias kgpon="$KUBECTL get pods --namespace"
+  alias kgpoojson="$KUBECTL get pods -o=json"
+  alias kgpoojsonall="$KUBECTL get pods -o=json --all-namespaces"
+  alias kgpoojsonl="$KUBECTL get pods -o=json -l"
+  alias kgpoojsonn="$KUBECTL get pods -o=json --namespace"
+  alias kgpoowide="$KUBECTL get pods -o=wide"
+  alias kgpoowideall="$KUBECTL get pods -o=wide --all-namespaces"
+  alias kgpoowideallsl="$KUBECTL get pods -o=wide --all-namespaces --show-labels"
+  alias kgpoowidel="$KUBECTL get pods -o=wide -l"
+  alias kgpoowiden="$KUBECTL get pods -o=wide --namespace"
+  alias kgpoowidesl="$KUBECTL get pods -o=wide --show-labels"
+  alias kgpoowideslall="$KUBECTL get pods -o=wide --show-labels --all-namespaces"
+  alias kgpoowidesll="$KUBECTL get pods -o=wide --show-labels -l"
+  alias kgpoowidesln="$KUBECTL get pods -o=wide --show-labels --namespace"
+  alias kgpooyaml="$KUBECTL get pods -o=yaml"
+  alias kgpooyamlall="$KUBECTL get pods -o=yaml --all-namespaces"
+  alias kgpooyamll="$KUBECTL get pods -o=yaml -l"
+  alias kgpooyamln="$KUBECTL get pods -o=yaml --namespace"
+  alias kgposl="$KUBECTL get pods --show-labels"
+  alias kgposlall="$KUBECTL get pods --show-labels --all-namespaces"
+  alias kgposlallowide="$KUBECTL get pods --show-labels --all-namespaces -o=wide"
+  alias kgposlallw="$KUBECTL get pods --show-labels --all-namespaces --watch"
+  alias kgposlallwowide="$KUBECTL get pods --show-labels --all-namespaces --watch -o=wide"
+  alias kgposll="$KUBECTL get pods --show-labels -l"
+  alias kgposln="$KUBECTL get pods --show-labels --namespace"
+  alias kgposlowide="$KUBECTL get pods --show-labels -o=wide"
+  alias kgposlowideall="$KUBECTL get pods --show-labels -o=wide --all-namespaces"
+  alias kgposlowidel="$KUBECTL get pods --show-labels -o=wide -l"
+  alias kgposlowiden="$KUBECTL get pods --show-labels -o=wide --namespace"
+  alias kgposlw="$KUBECTL get pods --show-labels --watch"
+  alias kgposlwall="$KUBECTL get pods --show-labels --watch --all-namespaces"
+  alias kgposlwallowide="$KUBECTL get pods --show-labels --watch --all-namespaces -o=wide"
+  alias kgposlwl="$KUBECTL get pods --show-labels --watch -l"
+  alias kgposlwn="$KUBECTL get pods --show-labels --watch --namespace"
+  alias kgposlwowide="$KUBECTL get pods --show-labels --watch -o=wide"
+  alias kgposlwowideall="$KUBECTL get pods --show-labels --watch -o=wide --all-namespaces"
+  alias kgposlwowidel="$KUBECTL get pods --show-labels --watch -o=wide -l"
+  alias kgposlwowiden="$KUBECTL get pods --show-labels --watch -o=wide --namespace"
+  alias kgpow="$KUBECTL get pods --watch"
+  alias kgpowall="$KUBECTL get pods --watch --all-namespaces"
+  alias kgpowallojson="$KUBECTL get pods --watch --all-namespaces -o=json"
+  alias kgpowallowide="$KUBECTL get pods --watch --all-namespaces -o=wide"
+  alias kgpowallowidesl="$KUBECTL get pods --watch --all-namespaces -o=wide --show-labels"
+  alias kgpowalloyaml="$KUBECTL get pods --watch --all-namespaces -o=yaml"
+  alias kgpowallsl="$KUBECTL get pods --watch --all-namespaces --show-labels"
+  alias kgpowallslowide="$KUBECTL get pods --watch --all-namespaces --show-labels -o=wide"
+  alias kgpowl="$KUBECTL get pods --watch -l"
+  alias kgpown="$KUBECTL get pods --watch --namespace"
+  alias kgpowojson="$KUBECTL get pods --watch -o=json"
+  alias kgpowojsonall="$KUBECTL get pods --watch -o=json --all-namespaces"
+  alias kgpowojsonl="$KUBECTL get pods --watch -o=json -l"
+  alias kgpowojsonn="$KUBECTL get pods --watch -o=json --namespace"
+  alias kgpowowide="$KUBECTL get pods --watch -o=wide"
+  alias kgpowowideall="$KUBECTL get pods --watch -o=wide --all-namespaces"
+  alias kgpowowideallsl="$KUBECTL get pods --watch -o=wide --all-namespaces --show-labels"
+  alias kgpowowidel="$KUBECTL get pods --watch -o=wide -l"
+  alias kgpowowiden="$KUBECTL get pods --watch -o=wide --namespace"
+  alias kgpowowidesl="$KUBECTL get pods --watch -o=wide --show-labels"
+  alias kgpowowideslall="$KUBECTL get pods --watch -o=wide --show-labels --all-namespaces"
+  alias kgpowowidesll="$KUBECTL get pods --watch -o=wide --show-labels -l"
+  alias kgpowowidesln="$KUBECTL get pods --watch -o=wide --show-labels --namespace"
+  alias kgpowoyaml="$KUBECTL get pods --watch -o=yaml"
+  alias kgpowoyamlall="$KUBECTL get pods --watch -o=yaml --all-namespaces"
+  alias kgpowoyamll="$KUBECTL get pods --watch -o=yaml -l"
+  alias kgpowoyamln="$KUBECTL get pods --watch -o=yaml --namespace"
+  alias kgpowsl="$KUBECTL get pods --watch --show-labels"
+  alias kgpowslall="$KUBECTL get pods --watch --show-labels --all-namespaces"
+  alias kgpowslallowide="$KUBECTL get pods --watch --show-labels --all-namespaces -o=wide"
+  alias kgpowsll="$KUBECTL get pods --watch --show-labels -l"
+  alias kgpowsln="$KUBECTL get pods --watch --show-labels --namespace"
+  alias kgpowslowide="$KUBECTL get pods --watch --show-labels -o=wide"
+  alias kgpowslowideall="$KUBECTL get pods --watch --show-labels -o=wide --all-namespaces"
+  alias kgpowslowidel="$KUBECTL get pods --watch --show-labels -o=wide -l"
+  alias kgpowslowiden="$KUBECTL get pods --watch --show-labels -o=wide --namespace"
+  alias kgsec="$KUBECTL get secret"
+  alias kgsecall="$KUBECTL get secret --all-namespaces"
+  alias kgsecallojson="$KUBECTL get secret --all-namespaces -o=json"
+  alias kgsecallowide="$KUBECTL get secret --all-namespaces -o=wide"
+  alias kgsecalloyaml="$KUBECTL get secret --all-namespaces -o=yaml"
+  alias kgsecallw="$KUBECTL get secret --all-namespaces --watch"
+  alias kgsecallwojson="$KUBECTL get secret --all-namespaces --watch -o=json"
+  alias kgsecallwowide="$KUBECTL get secret --all-namespaces --watch -o=wide"
+  alias kgsecallwoyaml="$KUBECTL get secret --all-namespaces --watch -o=yaml"
+  alias kgsecl="$KUBECTL get secret -l"
+  alias kgsecn="$KUBECTL get secret --namespace"
+  alias kgsecojson="$KUBECTL get secret -o=json"
+  alias kgsecojsonall="$KUBECTL get secret -o=json --all-namespaces"
+  alias kgsecojsonl="$KUBECTL get secret -o=json -l"
+  alias kgsecojsonn="$KUBECTL get secret -o=json --namespace"
+  alias kgsecowide="$KUBECTL get secret -o=wide"
+  alias kgsecowideall="$KUBECTL get secret -o=wide --all-namespaces"
+  alias kgsecowidel="$KUBECTL get secret -o=wide -l"
+  alias kgsecowiden="$KUBECTL get secret -o=wide --namespace"
+  alias kgsecoyaml="$KUBECTL get secret -o=yaml"
+  alias kgsecoyamlall="$KUBECTL get secret -o=yaml --all-namespaces"
+  alias kgsecoyamll="$KUBECTL get secret -o=yaml -l"
+  alias kgsecoyamln="$KUBECTL get secret -o=yaml --namespace"
+  alias kgsecw="$KUBECTL get secret --watch"
+  alias kgsecwall="$KUBECTL get secret --watch --all-namespaces"
+  alias kgsecwallojson="$KUBECTL get secret --watch --all-namespaces -o=json"
+  alias kgsecwallowide="$KUBECTL get secret --watch --all-namespaces -o=wide"
+  alias kgsecwalloyaml="$KUBECTL get secret --watch --all-namespaces -o=yaml"
+  alias kgsecwl="$KUBECTL get secret --watch -l"
+  alias kgsecwn="$KUBECTL get secret --watch --namespace"
+  alias kgsecwojson="$KUBECTL get secret --watch -o=json"
+  alias kgsecwojsonall="$KUBECTL get secret --watch -o=json --all-namespaces"
+  alias kgsecwojsonl="$KUBECTL get secret --watch -o=json -l"
+  alias kgsecwojsonn="$KUBECTL get secret --watch -o=json --namespace"
+  alias kgsecwowide="$KUBECTL get secret --watch -o=wide"
+  alias kgsecwowideall="$KUBECTL get secret --watch -o=wide --all-namespaces"
+  alias kgsecwowidel="$KUBECTL get secret --watch -o=wide -l"
+  alias kgsecwowiden="$KUBECTL get secret --watch -o=wide --namespace"
+  alias kgsecwoyaml="$KUBECTL get secret --watch -o=yaml"
+  alias kgsecwoyamlall="$KUBECTL get secret --watch -o=yaml --all-namespaces"
+  alias kgsecwoyamll="$KUBECTL get secret --watch -o=yaml -l"
+  alias kgsecwoyamln="$KUBECTL get secret --watch -o=yaml --namespace"
+  alias kgsl="$KUBECTL get --show-labels"
+  alias kgslall="$KUBECTL get --show-labels --all-namespaces"
+  alias kgslallowide="$KUBECTL get --show-labels --all-namespaces -o=wide"
+  alias kgslallw="$KUBECTL get --show-labels --all-namespaces --watch"
+  alias kgslallwowide="$KUBECTL get --show-labels --all-namespaces --watch -o=wide"
+  alias kgslf="$KUBECTL get --show-labels --recursive -f"
+  alias kgsll="$KUBECTL get --show-labels -l"
+  alias kgsln="$KUBECTL get --show-labels --namespace"
+  alias kgslowide="$KUBECTL get --show-labels -o=wide"
+  alias kgslowideall="$KUBECTL get --show-labels -o=wide --all-namespaces"
+  alias kgslowidef="$KUBECTL get --show-labels -o=wide --recursive -f"
+  alias kgslowidel="$KUBECTL get --show-labels -o=wide -l"
+  alias kgslowiden="$KUBECTL get --show-labels -o=wide --namespace"
+  alias kgslw="$KUBECTL get --show-labels --watch"
+  alias kgslwall="$KUBECTL get --show-labels --watch --all-namespaces"
+  alias kgslwallowide="$KUBECTL get --show-labels --watch --all-namespaces -o=wide"
+  alias kgslwf="$KUBECTL get --show-labels --watch --recursive -f"
+  alias kgslwl="$KUBECTL get --show-labels --watch -l"
+  alias kgslwn="$KUBECTL get --show-labels --watch --namespace"
+  alias kgslwowide="$KUBECTL get --show-labels --watch -o=wide"
+  alias kgslwowideall="$KUBECTL get --show-labels --watch -o=wide --all-namespaces"
+  alias kgslwowidef="$KUBECTL get --show-labels --watch -o=wide --recursive -f"
+  alias kgslwowidel="$KUBECTL get --show-labels --watch -o=wide -l"
+  alias kgslwowiden="$KUBECTL get --show-labels --watch -o=wide --namespace"
+  alias kgsvc="$KUBECTL get service"
+  alias kgsvcall="$KUBECTL get service --all-namespaces"
+  alias kgsvcallojson="$KUBECTL get service --all-namespaces -o=json"
+  alias kgsvcallowide="$KUBECTL get service --all-namespaces -o=wide"
+  alias kgsvcalloyaml="$KUBECTL get service --all-namespaces -o=yaml"
+  alias kgsvcallw="$KUBECTL get service --all-namespaces --watch"
+  alias kgsvcallwojson="$KUBECTL get service --all-namespaces --watch -o=json"
+  alias kgsvcallwowide="$KUBECTL get service --all-namespaces --watch -o=wide"
+  alias kgsvcallwoyaml="$KUBECTL get service --all-namespaces --watch -o=yaml"
+  alias kgsvcl="$KUBECTL get service -l"
+  alias kgsvcn="$KUBECTL get service --namespace"
+  alias kgsvcojson="$KUBECTL get service -o=json"
+  alias kgsvcojsonall="$KUBECTL get service -o=json --all-namespaces"
+  alias kgsvcojsonl="$KUBECTL get service -o=json -l"
+  alias kgsvcojsonn="$KUBECTL get service -o=json --namespace"
+  alias kgsvcowide="$KUBECTL get service -o=wide"
+  alias kgsvcowideall="$KUBECTL get service -o=wide --all-namespaces"
+  alias kgsvcowidel="$KUBECTL get service -o=wide -l"
+  alias kgsvcowiden="$KUBECTL get service -o=wide --namespace"
+  alias kgsvcoyaml="$KUBECTL get service -o=yaml"
+  alias kgsvcoyamlall="$KUBECTL get service -o=yaml --all-namespaces"
+  alias kgsvcoyamll="$KUBECTL get service -o=yaml -l"
+  alias kgsvcoyamln="$KUBECTL get service -o=yaml --namespace"
+  alias kgsvcw="$KUBECTL get service --watch"
+  alias kgsvcwall="$KUBECTL get service --watch --all-namespaces"
+  alias kgsvcwallojson="$KUBECTL get service --watch --all-namespaces -o=json"
+  alias kgsvcwallowide="$KUBECTL get service --watch --all-namespaces -o=wide"
+  alias kgsvcwalloyaml="$KUBECTL get service --watch --all-namespaces -o=yaml"
+  alias kgsvcwl="$KUBECTL get service --watch -l"
+  alias kgsvcwn="$KUBECTL get service --watch --namespace"
+  alias kgsvcwojson="$KUBECTL get service --watch -o=json"
+  alias kgsvcwojsonall="$KUBECTL get service --watch -o=json --all-namespaces"
+  alias kgsvcwojsonl="$KUBECTL get service --watch -o=json -l"
+  alias kgsvcwojsonn="$KUBECTL get service --watch -o=json --namespace"
+  alias kgsvcwowide="$KUBECTL get service --watch -o=wide"
+  alias kgsvcwowideall="$KUBECTL get service --watch -o=wide --all-namespaces"
+  alias kgsvcwowidel="$KUBECTL get service --watch -o=wide -l"
+  alias kgsvcwowiden="$KUBECTL get service --watch -o=wide --namespace"
+  alias kgsvcwoyaml="$KUBECTL get service --watch -o=yaml"
+  alias kgsvcwoyamlall="$KUBECTL get service --watch -o=yaml --all-namespaces"
+  alias kgsvcwoyamll="$KUBECTL get service --watch -o=yaml -l"
+  alias kgsvcwoyamln="$KUBECTL get service --watch -o=yaml --namespace"
+  alias kgw="$KUBECTL get --watch"
+  alias kgwall="$KUBECTL get --watch --all-namespaces"
+  alias kgwallojson="$KUBECTL get --watch --all-namespaces -o=json"
+  alias kgwallowide="$KUBECTL get --watch --all-namespaces -o=wide"
+  alias kgwallowidesl="$KUBECTL get --watch --all-namespaces -o=wide --show-labels"
+  alias kgwalloyaml="$KUBECTL get --watch --all-namespaces -o=yaml"
+  alias kgwallsl="$KUBECTL get --watch --all-namespaces --show-labels"
+  alias kgwallslowide="$KUBECTL get --watch --all-namespaces --show-labels -o=wide"
+  alias kgwf="$KUBECTL get --watch --recursive -f"
+  alias kgwl="$KUBECTL get --watch -l"
+  alias kgwn="$KUBECTL get --watch --namespace"
+  alias kgwojson="$KUBECTL get --watch -o=json"
+  alias kgwojsonall="$KUBECTL get --watch -o=json --all-namespaces"
+  alias kgwojsonf="$KUBECTL get --watch -o=json --recursive -f"
+  alias kgwojsonl="$KUBECTL get --watch -o=json -l"
+  alias kgwojsonn="$KUBECTL get --watch -o=json --namespace"
+  alias kgwowide="$KUBECTL get --watch -o=wide"
+  alias kgwowideall="$KUBECTL get --watch -o=wide --all-namespaces"
+  alias kgwowideallsl="$KUBECTL get --watch -o=wide --all-namespaces --show-labels"
+  alias kgwowidef="$KUBECTL get --watch -o=wide --recursive -f"
+  alias kgwowidel="$KUBECTL get --watch -o=wide -l"
+  alias kgwowiden="$KUBECTL get --watch -o=wide --namespace"
+  alias kgwowidesl="$KUBECTL get --watch -o=wide --show-labels"
+  alias kgwowideslall="$KUBECTL get --watch -o=wide --show-labels --all-namespaces"
+  alias kgwowideslf="$KUBECTL get --watch -o=wide --show-labels --recursive -f"
+  alias kgwowidesll="$KUBECTL get --watch -o=wide --show-labels -l"
+  alias kgwowidesln="$KUBECTL get --watch -o=wide --show-labels --namespace"
+  alias kgwoyaml="$KUBECTL get --watch -o=yaml"
+  alias kgwoyamlall="$KUBECTL get --watch -o=yaml --all-namespaces"
+  alias kgwoyamlf="$KUBECTL get --watch -o=yaml --recursive -f"
+  alias kgwoyamll="$KUBECTL get --watch -o=yaml -l"
+  alias kgwoyamln="$KUBECTL get --watch -o=yaml --namespace"
+  alias kgwsl="$KUBECTL get --watch --show-labels"
+  alias kgwslall="$KUBECTL get --watch --show-labels --all-namespaces"
+  alias kgwslallowide="$KUBECTL get --watch --show-labels --all-namespaces -o=wide"
+  alias kgwslf="$KUBECTL get --watch --show-labels --recursive -f"
+  alias kgwsll="$KUBECTL get --watch --show-labels -l"
+  alias kgwsln="$KUBECTL get --watch --show-labels --namespace"
+  alias kgwslowide="$KUBECTL get --watch --show-labels -o=wide"
+  alias kgwslowideall="$KUBECTL get --watch --show-labels -o=wide --all-namespaces"
+  alias kgwslowidef="$KUBECTL get --watch --show-labels -o=wide --recursive -f"
+  alias kgwslowidel="$KUBECTL get --watch --show-labels -o=wide -l"
+  alias kgwslowiden="$KUBECTL get --watch --show-labels -o=wide --namespace"
+  alias klo="$KUBECTL logs -f"
+  alias klon="$KUBECTL logs -f --namespace"
+  alias klot="$KUBECTL logs -f --tail=100"
+  alias klotn="$KUBECTL logs -f --tail=100 --namespace"
+  alias kp="$KUBECTL proxy"
+  alias kpf="$KUBECTL port-forward"
+  alias krm="$KUBECTL delete"
+  alias krmall="$KUBECTL delete --all"
+  alias krmcm="$KUBECTL delete configmap"
+  alias krmcmall="$KUBECTL delete configmap --all"
+  alias krmcml="$KUBECTL delete configmap -l"
+  alias krmcmn="$KUBECTL delete configmap --namespace"
+  alias krmdep="$KUBECTL delete deployment"
+  alias krmdepall="$KUBECTL delete deployment --all"
+  alias krmdepl="$KUBECTL delete deployment -l"
+  alias krmdepn="$KUBECTL delete deployment --namespace"
+  alias krmf="$KUBECTL delete --recursive -f"
+  alias krming="$KUBECTL delete ingress"
+  alias krmingall="$KUBECTL delete ingress --all"
+  alias krmingl="$KUBECTL delete ingress -l"
+  alias krmingn="$KUBECTL delete ingress --namespace"
+  alias krml="$KUBECTL delete -l"
+  alias krmn="$KUBECTL delete --namespace"
+  alias krmns="$KUBECTL delete namespaces"
+  alias krmnsall="$KUBECTL delete namespaces --all"
+  alias krmnsl="$KUBECTL delete namespaces -l"
+  alias krmpo="$KUBECTL delete pods"
+  alias krmpoall="$KUBECTL delete pods --all"
+  alias krmpol="$KUBECTL delete pods -l"
+  alias krmpon="$KUBECTL delete pods --namespace"
+  alias krmsec="$KUBECTL delete secret"
+  alias krmsecall="$KUBECTL delete secret --all"
+  alias krmsecl="$KUBECTL delete secret -l"
+  alias krmsecn="$KUBECTL delete secret --namespace"
+  alias krmsvc="$KUBECTL delete service"
+  alias krmsvcall="$KUBECTL delete service --all"
+  alias krmsvcl="$KUBECTL delete service -l"
+  alias krmsvcn="$KUBECTL delete service --namespace"
+  alias krun="$KUBECTL run --rm --restart=Never --image-pull-policy=IfNotPresent -i -t"
+  alias ksys="$KUBECTL --namespace=kube-system"
+  alias ksysa="$KUBECTL --namespace=kube-system apply --recursive -f"
+  alias ksysd="$KUBECTL --namespace=kube-system describe"
+  alias ksysdcm="$KUBECTL --namespace=kube-system describe configmap"
+  alias ksysdcml="$KUBECTL --namespace=kube-system describe configmap -l"
+  alias ksysddep="$KUBECTL --namespace=kube-system describe deployment"
+  alias ksysddepl="$KUBECTL --namespace=kube-system describe deployment -l"
+  alias ksysding="$KUBECTL --namespace=kube-system describe ingress"
+  alias ksysdingl="$KUBECTL --namespace=kube-system describe ingress -l"
+  alias ksysdl="$KUBECTL --namespace=kube-system describe -l"
+  alias ksysdpo="$KUBECTL --namespace=kube-system describe pods"
+  alias ksysdpol="$KUBECTL --namespace=kube-system describe pods -l"
+  alias ksysdsec="$KUBECTL --namespace=kube-system describe secret"
+  alias ksysdsecl="$KUBECTL --namespace=kube-system describe secret -l"
+  alias ksysdsvc="$KUBECTL --namespace=kube-system describe service"
+  alias ksysdsvcl="$KUBECTL --namespace=kube-system describe service -l"
+  alias ksysex="$KUBECTL --namespace=kube-system exec -i -t"
+  alias ksysg="$KUBECTL --namespace=kube-system get"
+  alias ksysgcm="$KUBECTL --namespace=kube-system get configmap"
+  alias ksysgcml="$KUBECTL --namespace=kube-system get configmap -l"
+  alias ksysgcmojson="$KUBECTL --namespace=kube-system get configmap -o=json"
+  alias ksysgcmojsonl="$KUBECTL --namespace=kube-system get configmap -o=json -l"
+  alias ksysgcmowide="$KUBECTL --namespace=kube-system get configmap -o=wide"
+  alias ksysgcmowidel="$KUBECTL --namespace=kube-system get configmap -o=wide -l"
+  alias ksysgcmoyaml="$KUBECTL --namespace=kube-system get configmap -o=yaml"
+  alias ksysgcmoyamll="$KUBECTL --namespace=kube-system get configmap -o=yaml -l"
+  alias ksysgcmw="$KUBECTL --namespace=kube-system get configmap --watch"
+  alias ksysgcmwl="$KUBECTL --namespace=kube-system get configmap --watch -l"
+  alias ksysgcmwojson="$KUBECTL --namespace=kube-system get configmap --watch -o=json"
+  alias ksysgcmwojsonl="$KUBECTL --namespace=kube-system get configmap --watch -o=json -l"
+  alias ksysgcmwowide="$KUBECTL --namespace=kube-system get configmap --watch -o=wide"
+  alias ksysgcmwowidel="$KUBECTL --namespace=kube-system get configmap --watch -o=wide -l"
+  alias ksysgcmwoyaml="$KUBECTL --namespace=kube-system get configmap --watch -o=yaml"
+  alias ksysgcmwoyamll="$KUBECTL --namespace=kube-system get configmap --watch -o=yaml -l"
+  alias ksysgdep="$KUBECTL --namespace=kube-system get deployment"
+  alias ksysgdepl="$KUBECTL --namespace=kube-system get deployment -l"
+  alias ksysgdepojson="$KUBECTL --namespace=kube-system get deployment -o=json"
+  alias ksysgdepojsonl="$KUBECTL --namespace=kube-system get deployment -o=json -l"
+  alias ksysgdepowide="$KUBECTL --namespace=kube-system get deployment -o=wide"
+  alias ksysgdepowidel="$KUBECTL --namespace=kube-system get deployment -o=wide -l"
+  alias ksysgdepowidesl="$KUBECTL --namespace=kube-system get deployment -o=wide --show-labels"
+  alias ksysgdepowidesll="$KUBECTL --namespace=kube-system get deployment -o=wide --show-labels -l"
+  alias ksysgdepoyaml="$KUBECTL --namespace=kube-system get deployment -o=yaml"
+  alias ksysgdepoyamll="$KUBECTL --namespace=kube-system get deployment -o=yaml -l"
+  alias ksysgdepsl="$KUBECTL --namespace=kube-system get deployment --show-labels"
+  alias ksysgdepsll="$KUBECTL --namespace=kube-system get deployment --show-labels -l"
+  alias ksysgdepslowide="$KUBECTL --namespace=kube-system get deployment --show-labels -o=wide"
+  alias ksysgdepslowidel="$KUBECTL --namespace=kube-system get deployment --show-labels -o=wide -l"
+  alias ksysgdepslw="$KUBECTL --namespace=kube-system get deployment --show-labels --watch"
+  alias ksysgdepslwl="$KUBECTL --namespace=kube-system get deployment --show-labels --watch -l"
+  alias ksysgdepslwowide="$KUBECTL --namespace=kube-system get deployment --show-labels --watch -o=wide"
+  alias ksysgdepslwowidel="$KUBECTL --namespace=kube-system get deployment --show-labels --watch -o=wide -l"
+  alias ksysgdepw="$KUBECTL --namespace=kube-system get deployment --watch"
+  alias ksysgdepwl="$KUBECTL --namespace=kube-system get deployment --watch -l"
+  alias ksysgdepwojson="$KUBECTL --namespace=kube-system get deployment --watch -o=json"
+  alias ksysgdepwojsonl="$KUBECTL --namespace=kube-system get deployment --watch -o=json -l"
+  alias ksysgdepwowide="$KUBECTL --namespace=kube-system get deployment --watch -o=wide"
+  alias ksysgdepwowidel="$KUBECTL --namespace=kube-system get deployment --watch -o=wide -l"
+  alias ksysgdepwowidesl="$KUBECTL --namespace=kube-system get deployment --watch -o=wide --show-labels"
+  alias ksysgdepwowidesll="$KUBECTL --namespace=kube-system get deployment --watch -o=wide --show-labels -l"
+  alias ksysgdepwoyaml="$KUBECTL --namespace=kube-system get deployment --watch -o=yaml"
+  alias ksysgdepwoyamll="$KUBECTL --namespace=kube-system get deployment --watch -o=yaml -l"
+  alias ksysgdepwsl="$KUBECTL --namespace=kube-system get deployment --watch --show-labels"
+  alias ksysgdepwsll="$KUBECTL --namespace=kube-system get deployment --watch --show-labels -l"
+  alias ksysgdepwslowide="$KUBECTL --namespace=kube-system get deployment --watch --show-labels -o=wide"
+  alias ksysgdepwslowidel="$KUBECTL --namespace=kube-system get deployment --watch --show-labels -o=wide -l"
+  alias ksysging="$KUBECTL --namespace=kube-system get ingress"
+  alias ksysgingl="$KUBECTL --namespace=kube-system get ingress -l"
+  alias ksysgingojson="$KUBECTL --namespace=kube-system get ingress -o=json"
+  alias ksysgingojsonl="$KUBECTL --namespace=kube-system get ingress -o=json -l"
+  alias ksysgingowide="$KUBECTL --namespace=kube-system get ingress -o=wide"
+  alias ksysgingowidel="$KUBECTL --namespace=kube-system get ingress -o=wide -l"
+  alias ksysgingoyaml="$KUBECTL --namespace=kube-system get ingress -o=yaml"
+  alias ksysgingoyamll="$KUBECTL --namespace=kube-system get ingress -o=yaml -l"
+  alias ksysgingw="$KUBECTL --namespace=kube-system get ingress --watch"
+  alias ksysgingwl="$KUBECTL --namespace=kube-system get ingress --watch -l"
+  alias ksysgingwojson="$KUBECTL --namespace=kube-system get ingress --watch -o=json"
+  alias ksysgingwojsonl="$KUBECTL --namespace=kube-system get ingress --watch -o=json -l"
+  alias ksysgingwowide="$KUBECTL --namespace=kube-system get ingress --watch -o=wide"
+  alias ksysgingwowidel="$KUBECTL --namespace=kube-system get ingress --watch -o=wide -l"
+  alias ksysgingwoyaml="$KUBECTL --namespace=kube-system get ingress --watch -o=yaml"
+  alias ksysgingwoyamll="$KUBECTL --namespace=kube-system get ingress --watch -o=yaml -l"
+  alias ksysgl="$KUBECTL --namespace=kube-system get -l"
+  alias ksysgojson="$KUBECTL --namespace=kube-system get -o=json"
+  alias ksysgojsonl="$KUBECTL --namespace=kube-system get -o=json -l"
+  alias ksysgowide="$KUBECTL --namespace=kube-system get -o=wide"
+  alias ksysgowidel="$KUBECTL --namespace=kube-system get -o=wide -l"
+  alias ksysgowidesl="$KUBECTL --namespace=kube-system get -o=wide --show-labels"
+  alias ksysgowidesll="$KUBECTL --namespace=kube-system get -o=wide --show-labels -l"
+  alias ksysgoyaml="$KUBECTL --namespace=kube-system get -o=yaml"
+  alias ksysgoyamll="$KUBECTL --namespace=kube-system get -o=yaml -l"
+  alias ksysgpo="$KUBECTL --namespace=kube-system get pods"
+  alias ksysgpol="$KUBECTL --namespace=kube-system get pods -l"
+  alias ksysgpoojson="$KUBECTL --namespace=kube-system get pods -o=json"
+  alias ksysgpoojsonl="$KUBECTL --namespace=kube-system get pods -o=json -l"
+  alias ksysgpoowide="$KUBECTL --namespace=kube-system get pods -o=wide"
+  alias ksysgpoowidel="$KUBECTL --namespace=kube-system get pods -o=wide -l"
+  alias ksysgpoowidesl="$KUBECTL --namespace=kube-system get pods -o=wide --show-labels"
+  alias ksysgpoowidesll="$KUBECTL --namespace=kube-system get pods -o=wide --show-labels -l"
+  alias ksysgpooyaml="$KUBECTL --namespace=kube-system get pods -o=yaml"
+  alias ksysgpooyamll="$KUBECTL --namespace=kube-system get pods -o=yaml -l"
+  alias ksysgposl="$KUBECTL --namespace=kube-system get pods --show-labels"
+  alias ksysgposll="$KUBECTL --namespace=kube-system get pods --show-labels -l"
+  alias ksysgposlowide="$KUBECTL --namespace=kube-system get pods --show-labels -o=wide"
+  alias ksysgposlowidel="$KUBECTL --namespace=kube-system get pods --show-labels -o=wide -l"
+  alias ksysgposlw="$KUBECTL --namespace=kube-system get pods --show-labels --watch"
+  alias ksysgposlwl="$KUBECTL --namespace=kube-system get pods --show-labels --watch -l"
+  alias ksysgposlwowide="$KUBECTL --namespace=kube-system get pods --show-labels --watch -o=wide"
+  alias ksysgposlwowidel="$KUBECTL --namespace=kube-system get pods --show-labels --watch -o=wide -l"
+  alias ksysgpow="$KUBECTL --namespace=kube-system get pods --watch"
+  alias ksysgpowl="$KUBECTL --namespace=kube-system get pods --watch -l"
+  alias ksysgpowojson="$KUBECTL --namespace=kube-system get pods --watch -o=json"
+  alias ksysgpowojsonl="$KUBECTL --namespace=kube-system get pods --watch -o=json -l"
+  alias ksysgpowowide="$KUBECTL --namespace=kube-system get pods --watch -o=wide"
+  alias ksysgpowowidel="$KUBECTL --namespace=kube-system get pods --watch -o=wide -l"
+  alias ksysgpowowidesl="$KUBECTL --namespace=kube-system get pods --watch -o=wide --show-labels"
+  alias ksysgpowowidesll="$KUBECTL --namespace=kube-system get pods --watch -o=wide --show-labels -l"
+  alias ksysgpowoyaml="$KUBECTL --namespace=kube-system get pods --watch -o=yaml"
+  alias ksysgpowoyamll="$KUBECTL --namespace=kube-system get pods --watch -o=yaml -l"
+  alias ksysgpowsl="$KUBECTL --namespace=kube-system get pods --watch --show-labels"
+  alias ksysgpowsll="$KUBECTL --namespace=kube-system get pods --watch --show-labels -l"
+  alias ksysgpowslowide="$KUBECTL --namespace=kube-system get pods --watch --show-labels -o=wide"
+  alias ksysgpowslowidel="$KUBECTL --namespace=kube-system get pods --watch --show-labels -o=wide -l"
+  alias ksysgsec="$KUBECTL --namespace=kube-system get secret"
+  alias ksysgsecl="$KUBECTL --namespace=kube-system get secret -l"
+  alias ksysgsecojson="$KUBECTL --namespace=kube-system get secret -o=json"
+  alias ksysgsecojsonl="$KUBECTL --namespace=kube-system get secret -o=json -l"
+  alias ksysgsecowide="$KUBECTL --namespace=kube-system get secret -o=wide"
+  alias ksysgsecowidel="$KUBECTL --namespace=kube-system get secret -o=wide -l"
+  alias ksysgsecoyaml="$KUBECTL --namespace=kube-system get secret -o=yaml"
+  alias ksysgsecoyamll="$KUBECTL --namespace=kube-system get secret -o=yaml -l"
+  alias ksysgsecw="$KUBECTL --namespace=kube-system get secret --watch"
+  alias ksysgsecwl="$KUBECTL --namespace=kube-system get secret --watch -l"
+  alias ksysgsecwojson="$KUBECTL --namespace=kube-system get secret --watch -o=json"
+  alias ksysgsecwojsonl="$KUBECTL --namespace=kube-system get secret --watch -o=json -l"
+  alias ksysgsecwowide="$KUBECTL --namespace=kube-system get secret --watch -o=wide"
+  alias ksysgsecwowidel="$KUBECTL --namespace=kube-system get secret --watch -o=wide -l"
+  alias ksysgsecwoyaml="$KUBECTL --namespace=kube-system get secret --watch -o=yaml"
+  alias ksysgsecwoyamll="$KUBECTL --namespace=kube-system get secret --watch -o=yaml -l"
+  alias ksysgsl="$KUBECTL --namespace=kube-system get --show-labels"
+  alias ksysgsll="$KUBECTL --namespace=kube-system get --show-labels -l"
+  alias ksysgslowide="$KUBECTL --namespace=kube-system get --show-labels -o=wide"
+  alias ksysgslowidel="$KUBECTL --namespace=kube-system get --show-labels -o=wide -l"
+  alias ksysgslw="$KUBECTL --namespace=kube-system get --show-labels --watch"
+  alias ksysgslwl="$KUBECTL --namespace=kube-system get --show-labels --watch -l"
+  alias ksysgslwowide="$KUBECTL --namespace=kube-system get --show-labels --watch -o=wide"
+  alias ksysgslwowidel="$KUBECTL --namespace=kube-system get --show-labels --watch -o=wide -l"
+  alias ksysgsvc="$KUBECTL --namespace=kube-system get service"
+  alias ksysgsvcl="$KUBECTL --namespace=kube-system get service -l"
+  alias ksysgsvcojson="$KUBECTL --namespace=kube-system get service -o=json"
+  alias ksysgsvcojsonl="$KUBECTL --namespace=kube-system get service -o=json -l"
+  alias ksysgsvcowide="$KUBECTL --namespace=kube-system get service -o=wide"
+  alias ksysgsvcowidel="$KUBECTL --namespace=kube-system get service -o=wide -l"
+  alias ksysgsvcoyaml="$KUBECTL --namespace=kube-system get service -o=yaml"
+  alias ksysgsvcoyamll="$KUBECTL --namespace=kube-system get service -o=yaml -l"
+  alias ksysgsvcw="$KUBECTL --namespace=kube-system get service --watch"
+  alias ksysgsvcwl="$KUBECTL --namespace=kube-system get service --watch -l"
+  alias ksysgsvcwojson="$KUBECTL --namespace=kube-system get service --watch -o=json"
+  alias ksysgsvcwojsonl="$KUBECTL --namespace=kube-system get service --watch -o=json -l"
+  alias ksysgsvcwowide="$KUBECTL --namespace=kube-system get service --watch -o=wide"
+  alias ksysgsvcwowidel="$KUBECTL --namespace=kube-system get service --watch -o=wide -l"
+  alias ksysgsvcwoyaml="$KUBECTL --namespace=kube-system get service --watch -o=yaml"
+  alias ksysgsvcwoyamll="$KUBECTL --namespace=kube-system get service --watch -o=yaml -l"
+  alias ksysgw="$KUBECTL --namespace=kube-system get --watch"
+  alias ksysgwl="$KUBECTL --namespace=kube-system get --watch -l"
+  alias ksysgwojson="$KUBECTL --namespace=kube-system get --watch -o=json"
+  alias ksysgwojsonl="$KUBECTL --namespace=kube-system get --watch -o=json -l"
+  alias ksysgwowide="$KUBECTL --namespace=kube-system get --watch -o=wide"
+  alias ksysgwowidel="$KUBECTL --namespace=kube-system get --watch -o=wide -l"
+  alias ksysgwowidesl="$KUBECTL --namespace=kube-system get --watch -o=wide --show-labels"
+  alias ksysgwowidesll="$KUBECTL --namespace=kube-system get --watch -o=wide --show-labels -l"
+  alias ksysgwoyaml="$KUBECTL --namespace=kube-system get --watch -o=yaml"
+  alias ksysgwoyamll="$KUBECTL --namespace=kube-system get --watch -o=yaml -l"
+  alias ksysgwsl="$KUBECTL --namespace=kube-system get --watch --show-labels"
+  alias ksysgwsll="$KUBECTL --namespace=kube-system get --watch --show-labels -l"
+  alias ksysgwslowide="$KUBECTL --namespace=kube-system get --watch --show-labels -o=wide"
+  alias ksysgwslowidel="$KUBECTL --namespace=kube-system get --watch --show-labels -o=wide -l"
+  alias ksyslo="$KUBECTL --namespace=kube-system logs -f"
+  alias ksyslot="$KUBECTL --namespace=kube-system logs -f --tail=100"
+  alias ksysrm="$KUBECTL --namespace=kube-system delete"
+  alias ksysrmall="$KUBECTL --namespace=kube-system delete --all"
+  alias ksysrmcm="$KUBECTL --namespace=kube-system delete configmap"
+  alias ksysrmcmall="$KUBECTL --namespace=kube-system delete configmap --all"
+  alias ksysrmcml="$KUBECTL --namespace=kube-system delete configmap -l"
+  alias ksysrmdep="$KUBECTL --namespace=kube-system delete deployment"
+  alias ksysrmdepall="$KUBECTL --namespace=kube-system delete deployment --all"
+  alias ksysrmdepl="$KUBECTL --namespace=kube-system delete deployment -l"
+  alias ksysrming="$KUBECTL --namespace=kube-system delete ingress"
+  alias ksysrmingall="$KUBECTL --namespace=kube-system delete ingress --all"
+  alias ksysrmingl="$KUBECTL --namespace=kube-system delete ingress -l"
+  alias ksysrml="$KUBECTL --namespace=kube-system delete -l"
+  alias ksysrmpo="$KUBECTL --namespace=kube-system delete pods"
+  alias ksysrmpoall="$KUBECTL --namespace=kube-system delete pods --all"
+  alias ksysrmpol="$KUBECTL --namespace=kube-system delete pods -l"
+  alias ksysrmsec="$KUBECTL --namespace=kube-system delete secret"
+  alias ksysrmsecall="$KUBECTL --namespace=kube-system delete secret --all"
+  alias ksysrmsecl="$KUBECTL --namespace=kube-system delete secret -l"
+  alias ksysrmsvc="$KUBECTL --namespace=kube-system delete service"
+  alias ksysrmsvcall="$KUBECTL --namespace=kube-system delete service --all"
+  alias ksysrmsvcl="$KUBECTL --namespace=kube-system delete service -l"
+  alias ksysrun="$KUBECTL --namespace=kube-system run --rm --restart=Never --image-pull-policy=IfNotPresent -i -t"
 
   function kgpl() {
     if [ -z "$1" ]; then
@@ -817,7 +823,7 @@ if [ $commands[kubectl] ]; then
     fi
 
     POD_NAME="$1"
-    kubectl get pod "$POD_NAME" --template='{{.metadata.labels}}'
+    $KUBECTL get pod "$POD_NAME" --template='{{.metadata.labels}}'
     echo
   }
 
@@ -829,11 +835,11 @@ if [ $commands[kubectl] ]; then
 
     NAMESPACE="$1"
     POD_NAME="$2"
-    kubectl get pod -n "$NAMESPACE" "$POD_NAME" --template='{{.metadata.labels}}'
+    $KUBECTL get pod -n "$NAMESPACE" "$POD_NAME" --template='{{.metadata.labels}}'
     echo
   }
 
   function krsj() {
-    kubectl get job -n $1 $2 -o json | jq 'del(.spec.selector)' | jq 'del(.spec.template.metadata.labels)' | kubectl replace --force -f -
+    $KUBECTL get job -n $1 $2 -o json | jq 'del(.spec.selector)' | jq 'del(.spec.template.metadata.labels)' | kubectl replace --force -f -
   }
 fi

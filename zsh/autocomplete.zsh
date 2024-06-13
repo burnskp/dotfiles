@@ -67,6 +67,10 @@ if [ $commands[kubectl] ]; then
   source <(kubectl completion zsh)
 fi
 
+if [ $commands[kubecolor] ]; then
+  compdef kubecolor=kubectl
+fi
+
 if [ $commands[talosctl] ]; then
   source <(talosctl completion zsh)
 fi
