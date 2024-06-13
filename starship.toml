@@ -7,44 +7,41 @@ $git_state\
 $git_metrics\
 $git_status\
 $fill\
-$cmd_duration\
 $python \
 $gcloud \
 $kubernetes\
 $docker_context
-$status\
-$character
+$character\
+"""
+right_format= """
+$cmd_duration\
+$status
 """
 
 [cmd_duration]
-format = '[⏱ $duration]($style) '
+format = '[$duration]($style) '
 min_time = 5_000
 
 [docker_context]
 only_with_files = false
-format = '[$symbol$context]($style) '
+format = '[$context]($style) '
 
 [fill]
 symbol = ' '
 
 [git_branch]
-format = '[$symbol$branch]($style) '
+format = '[$branch]($style) '
 
-[golang]
-format = '[$symbol($version)]($style) '
 
 [hostname]
 format = '[$hostname]($style)'
 
 [kubernetes]
 disabled = false
-format = '[$symbol$context]($style) '
-
-[pulumi]
-format = '[$symbol$stack]($style) '
+format = '[$context]($style) '
 
 [python]
-format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style) '
+format = '[${pyenv_prefix}(${version} )(\($virtualenv\) )]($style) '
 
 [status]
 disabled = false
@@ -56,4 +53,4 @@ format = '[$time]($style)'
 
 [gcloud]
 symbol = '️󱇶 '
-format = '[$symbol$project]($style) '
+format = '[$project]($style) '
