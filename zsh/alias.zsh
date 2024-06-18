@@ -17,7 +17,6 @@ alias lu="eza -glF --git --group-directories-first"
 alias man="batman"
 alias pretty="prettybat"
 alias ping='prettyping --nolegend'
-alias sed='gsed'
 alias vi="nvim"
 alias wget=wget --hsts-file="$HOME/.local/share/wget-hsts"
 
@@ -44,16 +43,18 @@ function help() {
 alias scpnh='scp -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null"'
 alias sshnh='ssh -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null"'
 
-alias -g ...="../.."
-alias -g ....="../../.."
-alias -g .....="../../../.."
-
-if [[ $(($(sysctl -n hw.memsize) / 1024 / 1024 / 1024 )) -ge 64 ]]; then
-  alias cs='colima start --arch aarch64 --vm-type=vz --vz-rosetta --cpu 12 --memory 32'
-else
-  alias cs='colima start --arch aarch64 --vm-type=vz --vz-rosetta --cpu 2 --memory 4'
+if  [ $commands[colima] ]; then
+  if [[ $(($(sysctl -n hw.memsize) / 1024 / 1024 / 1024 )) -ge 64 ]]; then
+    alias cs='colima start --arch aarch64 --vm-type=vz --vz-rosetta --cpu 12 --memory 32'
+  else
+    alias cs='colima start --arch aarch64 --vm-type=vz --vz-rosetta --cpu 2 --memory 4'
+  fi
+  alias cstop='colima stop'
 fi
-alias cstop='colima stop'
+
+if  [ $commands[gsed] ]; then
+alias sed='gsed'
+fi
 
 if  [ $commands[talosctl] ]; then
   alias tcg="talosctl config contexts"
