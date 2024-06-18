@@ -18,11 +18,6 @@ return {
 					cyclic = true,
 				}),
 				augend.constant.new({
-					elements = { "else", "elif" },
-					word = true,
-					cyclic = true,
-				}),
-				augend.constant.new({
 					elements = { "on", "off" },
 					word = true,
 					cyclic = true,
@@ -40,6 +35,27 @@ return {
 				augend.constant.alias.bool,
 				augend.semver.alias.semver,
 			},
+			lua = {
+				augend.constant.new({
+					elements = { "else", "elseif" },
+					word = true,
+					cyclic = true,
+				}),
+			},
+			python = {
+				augend.constant.new({
+					elements = { "else", "elif" },
+					word = true,
+					cyclic = true,
+				}),
+			},
+			go = {
+				augend.constant.new({
+					elements = { "else", "else if" },
+					word = true,
+					cyclic = true,
+				}),
+			},
 			visual = {
 				augend.integer.alias.decimal_int,
 				augend.integer.alias.hex,
@@ -55,42 +71,4 @@ return {
 			},
 		})
 	end,
-	keys = {
-		{
-			"<C-a>",
-			function()
-				return require("dial.map").inc_normal()
-			end,
-			expr = true,
-			desc = "Increment",
-			mode = { "n", "v" },
-		},
-		{
-			"<C-x>",
-			function()
-				return require("dial.map").dec_normal()
-			end,
-			expr = true,
-			desc = "Decrement",
-			mode = { "n", "v" },
-		},
-		{
-			"g<C-a>",
-			function()
-				return require("dial.map").inc_gnormal()
-			end,
-			expr = true,
-			desc = "Increment",
-			mode = { "n", "v" },
-		},
-		{
-			"g<C-x>",
-			function()
-				return require("dial.map").dev_gnormal()
-			end,
-			expr = true,
-			desc = "Decrement",
-			mode = { "n", "v" },
-		},
-	},
 }
