@@ -55,7 +55,7 @@ cask "raindropio"
 cask "raycast"
 cask "secretive"
 cask "setapp"
-cask "warp"
+cask "wezterm"
 mas "Ivory", id: 6444602274
 mas "Keynote", id: 409183694
 mas "MindNode", id: 1289197285

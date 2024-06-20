@@ -52,4 +52,7 @@ mkdir -p ~/.cache/zsh
 mkdir -p ~/.config/karabiner
 linkFile "$PWD/karabiner.json" "$HOME/.config/karabiner/karabiner.json"
 
-ln -s ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/ ~/icloud
+linkFile "$PWD/wezterm.lua" "$HOME/.wezterm.lua"
+linkFile "$PWD/starship.toml" "$HOME/.config/starship.toml"
+
+linkFile ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/ ~/icloud
