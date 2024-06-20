@@ -103,6 +103,8 @@ config.show_new_tab_button_in_tab_bar = false
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 
+config.inactive_pane_hsb = {}
+
 config.adjust_window_size_when_changing_font_size = false
 config.audible_bell = "Disabled"
 config.exit_behavior = "Close"
