@@ -22,6 +22,7 @@ brew "jq"
 brew "kubernetes-cli"
 brew "krew"
 brew "kubecolor"
+brew "lazygit"
 brew "mas"
 brew "mosh"
 brew "ncdu"
@@ -30,6 +31,7 @@ brew "node"
 brew "pipx"
 brew "pre-commit"
 brew "ripgrep"
+brew "starship"
 brew "wget"
 brew "yarn"
 brew "yq"
@@ -56,12 +58,15 @@ cask "raycast"
 cask "secretive"
 cask "setapp"
 cask "wezterm"
+mas "Dark Noise", id: 1465439395
 mas "Ivory", id: 6444602274
 mas "Keynote", id: 409183694
 mas "MindNode", id: 1289197285
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Reeder", id: 1529448980
 mas "Save to Raindrop.io", id: 1549370672
 mas "Screens 5", id: 1663047912
+mas "Slack", id: 803453959
 mas "Tailscale", id: 1475387142
 mas "UTM", id: 1538878817
