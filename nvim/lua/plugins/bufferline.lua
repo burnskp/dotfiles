@@ -44,6 +44,11 @@ return {
 		end
 		return {
 			highlights = highlights,
+			options = {
+				show_close_icon = false,
+				show_buffer_close_icons = false,
+				always_show_bufferline = true,
+			},
 		}
 	end,
 }
