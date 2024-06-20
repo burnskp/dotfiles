@@ -85,6 +85,7 @@ end)
 
 config.front_end = "WebGpu"
 config.window_decorations = "RESIZE"
+config.term = "wezterm"
 
 config.font = wezterm.font({
 	family = "DejaVuSansM Nerd Font Mono",
