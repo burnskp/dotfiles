@@ -5,7 +5,18 @@ return {
 		local cmp = require("cmp")
 
 		opts.mapping = vim.tbl_extend("force", opts.mapping, {
-			["<C-k>"] = LazyVim.cmp.confirm({ select = true }),
+			["<Tab>"] = cmp.mapping(function(fallback)
+				if cmp and cmp.visible() then
+					cmp.confirm({
+						behavior = cmp.ConfirmBehavior.Replace,
+						select = false,
+					})
+				elseif vim.snippet.active({ direction = 1 }) then
+					vim.snippet.jump(1)
+				else
+					fallback()
+				end
+			end, { "i", "s" }),
 			["<C-n>"] = cmp.mapping(function(fallback)
 				if cmp and cmp.visible() then
 					cmp.select_next_item()
