@@ -1,8 +1,5 @@
 #!/bin/zsh
-if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
-  eval "$(starship init zsh)"
-fi
-
+eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
 # My dotfiles

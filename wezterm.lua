@@ -164,6 +164,18 @@ config.keys = {
 	{ key = "d", mods = "LEADER", action = act.ShowDebugOverlay },
 	{ key = "f", mods = "LEADER", action = act.QuickSelect },
 	{ key = "s", mods = "LEADER", action = act.Search("CurrentSelectionOrEmptyString") },
+	{
+		key = "r",
+		mods = "LEADER",
+		action = act.PromptInputLine({
+			description = "Name:",
+			action = wezterm.action_callback(function(window, _, line)
+				if line then
+					window:active_tab():set_title(line)
+				end
+			end),
+		}),
+	},
 	{ key = "n", mods = "LEADER", action = act.SpawnWindow },
 	{ key = "p", mods = "LEADER", action = act.PasteFrom("Clipboard") },
 
@@ -183,7 +195,6 @@ config.keys = {
 		}),
 	},
 	{ key = "q", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
-	{ key = "r", mods = "LEADER", action = act.ReloadConfiguration },
 	{ key = "v", mods = "CMD", action = act.PasteFrom("Clipboard") },
 	{ key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
 }

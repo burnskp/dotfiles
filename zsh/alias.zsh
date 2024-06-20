@@ -8,7 +8,7 @@ alias sshnh='ssh -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null"
 alias svi="sudo -e"
 alias sz="source ~/.zshrc"
 alias va='source .venv/bin/activate'
-alias vi="nvim"
+alias vi="env TERM=wezterm nvim"
 alias wget=wget --hsts-file="$HOME/.local/share/wget-hsts"
 
 if [[ $commands[bat] ]]; then
