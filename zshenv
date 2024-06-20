@@ -27,8 +27,6 @@ setopt nonomatch
 setopt noshwordsplit
 setopt prompt_subst
 
-export BROWSER="safari"
-
 export BAT_THEME="cobalt2"
 export EDITOR="nvim"
 export HISTFILE="${HOME}/.zsh_history"

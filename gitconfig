@@ -25,11 +25,6 @@
 [diff]
   algorithm = patience
   colorMoved = default
-  tool = meld
-[difftool]
-  prompt = false
-[difftool "meld"]
-  cmd = meld "$LOCAL" "$REMOTE"
 [filter "lfs"]
   process = git-lfs filter-process
   required = true
@@ -47,9 +42,6 @@
   prompt = false
 [mergetool "diffview"]
   cmd = nvim -n -c "DiffviewOpen" "$MERGE"
-[mergetool "meld"]
-  conflictstyle = diff3
-  path = /Applications/Meld.app/Contents/MacOS/Meld
 [help]
   autocorrect = 1
 [http "https://gopkg.in"]
@@ -64,6 +56,8 @@
 [push]
   default = simple
   followTags = true
+[rerere]
+	enabled = true
 [status]
   showUntrackedFiles = all
 [user]

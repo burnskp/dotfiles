@@ -1,47 +1,47 @@
 #!/bin/zsh
 
-alias diff="batdiff --delta"
-alias df="duf --hide-mp '*ystem*olume*,*ecovery,/dev'"
-alias du="dust -b"
 alias grep="grep --color -i"
-alias la="eza -a --no-time --no-user --git --group-directories-first"
-alias ld="eza -D --no-time --no-user --git --group-directories-first"
-alias ldl="eza -lFD --no-time --no-user --git --group-directories-first"
-alias le="eza -lF --extended --no-time --no-user --git --group-directories-first"
-alias ll="eza -lF --no-time --no-user --git --group-directories-first"
-alias lla="eza --lFa --no-time --no-user --git --group-directories-first"
-alias ls="eza --no-time --no-user --git --group-directories-first"
-alias lsize="eza -lF --no-time --no-user --git --group-directories-first --sort=size"
-alias lt="eza -lF --no-user --git --group-directories-first"
-alias lu="eza -glF --git --group-directories-first"
-alias man="batman"
-alias pretty="prettybat"
-alias ping='prettyping --nolegend'
+alias ndu="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
+alias scpnh='scp -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null"'
+alias sih="sudo -i -H"
+alias sshnh='ssh -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null"'
+alias svi="sudo -e"
+alias sz="source ~/.zshrc"
+alias va='source .venv/bin/activate'
 alias vi="nvim"
 alias wget=wget --hsts-file="$HOME/.local/share/wget-hsts"
 
-alias ndu="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
-alias sih="sudo -i -H"
-alias svi="sudo -e"
-alias sz="source ~/.zshrc"
+if [[ $commands[bat] ]]; then
+  alias bathelp='bat --plain --language=help'
+  alias bl="bat --paging=never -l log"
+  alias cat='bat --paging=never'
+  alias catl='bat --style header,snip,grid --pager=never'
+  alias catp='bat --style header,snip,grid'
+  alias diff="batdiff --delta"
+  alias man="batman"
+  alias pretty="prettybat"
+  alias rg="batgrep -S"
+  alias rgi="batgrep -i"
+  alias rgs="batgrep -s"
+  alias tf="tail -f | bat --paging=never -l log"
 
-alias va='source .venv/bin/activate'
+  function help() {
+    "$@" --help 2>&1 | bathelp
+  }
+fi
 
-alias bathelp='bat --plain --language=help'
-alias bl="bat --paging=never -l log"
-alias cat='bat -p --pager=never'
-alias catl='bat --style header,snip,grid --pager=never'
-alias catp='bat --style header,snip,grid'
-alias rg="batgrep -S"
-alias rgi="batgrep -i"
-alias rgs="batgrep -s"
-alias tf="tail -f | bat --paging=never -l log"
-function help() {
-  "$@" --help 2>&1 | bathelp
-}
-
-alias scpnh='scp -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null"'
-alias sshnh='ssh -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null"'
+if [[ $commands[eza] ]]; then
+  alias la="eza -a --no-time --no-user --git --group-directories-first"
+  alias ld="eza -D --no-time --no-user --git --group-directories-first"
+  alias ldl="eza -lFD --no-time --no-user --git --group-directories-first"
+  alias le="eza -lF --extended --no-time --no-user --git --group-directories-first"
+  alias ll="eza -lF --no-time --no-user --git --group-directories-first"
+  alias lla="eza --lFa --no-time --no-user --git --group-directories-first"
+  alias ls="eza --no-time --no-user --git --group-directories-first"
+  alias lsize="eza -lF --no-time --no-user --git --group-directories-first --sort=size"
+  alias lt="eza -lF --no-user --git --group-directories-first"
+  alias lu="eza -glF --git --group-directories-first"
+fi
 
 if  [ $commands[colima] ]; then
   if [[ $(($(sysctl -n hw.memsize) / 1024 / 1024 / 1024 )) -ge 64 ]]; then
