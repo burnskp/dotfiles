@@ -14,7 +14,7 @@ alias wget=wget --hsts-file="$HOME/.local/share/wget-hsts"
 if [[ $commands[bat] ]]; then
   alias bathelp='bat --plain --language=help'
   alias bl="bat --paging=never -l log"
-  alias cat='bat --paging=never'
+  alias cat='bat -p --paging=never'
   alias catl='bat --style header,snip,grid --pager=never'
   alias catp='bat --style header,snip,grid'
   alias diff="batdiff --delta"
