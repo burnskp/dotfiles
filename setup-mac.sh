@@ -59,7 +59,7 @@ linkFile ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/ ~/icloud
 
 if ! [[ -f ~/.terminfo/77/wezterm ]]; then
 	tempfile=$(mktemp) &&
-		curl -o "$tempfile "https://raw.githubusercontent.com/wez/wezterm/master/termwiz/data/wezterm.terminfo &&
-		tic -x -o ~/.terminfo "$tempfile " &&
+		curl -o "$tempfile" https://raw.githubusercontent.com/wez/wezterm/master/termwiz/data/wezterm.terminfo &&
+		tic -x -o ~/.terminfo "$tempfile" &&
 		rm "$tempfile"
 fi
