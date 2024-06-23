@@ -63,4 +63,6 @@ require("lazy").setup({
 	},
 })
 
-vim.cmd("Copilot disable")
+if not vim.g.vscode then
+	vim.cmd("Copilot disable")
+end
