@@ -55,6 +55,8 @@ else
 	vim.keymap.del({ "i", "n", "x" }, "<M-k>")
 
 	keymap("n", "<C-n>", "<cmd>bn<cr>", { desc = "Next Buffer" })
+	keymap("n", "<leader>ae", "<cmd>Copilot enable<cr>", { desc = "Enable Copilot" })
+	keymap("n", "<leader>aD", "<cmd>Copilot disable<cr>", { desc = "Disable Copilot" })
 	keymap("n", "<C-p>", "<cmd>bp<cr>", { desc = "Previous Buffer" })
 	keymap("n", "<leader>P", '"+P', { desc = "Paste from System Clipboard" })
 	keymap("n", "<leader>p", '"+p', { desc = "Paste from System Clipboard" })
