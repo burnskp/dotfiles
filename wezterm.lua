@@ -63,7 +63,7 @@ wezterm.on("format-tab-title", function(tab, _, _, _, _, max_width)
 	local bar_background = "#0E3A59"
 	local background
 	local foreground
-	if string.find(title, "^Copy mode:") then
+	if string.find(title, "^[0-9]: Copy mode:") then
 		background = "#ffc600"
 		foreground = "#000000"
 	elseif tab.is_active then
