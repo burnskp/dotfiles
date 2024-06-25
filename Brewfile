@@ -1,5 +1,6 @@
 tap "homebrew/autoupdate"
 tap "homebrew/bundle"
+tap "homebrew/services"
 brew "bat"
 brew "bat-extras"
 brew "docker"
@@ -51,12 +52,15 @@ cask "discord"
 cask "font-dejavu"
 cask "font-dejavu-sans-mono-nerd-font"
 cask "font-symbols-only-nerd-font"
+cask "google-chrome"
 cask "karabiner-elements"
+cask "orbstack"
 cask "orion"
 cask "raindropio"
 cask "raycast"
 cask "secretive"
 cask "setapp"
+cask "visual-studio-code"
 cask "wezterm"
 mas "Dark Noise", id: 1465439395
 mas "Ivory", id: 6444602274
@@ -65,7 +69,6 @@ mas "MindNode", id: 1289197285
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Reeder", id: 1529448980
-mas "Save to Raindrop.io", id: 1549370672
 mas "Screens 5", id: 1663047912
 mas "Slack", id: 803453959
 mas "Tailscale", id: 1475387142
