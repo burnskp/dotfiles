@@ -858,4 +858,12 @@ if [ $commands[kubectl] ]; then
   function krsj() {
     $KUBECTL get job -n $1 $2 -o json | jq 'del(.spec.selector)' | jq 'del(.spec.template.metadata.labels)' | kubectl replace --force -f -
   }
+
+  function mergekubeconfig ()
+  {
+    mv ~/.kube/config ~/.kube/config.bak
+    KUBECONFIG="$1:$HOME/.kube/config.bak" kubectl config view --flatten > ~/.kube/config
+  }
 fi
+
+
