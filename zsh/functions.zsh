@@ -21,3 +21,21 @@ function cdgb() {
     echo "Not in a git repo."
   fi
 }
+
+function addKeychainPass(){
+  if ! [ "$1" ]; then
+    echo "Usage: addKeyChainPass VARIABLE"
+    return 1
+  fi
+  echo -n "Enter secret value: "
+  read -s value
+  security add-generic-password -a "$USER" -s "$1" -w "$value"
+}
+
+function setVariableFromKeychain() {
+  if ! [ "$1" ]; then
+    echo "Usage: setVariableFromKeychain VARIABLE"
+    return 1
+  fi
+  export "$1"=$(security find-generic-password -a "$USER" -s "$1" -w)
+}
