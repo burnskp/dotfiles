@@ -6,23 +6,19 @@ return {
 		for i = 2, #opts.sections.lualine_x do
 			table.insert(line_x, opts.sections.lualine_x[i])
 		end
-		return {
-			options = {
-				section_separators = "",
-				component_separators = "",
-			},
-			sections = {
-				lualine_a = {
-					{
-						"mode",
-						fmt = function(str)
-							return str:sub(1, 1)
-						end,
-					},
-				},
-				lualine_x = line_x,
-				lualine_z = {},
+		opts.options.section_separators = ""
+		opts.options.component_separators = ""
+		opts.sections.lualine_a = {
+			{
+				"mode",
+				fmt = function(str)
+					return str:sub(1, 1)
+				end,
 			},
 		}
+		opts.sections.lualine_x = line_x
+		opts.sections.lualine_y = { "progress" }
+		opts.sections.lualine_z = { "location" }
+		return opts
 	end,
 }
