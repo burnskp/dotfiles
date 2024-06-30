@@ -37,7 +37,6 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.ui.treesitter-context" },
 		{ import = "lazyvim.plugins.extras.util.dot" },
 		{ import = "lazyvim.plugins.extras.util.octo" },
-		{ import = "lazyvim.plugins.extras.vscode" },
 		{ import = "plugins" },
 	},
 	defaults = {
@@ -63,6 +62,4 @@ require("lazy").setup({
 	},
 })
 
-if not vim.g.vscode then
-	vim.cmd("Copilot disable")
-end
+vim.cmd("Copilot disable")

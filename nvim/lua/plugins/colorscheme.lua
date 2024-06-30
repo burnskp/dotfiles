@@ -1,9 +1,5 @@
 return {
 	"LazyVim/LazyVim",
-	cond = function()
-		return not vim.g.vscode
-	end,
-
 	dependencies = { { "tjdevries/colorbuddy.nvim", tag = "v1.0.0" }, "burnskp/cobalt2.nvim" },
 	opts = {
 		colorscheme = function()
