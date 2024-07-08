@@ -3,5 +3,6 @@
 vim.opt.clipboard = ""
 vim.opt.cursorline = false
 vim.opt.mouse = ""
+vim.opt.textwidth = 80
 vim.opt.title = true
 vim.opt.wrap = true
