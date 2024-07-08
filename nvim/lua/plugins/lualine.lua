@@ -2,10 +2,7 @@ return {
 	"nvim-lualine/lualine.nvim",
 	opts = function(_, opts)
 		-- This should remove the noice command output
-		local line_x = {}
-		for i = 2, #opts.sections.lualine_x do
-			table.insert(line_x, opts.sections.lualine_x[i])
-		end
+		table.remove(opts.sections.lualine_x, 1)
 		opts.options.section_separators = ""
 		opts.options.component_separators = ""
 		opts.sections.lualine_a = {
@@ -16,7 +13,6 @@ return {
 				end,
 			},
 		}
-		opts.sections.lualine_x = line_x
 		opts.sections.lualine_y = { "progress" }
 		opts.sections.lualine_z = { "location" }
 		return opts
