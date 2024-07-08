@@ -29,4 +29,14 @@ if [ $commands[rbenv] ]; then
   eval "$(rbenv init -)"
 fi
 
+if [[ /opt/homebrew/bin/brew ]]; then
+  path=(${path[@]/\/opt\/homebrew\/bin})
+  path=(${path[@]/\/opt\/homebrew\/sbin})
+  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+elif [[ /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+  path=(${path[@]/\/home\/linuxbrew\/.linuxbrew\/bin})
+  path=(${path[@]/\/home\/linuxbrew\/.linuxbrew\/sbin})
+  export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
+fi
+
 typeset -U PATH
