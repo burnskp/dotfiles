@@ -164,7 +164,18 @@ config.keys = {
 	{ key = "c", mods = "CMD", action = act.CopyTo("Clipboard") },
 	{ key = "c", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
 	{ key = "d", mods = "LEADER", action = act.ShowDebugOverlay },
-	{ key = "f", mods = "LEADER", action = act.QuickSelect },
+	{
+		key = "f",
+		mods = "LEADER",
+		action = act.QuickSelectArgs({
+			label = "paste",
+			action = wezterm.action_callback(function(window, pane)
+				local selection = window:get_selection_text_for_pane(pane)
+				pane:paste(selection)
+			end),
+		}),
+	},
+	{ key = "F", mods = "LEADER", action = act.QuickSelect },
 	{ key = "s", mods = "LEADER", action = act.Search("CurrentSelectionOrEmptyString") },
 	{ key = "n", mods = "LEADER", action = act.SpawnWindow },
 	{ key = "p", mods = "LEADER", action = act.PasteFrom("Clipboard") },
