@@ -13,8 +13,8 @@ return {
 				end,
 			},
 		}
-		opts.sections.lualine_y = { "progress" }
-		opts.sections.lualine_z = { "location" }
+		opts.sections.lualine_y = { "filetype" }
+		opts.sections.lualine_z = { "progress", "location" }
 		return opts
 	end,
 }
