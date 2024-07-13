@@ -75,4 +75,5 @@ if [ $commands[docker] ]; then
   alias drun='docker run'
   alias dexec='docker exec -it'
   alias dl='docker logs'
+  alias dstop='docker stop'
 fi

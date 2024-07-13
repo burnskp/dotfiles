@@ -54,23 +54,20 @@ local function bind_if(cond, key, mods, action)
 end
 
 wezterm.on("update-status", function(window)
-	window:set_right_status(
-		wezterm.format({ { Background = { Color = "#275D84" } }, { Text = " " .. hostname .. " " } })
-	)
+	window:set_right_status(wezterm.format({ {}, { Text = " " .. hostname .. " " } }))
 end)
 
-wezterm.on("format-tab-title", function(tab)
-	local number_background = "#7f7f7f"
-	local number_foreground = "#ffffff"
-	local background = "#1b1032"
-	local foreground = "#808080"
-	local title = tab_title(tab)
+wezterm.on("format-tab-title", function(tab, _, _, _, _, max_width)
+	local title = tostring(tab.tab_index + 1) .. ": " .. tab_title(tab)
 
-	if string.find(title, "^Copy mode:") then
+	local bar_background = "#0E3A59"
+	local background
+	local foreground
+	if string.find(title, "^[0-9]: Copy mode:") then
 		background = "#ffc600"
 		foreground = "#000000"
 	elseif tab.is_active then
-		background = "#1460D2"
+		background = "#0050A5"
 		foreground = "#ffffff"
 	else
 		background = "#275D84"
@@ -78,25 +75,29 @@ wezterm.on("format-tab-title", function(tab)
 	end
 
 	return {
-		{ Background = { Color = number_background } },
-		{ Foreground = { Color = number_foreground } },
-		{ Text = " " .. tab.tab_index + 1 .. " " },
+		{ Background = { Color = bar_background } },
+		{ Text = " " },
 		{ Background = { Color = background } },
 		{ Foreground = { Color = foreground } },
-		{ Text = " " .. title .. " " },
-		{ Background = { Color = "#193549" } },
-		{ Foreground = { Color = foreground } },
-		{ Text = " " },
+		{ Text = " " .. string.sub(title, 1, max_width - 3) .. " " },
 	}
 end)
 
 config.front_end = "WebGpu"
 config.window_decorations = "RESIZE"
+config.term = "wezterm"
 
 config.font = wezterm.font({
 	family = "DejaVuSansM Nerd Font Mono",
 })
-config.font_size = 22.0
+
+config.bold_brightens_ansi_colors = "No"
+
+if hostname == "cyberspace7" then
+	config.font_size = 14.0
+else
+	config.font_size = 22.0
+end
 
 config.command_palette_font_size = 20.0
 config.command_palette_fg_color = "#fefefe"
@@ -106,6 +107,9 @@ config.hide_tab_bar_if_only_one_tab = false
 config.show_new_tab_button_in_tab_bar = false
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
+config.tab_max_width = 20
+
+config.inactive_pane_hsb = {}
 
 config.adjust_window_size_when_changing_font_size = false
 config.audible_bell = "Disabled"
@@ -140,12 +144,14 @@ config.keys = {
 	{ key = "-", mods = "SHIFT|CTRL", action = act.DecreaseFontSize },
 	{ key = ";", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 	{ key = "=", mods = "SHIFT|CTRL", action = act.ResetFontSize },
-	{ key = "C", mods = "CMD", action = act.CopyTo("Clipboard") },
+	{ key = "C", mods = "SHIFT|CTRL", action = act.CopyTo("Clipboard") },
+	{ key = "Copy", mods = "NONE", action = act.CopyTo("Clipboard") },
 	{ key = "DownArrow", mods = "SHIFT|CTRL", action = act.AdjustPaneSize({ "Down", 1 }) },
 	{ key = "LeftArrow", mods = "SHIFT|CTRL", action = act.AdjustPaneSize({ "Left", 1 }) },
 	{ key = "P", mods = "SHIFT|CTRL", action = act.ActivateCommandPalette },
 	{ key = "PageDown", mods = "SHIFT", action = act.ScrollByPage(1) },
 	{ key = "PageUp", mods = "SHIFT", action = act.ScrollByPage(-1) },
+	{ key = "Paste", mods = "NONE", action = act.PasteFrom("Clipboard") },
 	{ key = "Q", mods = "LEADER", action = act.QuitApplication },
 	{ key = "RightArrow", mods = "SHIFT|CTRL", action = act.AdjustPaneSize({ "Right", 1 }) },
 	{
@@ -158,10 +164,10 @@ config.keys = {
 	bind_if(is_outside_vim, "l", "CTRL", act.ActivatePaneDirection("Right")),
 	bind_if(is_outside_vim, "j", "CTRL", act.ActivatePaneDirection("Down")),
 	bind_if(is_outside_vim, "k", "CTRL", act.ActivatePaneDirection("Up")),
-	{ key = "V", mods = "CMD", action = act.PasteFrom("Clipboard") },
+	{ key = "V", mods = "SHIFT|CTRL", action = act.PasteFrom("Clipboard") },
 	{ key = "[", mods = "LEADER", action = act.ActivateTabRelative(-1) },
 	{ key = "]", mods = "LEADER", action = act.ActivateTabRelative(1) },
-	{ key = "c", mods = "CMD", action = act.CopyTo("Clipboard") },
+	{ key = "c", mods = "SHIFT|CTRL", action = act.CopyTo("Clipboard") },
 	{ key = "c", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
 	{ key = "d", mods = "LEADER", action = act.ShowDebugOverlay },
 	{
@@ -177,6 +183,18 @@ config.keys = {
 	},
 	{ key = "F", mods = "LEADER", action = act.QuickSelect },
 	{ key = "s", mods = "LEADER", action = act.Search("CurrentSelectionOrEmptyString") },
+	{
+		key = "r",
+		mods = "LEADER",
+		action = act.PromptInputLine({
+			description = "Name:",
+			action = wezterm.action_callback(function(window, _, line)
+				if line then
+					window:active_tab():set_title(line)
+				end
+			end),
+		}),
+	},
 	{ key = "n", mods = "LEADER", action = act.SpawnWindow },
 	{ key = "p", mods = "LEADER", action = act.PasteFrom("Clipboard") },
 
@@ -196,8 +214,7 @@ config.keys = {
 		}),
 	},
 	{ key = "q", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
-	{ key = "r", mods = "LEADER", action = act.ReloadConfiguration },
-	{ key = "v", mods = "CMD", action = act.PasteFrom("Clipboard") },
+	{ key = "v", mods = "SHIFT|CTRL", action = act.PasteFrom("Clipboard") },
 	{ key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
 }
 
@@ -234,14 +251,12 @@ config.key_tables = {
 		{ key = "b", mods = "NONE", action = act.CopyMode("MoveBackwardWord") },
 		{ key = "b", mods = "ALT", action = act.CopyMode("MoveBackwardWord") },
 		{ key = "b", mods = "CTRL", action = act.CopyMode("PageUp") },
-		{ key = "c", mods = "CTRL", action = act.CopyMode("Close") },
 		{ key = "d", mods = "CTRL", action = act.CopyMode({ MoveByPage = 0.5 }) },
 		{ key = "e", mods = "NONE", action = act.CopyMode("MoveForwardWordEnd") },
 		{ key = "f", mods = "NONE", action = act.CopyMode({ JumpForward = { prev_char = false } }) },
 		{ key = "f", mods = "ALT", action = act.CopyMode("MoveForwardWord") },
 		{ key = "f", mods = "CTRL", action = act.CopyMode("PageDown") },
 		{ key = "g", mods = "NONE", action = act.CopyMode("MoveToScrollbackTop") },
-		{ key = "g", mods = "CTRL", action = act.CopyMode("Close") },
 		{ key = "h", mods = "NONE", action = act.CopyMode("MoveLeft") },
 		{ key = "j", mods = "NONE", action = act.CopyMode("MoveDown") },
 		{ key = "k", mods = "NONE", action = act.CopyMode("MoveUp") },
@@ -334,7 +349,7 @@ config.colors = {
 	quick_select_match_bg = { Color = "#275d84" },
 	quick_select_match_fg = { Color = "#fefefe" },
 
-	tab_bar = { background = "#193549" },
+	tab_bar = { background = "#0E3A59" },
 
 	ansi = {
 		"#000000",

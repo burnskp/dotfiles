@@ -5,13 +5,17 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
 
-if [[ /opt/homebrew/bin/brew ]]; then
+if [[ -f /opt/homebrew/bin/brew ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
-elif [[ /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+elif [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-export SSH_AUTH_SOCK="$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
+if [[ -S "$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh" ]]; then
+  export SSH_AUTH_SOCK="$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
+elif [[ -S $XDG_RUNTIME_DIR/gcr/ssh ]]; then
+  export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
+fi
 
 umask 022
 

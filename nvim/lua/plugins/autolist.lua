@@ -9,7 +9,6 @@ return {
 			"norg",
 		},
 		config = function()
-			vim.notify("hello")
 			require("autolist").setup()
 		end,
 		keys = {
