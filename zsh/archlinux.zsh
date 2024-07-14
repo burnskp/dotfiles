@@ -12,4 +12,5 @@ if [ "$(uname -o)" == "GNU/Linux" ] && grep -q Arch /etc/*release 2>&1 >/dev/nul
   alias paru="paru -S"
   alias parus="paru -Ss"
   alias paruu="paru -Su"
+  alias paruy="paru -Syu"
 fi
