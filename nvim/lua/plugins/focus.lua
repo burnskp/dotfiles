@@ -1,5 +1,5 @@
-local ignore_filetypes = { "aerial" }
-local ignore_buftypes = { "nofile", "prompt", "popup" }
+local ignore_filetypes = { "aerial", "neo-tree", "trouble" }
+local ignore_buftypes = { "prompt", "popup" }
 
 local augroup = vim.api.nvim_create_augroup("FocusDisable", { clear = true })
 
@@ -29,6 +29,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 return {
 	"nvim-focus/focus.nvim",
+	config = {},
 	opts = {
 		ui = {
 			cursorline = false,
