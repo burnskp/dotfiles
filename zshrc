@@ -14,7 +14,7 @@ fi
 for i in $HOME/git/dotfiles/zsh/plugins/*.zsh; do
   source "$i"
 done
-ZAQ_PREFIXES=('git commit -m' 'doing now' 'dn' 'task add')
+ZAQ_PREFIXES=('git commit -m' 'gcm' 'task add project:*' 'tap *')
 
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
