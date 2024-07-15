@@ -1,0 +1,10 @@
+[Unit]
+Description=modprobe mt7922
+After=sleep.target
+
+[Service]
+Type=simple
+ExecStart=-/usr/local/bin/mt7922-sleep.sh post
+
+[Install]
+WantedBy=sleep.target
