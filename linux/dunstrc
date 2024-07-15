@@ -1,5 +1,5 @@
 [global]
-    browser = chromium
+    browser = cachy-browser
     dmenu = /usr/bin/fuzzel -d -p dunst:
     follow = mouse
     font = "Symbols Nerd Font, Noto Color Emoji 12, DejaVu Sans Mono"
