@@ -4,17 +4,10 @@ typeset -a excluded_commands
 excluded_commands=('ls' 'cd' 'echo' 'pwd', 'git', 'cat', 'bat')
 
 function title-precmd() {
-  if  git rev-parse --show-toplevel >/dev/null 2>&1; then
-    GIT_BASE=$(basename $(git rev-parse --show-toplevel))
-    print -Pn "\e]2;GIT - ${(q)GIT_BASE}\a"
-  else
-    print -Pn "\e]2;${PWD/#$HOME/~}\a"
-  fi
-
   if [[ "$PWD" == "$HOME" ]]; then
-    print -n "\ek~\e\\"
+    print -n "\ekd:~\e\\"
   else
-    print -n "\ek${PWD##*/}\e\\"
+    print -n "\ekd:${PWD##*/}\e\\"
   fi
 }
 
@@ -67,7 +60,7 @@ ssh_with_title() {
     if [ "$TERM" == wezterm ]; then
       TERM=xterm
     fi
-    echo -ne "\033]0;$hostname\007"
+    echo -ne "\033]0;s:$hostname\007"
     command ssh "$@"
 }
 

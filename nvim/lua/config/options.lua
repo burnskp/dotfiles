@@ -6,3 +6,5 @@ vim.opt.mouse = ""
 vim.opt.textwidth = 80
 vim.opt.title = true
 vim.opt.wrap = true
+vim.opt.title = true
+vim.opt.titlestring = "n:%t"
