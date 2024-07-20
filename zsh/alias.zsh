@@ -79,6 +79,5 @@ if [ $commands[docker] ]; then
 fi
 
 if [ "$TERM" == "wezterm" ]; then
-  alias ssh="TERM=xterm ssh"
   alias wsh="wezterm ssh"
 fi
