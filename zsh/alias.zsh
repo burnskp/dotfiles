@@ -77,3 +77,8 @@ if [ $commands[docker] ]; then
   alias dl='docker logs'
   alias dstop='docker stop'
 fi
+
+if [ "$TERM" == "wezterm" ]; then
+  alias ssh="TERM=xterm ssh"
+  alias wsh="wezterm ssh"
+fi
