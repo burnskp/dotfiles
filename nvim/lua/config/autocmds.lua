@@ -13,3 +13,8 @@ vim.api.nvim_create_autocmd("VimEnter", {
 		end
 	end,
 })
+
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+	pattern = vim.fn.expand("~") .. "/exercism/*",
+	command = "Copilot disable",
+})
