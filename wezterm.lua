@@ -84,7 +84,6 @@ wezterm.on("format-tab-title", function(tab, _, _, _, _, max_width)
 end)
 
 config.front_end = "WebGpu"
-config.window_decorations = "RESIZE"
 config.term = "wezterm"
 
 config.font = wezterm.font({
@@ -93,10 +92,11 @@ config.font = wezterm.font({
 
 config.bold_brightens_ansi_colors = "No"
 
-if hostname == "cyberspace7" then
-	config.font_size = 14.0
+if hostname == "m16" or hostname == "cyberspace7" then
+	config.font_size = 12.0
 else
 	config.font_size = 22.0
+	config.window_decorations = "RESIZE"
 end
 
 config.command_palette_font_size = 20.0
@@ -140,8 +140,8 @@ config.keys = {
 	{ key = "Space", mods = "LEADER|CTRL", action = act.ActivateCopyMode },
 	{ key = "#", mods = "CTRL", action = act.ActivateTab(2) },
 	{ key = "'", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-	{ key = "+", mods = "SHIFT|CTRL", action = act.IncreaseFontSize },
-	{ key = "-", mods = "SHIFT|CTRL", action = act.DecreaseFontSize },
+	{ key = "=", mods = "LEADER", action = act.IncreaseFontSize },
+	{ key = "-", mods = "LEADER", action = act.DecreaseFontSize },
 	{ key = ";", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 	{ key = "=", mods = "SHIFT|CTRL", action = act.ResetFontSize },
 	{ key = "C", mods = "SHIFT|CTRL", action = act.CopyTo("Clipboard") },
