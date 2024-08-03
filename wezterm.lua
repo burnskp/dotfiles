@@ -92,10 +92,8 @@ config.font = wezterm.font({
 
 config.bold_brightens_ansi_colors = "No"
 
-if hostname == "m16" then
-	config.font_size = 12.0
-elseif hostname == "cyberspace7" then
-	config.font_size = 14.0
+if hostname == "cyberspace7" then
+	config.font_size = 13.0
 else
 	config.font_size = 22.0
 	config.window_decorations = "RESIZE"
