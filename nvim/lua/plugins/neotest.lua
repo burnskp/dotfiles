@@ -18,11 +18,18 @@ return {
 			desc = "Run All Test Files",
 		},
 		{
-			"<leader>to",
+			"<leader>tO",
 			function()
 				require("neotest").output.open({ enter = true, auto_close = true, last_run = true })
 			end,
 			desc = "Show Output",
+		},
+		{
+			"<leader>to",
+			function()
+				require("neotest").output_panel.toggle()
+			end,
+			desc = "Toggle Output Panel",
 		},
 	},
 }
