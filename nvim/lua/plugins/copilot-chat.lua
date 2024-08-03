@@ -1,7 +1,6 @@
 return {
 	"CopilotC-Nvim/CopilotChat.nvim",
 	opts = {
-		model = "gpt-4o-2024-05-13",
 		mappings = {
 			reset = {
 				normal = "<C-r>",
@@ -20,7 +19,19 @@ return {
 				})
 			end,
 			desc = "Toggle (CopilotChat)",
-			mode = { "n", "v" },
+			mode = { "n" },
+		},
+		{
+			"<leader>aa",
+			function()
+				return require("CopilotChat").open({
+					selection = function(source)
+						return require("CopilotChat.select").visual(source) or nil
+					end,
+				})
+			end,
+			desc = "Toggle (CopilotChat)",
+			mode = { "v" },
 		},
 		{
 			"<leader>ad",
