@@ -3,6 +3,7 @@ return {
 	opts = function(_, opts)
 		-- This should remove the noice command output
 		table.remove(opts.sections.lualine_x, 1)
+		table.insert(opts.sections.lualine_c, 1, "overseer")
 		opts.options.section_separators = ""
 		opts.options.component_separators = ""
 		opts.sections.lualine_a = {
