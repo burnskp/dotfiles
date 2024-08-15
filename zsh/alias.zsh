@@ -81,3 +81,5 @@ fi
 if [ "$TERM" == "wezterm" ]; then
   alias wsh="wezterm ssh"
 fi
+
+hash -d g="$HOME/exercism/go"
