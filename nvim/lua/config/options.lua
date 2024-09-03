@@ -8,3 +8,9 @@ vim.opt.title = true
 vim.opt.wrap = true
 vim.opt.title = true
 vim.opt.titlestring = "n:%t"
+
+vim.filetype.add({
+	extension = {
+		lic = "ruby",
+	},
+})
