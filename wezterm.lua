@@ -157,6 +157,7 @@ config.keys = {
 	{ key = "PageUp", mods = "SHIFT", action = act.ScrollByPage(-1) },
 	{ key = "Paste", mods = "NONE", action = act.PasteFrom("Clipboard") },
 	{ key = "Q", mods = "LEADER", action = act.QuitApplication },
+	{ key = "q", mods = "CMD", action = act.QuitApplication },
 	{ key = "RightArrow", mods = "SHIFT|CTRL", action = act.AdjustPaneSize({ "Right", 1 }) },
 	{
 		key = "U",
@@ -334,14 +335,14 @@ config.mouse_bindings = {
 }
 
 config.colors = {
-	foreground = "#fefefe",
+	foreground = "#f0f0f0",
 	background = "#193549",
 
 	cursor_bg = "#ffc600",
 	cursor_border = "#ffc600",
 	compose_cursor = "#1478db",
 
-	selection_fg = "#fefefe",
+	selection_fg = "#f0f0f0",
 	selection_bg = "#275d84",
 
 	split = "#1460d2",
