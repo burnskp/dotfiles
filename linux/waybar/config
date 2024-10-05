@@ -52,9 +52,8 @@
     ]
   },
   "memory": {
-    "format-icons": "",
     "interval": 30,
-    "format": "{icon}  {}%",
+    "format": "  {}%",
     "max-length": 10
   },
   "disk": {
