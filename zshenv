@@ -5,6 +5,10 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
 
+if [ -z $DISPLAY ]; then 
+  export DISPLAY=:0.0
+fi
+
 if [[ -f /opt/homebrew/bin/brew ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 elif [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then

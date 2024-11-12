@@ -3,9 +3,6 @@ tap "homebrew/bundle"
 tap "homebrew/services"
 brew "bat"
 brew "bat-extras"
-brew "docker"
-brew "docker-buildx"
-brew "docker-compose"
 brew "dos2unix"
 brew "exercism"
 brew "eza"
@@ -72,4 +69,3 @@ mas "Reeder", id: 1529448980
 mas "Screens 5", id: 1663047912
 mas "Slack", id: 803453959
 mas "Tailscale", id: 1475387142
-mas "UTM", id: 1538878817

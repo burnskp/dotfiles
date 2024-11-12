@@ -20,8 +20,8 @@ if brew autoupdate status | grep -q 'Autoupdate is not configured'; then
   brew autoupdate start
 fi
 
-mkdir -p ~/.docker/cli-plugins
-linkFile "$(brew --prefix)/bin/docker-buildx" ~/.docker/cli-plugins/docker-buildx
+#mkdir -p ~/.docker/cli-plugins
+#linkFile "$(brew --prefix)/bin/docker-buildx" ~/.docker/cli-plugins/docker-buildx
 
 mkdir -p ~/.local/share
 

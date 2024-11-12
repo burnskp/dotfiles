@@ -94,8 +94,8 @@ config.bold_brightens_ansi_colors = "No"
 
 if hostname == "cyberspace7" then
 	config.font_size = 14.0
-elseif hostname == "mbp" then
-	config.font_size = 20.0
+elseif hostname ~= "MBP" then
+	config.font_size = 21.0
 	config.window_decorations = "RESIZE"
 else
 	config.font_size = 22.0
@@ -106,7 +106,7 @@ config.command_palette_font_size = 20.0
 config.command_palette_fg_color = "#fefefe"
 config.command_palette_bg_color = "#0d3a58"
 
-config.hide_tab_bar_if_only_one_tab = false
+config.hide_tab_bar_if_only_one_tab = true
 config.show_new_tab_button_in_tab_bar = false
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
