@@ -124,6 +124,7 @@ config.use_dead_keys = false
 
 config.quick_select_patterns = {
 	"[a-z]+(?:-[a-z0-9]+)+-[a-z0-9]+",
+	"\\d+-\\d+-\\d+_\\d+-\\d+-\\d+\\.(?:log|xml)",
 }
 
 config.leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 2000 }
