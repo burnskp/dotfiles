@@ -45,15 +45,22 @@ fi
 
 if  [ $commands[colima] ]; then
   if [[ $(($(sysctl -n hw.memsize) / 1024 / 1024 / 1024 )) -ge 64 ]]; then
-    alias cs='colima start --arch aarch64 --vm-type=vz --vz-rosetta --cpu 12 --memory 32'
+    mem=32
+    cpu=12
   else
-    alias cs='colima start --arch aarch64 --vm-type=vz --vz-rosetta --cpu 2 --memory 4'
+    mem=4
+    cpu=4
+  fi
+  if [[ $(uname -m) == "x86_64" ]]; then
+    alias cs="colima start --arch aarch64 --vm-type=vz --cpu $cpu --memory $mem"
+  else
+    alias cs="colima start --arch aarch64 --vm-type=vz --vz-rosetta --cpu $cpu --memory $mem"
   fi
   alias cstop='colima stop'
 fi
 
 if  [ $commands[gsed] ]; then
-alias sed='gsed'
+  alias sed='gsed'
 fi
 
 if  [ $commands[talosctl] ]; then

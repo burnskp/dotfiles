@@ -11,6 +11,8 @@ fi
 
 if [[ -f /opt/homebrew/bin/brew ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -f /usr/local/bin/brew ]]; then
+  eval "$(/usr/local/bin/brew shellenv)"
 elif [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
@@ -64,6 +66,7 @@ export GOBIN=$GOPATH/bin
 path+="${GOBIN}"
 path+="${HOME}/.yarn/bin"
 path+="${HOME}/.cargo/bin"
+path+="/usr/local/sbin"
 path=("${HOME}/bin" "${HOME}/.local/bin" "${HOME}/.krew/bin" $path)
 
 for i in ${HOME}/.local/share/gem/ruby/*; do
