@@ -2,7 +2,9 @@ return {
 	{
 		"saghen/blink.cmp",
 		opts = function(_, opts)
-			opts.highlights = {}
+			opts.completion.menu = {
+				winblend = 0,
+			}
 			opts.keymap = {
 				["<C-d>"] = { "show", "show_documentation", "hide_documentation" },
 				["<C-e>"] = { "hide", "fallback" },
@@ -21,7 +23,7 @@ return {
 							return cmp.select_and_accept()
 						end
 					end,
-					"snippet_forward",
+					LazyVim.cmp.map({ "snippet_forward", "ai_accept" }),
 					"fallback",
 				},
 				["<S-Tab>"] = { "snippet_backward", "fallback" },

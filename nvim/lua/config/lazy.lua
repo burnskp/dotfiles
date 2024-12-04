@@ -14,6 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
 	{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
+	{ import = "lazyvim.plugins.extras.coding.blink" },
 	{ import = "lazyvim.plugins.extras.coding.mini-comment" },
 	{ import = "lazyvim.plugins.extras.coding.mini-surround" },
 	{ import = "lazyvim.plugins.extras.coding.yanky" },
