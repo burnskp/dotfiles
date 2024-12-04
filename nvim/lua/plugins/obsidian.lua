@@ -4,8 +4,6 @@ return {
 		optional = true,
 		opts = function(_, opts)
 			table.insert(opts.spec, { "<leader>n", group = "+obsidian" })
-			table.insert(opts.spec, { "<leader>nt", group = "tech vault" })
-			table.insert(opts.spec, { "<leader>nm", group = "main vault" })
 		end,
 	},
 	{
@@ -13,8 +11,8 @@ return {
 		version = "*",
 		lazy = true,
 		event = {
-			"BufReadPre " .. vim.fn.expand("~/.local/share/obsidian/**.md"),
-			"BufNewFile " .. vim.fn.expand("~/.local/share/obsidian/**.md"),
+			"BufReadPre " .. vim.fn.expand("~/Library/Mobile Documents/iCloud~md~obsidian/Documents/main"),
+			"BufNewFile " .. vim.fn.expand("~/Library/Mobile Documents/iCloud~md~obsidian/Documents/main"),
 		},
 		cmd = {
 			"ObsidianOpen",
@@ -32,10 +30,11 @@ return {
 			"nvim-lua/plenary.nvim",
 		},
 		opts = {
+			ui = { enable = false },
 			workspaces = {
 				{
 					name = "main",
-					path = "~/.local/share/obsidian/main",
+					path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/main",
 				},
 			},
 			daily_notes = {
