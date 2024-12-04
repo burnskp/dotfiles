@@ -2,7 +2,7 @@ return {
 	{
 		"lukas-reineke/virt-column.nvim",
 		opts = {
-			virtcolumn = "+1,120",
+			virtcolumn = "81,121",
 			highlight = "VirtColumn",
 		},
 		config = function(_, opts)
