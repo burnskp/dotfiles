@@ -87,6 +87,5 @@ mas "Reeder", id: 1529448980
 mas "Screens 5", id: 1663047912
 mas "Slack", id: 803453959
 mas "Tailscale", id: 1475387142
-mas "Vimari", id: 1480933944
 mas "Windows App", id: 1295203466
 mas "Wipr", id: 1662217862
