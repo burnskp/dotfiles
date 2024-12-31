@@ -124,6 +124,7 @@ config.use_dead_keys = false
 
 config.quick_select_patterns = {
 	"[a-z]+(?:-[a-z0-9]+)+-[a-z0-9]+",
+	"[a-z]+(?:-[a-z0-9]{5})",
 	"\\d+-\\d+-\\d+_\\d+-\\d+-\\d+\\.(?:log|xml)",
 }
 
