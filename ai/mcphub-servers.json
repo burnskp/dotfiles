@@ -1,0 +1,35 @@
+{
+  "mcpServers": {
+    "Context7": {
+      "timeout": 60,
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "context7-mcp"
+      ],
+      "transportType": "stdio"
+    },
+    "sequentialthinking": {
+      "command": "docker",
+      "args": [
+        "run",
+        "--rm",
+        "-i",
+        "mcp/sequentialthinking"
+      ]
+    },
+    "memory": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "-v",
+        "mcp-memory:/app/dist",
+        "--rm",
+        "mcp/memory"
+      ]
+    }
+  }
+}

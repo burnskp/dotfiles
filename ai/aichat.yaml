@@ -1,0 +1,14 @@
+stream: true
+light_theme: true
+model: copilot:gpt-4.1
+clients:
+- type: openai-compatible
+  name: copilot
+  api_key: PLACEHOLDER
+  api_base: https://api.githubcopilot.com
+  patch:
+    chat_completions:
+      '.*':
+        headers:
+          Copilot-Integration-Id: vscode-chat
+          Editor-Version: aichat/0.1.0  # optional
