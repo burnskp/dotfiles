@@ -1,0 +1,5 @@
+#!/bin/bash
+source $HOME/.config/i3/colors
+icon='\uf0a0'
+disk=$(btrfs fi usage / 2>/dev/null| grep 'Free (estimated)' | awk '{print $3}')
+echo -e "<span foreground='$foreground' background='$background'>  ${icon} ${disk} </span><span font='8'>  </span>"

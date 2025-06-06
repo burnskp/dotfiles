@@ -1,0 +1,17 @@
+#!/bin/bash
+source $HOME/.config/i3/colors
+
+volcmd=$(amixer -c0 sget Master 2>/dev/null)
+
+playback=$(echo "$volcmd" | awk '/%/ {gsub(/[\[\]]/,""); print $6}')
+
+if [[ $playback == off ]]; then
+	volume=MUTE
+	icon='\uf6a9'
+
+else
+	volume=$(echo "$volcmd" | awk '/%/ {gsub(/[\[\]]/,""); print $4}')
+	icon='\uf028'
+fi
+
+echo -e "<span foreground='$foreground' background='$background'>  $icon $volume </span><span font='8'>  </span>"

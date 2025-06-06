@@ -1,0 +1,7 @@
+#!/bin/env bash
+source $HOME/.config/i3/colors
+
+#memorypercentage="$(| awk '{printf "%.1f%%", $3/$2*100}')"
+memoryfree="$(xl info | grep free_mem | awk '{printf "%.2fG", $3/1024}')"
+
+echo -e "<span foreground='$foreground' background='$background'>  \uf538 $memoryfree </span><span font='8'>  </span>"

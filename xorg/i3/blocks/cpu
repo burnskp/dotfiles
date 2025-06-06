@@ -1,0 +1,33 @@
+#!/bin/bash
+source $HOME/.config/i3/colors
+
+load=$(xenpm start 1 | awk 'BEGIN { sum=0; tot=0 } \
+	/^  C0/ { tot++; sum+=$2 } \
+	END { printf("%3.2f%%", sum/tot/10) }')
+
+cpuusage=$(printf "%6s" "${load}")
+
+
+echo -e "<span foreground='$foreground' background='$background'>  \uf2db $cpuusage </span><span font='8'>  </span>"
+
+
+left=true
+if [[ "$BLOCK_BUTTON" ]]; then
+  body=""
+  while IFS= read -r line; do
+    if [[ $line =~ ^CPU([0-9]+): ]]; then
+      cpu_num=${BASH_REMATCH[1]}
+    elif [[ $line =~ ^\ +C0 ]]; then
+      percentage=$(echo "$line" | sed 's/.*(\(.*\)).*/\1/')
+      if [[ "$left" == true ]]; then
+      body+="$(printf "%2s: %7s  " ${cpu_num} ${percentage})"
+      left=false
+      else
+      body+="$(printf "%2s: %7s" ${cpu_num} ${percentage})"
+      body+="\n"
+      left=true
+      fi
+    fi
+  done <<< $(xenpm start 1)
+  notify-send "CPU Info" "$body"
+fi

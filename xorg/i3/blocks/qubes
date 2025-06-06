@@ -1,0 +1,5 @@
+#!/bin/sh
+source $HOME/.config/i3/colors
+
+qubes=$(qvm-ls --no-spinner  | grep Running | wc -l)
+echo "<span foreground='$foreground' background='$background'> Q </span><span foreground='$foreground' background='$background'> $qubes </span><span font='8'>  </span>"

@@ -1,0 +1,5 @@
+#!/bin/sh
+source $HOME/.config/i3/colors
+
+date="$(date +%l:%M)"
+echo -e "<span foreground='$foreground' background='$background'>  \uf017 $date </span>"

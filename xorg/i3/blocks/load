@@ -1,0 +1,11 @@
+#!/bin/bash
+source $HOME/.config/i3/colors
+
+load=$(uptime | sed 's/.*average: //')
+temp="$(sensors | grep "CPU temp:" | awk '{print $3}' | tr -d '°+')"
+
+if [[ "$temp" ]]; then
+  echo "<span foreground='$foreground' background='$background' > L </span><span foreground='$foreground' background='$background'> $load </span><span font='8'>  </span><span foreground='$foreground' background='$background'> T </span><span foreground='$foreground' background='$background'> $temp </span><span font='8'>  </span>"
+else
+  echo "<span foreground='$foreground' background='$background'> L </span><span foreground='$foreground' background='$background'> $load </span><span font='8'>  </span>"
+fi

@@ -1,0 +1,297 @@
+set $rosewater #dc8a78
+set $flamingo #dd7878
+set $pink #ea76cb
+set $mauve #8839ef
+set $red #d20f39
+set $maroon #e64553
+set $peach #fe640b
+set $yellow #df8e1d
+set $green #40a02b
+set $teal #179299
+set $sky #04a5e5
+set $sapphire #209fb5
+set $blue #1e66f5
+set $lavender #7287fd
+set $text #4c4f69
+set $subtext1 #5c5f77
+set $subtext0 #6c6f85
+set $overlay2 #7c7f93
+set $overlay1 #8c8fa1
+set $overlay0 #9ca0b0
+set $surface2 #acb0be
+set $surface1 #bcc0cc
+set $surface0 #ccd0da
+set $base #eff1f5
+set $mantle #e6e9ef
+set $crust #dce0e8
+
+set $mod Mod4
+set $hyper Mod3
+
+font pango:DejaVu Sans Mono, Font Awesome 6 Free 13
+
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -i /usr/share/wallpapers/Qubes_Plum/contents/images/1920x1200.png
+
+for_window [class="^.*"] border pixel 4
+
+for_window [class="Qubes-update-gui"] floating enable
+for_window [class="zenity"] floating enable
+for_window [class="lxqt-openssh-askpass"] floating enable
+for_window [class="Dunst"] floating enable
+for_window [class="Lich.rbw"] floating enable
+
+# Use pactl to adjust volume in PulseAudio.
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# Echo to sys backlight for brightness - normal brightness controls aren't working in Qubes 4.3
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5
+
+#class                  #qube   #border   #background #text #indicator #child_border
+client.focused          dom0    $base  $base  $text  $rosewater $base
+client.focused_inactive dom0    $crust $crust $text  $rosewater $crust
+client.unfocused        dom0    $crust $crust $text  $rosewater $crust
+client.placeholder      dom0    $base  $base  $text  $overlay0  $base
+client.background       dom0    $base
+
+client.focused          red    $red    $red    $base  $rosewater $red
+client.focused_inactive red    $maroon $maroon $base  $rosewater $maroon
+client.unfocused        red    $maroon $maroon $base  $rosewater $maroon
+client.placeholder      red    $red    $red    $base  $overlay0  $red
+client.background       red    $red
+
+client.focused          orange  $peach     $peach     $base  $rosewater $peach
+client.focused_inactive orange  $rosewater $rosewater $base  $rosewater $rosewater
+client.unfocused        orange  $rosewater $rosewater $base  $rosewater $rosewater
+client.placeholder      orange  $peach     $peach     $base  $overlay0  $peach
+client.background       orange  $peach
+
+client.focused          yellow  $yellow   $yellow   $text  $rosewater $yellow
+client.focused_inactive yellow  $flamingo $flamingo $text  $rosewater $flamingo
+client.unfocused        yellow  $flamingo $flamingo $text  $rosewater $flamingo
+client.placeholder      yellow  $yellow   $yellow   $text  $overlay0  $yellow
+client.background       yellow  $yellow
+
+client.focused          green   $green $green  $text  $rosewater $green
+client.focused_inactive green   $teal  $teal   $text  $rosewater $teal
+client.unfocused        green   $teal  $teal   $text  $rosewater $teal
+client.placeholder      green   $green $green  $text  $overlay0  $green
+client.background       green   $yellow
+
+client.focused          gray    $surface0 $surface0 $text  $rosewater $lavender
+client.focused_inactive gray    $surface2 $surface2 $text  $rosewater $overlay0
+client.unfocused        gray    $surface2 $surface2 $text  $rosewater $overlay0
+client.placeholder      gray    $surface0 $surface0 $text  $overlay0  $overlay0
+client.background       gray    $surface0
+
+client.focused          blue    $blue     $blue     $base  $rosewater $blue
+client.focused_inactive blue    $sapphire $sapphire $base  $rosewater $sapphire
+client.unfocused        blue    $sapphire $sapphire $base  $rosewater $sapphire
+client.placeholder      blue    $blue     $blue     $base  $overlay0  $blue
+client.background       blue    $blue
+
+client.focused          purple  $mauve    $mauve    $base  $rosewater $mauve
+client.focused_inactive purple  $lavender $lavender $base  $rosewater $lavender
+client.unfocused        purple  $lavender $lavender $base  $rosewater $lavender
+client.placeholder      purple  $mauve    $mauve    $base  $overlay0  $mauve
+client.background       purple  $mauve
+
+client.focused          black   $text     $text     $base  $rosewater $text
+client.focused_inactive black   $subtext0 $subtext0 $base  $rosewater $subtext0
+client.unfocused        black   $subtext0 $subtext0 $base  $rosewater $subtext0
+client.placeholder      black   $text     $text     $base  $overlay0  $text
+client.background       black   $text
+
+client.urgent           dom0    $red $yellow $base $red
+client.urgent           red     $red $yellow $base $red
+client.urgent           orange  $red $yellow $base $red
+client.urgent           yellow  $red $yellow $base $red
+client.urgent           green   $red $yellow $base $red
+client.urgent           gray    $red $yellow $base $red
+client.urgent           blue    $red $yellow $base $red
+client.urgent           purple  $red $yellow $base $red
+client.urgent           black   $red $yellow $base $red
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal in the domain of the currently active window
+bindsym $mod+Return exec qubes-i3-sensible-terminal
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start rofi (a program launcher)
+bindsym $mod+r exec rofi -show drun
+
+
+# Application shortcuts
+bindsym $hyper+l exec i3lock --nofork -i /usr/share/wallpapers/Qubes_Blackcurrant/contents/images/1920x1200.png
+bindsym $hyper+F12 exec systemctl power
+bindsym $mod+m exec qubes-qube-manager
+
+# bindsym $hyper+a exec pavucontrol
+# off
+# bindsym $mod+x exec --no-startup-id zsh
+#  -c "$HOME/bin/rofi-task"
+#  bindsym Print exec --no-startup-id scro
+#  t -e 'mv $f ~/pictures/screenshots/ 2>/dev/null
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# split in horizontal orientation
+bindsym $mod+semicolon split h
+
+# split in vertical orientation
+bindsym $mod+apostrophe split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle sticky windows
+bindsym $mod+Shift+s sticky toggle
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+workspace_layout tabbed
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $hyper+r mode "resize"
+
+# Assign clients to specific workspaces
+
+assign [class="^dev:"] $ws1
+
+assign [class="Brave-browser"] $ws2
+assign [class="Mullvad Browser"] $ws2
+assign [class="qutebrowser"] $ws2
+assign [class="^browser:"] $ws2
+
+assign [class="^discord:"] $ws3
+assign [class="^signal:"] $ws3
+assign [class="^matrix:"] $ws3
+
+assign [class="Qube Manager"] $ws5
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+        status_command i3blocks
+        position top
+        modifier none
+        #mode hide
+        hidden_state hide
+
+        colors
+	{
+            background $surface0
+            statusline $subtext0
+
+            #class             #border    #backgr   #text
+            focused_workspace  $surface0  $subtext0 $base
+            active_workspace   $surface0  $surface1 $text
+            inactive_workspace $surface0  $surface2 $text
+            urgent_workspace   $surface0  $red      $base
+        }
+}
+
+# Make sure all xdg autostart entries are started, this is (among other things)
+# necessary to make sure transient vm's come up
+exec --no-startup-id qubes-i3-xdg-autostart
+
+exec xrandr --dpi 120 --output eDP-1
+exec --no-startup-id dispwin -I /home/user/.config/i3/laptop.icc
+exec --no-startup-id feh --bg-fill /usr/share/wallpapers/Qubes_Chemtrail/contents/images/1920x1200.png
+
+exec --no-startup-id xinput set-prop "FTCS1000:00 2808:0101 Touchpad" "libinput Tapping Enabled" 1
+exec --no-startup-id xinput set-prop "FTCS1000:00 2808:0101 Touchpad" "libinput Accel Speed" .25
+exec --no-startup-id xinput set-prop "FTCS1000:00 2808:0101 Touchpad" "libinput Natural Scrolling Enabled" 1
+
+exec --no-startup-id xmodmap ~/.Xmodmap
+exec --no-startup-id /home/user/bin/xcape -e 'Control_R=Escape;Super_R=Tab'
+exec --no-startup-id unclutter
+exec --no-startup-id xset b off
+exec --no-startup-id picom
