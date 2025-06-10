@@ -1,0 +1,33 @@
+#!/bin/zsh
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+
+# My dotfiles
+for i in $HOME/.zsh/*.zsh; do
+  source "$i"
+done
+
+if [ -f "$HOME/.zshrc_local" ]; then
+  source ~/.zshrc_local
+fi
+
+for i in $HOME/.zsh/plugins/*.zsh; do
+  source "$i"
+done
+ZAQ_PREFIXES=('git commit -m' 'gcm' 'task add project:*' 'tap *')
+
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+for i in $HOME/.zsh/plugins/last/*.zsh; do
+  source "$i"
+done
+
+if [ $commands[rbenv] ]; then
+  eval "$(rbenv init -)"
+fi
+
+typeset -U PATH
