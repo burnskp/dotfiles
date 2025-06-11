@@ -11,37 +11,29 @@ local custom_callback = function(window, pane, id, _)
     wezterm.action.SwitchToWorkspace({ name = name, spawn = { cwd = id, args = { "zsh", "-lc", "nvim" } } }), pane)
 end
 
+local color_prefix
+local color_repo
+if wezterm.gui.get_appearance() == "Dark" then
+  color_prefix = "#8bd5ca"
+  color_repo = "#cad3f5"
+else
+  color_prefix = "#179299"
+  color_repo = "#4c4f69"
+end
+
 
 local schema = {
   options = { callback = history.Wrapper(custom_callback) },
   {
-    wezterm.home_dir .. "/git/dotfiles",
+    sessionizer.FdSearch { wezterm.home_dir .. "/git", max_depth = 3 },
     processing = sessionizer.for_each_entry(function(entry)
+      -- Extract just the first directory after git
+      local prefix = entry.id:gsub(wezterm.home_dir .. "/git/", ""):match("^([^/]+)")
       entry.label = wezterm.format {
-        { Foreground = { Color = "#1478db" } },
-        { Text = "dotfiles" },
-      }
-    end)
-  },
-  {
-    sessionizer.FdSearch { wezterm.home_dir .. "/git/aicloud", max_depth = 2 },
-    processing = sessionizer.for_each_entry(function(entry)
-      entry.label = wezterm.format {
-        { Foreground = { Color = "#33ff00" } },
-        { Text = "aicloud: " },
-        { Foreground = { Color = "#f0f0f0" } },
-        { Text = entry.id:gsub(wezterm.home_dir .. "/git/aicloud/", "") },
-      }
-    end)
-  },
-  {
-    sessionizer.FdSearch { wezterm.home_dir .. "/git/tp", max_depth = 2 },
-    processing = sessionizer.for_each_entry(function(entry)
-      entry.label = wezterm.format {
-        { Foreground = { Color = "#00ffff" } },
-        { Text = "third-party: " },
-        { Foreground = { Color = "#f0f0f0" } },
-        { Text = entry.id:gsub(wezterm.home_dir .. "/git/tp/", "") }
+        { Foreground = { Color = color_prefix } },
+        { Text = prefix .. ": " },
+        { Foreground = { Color = color_repo } },
+        { Text = entry.id:gsub(wezterm.home_dir .. "/git/" .. prefix .. "/", "") },
       }
     end)
   },
@@ -49,9 +41,9 @@ local schema = {
     sessionizer.FdSearchDir { wezterm.home_dir .. "/projects", max_depth = 1 },
     processing = sessionizer.for_each_entry(function(entry)
       entry.label = wezterm.format {
-        { Foreground = { Color = "#1478db" } },
+        { Foreground = { Color = color_prefix } },
         { Text = "project: " },
-        { Foreground = { Color = "#f0f0f0" } },
+        { Foreground = { Color = color_repo } },
         { Text = entry.id:gsub(wezterm.home_dir .. "/projects/", "") }
       }
     end)
