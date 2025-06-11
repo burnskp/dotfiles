@@ -91,5 +91,16 @@ fi
 
 hash -d g="$HOME/exercism/go"
 
-alias za='cd ~/git/aicloud/$(find ~/git/aicloud -type d -mindepth 1 -maxdepth 1 -not -path "*/\.*" | sed "s|.*/git/aicloud/||" | fzf)'
 alias zp='cd ~/projects/$(find ~/projects -type d -mindepth 1 -maxdepth 1 -not -path "*/\.*" | sed "s|.*/projects/||" | fzf)'
+
+if [[ $commands[chezmoi] ]]; then
+  alias cma="chezmoi add"
+  alias cmap="chezmoi apply"
+  alias cmd="chezmoi diff"
+  alias cme="chezmoi edit"
+  alias cmm="chezmoi merge"
+  alias cmr="chezmoi cd"
+  alias cms="chezmoi status"
+  alias cmu="chezmoi update"
+  alias cmum="chezmoi unmanaged"
+fi

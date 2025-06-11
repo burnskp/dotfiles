@@ -1,3 +1,36 @@
+local pick_chezmoi = function()
+  local results = require("chezmoi.commands").list({
+    args = {
+      "--path-style",
+      "absolute",
+      "--include",
+      "files",
+      "--exclude",
+      "externals",
+    },
+  })
+  local items = {}
+
+  for _, czFile in ipairs(results) do
+    table.insert(items, {
+      text = czFile,
+      file = czFile,
+    })
+  end
+
+  local opts = {
+    items = items,
+    confirm = function(picker, item)
+      picker:close()
+      require("chezmoi.commands").edit({
+        targets = { item.text },
+        args = { "--watch" },
+      })
+    end,
+  }
+  Snacks.picker.pick(opts)
+end
+
 return {
   "folke/snacks.nvim",
   priority = 1000,
@@ -16,6 +49,7 @@ return {
         ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
         ]],
         keys = {
+          { icon = " ", key = "c", desc = "Config", action = pick_chezmoi },
           { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
           { icon = " ", key = "e", desc = "New File", action = ":ene | startinsert" },
           { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
@@ -92,6 +126,7 @@ return {
       { "<leader>fT", function() Snacks.explorer.colorschemes() end,                                                                                             desc = "Colorschemes" },
       { "<leader>fP", function() Snacks.picker.projects() end,                                                                                                   desc = "Recent Projects" },
       { "<leader>fp", function() Snacks.picker.projects({ dev = { "/data/git/burnskp", "/data/git/iac-templates", "/data/git/projects" }, recent = false }) end, desc = "Projects" },
+      { "<leader>fz", pick_chezmoi,                                                                                                                              desc = "Chezmoi" },
       { "<leader>gL", function() Snacks.picker.git_log_line() end,                                                                                               desc = "Git Log Line" },
       { "<leader>gS", function() Snacks.picker.git_stash() end,                                                                                                  desc = "Git Stash" },
       { "<leader>gr", function() Snacks.picker.git_branches() end,                                                                                               desc = "Git Branches" },
