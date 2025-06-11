@@ -94,10 +94,10 @@ alias zp='cd ~/projects/$(find ~/projects -type d -mindepth 1 -maxdepth 1 -not -
 if [[ $commands[chezmoi] ]]; then
   alias cha="chezmoi add"
   alias chap="chezmoi apply"
+  alias chcd="chezmoi cd"
   alias chd="chezmoi diff"
   alias che="chezmoi edit"
   alias chm="chezmoi merge"
-  alias chr="chezmoi cd"
   alias chs="chezmoi status"
   alias chu="chezmoi update"
   alias chum="chezmoi unmanaged"
