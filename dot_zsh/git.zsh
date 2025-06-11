@@ -1,6 +1,3 @@
-#!/bin/zsh
-
-# git aliases
 alias ga="git add"
 alias gac="git commit -a "
 alias gacm="git commit -a -m"

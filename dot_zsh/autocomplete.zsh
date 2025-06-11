@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 FPATH="$HOME/git/dotfiles/zsh/completions:$FPATH"
 FPATH="/opt/homebrew/share/zsh-completions:$FPATH"
 FPATH="/opt/homebrew/share/zsh/site-functions:$FPATH"

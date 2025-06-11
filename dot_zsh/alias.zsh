@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 alias grep="grep --color -i"
 alias ndu="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 alias scpnh='scp -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null"'

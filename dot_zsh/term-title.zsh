@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 typeset -a excluded_commands
 excluded_commands=('ls' 'cd' 'echo' 'pwd', 'git', 'cat', 'bat')
 

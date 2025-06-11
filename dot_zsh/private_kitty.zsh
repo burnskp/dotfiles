@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 copy_terminfo() {
   if [ -f "/opt/homebrew/bin/ssh" ]; then
     SSH_BINARY="/opt/homebrew/bin/ssh"

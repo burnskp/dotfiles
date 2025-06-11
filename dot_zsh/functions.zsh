@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 # Strip comments and empty lines out of a file
 function catnc() {
   grep -E -v '(^#|^/)' "$1" | sed '/^$/d' | bat -p --pager=never
