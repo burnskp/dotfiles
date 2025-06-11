@@ -1,8 +1,17 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
+function scheme_for_appearance(appearance)
+  if appearance:find "Dark" then
+    return "Catppuccin Mocha"
+  else
+    return "Catppuccin Latte"
+  end
+end
+
+config.color_scheme = scheme_for_appearance(wezterm.gui.get_appearance())
+
 require("keymap").config(config)
-require("theme").config(config)
 require("fonts").config(config)
 require("smart-splits").config(config)
 require("session").config(config)

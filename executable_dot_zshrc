@@ -14,17 +14,18 @@ fi
 for i in $HOME/.zsh/plugins/*.zsh; do
   source "$i"
 done
+
 ZAQ_PREFIXES=('git commit -m' 'gcm' 'task add project:*' 'tap *')
 
+source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-for i in $HOME/.zsh/plugins/last/*.zsh; do
-  source "$i"
-done
+source /opt/homebrew/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+source /opt/homebrew/share/zsh-you-should-use/you-should-use.plugin.zsh
 
 if [ $commands[rbenv] ]; then
   eval "$(rbenv init -)"
