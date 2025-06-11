@@ -20,35 +20,20 @@ end)
 
 wezterm.on("format-tab-title", function(tab, _, _, _, _, max_width)
   local title = tostring(tab.tab_index + 1) .. ": " .. tab_title(tab)
-  local bar_background
-  local background
+
+  -- Catppuccin Latte
   local foreground
-  if wezterm.gui.get_appearance() == "Dark" then
-    -- Catppuccin Macchiato
-    bar_background = "#181926"
-    if string.find(title, "^[0-9]: Copy mode:") then
-      foreground = "#24273a"
-      background = "#eed49f"
-    elseif tab.is_active then
-      foreground = "#24273a"
-      background = "#cad3f5"
-    else
-      foreground = "#cad3f5"
-      background = "#5b6078"
-    end
+  local background
+  local bar_background = "#dce0e8"
+  if string.find(title, "^[0-9]: Copy mode:") then
+    foreground = "#eff1f5"
+    background = "#df8e1d"
+  elseif tab.is_active then
+    foreground = "#eff1f5"
+    background = "#4c4f69"
   else
-    -- Catppuccin Latte
-    bar_background = "#dce0e8"
-    if string.find(title, "^[0-9]: Copy mode:") then
-      foreground = "#eff1f5"
-      background = "#df8e1d"
-    elseif tab.is_active then
-      foreground = "#eff1f5"
-      background = "#4c4f69"
-    else
-      foreground = "#4c4f69"
-      background = "#acb0be"
-    end
+    foreground = "#4c4f69"
+    background = "#acb0be"
   end
 
 
@@ -63,14 +48,7 @@ end)
 
 ---@param config unknown
 function M.config(config)
-  local function scheme_for_appearance(appearance)
-    if appearance:find "Dark" then
-      return "Catppuccin Macchiato"
-    else
-      return "Catppuccin Latte"
-    end
-  end
-  config.color_scheme = scheme_for_appearance(wezterm.gui.get_appearance())
+  config.color_scheme = "Catppuccin Latte"
 
   config.default_workspace = hostname
   config.inactive_pane_hsb = {}
