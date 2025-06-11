@@ -1,6 +1,19 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 palette = "catppuccin_latte"
-
+{{- if eq .chezmoi.hostname "m15" }}
+format = """
+$hostname \
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$fill\
+$python \
+$character\
+"""
+{{- else }}
 format = """
 $hostname \
 $directory\
@@ -16,7 +29,9 @@ $kubernetes\
 $docker_context
 $character\
 """
-right_format= """
+{{- end }}
+
+right_format = """
 $cmd_duration\
 $status
 """
