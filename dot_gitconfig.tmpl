@@ -25,6 +25,7 @@
 [diff]
   algorithm = patience
   colorMoved = default
+  tool = meld
 [filter "lfs"]
   process = git-lfs filter-process
   required = true
@@ -43,11 +44,9 @@
 [interactive]
   diffFilter = delta --color-only --syntax-theme="catppuccin-latte"
 [merge]
-  tool = diffview
+  tool = meld
 [mergetool]
   prompt = false
-[mergetool "diffview"]
-  cmd = nvim -n -c "DiffviewOpen"
 [pager]
   diff = delta
   log = delta
