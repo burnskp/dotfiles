@@ -7,7 +7,31 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "context_servers": {
+    "mcp-server-context7": {
+      "settings": {
+        "default_minimum_tokens": "10000"
+      }
+    }
+  },
   "icon_theme": "Catppuccin Latte",
+  "auto_install_extensions": {
+    "ansible": true,
+    "catppuccin": true,
+    "catppuccin-icons": true,
+    "dockerfile": true,
+    "git-firefly": true,
+    "helm": true,
+    "lua": true,
+    "make": true,
+    "mcp-server-context7": true,
+    "mcp-server-sequential-thinking": false,
+    "mermaid": true,
+    "plantuml": true,
+    "terraform": true,
+    "toml": true
+  },
+  "autosave": "on_focus_change",
   "agent": {
     "model_parameters": [],
     "default_model": {
