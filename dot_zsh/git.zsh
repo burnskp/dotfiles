@@ -35,6 +35,7 @@ alias gs="git status -s"
 alias ghb="gh browse"
 alias ghpc="gh pr create -f"
 alias ghr='GH_PAGER="bat -p" gh run list --commit "$(git rev-parse HEAD)"'
+alias gho='gh repo view -w'
 alias ghw='gh run watch'
 
 # gh-f aliases
