@@ -17,8 +17,7 @@ config.scrollback_lines = 5000
 config.skip_close_confirmation_for_processes_named = {}
 
 config.quick_select_patterns = {
-  "[a-z]+(?:-[a-z0-9]+)+-[a-z0-9]+",
-  "[a-z]+(?:-[a-z0-9]{5})",
+  "[a-z0-9]+(?:-[a-z0-9]+)+-[a-z0-9]+"
 }
 
 wezterm.on('gui-startup', function(cmd)
