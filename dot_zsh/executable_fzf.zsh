@@ -1,5 +1,4 @@
 #!/bin/zsh
-NOTESDIR="/data/notes"
 
 if [[ $commands[fzf] ]]; then
   source <(fzf --zsh)
@@ -11,16 +10,7 @@ if [[ $commands[fzf] ]]; then
 --color=border:#CCD0DA,label:#4C4F69"
 
   alias fp="fzf --ansi --style full --preview 'bat --color=always --style=plain {}' --no-scrollbar"
-
-  function fn() {
-    /usr/bin/rg --color=always --line-number --no-heading --smart-case "${*:-}" "$NOTESDIR" |
-      fzf --ansi \
-        --color "hl:-1:underline,hl+:-1:underline:reverse" \
-        --delimiter : \
-        --preview 'bat --color=always {1} --highlight-line {2}' \
-        --preview-window 'up,60%,border-bottom,+{2}+3/3,~3' \
-        --bind 'enter:become(nvim {1} +{2})'
-    }
+  alias zp='cd ~/projects/$(find ~/projects -type d -mindepth 1 -maxdepth 1 -not -path "*/\.*" | sed "s|.*/projects/||" | fzf)'
 
     function fr() {
       /usr/bin/rg --color=always --line-number --no-heading --smart-case "${*:-}" |
