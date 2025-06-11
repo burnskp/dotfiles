@@ -7,16 +7,10 @@ for i in $HOME/.zsh/*.zsh; do
   source "$i"
 done
 
-if [ -f "$HOME/.zshrc_local" ]; then
-  source ~/.zshrc_local
-fi
+source ~/.zsh/plugins/zsh-autoquoter.zsh
+ZAQ_PREFIXES=('git commit -m' 'gcm' 'ssh( -[^ ]##)# [^ -][^ ]#'i 'sshnh( -[^ ]##)# [^ -][^ ]#')
 
-for i in $HOME/.zsh/plugins/*.zsh; do
-  source "$i"
-done
-
-ZAQ_PREFIXES=('git commit -m' 'gcm' 'task add project:*' 'tap *')
-
+source /opt/homebrew/share/zsh-autopair/autopair.zsh
 source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
@@ -26,9 +20,5 @@ bindkey '^[[B' history-substring-search-down
 
 source /opt/homebrew/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source /opt/homebrew/share/zsh-you-should-use/you-should-use.plugin.zsh
-
-if [ $commands[rbenv] ]; then
-  eval "$(rbenv init -)"
-fi
 
 typeset -U PATH
