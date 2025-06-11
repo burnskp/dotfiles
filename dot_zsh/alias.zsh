@@ -94,13 +94,13 @@ hash -d g="$HOME/exercism/go"
 alias zp='cd ~/projects/$(find ~/projects -type d -mindepth 1 -maxdepth 1 -not -path "*/\.*" | sed "s|.*/projects/||" | fzf)'
 
 if [[ $commands[chezmoi] ]]; then
-  alias cma="chezmoi add"
-  alias cmap="chezmoi apply"
-  alias cmd="chezmoi diff"
-  alias cme="chezmoi edit"
-  alias cmm="chezmoi merge"
-  alias cmr="chezmoi cd"
-  alias cms="chezmoi status"
-  alias cmu="chezmoi update"
-  alias cmum="chezmoi unmanaged"
+  alias cha="chezmoi add"
+  alias chap="chezmoi apply"
+  alias chd="chezmoi diff"
+  alias che="chezmoi edit"
+  alias chm="chezmoi merge"
+  alias chr="chezmoi cd"
+  alias chs="chezmoi status"
+  alias chu="chezmoi update"
+  alias chum="chezmoi unmanaged"
 fi
