@@ -2,3 +2,5 @@ bootstrap
 .config/zed/conversations
 .config/zed/prompts
 .config/zed/themes
+.config/karabiner/assets
+.config/karabiner/automatic_backups
