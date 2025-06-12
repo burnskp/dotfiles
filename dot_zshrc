@@ -7,7 +7,6 @@ for i in $HOME/.zsh/*.zsh; do
   source "$i"
 done
 
-source ~/.zsh/plugins/wezterm.zsh
 source ~/.zsh/plugins/zsh-autoquoter.zsh
 ZAQ_PREFIXES=('git commit -m' 'gcm' 'ssh( -[^ ]##)# [^ -][^ ]#'i 'sshnh( -[^ ]##)# [^ -][^ ]#')
 
