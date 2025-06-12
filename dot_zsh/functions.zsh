@@ -37,3 +37,13 @@ function setVariableFromKeychain() {
   fi
   export "$1"=$(security find-generic-password -a "$USER" -s "$1" -w)
 }
+
+if [[ $commands[chezmoi] ]]; then
+  function chgacmp () {
+    chezmoi git commit -- -a -m "$*" && chezmoi git push origin HEAD
+  }
+
+  function chgcmp () {
+    chezmoi git commit  ---m "$*" && chezmoi git push origin HEAD
+  }
+fi

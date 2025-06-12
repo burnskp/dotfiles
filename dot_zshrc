@@ -9,7 +9,7 @@ done
 
 source ~/.zsh/plugins/wezterm.zsh
 source ~/.zsh/plugins/zsh-autoquoter.zsh
-ZAQ_PREFIXES=('git commit -m' 'gcm' 'chezmoi git commit -m' 'chgcm' 'ssh( -[^ ]##)# [^ -][^ ]#'i 'sshnh( -[^ ]##)# [^ -][^ ]#')
+ZAQ_PREFIXES=('git commit -m' 'gcm' 'gcmp' 'gacmp' 'chezmoi git commit -m' 'chgcm' 'chgacmp' 'chgcmp' 'ssh( -[^ ]##)# [^ -][^ ]#'i 'sshnh( -[^ ]##)# [^ -][^ ]#')
 
 source /opt/homebrew/share/zsh-autopair/autopair.zsh
 source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
