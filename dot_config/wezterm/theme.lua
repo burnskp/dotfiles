@@ -26,14 +26,14 @@ wezterm.on("format-tab-title", function(tab, _, _, _, _, max_width)
   local background
   local bar_background = "#dce0e8"
   if string.find(title, "^[0-9]: Copy mode:") then
-    foreground = "#eff1f5"
-    background = "#df8e1d"
+    foreground = "#4c4f69"
+    background = "#e6e9ef"
   elseif tab.is_active then
-    foreground = "#eff1f5"
-    background = "#4c4f69"
+    foreground = "#e6e9ef"
+    background = "#8839ef"
   else
     foreground = "#4c4f69"
-    background = "#acb0be"
+    background = "#e6e9ef"
   end
 
 
