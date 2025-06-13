@@ -1,6 +1,9 @@
 #!/bin/zsh
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+export ATUIN_NOBIND="true"
+eval "$(atuin init zsh)"
+
 
 # My dotfiles
 for i in $HOME/.zsh/*.zsh; do
@@ -13,11 +16,13 @@ ZAQ_PREFIXES=('git commit -m' 'gcm' 'gcmp' 'gacmp' 'chezmoi git commit -m' 'chgc
 
 source /opt/homebrew/share/zsh-autopair/autopair.zsh
 source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+bindkey '^r' atuin-search
 
 source /opt/homebrew/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source /opt/homebrew/share/zsh-you-should-use/you-should-use.plugin.zsh
