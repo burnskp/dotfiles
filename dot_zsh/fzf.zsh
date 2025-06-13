@@ -11,8 +11,8 @@ if [[ $commands[fzf] ]]; then
   alias zp='cd ~/projects/$(find ~/projects -type d -mindepth 1 -maxdepth 1 -not -path "*/\.*" | sed "s|.*/projects/||" | fzf)'
 
   function gpr() {
-    fzf --tmux 80%,100% --ansi \
-      --border vertical --info inline --reverse --header-lines 4 \
+    fzf 80%,100% --ansi \
+      --border vertical --info inline --header-lines 4 \
       --preview 'GH_FORCE_TTY=$FZF_PREVIEW_COLUMNS gh pr view --comments {1}' \
       --preview-window up:border-down \
       --with-shell 'bash -c' \
