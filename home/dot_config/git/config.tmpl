@@ -1,0 +1,77 @@
+[alias]
+  bm = branch --merged
+  dd = diff --dirstat --find-copies --find-renames --histogram --color
+  discard = !git stash save --keep-index --include-untracked && git stash drop
+  prune = fetch --prune
+  sl = stash list --pretty=format:\"%C(red)%h%C(reset) - %C(dim yellow)(%C(bold magenta)%gd%C(dim yellow))%C(reset) %<(70,trunc)%s %C(gree  n)(%cr) %C(bold blue)<%an>%C(reset)\"
+  stash-all = stash save --include-untracked
+  undo = reset --soft HEAD^
+  unstage = reset HEAD --
+[core]
+   pager = delta --syntax-theme="catppuccin-latte"
+   editor = nvim
+[commit]
+  gpgsign = true
+  verbose = true
+[gpg]
+	format = ssh
+[gpg "ssh"]
+  allowedSignersFile = ~/.ssh/allow_signers
+{{ if not .signingkey -}}
+[gpg.ssh]
+  defaultKeycommand = ssh-add -L | grep burnskp | awk '{print "key::"$1" "$2}'
+{{ end -}}
+[credential "https://github.com"]
+  helper = /opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+  helper = /opt/homebrew/bin/gh auth git-credential
+[delta]
+  features = line-numbers decorations
+  line-numbers = true
+  syntax-theme = catppuccin-latte
+  whitespace-error-style = 22 reverse
+[diff]
+  algorithm = patience
+  colorMoved = default
+  tool = meld
+[filter "lfs"]
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+[help]
+  autocorrect = 1
+[http "https://gopkg.in"]
+  followRedirects = true
+[init]
+  defaultBranch = main
+[interactive]
+  diffFilter = delta --color-only --syntax-theme="catppuccin-latte"
+[merge]
+  tool = diffview
+  conflictstyle = zdiff3
+[mergetool "diffview"]
+	prompt = false
+	keepBackup = false
+	layout = "LOCAL,BASE,REMOTE / MERGED"
+	cmd = nvim -n -c "DiffviewOpen" "$MERGE" -c "DiffviewToggleFiles"
+[pager]
+  diff = delta
+  log = delta
+  reflog = delta
+  show = delta
+[pull]
+  rebase = true
+[push]
+  default = simple
+  followTags = true
+[rerere]
+  enabled = true
+[status]
+  showUntrackedFiles = all
+[user]
+  name = Kevin Burns
+  email = {{ .email | quote }}
+{{ if .signingkey -}}
+  signingkey = {{ .signingkey | quote }}
+{{ end -}}

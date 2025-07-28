@@ -1,0 +1,34 @@
+[global]
+    browser = qutebrowser
+    dmenu = /usr/bin/rofi --show dmenu -p dunst:
+    follow = mouse
+    font = Noto Color Emoji 14, DejaVu Sans Mono 14
+    history_length = 20
+    separator_height = 2
+    separator_color = "#9ca0b0"
+    indicate_hidden = yes
+    markup = full
+    word_wrap = yes
+    format = "<b>%s</b>\n%b"
+    ellipsize = middle
+    ignore_newline = no
+    stack_duplicates = true
+    alignment = left
+    ignore_dbusclose = false
+    vertical_alignment = center
+    offset = (4, 33)
+
+[global]
+highlight = "#1e66f5"
+
+[urgency_low]
+background = "#e6e9ef"
+foreground = "#4c4f69"
+
+[urgency_normal]
+background = "#e6e9ef"
+foreground = "#4c4f69"
+
+[urgency_critical]
+background = "#e6e9ef"
+foreground = "#4c4f69"

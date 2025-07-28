@@ -1,0 +1,111 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "vim_mode == normal && !menu",
+    "bindings": {
+      "ctrl-n": "pane::ActivateNextItem",
+      "ctrl-p": "pane::ActivatePreviousItem"
+    }
+  },
+  {
+    "context": "vim_mode == normal && menu",
+    "bindings": {
+      "ctrl-n": "menu::SelectNext",
+      "ctrl-p": "menu::SelectPrevious"
+    }
+  },
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      "[ e": "editor::GoToPreviousDiagnostic",
+      "[ h": "editor::GoToPreviousHunk",
+      "] e": "editor::GoToDiagnostic",
+      "] h": "editor::GoToHunk",
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "s": "vim::PushSneak",
+      "shift-s": "vim::PushSneakBackward",
+      "space '": "pane::SplitDown",
+      "space ;": "pane::SplitRight",
+      "space c d": "diagnostics::Deploy",
+      "space c f": "editor::Format",
+      "space c r": "editor::Rename",
+      "space d": "pane::CloseActiveItem",
+      "space e": "editor::Hover",
+      "space f b": "tab_switcher::Toggle",
+      "space f f": "file_finder::Toggle",
+      "space f g": "pane::DeploySearch",
+      "space f s": "project_symbols::Toggle",
+      "space g b": "git::Blame",
+      "space g h d": "editor::ToggleSelectedDiffHunks",
+      "space g h r": "git::Restore",
+      "space m p": "markdown::OpenPreview",
+      "space m P": "markdown::OpenPreviewToTheSide",
+      "space p": "editor::Paste",
+      "space t": "workspace::ToggleBottomDock",
+      "space f p": "workspace::ToggleLeftDock",
+      "space a": "workspace::ToggleRightDock",
+      "space y": "editor::Copy"
+    }
+  },
+  {
+    // Modes: Visual
+    "context": "vim_mode == visual",
+    "bindings": {
+      "g c": "editor::ToggleComments",
+      "space s": "editor::SortLinesCaseInsensitive",
+      "space y": "editor::Copy"
+    }
+  },
+  {
+    "context": "EmptyPane || SharedScreen",
+    "bindings": {
+      "space p f": "file_finder::Toggle",
+      "space f p": "projects::OpenRecent",
+      "space u r": "workspace::ToggleRightDock",
+      "space u l": "workspace::ToggleLeftDock"
+    }
+  },
+  {
+    "context": "vim_operator == a || vim_operator == i || vim_operator == cs",
+    "bindings": {
+      "q": "vim::MiniQuotes",
+      "b": "vim::MiniBrackets"
+    }
+  },
+  {
+    "context": "VimControl && !menu && vim_mode != operator",
+    "bindings": {
+      "w": "vim::NextSubwordStart",
+      "b": "vim::PreviousSubwordStart",
+      "e": "vim::NextSubwordEnd",
+      "g e": "vim::PreviousSubwordEnd"
+    }
+  },
+  {
+    "context": "Dock",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "space t": "workspace::ToggleBottomDock",
+      "space f p": "workspace::ToggleLeftDock",
+      "space a a": "workspace::ToggleRightDock"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-h": "workspace::ToggleBottomDock"
+    }
+  }
+]

@@ -1,0 +1,5 @@
+explicit_start = false
+indent_offset = 0
+indent_sequence = 2
+sequence_style = "block_style"
+whitelines = 1

@@ -1,0 +1,16 @@
+[font]
+normal = { family = "DejaVuSansM Nerd Font Mono" }
+size = 20.0
+
+[general]
+import = ["~/.config/alacritty/catppuccin-latte.toml"]
+
+[window]
+startup_mode = "Maximized"
+option_as_alt = "Both"
+
+[terminal]
+shell = { program = "/bin/zsh", args = [
+  "-lc",
+  "tmux attach || tmux new-session -s main",
+] }

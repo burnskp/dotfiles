@@ -1,0 +1,13 @@
+[Unit]
+Description=Keep Wayland clipboard even after programs close
+After=graphical-session.target
+
+[Service]
+Type=exec
+ExecCondition=/lib/systemd/systemd-xdg-autostart-condition "wlroots:sway:Wayfire:labwc:Hyprland" ""
+ExecStart=wl-clip-persist --clipboard regular
+Restart=on-failure
+Slice=background-graphical.slice
+
+[Install]
+WantedBy=graphical-session.target

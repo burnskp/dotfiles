@@ -1,0 +1,95 @@
+#!/bin/zsh
+
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CACHE_HOME="$HOME/.cache"
+
+{{ if eq .chezmoi.os "darwin" -}}
+export HOMEBREW_BUNDLE_DUMP_NO_VSCODE=true
+
+if [[ -f /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+if [[ -S "$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh" ]]; then
+  export SSH_AUTH_SOCK="$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
+fi
+{{ end -}}
+{{ if eq .chezmoi.os "linux" -}}
+if [[ -S $XDG_RUNTIME_DIR/gcr/ssh ]]; then
+  export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
+fi
+{{ end -}}
+
+umask 022
+
+set -o noclobber
+setopt nobeep
+setopt completeinword
+setopt correct
+setopt extended_glob
+setopt hash_list_all
+setopt interactivecomments
+setopt noflowcontrol
+setopt nonomatch
+setopt noshwordsplit
+setopt prompt_subst
+
+export BAT_THEME="catppuccin-latte"
+export GLAMOUR_STYLE="$HOME/.config/glamour/catppuccin-latte.json"
+export EDITOR="nvim"
+export HISTFILE="${HOME}/.zsh_history"
+export HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd:cd ..:cd.."
+export HISTSIZE=25000
+export LESS=-R
+export PAGER="less -R"
+export SAVEHIST=25000
+
+export EZA_COLORS=di=34:bd=33:cd=33:so=31:ex=32:ur=33:uw=31:ux=32:ue=32:uu=33:gu=33:lc=31:df=32:sn=32:nb=32:nk=32:nm=32:ng=32:nt=32
+
+setopt APPEND_HISTORY
+setopt EXTENDED_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_NO_STORE
+setopt HIST_REDUCE_BLANKS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_VERIFY
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+
+export GOPATH=$HOME/.local/share/go
+export GOBIN=$GOPATH/bin
+
+path+="${GOBIN}"
+path+="${HOME}/.yarn/bin"
+path+="${HOME}/.cargo/bin"
+path+="/usr/local/sbin"
+path=("${HOME}/bin" "${HOME}/.local/bin" "${HOME}/.krew/bin" $path)
+
+for i in ${HOME}/.local/share/gem/ruby/*; do
+  if [ -d "$i" ]; then
+    path+="$i/bin"
+  fi
+done
+
+for i in ${HOME}/.gem/ruby/*; do
+  if [ -d "$i" ]; then
+    path+="$i/bin"
+  fi
+done
+
+for i in ${HOME}/Library/Python/*; do
+  if [ -d "$i" ]; then
+    path+="$i/bin"
+  fi
+done
+
+if [[ -d "$HOME/.local/share/node/bin" ]]; then
+  path+="$HOME/.local/share/node/bin"
+fi
+
+typeset -U PATH
+export PATH

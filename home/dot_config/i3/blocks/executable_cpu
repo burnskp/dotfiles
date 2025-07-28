@@ -1,0 +1,6 @@
+#!/bin/bash
+source $HOME/.config/i3/colors
+
+cpuusage="$(mpstat 1 1 | tail -n1 | awk '{printf "%.1f%%", 100 - $12}')"
+
+widget '\uf2db' $cpuusage

@@ -1,0 +1,130 @@
+{
+  "layer": "top",
+  "fixed-center": false,
+  "position": "top",
+  "start_hidden": true,
+  "modules-right": [
+    "cpu",
+    "custom/spacer",
+    "temperature",
+    "custom/spacer",
+    "memory",
+    "custom/spacer",
+    "disk",
+    "custom/spacer",
+    "network",
+    "custom/spacer",
+    "battery",
+    "custom/spacer",
+    "pulseaudio",
+    "custom/spacer",
+    "tray",
+    "idle_inhibitor",
+    "clock"
+  ],
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "format": "{icon}",
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": []
+    },
+    "format-icons": {
+      "urgent": "",
+      "focused": "",
+      "default": ""
+    }
+  },
+  "cpu": {
+    "format-icons": "",
+    "format": "{icon}  {usage:>2}%"
+  },
+  "temperature": {
+    "format-icons":"",
+    "format": "{icon}  {temperatureC}°",
+    "hwmon-path": [
+      "/sys/class/hwmon/hwmon3/temp1_input"
+    ]
+  },
+  "memory": {
+    "interval": 30,
+    "format": "  {}%",
+    "max-length": 10
+  },
+  "disk": {
+    "interval": 30,
+    "format": "  {free}",
+    "path": "/"
+  },
+  "network": {
+    "interface": "wlan0",
+    "format-icons": "",
+    "format": "{icon}  {ifname}",
+    "format-wifi": "{icon}  {essid} ({signalStrength}%)",
+    "format-ethernet": "Ethernet",
+    "format-disconnected": "",
+    "tooltip-format": "Up: {bandwidthUpBytes}\nDown: {bandwidthDownBytes}\nIP: {ipaddr}",
+    "tooltip-format-wifi": "Up: {bandwidthUpBytes}\nDown: {bandwidthDownBytes}\nIP: {ipaddr}",
+    "tooltip-format-ethernet": "Up: {bandwidthUpBytes}\nDown: {bandwidthDownBytes}\nIP: {ipaddr}",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50
+  },
+
+  "custom/spacer": {
+    "format": "   ",
+    "tooltip": false
+  },
+
+  "battery": {
+    "format-icons": "",
+    "states": {
+      "warning": 10,
+      "critical": 5
+    },
+    "format": "{icon}  {capacity}% ({power:.1f}W)",
+    "format-charging": "{icon}  {capacity}% ({power:.1f}W)",
+    "format-plugged": "{icon}  {capacity}% ({power:.1f}W)",
+    "format-alt": "{icon}  {time} ({power:.1f}W)",
+    "tooltip-format": "{time}"
+  },
+  "pulseaudio": {
+    "format-icons": "",
+    "format": "{icon}  {volume}%",
+    "format-muted": "MUTE",
+    "on-click": "pavucontrol"
+  },
+  "clock": {
+      "format": "{:%I:%M}",
+      "tooltip-format": "<tt><small>{calendar}</small></tt>",
+      "calendar": {
+                  "mode"          : "month",
+                  "on-scroll"     : 1,
+                  "format": {
+                            "months":     "<span color='#ffead3'><b>{}</b></span>",
+                            "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                            "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                            "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                            "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                            }
+                  },
+      "actions":  {
+                  "on-click-right": "shift_reset",
+                  "on-scroll-up": "shift_up",
+                  "on-scroll-down": "shift_down"
+                  }
+  },
+  "idle_inhibitor": {
+    "format": "  {icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
+  },
+  "tray": {
+    "icon-size": 14,
+    "spacing": 10
+  }
+}

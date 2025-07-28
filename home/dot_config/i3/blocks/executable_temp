@@ -1,0 +1,22 @@
+#!/bin/bash
+source $HOME/.config/i3/colors
+
+output=$(sensors)
+cpu="$(echo "$output" | grep temp4 | awk '{print $2}' | tr -d '°+')"
+
+if [[ "$cpu" ]]; then
+  widget '\uf2c9' "$cpu"
+
+  if [[ "$BLOCK_BUTTON" ]]; then
+    cpu="$(echo "$output" | grep temp4 | awk '{print $2}' | tr -d '°+')"
+    unknown="$(echo "$output" | grep temp2 | awk '{print $2}' | tr -d '°+')"
+    tctl="$(echo "$output" | grep Tctl | awk '{print $2}' | tr -d '°+')"
+    memory="$(echo "$output" | grep temp3 | awk '{print $2}' | tr -d '°+')"
+    gpu="$(echo "$output" | grep edge | awk '{print $2}' | tr -d '°+')"
+    ssd="$(echo "$output" | grep Composite | awk '{print $2}' | tr -d '°+')"
+    amb="$(echo "$output" | grep temp1 | awk '{print $2}' | tr -d '°+')"
+
+    output="CPU: $cpu\nTCL: $tctl\nUNK: $unknown\nMEM: $memory\nGPU: $gpu\nSSD: $ssd\nAMB: $amb"
+    notify-send "Temperatures" "$output"
+  fi
+fi

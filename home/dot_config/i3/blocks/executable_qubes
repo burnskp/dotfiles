@@ -1,0 +1,5 @@
+#!/bin/sh
+source $HOME/.config/i3/colors
+
+qubes=$(qvm-ls --no-spinner  | grep Running | wc -l)
+widget "Q" "${qubes}"

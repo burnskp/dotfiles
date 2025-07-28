@@ -1,0 +1,237 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "context_servers": {
+    "mcp-server-context7": {
+      "settings": {
+        "default_minimum_tokens": "10000"
+      }
+    }
+  },
+  "icon_theme": "Catppuccin Latte",
+  "auto_install_extensions": {
+    "ansible": true,
+    "catppuccin": true,
+    "catppuccin-icons": true,
+    "dockerfile": true,
+    "git-firefly": true,
+    "helm": true,
+    "lua": true,
+    "make": true,
+    "mcp-server-context7": true,
+    "mcp-server-sequential-thinking": false,
+    "mermaid": true,
+    "plantuml": true,
+    "terraform": true,
+    "toml": true
+  },
+  "autosave": "on_focus_change",
+  "agent": {
+    "model_parameters": [],
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4.1"
+    },
+    "version": "2"
+  },
+  "telemetry": {
+    "metrics": false,
+    "diagnostics": false
+  },
+  "buffer_font_family": "DejaVuSansM Nerd Font Mono",
+  "vim_mode": true,
+  "vim": {
+    "use_system_clipboard": "never",
+    "use_smartcase_find": true,
+    "toggle_relative_line_numbers": true
+  },
+  "ui_font_size": 18,
+  "buffer_font_size": 18,
+  "agent_font_size": 18,
+  "cursor_blink": false,
+  "theme": {
+    "mode": "system",
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Macchiato"
+  },
+  "scrollbar": {
+    "show": "never"
+  },
+  "indent_guides": {
+    "coloring": "indent_aware"
+  },
+  "terminal": {
+    "font_size": 18,
+    "font_family": "DejaVuSansM Nerd Font Mono",
+    "option_as_meta": true
+  },
+  "file_types": {
+    "Helm": [
+      "**/templates/**/*.tpl",
+      "**/templates/**/*.yaml",
+      "**/templates/**/*.yml",
+      "**/helmfile.d/**/*.yaml",
+      "**/helmfile.d/**/*.yml"
+    ],
+    "Ansible": [
+      "**.ansible.yml",
+      "**.ansible.yaml",
+      "**/defaults/*.yml",
+      "**/defaults/*.yaml",
+      "**/meta/*.yml",
+      "**/meta/*.yaml",
+      "**/tasks/*.yml",
+      "**/tasks/*.yml",
+      "**/tasks/*.yaml",
+      "**/handlers/*.yml",
+      "**/handlers/*.yaml",
+      "**/group_vars/*.yml",
+      "**/group_vars/*.yaml",
+      "**/playbooks/*.yaml",
+      "**/playbooks/*.yml",
+      "**playbook*.yaml",
+      "**playbook*.yml"
+    ]
+  },
+  "lsp": {
+    "ansible-language-server": {
+      "settings": {
+        "ansible": {
+          "path": "ansible"
+        },
+        "executionEnvironment": {
+          "enabled": false
+        },
+        "python": {
+          "interpreterPath": "python3"
+        },
+        "validation": {
+          "enabled": true,
+          "lint": {
+            "enabled": true,
+            "path": "ansible-lint"
+          }
+        }
+      }
+    },
+    "bash-language-server": {
+      "shfmt": {
+        "simplifyCode": true
+      }
+    },
+    "gopls": {
+      "initialization_options": {
+        "gofumpt": true,
+        "codelenses": {
+          "gc_details": false,
+          "generate": true,
+          "regenerate_cgo": true,
+          "run_govulncheck": true,
+          "test": true,
+          "tidy": true,
+          "upgrade_dependency": true,
+          "vendor": true,
+          "hints": {
+            "assignVariableTypes": true,
+            "compositeLiteralFields": true,
+            "compositeLiteralTypes": true,
+            "constantValues": true,
+            "functionTypeParameters": true,
+            "parameterNames": true,
+            "rangeVariableTypes": true
+          },
+          "analyses": {
+            "fieldalignment": true,
+            "nilness": true,
+            "unusedparams": true,
+            "unusedwrite": true,
+            "useany": true
+          },
+          "usePlaceholders": true,
+          "completeUnimported": true,
+          "staticcheck": true,
+          "directoryFilters": [
+            "-.git",
+            "-.vscode",
+            "-.idea",
+            "-.vscode-test",
+            "-node_modules"
+          ],
+          "semanticTokens": true
+        }
+      }
+    },
+    "yaml-language-server": {
+      "settings": {
+        "redhat": {
+          "telemetry": {
+            "enabled": false
+          }
+        },
+        "yaml": {
+          "keyOrdering": false
+        }
+      }
+    }
+  },
+  "languages": {
+    "Shell Script": {
+      "tab_size": 2,
+      "hard_tabs": false,
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "shfmt",
+          "arguments": [
+            "-ci",
+            "-s",
+            "-i",
+            "2",
+            "-bn",
+            "-sr",
+            "--filename",
+            "{buffer_path}"
+          ]
+        }
+      }
+    },
+    "Markdown": {
+      "format_on_save": "on",
+      "formatter": [
+        {
+          "external": {
+            "command": "cbfmt",
+            "arguments": ["--stdin-filepath", "{buffer_path}", "--best-effort"]
+          }
+        },
+        {
+          "external": {
+            "command": "markdownlint",
+            "arguments": ["--fix", "--stdin"]
+          }
+        }
+      ]
+    },
+    "Python": {
+      "tab_size": 4,
+      "formatter": "language_server",
+      "format_on_save": "on"
+    },
+    "YAML": {
+      "formatter": [
+        {
+          "external": {
+            "command": "yamlfmt",
+            "arguments": ["-"]
+          }
+        }
+      ]
+    }
+  }
+}

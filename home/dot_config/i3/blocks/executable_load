@@ -1,0 +1,6 @@
+#!/bin/bash
+source $HOME/.config/i3/colors
+
+load=$(uptime | sed 's/.*average: //')
+
+widget "L" "$load"
