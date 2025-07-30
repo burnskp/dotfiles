@@ -2,7 +2,7 @@
 source $HOME/.config/i3/colors
 
 output=$(sensors)
-cpu="$(echo "$output" | grep temp4 | awk '{print $2}' | tr -d '°+')"
+cpu="$(echo "$output" | grep Package | awk '{print $4}' | tr -d '°+')"
 
 if [[ "$cpu" ]]; then
   widget '\uf2c9' "$cpu"

@@ -13,6 +13,8 @@ bootstrap
 .zsh/macos.zsh
 {{ end -}}
 {{ if eq .chezmoi.os "darwin" -}}
+.Xmodmap
+.Xresources
 .config/dunst
 .config/firejail
 .config/foot
@@ -27,6 +29,7 @@ bootstrap
 .config/swaylock
 .config/systemd
 .config/waybar
+.i3blocks.conf
 .local/share/applications
 .zsh/cachyos.zsh
 {{ end -}}

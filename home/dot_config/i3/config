@@ -26,6 +26,7 @@ set $mantle #e6e9ef
 set $crust #dce0e8
 
 set $mod Mod4
+set $hyper Mod3
 
 font pango:DejaVu Sans Mono, Font Awesome 6 Free 14
 
@@ -33,7 +34,6 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -i ~/.con
 
 for_window [class="^.*"] border pixel 0
 
-for_window [class="Qubes-update-gui"] floating enable
 for_window [class="zenity"] floating enable
 for_window [class="lxqt-openssh-askpass"] floating enable
 for_window [class="Dunst"] floating enable
@@ -45,10 +45,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
-# Echo to sys backlight for brightness - normal brightness controls aren't working in Qubes 4.3
-bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
-bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5
-
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%-
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s 5%+
 
 client.focused          $green $green  $text  $rosewater $green
 client.focused_inactive $teal  $teal   $text  $rosewater $teal
@@ -71,7 +69,7 @@ bindsym $mod+r exec rofi -show drun
 
 
 # Application shortcuts
-bindsym $mod+F11 exec i3lock --nofork -i ~/.config/i3/wallpaper/flatppuccin_4k_macchiato_mauve.png
+bindsym $hyper+l exec i3lock --nofork -i ~/.config/i3/wallpaper/flatppuccin_4k_macchiato_mauve.png
 bindsym $mod+F12 exec systemctl power
 
 # change focus
@@ -188,11 +186,9 @@ assign [class="^discord:"] $ws3
 assign [class="^signal:"] $ws3
 assign [class="^matrix:"] $ws3
 
-assign [class="Qube Manager"] $ws5
-
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bindsym $mod+b bar mode toggle
+bindsym $hyper+b bar mode toggle
 bar {
         status_command i3blocks
         position top
@@ -212,12 +208,12 @@ bar {
 }
 
 exec xrandr --dpi 120 --output eDP-1
-exec --no-startup-id dispwin -I ~/.config/i3/icc/NE135FBM-NY1.icc
+exec --no-startup-id dispwin -I ~/.config/icc/laptop.icc
 exec --no-startup-id feh --bg-fill ~/.config/i3/wallpaper/flatppuccin_4k_latte_mauve.png
 
-exec --no-startup-id xinput set-prop "PIXA3854:00 093A:0274 Touchpad" "libinput Tapping Enabled" 1
-exec --no-startup-id xinput set-prop "PIXA3854:00 093A:0274 Touchpad" "libinput Accel Speed" .25
-exec --no-startup-id xinput set-prop "PIXA3854:00 093A:0274 Touchpad" "libinput Natural Scrolling Enabled" 1
+exec --no-startup-id xinput set-prop "ELAN0124:00 04F3:3334 Touchpad" "libinput Tapping Enabled" 1
+exec --no-startup-id xinput set-prop "ELAN0124:00 04F3:3334 Touchpad" "libinput Accel Speed" .25
+exec --no-startup-id xinput set-prop "ELAN0124:00 04F3:3334 Touchpad" "libinput Natural Scrolling Enabled" 1
 
 exec --no-startup-id unclutter
 exec --no-startup-id xset b off
