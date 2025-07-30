@@ -211,7 +211,7 @@ bar {
         }
 }
 
-exec xrandr --dpi 144 --output eDP-1
+exec xrandr --dpi 120 --output eDP-1
 exec --no-startup-id dispwin -I ~/.config/i3/icc/NE135FBM-NY1.icc
 exec --no-startup-id feh --bg-fill ~/.config/i3/wallpaper/flatppuccin_4k_latte_mauve.png
 
