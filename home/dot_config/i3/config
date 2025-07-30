@@ -215,6 +215,7 @@ exec --no-startup-id xinput set-prop "ELAN0124:00 04F3:3334 Touchpad" "libinput 
 exec --no-startup-id xinput set-prop "ELAN0124:00 04F3:3334 Touchpad" "libinput Accel Speed" .25
 exec --no-startup-id xinput set-prop "ELAN0124:00 04F3:3334 Touchpad" "libinput Natural Scrolling Enabled" 1
 
+exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id unclutter
 exec --no-startup-id xset b off
 exec --no-startup-id picom
