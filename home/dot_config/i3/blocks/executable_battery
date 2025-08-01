@@ -16,11 +16,10 @@ left=$(echo $tte \* 60 | bc)
 hour=$(echo $left / 60 | bc)
 min=$(echo $left % 60 | bc | cut -d. -f1)
 
-
 if [ "${tte}" ]; then
-percent="${hour}:${min} (${percentage})"
+  percent="${hour}:$(printf "%02d" "$min") (${percentage})"
 else
-percent="${percentage}"
+  percent="${percentage}"
 fi
 
 echo $(widget '\uf5df' "$percent")$(widget '\uf0e7' "$watts")

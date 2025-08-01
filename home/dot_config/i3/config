@@ -193,6 +193,7 @@ bar {
         status_command i3blocks
         position top
         modifier none
+        padding 0 1 0 13
 
         colors
 	{
