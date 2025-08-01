@@ -1,6 +1,6 @@
 #!/bin/bash
 set -euo pipefail
-FILE=".config/aichat/config.yaml" 
+FILE="$HOME/.config/aichat/config.yaml"
 if [[ -f "$FILE" ]]; then
   API_KEY=$(yq -r ".clients[0].api_key" $FILE)
 else
