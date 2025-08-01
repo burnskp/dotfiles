@@ -207,13 +207,13 @@ bar {
         }
 }
 
-exec xrandr --dpi 120 --output eDP-1
-exec --no-startup-id dispwin -I ~/.config/icc/laptop.icc
+exec xrandr --dpi 192 --output eDP-1
+exec --no-startup-id dispwin -I ~/.config/icc/NE135A1M-NY1.icc
 exec --no-startup-id feh --bg-fill ~/.config/i3/wallpaper/flatppuccin_4k_latte_mauve.png
 
-exec --no-startup-id xinput set-prop "ELAN0124:00 04F3:3334 Touchpad" "libinput Tapping Enabled" 1
-exec --no-startup-id xinput set-prop "ELAN0124:00 04F3:3334 Touchpad" "libinput Accel Speed" .25
-exec --no-startup-id xinput set-prop "ELAN0124:00 04F3:3334 Touchpad" "libinput Natural Scrolling Enabled" 1
+exec --no-startup-id xinput set-prop "PIXA3854:00 093A:0274" "libinput Tapping Enabled" 1
+exec --no-startup-id xinput set-prop "PIXA3854:00 093A:0274" "libinput Accel Speed" .25
+exec --no-startup-id xinput set-prop "PIXA3854:00 093A:0274" "libinput Natural Scrolling Enabled" 1
 
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id unclutter
