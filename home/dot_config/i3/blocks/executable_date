@@ -1,5 +1,0 @@
-#!/bin/sh
-source $HOME/.config/i3/colors
-
-date="$(date +%l:%M)"
-widget '\uf017' "$date"

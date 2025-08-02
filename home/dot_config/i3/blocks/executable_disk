@@ -1,4 +1,0 @@
-#!/bin/bash
-source $HOME/.config/i3/colors
-disk=$(btrfs fi usage / 2>/dev/null| grep 'Free (estimated)' | awk '{print $3}')
-widget '\uf0a0' "$disk"
