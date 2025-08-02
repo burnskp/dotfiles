@@ -53,13 +53,29 @@ button:hover {
 #backlight,
 #network,
 #pulseaudio,
-#tray,
 #mode,
 #scratchpad,
 #wireplumber,
 #mpd {
   padding: 0 10px;
   color: @text;
+  background-color: @surface0;
+}
+
+#tray {
+  padding-left: 10px;
+  color: @text;
+  background-color: @surface0;
+}
+
+#cpu {
+  padding-left: 2px;
+  padding-right: 10px;
+  background-color: @surface0;
+}
+
+#power-profiles-daemon {
+  padding-left: 10px;
   background-color: @surface0;
 }
 
