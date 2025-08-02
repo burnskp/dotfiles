@@ -1,6 +1,5 @@
 #!/usr/zsh
 if [ "$(uname -o)" == "GNU/Linux" ] && grep -q Arch /etc/*release 2>&1 >/dev/null; then
-  export QT_QPA_PLATFORM=wayland
   alias pac="sudo pacman -S"
   alias pacq="pacman -Q"
   alias pacr="sudo pacman -Rs"

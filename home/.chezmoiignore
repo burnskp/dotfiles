@@ -10,6 +10,7 @@
 .zsh/macos.zsh
 {{ end -}}
 {{ if eq .chezmoi.os "darwin" -}}
+.config/environment.d/
 .config/firejail
 .config/foot
 .config/fuzzel
