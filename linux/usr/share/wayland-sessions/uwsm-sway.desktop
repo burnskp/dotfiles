@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Sway (UWSM)
+Comment=Sway, UWSM session
+Exec=uwsm start -N "sway" -D sway:wlroots -C "sway" -- sway
+Type=Application
+DesktopNames=sway;wlroots
