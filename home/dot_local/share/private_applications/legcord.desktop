@@ -1,0 +1,8 @@
+# Update to use firejail
+[Desktop Entry]
+Type=Application
+Name=Legcord
+Comment=Discord client with builtin client mod and theme support
+Exec=/usr/local/bin/legcord
+Icon=legcord
+Categories=Internet;Network;InstantMessaging;
