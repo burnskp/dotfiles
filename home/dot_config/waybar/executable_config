@@ -2,7 +2,7 @@
   "layer": "top",
   "fixed-center": false,
   "position": "top",
-  "start_hidden": true,
+  "modules-left": [ "custom/left-spacer", "sway/workspaces" ],
   "modules-right": [
     "cpu",
     "custom/spacer",
@@ -20,7 +20,8 @@
     "custom/spacer",
     "tray",
     "idle_inhibitor",
-    "clock"
+    "clock",
+    "custom/spacer"
   ],
   "sway/workspaces": {
     "disable-scroll": true,
@@ -33,9 +34,8 @@
       "5": []
     },
     "format-icons": {
-      "urgent": "",
-      "focused": "",
-      "default": ""
+      "default": "",
+      "persistent": "",
     }
   },
   "cpu": {
@@ -73,8 +73,12 @@
     "max-length": 50
   },
 
+  "custom/left-spacer": {
+    "format": " ",
+    "tooltip": false
+  },
   "custom/spacer": {
-    "format": "   ",
+    "format": "  ",
     "tooltip": false
   },
 
@@ -119,8 +123,8 @@
   "idle_inhibitor": {
     "format": "  {icon}",
     "format-icons": {
-      "activated": "",
-      "deactivated": ""
+      "activated": " ",
+      "deactivated": " "
     }
   },
   "tray": {

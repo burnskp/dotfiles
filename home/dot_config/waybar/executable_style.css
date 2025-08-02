@@ -1,8 +1,7 @@
 @import "catppuccin-latte.css";
 
 * {
-  /* `otf-font-awesome` is required to be installed for icons */
-  font-family: "DejaVu Sans", "Font Awesome 6 Free", "Font Awesome 6 Brands";
+  font-family: "DejaVu Sans", "Symbols Nerd Font";
   font-size: 15px;
   min-height: 22px;
 }
@@ -34,13 +33,15 @@ button:hover {
 
 #workspaces button {
   padding: 0 2px;
-  background-color: transparent;
   color: @text;
 }
 
-#mode {
-  background-color: @teal;
-  border-bottom: 3px solid @text;
+#workspaces button.focused {
+  color: @mauve;
+}
+
+#workspaces button.urgent {
+  color: @red;
 }
 
 #clock,
@@ -71,16 +72,6 @@ button:hover {
 #window,
 #workspaces {
   margin: 0 4px;
-}
-
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-  margin-left: 0;
-}
-
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-  margin-right: 0;
 }
 
 @keyframes blink {
@@ -117,6 +108,7 @@ tooltip {
   background: @mantle;
   border: @mantle;
 }
+
 tooltip label {
   color: @text;
   text-shadow: none;
