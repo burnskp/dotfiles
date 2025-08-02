@@ -101,6 +101,7 @@
     "format-icons": [
       ""
     ],
+    "format-time": "{H}:{m}",
     "states": {
       "warning": 10,
       "critical": 5
