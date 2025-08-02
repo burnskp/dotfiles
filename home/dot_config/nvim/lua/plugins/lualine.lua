@@ -29,25 +29,48 @@ return {
           lualine_c = { 'filename', { symbols.get, cond = symbols.has } },
           lualine_x = {
             {
-              require("noice").api.status.mode.get,
-              cond = require("noice").api.status.mode.has,
-              color = function()
-                return {
-                  fg =
-                      Snacks.util.color("Constant")
-                }
+              function()
+                -- Check if MCPHub is loaded
+                if not vim.g.loaded_mcphub then
+                  return
+                end
+                return "󰐻 "
               end,
-            },
-            {
-              require('mcphub.extensions.lualine'),
-              cond = function()
-                return vim.g.mcphub_executing ~= nil or vim.g.mcphub_status ~= "ready"
-              end
+              color = function()
+                local status = vim.g.mcphub_status or "stopped"
+                if status == "ready" or status == "restarted" then
+                  return { fg = "#40a02b" }
+                elseif status == "starting" or status == "restarting" then
+                  return { fg = "#dc8a78" }
+                elseif status == "stopped" then
+                  return { fg = "#5c5f77" }
+                else
+                  return { fg = "#d20f39" }
+                end
+              end,
             },
             {
               'copilot',
               show_colors = true,
-              show_loading = true
+              show_loading = true,
+              symbols = {
+                status = {
+                  icons = {
+                    enabled = " ",
+                    sleep = " ", -- auto-trigger disabled
+                    disabled = " ",
+                    warning = " ",
+                    unknown = " "
+                  },
+                  hl = {
+                    enabled = "#40a02b",
+                    sleep = "#179299",
+                    disabled = "#d20f39",
+                    warning = "#d20f39",
+                    unknown = "#fe640b"
+                  }
+                }
+              },
             },
             'diagnostics',
             {
