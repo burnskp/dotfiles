@@ -56,11 +56,11 @@ return {
     end,
     keys = {
       {
-        "<leader>ca",
+        "<leader>Aa",
         false,
       },
       {
-        "<leader>cc",
+        "<leader>Ac",
         function()
           return require("CopilotChat").toggle({
             selection = function()
@@ -72,7 +72,7 @@ return {
         mode = { "n" },
       },
       {
-        "<leader>cc",
+        "<leader>Ac",
         function()
           return require("CopilotChat").open({
             selection = function(source)
@@ -84,25 +84,25 @@ return {
         mode = { "v" },
       },
       {
-        "<leader>cd",
+        "<leader>Ad",
         "<cmd>CopilotChatDocs<cr>",
         desc = "Document Code",
         mode = { "n", "v" },
       },
       {
-        "<leader>cf",
+        "<leader>Af",
         "<cmd>CopilotChatFix<cr>",
         desc = "Fix Code",
         mode = { "n", "v" },
       },
       {
-        "<leader>co",
+        "<leader>Ao",
         "<cmd>CopilotChatOptimize<cr>",
         desc = "Optimize Code",
         mode = { "n", "v" },
       },
       {
-        "<leader>cp",
+        "<leader>Ap",
         function()
           require("CopilotChat").select_prompt()
         end,
@@ -110,19 +110,19 @@ return {
         mode = { "n", "v" },
       },
       {
-        "<leader>cr",
+        "<leader>Ar",
         "<cmd>CopilotChatReview<cr>",
         desc = "Review Code",
         mode = { "n", "v" },
       },
       {
-        "<leader>ct",
+        "<leader>At",
         "<cmd>CopilotChatTests<cr>",
         desc = "Add Tests to Code",
         mode = { "n", "v" },
       },
       {
-        "<leader>cq",
+        "<leader>Aq",
         function()
           vim.ui.input({
             prompt = "Quick Chat: ",

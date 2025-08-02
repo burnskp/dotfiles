@@ -98,7 +98,8 @@ return {
     {
       { "<c-.>",      function() Snacks.scratch() end,                                                                                                           desc = "Toggle Scratch Buffer" },
       { "<c-/>",      function() Snacks.terminal() end,                                                                                                          desc = "Toggle Terminal" },
-      { "<leader>d",  function() if vim.fn.winnr('$') > 1 then vim.cmd('close') else Snacks.bufdelete() end end,                                                 desc = "DeleteBuffer" },
+      { "<leader>c",  "<cmd>close<cr>",                                                                                                                          desc = "Close" },
+      { "<leader>d",  function() Snacks.bufdelete() end,                                                                                                         desc = "DeleteBuffer" },
       { "<leader>fb", function() Snacks.picker.buffers() end,                                                                                                    desc = "Buffers" },
       { "<leader>fd", function() Snacks.picker.diagnostics_buffer() end,                                                                                         desc = "Buffer Diagnostics" },
       { "<leader>ff", function() pick_files() end,                                                                                                               desc = "Find Files" },
