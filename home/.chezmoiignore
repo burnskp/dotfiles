@@ -20,6 +20,7 @@
 .config/swayidle
 .config/swaylock
 .config/systemd
+.config/task
 .config/waybar
 .local/share/applications
 .local/share/firejail
