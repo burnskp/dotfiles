@@ -240,7 +240,7 @@ config.set("content.javascript.enabled", True, "qute://*/*")
 config.set(
     "content.local_content_can_access_remote_urls",
     True,
-    "file:///home/user/.local/share/qutebrowser/userscripts/*",
+    "file:///home/burnskp/.local/share/qutebrowser/userscripts/*",
 )
 
 # Allow locally loaded documents to access other local URLs.
@@ -248,7 +248,7 @@ config.set(
 config.set(
     "content.local_content_can_access_file_urls",
     False,
-    "file:///home/user/.local/share/qutebrowser/userscripts/*",
+    "file:///home/burnskp/.local/share/qutebrowser/userscripts/*",
 )
 
 # Allow websites to record audio.
@@ -340,7 +340,7 @@ c.content.mute = True
 # `{line0}`: Same as `{line}`, but starting from index 0. * `{column0}`:
 # Same as `{column}`, but starting from index 0.
 # Type: ShellCommand
-c.editor.command = ["hx", "{file}"]
+c.editor.command = ["env", "NVIM_MINIMAL=1", "nvim", "{file}"]
 
 # Characters used for hint strings.
 # Type: UniqueCharString
@@ -492,11 +492,13 @@ c.fonts.web.size.minimum_logical = 18
 #   - critical
 c.logging.level.ram = "info"
 
+c.downloads.location.directory = "/home/burnskp/downloads"
+
 # Bindings for normal mode
 config.bind("e", "scroll-page 0 -1")
 config.bind("j", "tab-prev")
 config.bind("k", "tab-next")
-config.bind("ss", "print --pdf /home/user/{title}.pdf")
+config.bind("ss", "print --pdf /home/burnskp/Downloads/{title}.pdf")
 config.bind("spa", "spawn --userscript qute-pass --mode gopass")
 config.bind("spo", "spawn --userscript qute-pass --otp-only --mode gopass")
 config.bind("spu", "spawn --userscript qute-pass --username-only --mode gopass")

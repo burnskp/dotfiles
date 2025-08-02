@@ -41,7 +41,6 @@ nonewprivs
 protocol unix,inet,inet6,netlink,
 netfilter
 seccomp !chroot	# allowing chroot, just in case this is an Electron app
-shell none
 #tracelog	# send blacklist violations to syslog
 
 disable-mnt
@@ -58,4 +57,4 @@ ignore dbus-system none
 join-or-start legcord
 
 # Redirect
-include /etc/firejail/electron.profile
+include /etc/firejail/electron-common.profile
