@@ -370,6 +370,7 @@ c.url.open_base_url = True
 # Type: Dict
 c.url.searchengines = {
     "DEFAULT": "https://kagi.com/search?q={}",
+    "gh": "https://grep.app/search?q={}",
     "aur": "https://aur.archlinux.org/packages/?O=0&K={}",
     "aw": "https://wiki.archlinux.org/index.php?title=Special%3ASearch&search={}&go=Go",
 }
