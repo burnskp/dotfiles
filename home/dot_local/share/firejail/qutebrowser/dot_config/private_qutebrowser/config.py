@@ -493,13 +493,11 @@ c.fonts.web.size.minimum_logical = 18
 #   - critical
 c.logging.level.ram = "info"
 
-c.downloads.location.directory = "/home/burnskp/downloads"
-
 # Bindings for normal mode
 config.bind("e", "scroll-page 0 -1")
 config.bind("j", "tab-prev")
 config.bind("k", "tab-next")
-config.bind("ss", "print --pdf /home/burnskp/Downloads/{title}.pdf")
+config.bind("ss", "print --pdf {title}.pdf")
 config.bind("spa", "spawn --userscript qute-pass --mode gopass")
 config.bind("spo", "spawn --userscript qute-pass --otp-only --mode gopass")
 config.bind("spu", "spawn --userscript qute-pass --username-only --mode gopass")

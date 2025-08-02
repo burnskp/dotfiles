@@ -58,3 +58,6 @@ join-or-start legcord
 
 # Redirect
 include /etc/firejail/electron-common.profile
+
+private /home/burnskp/.local/share/firejail/legcord
+whitelist /home/burnskp/share
