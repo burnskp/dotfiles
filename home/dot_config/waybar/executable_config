@@ -21,7 +21,7 @@
     "tray",
     "idle_inhibitor",
     "clock",
-    "custom/spacer"
+    "custom/right-spacer"
   ],
   "sway/workspaces": {
     "disable-scroll": true,
@@ -79,6 +79,10 @@
   },
   "custom/spacer": {
     "format": "  ",
+    "tooltip": false
+  },
+  "custom/right-spacer": {
+    "format": "   ",
     "tooltip": false
   },
 
