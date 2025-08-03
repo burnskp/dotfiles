@@ -100,7 +100,7 @@ function fsb() {
   local branches branch
   branches=$(git branch --all | awk 'tolower($0) ~ /'"$pattern"'/') &&
   branch=$(echo "$branches" |
-  fzf --tmux 90% -p -1 -0 +m) &&
+  fzf -p -1 -0 +m) &&
   if [ "$branch" = "" ]; then
     echo "[$0] No branch matches the provided pattern"; return;
   fi;
@@ -110,7 +110,7 @@ function fsb() {
 function fshow() {
   git log --graph --color=always \
     --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-  fzf --tmux 90% --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort --preview \
+  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort --preview \
     'f() { set -- $(echo -- "$@" | grep -o "[a-f0-9]\{7\}"); [ $# -eq 0 ] || git show --color=always $1 ; }; f {}' \
     --header "enter to view, ctrl-o to checkout" \
     --bind "q:abort,ctrl-f:preview-page-down,ctrl-b:preview-page-up" \

@@ -8,11 +8,11 @@ if [[ $commands[fzf] ]]; then
 --color=selected-bg:#BCC0CC --color=border:#CCD0DA,label:#4C4F69 \
 --color=gutter:-1"
 
-  alias fp="fzf --tmux 90% --ansi --style full --preview 'bat --color=always --style=plain {}' --no-scrollbar"
-  alias zp=alias zp='cd ~/projects/$(fd . -t d --maxdepth 1 ~/projects --exec basename | fzf --tmux)'
+  alias fp="fzf --ansi --style full --preview 'bat --color=always --style=plain {}' --no-scrollbar"
+  alias zp=alias zp='cd ~/projects/$(fd . -t d --maxdepth 1 ~/projects --exec basename | fzf)'
 
   function gpr() {
-    fzf --tmux 90% --ansi \
+    fzf --ansi \
       --border vertical --info inline --header-lines 4 \
       --preview 'GH_FORCE_TTY=$FZF_PREVIEW_COLUMNS gh pr view --comments {1}' \
       --preview-window up:border-down \
@@ -25,11 +25,11 @@ if [[ $commands[fzf] ]]; then
 
   function gr() {
     local file
-    file=$(git log --all --pretty=format: --name-only | sort -u | grep -v '^$' | fzf --tmux --prompt="Select file: ")
+    file=$(git log --all --pretty=format: --name-only | sort -u | grep -v '^$' | fzf --prompt="Select file: ")
     [[ -z $file ]] && return
     local commit
     commit=$(git log --oneline -- $file | \
-        fzf --tmux 90% --preview "git show {1}:$file | bat --style=numbers --color=always --line-range :500 - 2>/dev/null || echo 'File deleted in this commit'" \
+        fzf --preview "git show {1}:$file | bat --style=numbers --color=always --line-range :500 - 2>/dev/null || echo 'File deleted in this commit'" \
         --prompt="Select commit: " \
         --delimiter=' ' \
         --with-nth=1,2.. \
@@ -44,7 +44,7 @@ if [[ $commands[fzf] ]]; then
       selected=$1
     else
       repo_list=$(fd -t d -H -I '^\.git$' --base-directory ~/git | sed -e 's|/.git/||' -e "s,/,: ," | sort -u)
-      selected=$(echo "$repo_list" | fzf --tmux)
+      selected=$(echo "$repo_list" | fzf)
     fi
 
     if [[ $selected ]]; then
