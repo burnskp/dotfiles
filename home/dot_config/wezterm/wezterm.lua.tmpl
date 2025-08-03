@@ -8,7 +8,6 @@ require("fonts").config(config)
 require("smart-splits").config(config)
 require("session").config(config)
 
-config.front_end = "WebGpu"
 config.term = "wezterm"
 config.audible_bell = "Disabled"
 config.exit_behavior = "Close"
@@ -20,10 +19,12 @@ config.quick_select_patterns = {
   "[a-z0-9]+(?:-[a-z0-9]+)+-[a-z0-9]+"
 }
 
+{{ if eq .chezmoi.os "darwin" -}}
+config.front_end = "WebGpu"
 wezterm.on('gui-startup', function(cmd)
-  local _, _, window = wezterm.mux.spawn_window(cmd or {})
-  window:gui_window():maximize()
+local _, _, window = wezterm.mux.spawn_window(cmd or {})
+window:gui_window():maximize()
 end)
-
+{{ end -}}
 
 return config

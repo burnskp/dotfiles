@@ -10,7 +10,11 @@ M.config = function(config)
   config.font = wezterm.font({
     family = "DejaVuSansM Nerd Font Mono"
   })
+  {{ if eq .chezmoi.os "darwin" -}}
   config.font_size = 22.0
+  {{ else -}}
+  config.font_size = 18.0
+  {{ end -}}
 end
 
 return M

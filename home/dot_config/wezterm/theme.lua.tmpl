@@ -58,7 +58,11 @@ function M.config(config)
   config.tab_bar_at_bottom = true
   config.tab_max_width = 20
   config.use_fancy_tab_bar = false
+  {{ if eq .chezmoi.os "darwin" -}}
   config.window_decorations = "RESIZE"
+  {{ else -}}
+  config.window_decorations = "NONE"
+  {{ end -}}
 end
 
 return M
