@@ -28,7 +28,7 @@ wezterm.on("format-tab-title", function(tab, _, _, _, _, max_width)
   local foreground = "#4c4f69"
   local number_foreground = "#e6e9ef"
   local number_background
-  if string.find(title, "^[0-9]: Copy mode:") then
+  if string.find(title, "Copy mode:") then
     number_background = "#fe640b"
   elseif tab.is_active then
     number_background = "#8839ef"
