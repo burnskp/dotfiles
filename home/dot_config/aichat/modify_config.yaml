@@ -24,7 +24,7 @@ clients:
   - type: openai-compatible
     name: copilot
     api_key: $API_KEY
-    api_base:  $API_BASE
+    api_base: $API_BASE
     patch:
       chat_completions:
         '.*':
