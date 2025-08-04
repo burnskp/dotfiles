@@ -13,6 +13,7 @@ return {
       ensure_installed = {
         "ansiblels",
         "awk_ls",
+        "bashls",
         "dockerls",
         "golangci_lint_ls",
         "gopls",
