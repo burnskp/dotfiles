@@ -16,21 +16,21 @@ PROJECT="${WORKSPACE##*/}"
 
 mkdir -p "$VOLUME_CONFIG"
 
-if which podman >/dev/null 2>&1; then
+if which podman > /dev/null 2>&1; then
   podman pull "$CONTAINER"
   podman run -it \
     --userns=keep-id \
     --env COLORTERM=truecolor \
     --volume="$VOLUME_CONFIG:/home/ubuntu/.local/share/opencode" \
     --volume="$WORKSPACE:/workspace/$PROJECT" \
-    $CONTAINER $PROJECT "$@"
-elif which docker >/dev/null 2>&1; then
+    "$CONTAINER" "$PROJECT" "$@"
+elif which docker > /dev/null 2>&1; then
   docker pull "$CONTAINER"
   docker run -it \
     --env COLORTERM=truecolor \
     --volume="$VOLUME_CONFIG:/home/ubuntu/.local/share/opencode" \
     --volume="$WORKSPACE:/workspace/$PROJECT" \
-    $CONTAINER $PROJECT "$@"
+    "$CONTAINER" "$PROJECT" "$@"
 else
   echo "Error: podman or docker not found."
   exit 1
