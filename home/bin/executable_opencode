@@ -1,0 +1,34 @@
+#!/bin/bash
+set -euo pipefail
+
+APP="opencode"
+CONTAINER="ghcr.io/burnskp/containers/opencode:latest"
+VOLUME_CONFIG="$HOME/.local/share/container_configs/$APP"
+
+# If a directory is provided as the first argument then use it as the workspace.
+if [ "$#" -gt 0 ] && [[ -d $1 ]]; then
+  WORKSPACE=$1
+  shift
+else
+  WORKSPACE=$PWD
+fi
+
+mkdir -p "$VOLUME_CONFIG"
+
+if which podman > /dev/null 2>&1; then
+  podman run -it \
+    --userns=keep-id \
+    --env COLORTERM=truecolor \
+    --volume="$VOLUME_CONFIG:/home/ubuntu/.local/share/opencode" \
+    --volume="$WORKSPACE:/workspace" \
+    $CONTAINER "$@"
+elif which docker > /dev/null 2>&1; then
+  docker run -it \
+    --env COLORTERM=truecolor \
+    --volume="$VOLUME_CONFIG:/home/ubuntu/.local/share/opencode" \
+    --volume="$WORKSPACE:/workspace" \
+    $CONTAINER "$@"
+else
+  echo "Error: podman or docker not found."
+  exit 1
+fi
