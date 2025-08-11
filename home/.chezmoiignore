@@ -2,6 +2,7 @@
 .config/karabiner/automatic_backups
 {{ if eq .chezmoi.os "darwin" -}}
 .zsh/cachyos.zsh
+.npmrc
 {{ else -}}
 .config/homebrew
 .config/karabiner
