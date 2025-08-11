@@ -21,7 +21,7 @@ return {
       provider = "copilot",
       providers = {
         copilot = {
-          model = "o4-mini"
+          model = "gpt-5"
         },
       },
       behaviour = {
