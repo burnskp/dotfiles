@@ -1,1 +1,0 @@
-KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0664", GROUP="users", ATTRS{idVendor}=="1050", ATTRS{idProduct}=="0406"

@@ -1,29 +1,10 @@
 .config/karabiner/assets
 .config/karabiner/automatic_backups
-.config/zed/conversations
-.config/zed/prompts
-.config/zed/themes
-{{ if eq .chezmoi.os "linux" -}}
+{{ if eq .chezmoi.os "darwin" -}}
+.zsh/cachyos.zsh
+{{ else -}}
 .config/homebrew
 .config/karabiner
 .hammerspoon
 .zsh/macos.zsh
-{{ end -}}
-{{ if eq .chezmoi.os "darwin" -}}
-.config/environment.d/
-.config/firejail
-.config/foot
-.config/fuzzel
-.config/mako
-.config/qutebrowser
-.config/sway
-.config/swayidle
-.config/swaylock
-.config/systemd
-.config/task
-.config/waybar
-.local/share/applications
-.local/share/firejail
-.Xresources
-.zsh/cachyos.zsh
 {{ end -}}
