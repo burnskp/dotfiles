@@ -57,7 +57,7 @@ return {
     },
     keys = {
       {
-        "<leader>ab",
+        "<leader>Ab",
         function()
           require("avante.api").ask({
             question = "Fix the bugs inside the following codes, if any",
@@ -67,7 +67,7 @@ return {
         mode = { "n", "v" },
       },
       {
-        "<leader>ac",
+        "<leader>Ac",
         function()
           require("avante.api").ask({
             question = "Complete the following codes written in " .. vim.bo.filetype,
@@ -77,21 +77,7 @@ return {
         mode = { "n", "v" },
       },
       {
-        "<leader>ad",
-        function()
-          require("avante.api").ask({ question = "Add docstring to the following code" })
-        end,
-        desc = "Docstring(ask)",
-        mode = { "n", "v" }
-      },
-      {
-        "<leader>aD",
-        "<Plug>(AvanteToggleDebug)",
-        { desc = "avante: toggle debug" },
-        mode = { "n", "v" }
-      },
-      {
-        "<leader>ag",
+        "<leader>Ag",
         function()
           require("avante.api").ask({
             question = "Correct the text to standard English, but keep any code blocks inside intact.",
@@ -107,7 +93,7 @@ return {
         mode = { "n" },
       },
       {
-        "<leader>ao",
+        "<leader>Ao",
         function()
           require("avante.api").ask({
             question = "Optimize the following code",
@@ -123,7 +109,7 @@ return {
         mode = { "n" },
       },
       {
-        "<leader>au",
+        "<leader>Au",
         function()
           require("avante.api").ask({ question = "Implement tests for the following code" })
         end,
@@ -131,7 +117,7 @@ return {
         mode = { "n" },
       },
       {
-        "<leader>ax",
+        "<leader>Ax",
         function()
           require("avante.api").ask({ question = "Explain the following code" })
         end,

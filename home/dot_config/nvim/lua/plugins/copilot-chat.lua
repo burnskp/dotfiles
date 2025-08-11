@@ -60,7 +60,7 @@ return {
         false,
       },
       {
-        "<leader>Ac",
+        "<leader>ac",
         function()
           return require("CopilotChat").toggle({
             selection = function()
@@ -68,11 +68,11 @@ return {
             end,
           })
         end,
-        desc = "Toggle",
+        desc = "CopilotChat",
         mode = { "n" },
       },
       {
-        "<leader>Ac",
+        "<leader>ac",
         function()
           return require("CopilotChat").open({
             selection = function(source)
@@ -80,7 +80,7 @@ return {
             end,
           })
         end,
-        desc = "Toggle",
+        desc = "CopilotChat",
         mode = { "v" },
       },
       {
@@ -102,7 +102,7 @@ return {
         mode = { "n", "v" },
       },
       {
-        "<leader>Ap",
+        "<leader>ap",
         function()
           require("CopilotChat").select_prompt()
         end,
@@ -122,7 +122,7 @@ return {
         mode = { "n", "v" },
       },
       {
-        "<leader>Aq",
+        "<leader>aq",
         function()
           vim.ui.input({
             prompt = "Quick Chat: ",
