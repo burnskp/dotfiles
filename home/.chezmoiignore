@@ -3,6 +3,7 @@
 {{ if eq .chezmoi.os "darwin" -}}
 .zsh/cachyos.zsh
 .npmrc
+.ssh/allow_signers
 {{ else -}}
 .config/homebrew
 .config/karabiner
