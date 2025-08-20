@@ -72,8 +72,6 @@ if [ $commands[docker] ]; then
   alias dstop='docker stop'
 fi
 
-alias zp='cd ~/projects/$(find ~/projects -type d -mindepth 1 -maxdepth 1 -not -path "*/\.*" | sed "s|.*/projects/||" | fzf)'
-
 if [[ $commands[chezmoi] ]]; then
   alias cha="chezmoi add"
   alias chap="chezmoi apply"

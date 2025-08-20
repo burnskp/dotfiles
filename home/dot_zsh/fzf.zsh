@@ -39,18 +39,30 @@ if [[ $commands[fzf] ]]; then
   }
 
   function zg() {
-    repos="$HOME/git"
+    dir="$HOME/git"
+    list=$(fd -t d -H -I '^\.git$' --base-directory "$dir" | sed -e 's|/.git/||' -e "s,/,: ," | sort -u)
     if [[ $# -eq 1 ]]; then
-      selected=$1
+      selected=$(echo "$list" | fzf -1 -q "$1")
     else
-      repo_list=$(fd -t d -H -I '^\.git$' --base-directory ~/git | sed -e 's|/.git/||' -e "s,/,: ," | sort -u)
-      selected=$(echo "$repo_list" | fzf)
+      selected=$(echo "$list" | fzf)
     fi
 
     if [[ $selected ]]; then
-      selected_name="${selected##*: }"
-      selected_path="${repos}/$(echo $selected | sed -e "s,: ,/,")"
-      cd "$selected_path"
+      cd "$dir/$(echo $selected | sed -e "s,: ,/,")"
+    fi
+  }
+
+  function zp() {
+    dir="$HOME/projects"
+    list=$(fd -t d -H -d 1 --base-directory "$dir" | sort -u | sed 's:/$::')
+    if [[ $# -eq 1 ]]; then
+      selected=$(echo "$list" | fzf -1 -q "$1")
+    else
+      selected=$(echo "$list" | fzf)
+    fi
+
+    if [[ $selected ]]; then
+      cd "$dir/$selected"
     fi
   }
 fi
