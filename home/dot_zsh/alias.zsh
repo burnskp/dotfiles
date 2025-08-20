@@ -1,3 +1,8 @@
+# global dot aliases
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../..'
+
 alias grep="grep --color -i"
 alias Grep="grep --color -i"
 alias ndu="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
