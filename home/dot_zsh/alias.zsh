@@ -11,6 +11,9 @@ alias vi="nvim"
 alias mi="NVIM_MINIMAL=true nvim"
 alias wget=wget --hsts-file="$HOME/.local/share/wget-hsts"
 
+alias fn="nvim -c Notes"
+alias gn="nvim -c NotesGrep"
+
 if [[ $commands[bat] ]]; then
   alias bathelp='bat --plain --language=help'
   alias bl="bat --paging=never -l log"

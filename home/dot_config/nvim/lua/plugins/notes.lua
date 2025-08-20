@@ -6,7 +6,7 @@ return {
       auto_push = true,
     }
   },
-  cmd = { "Notes", "NotesAll", "NotesAllGrep", "NotesGrep", "LastNote", "ProjectNote", "ProjectNotes", "ProjectNotesGrep" },
+  cmd = { "CreateNote", "Notes", "NotesAll", "NotesAllGrep", "NotesGrep", "LastNote", "ProjectNote", "ProjectNotes", "ProjectNotesGrep" },
   keys = {
     { "<leader>na", "<cmd>NotesAllGrep float<CR>",        desc = "Grep All Notes (Float)" },
     { "<leader>nA", "<cmd>NotesAllGrep <CR>",             desc = "Grep All Notes" },

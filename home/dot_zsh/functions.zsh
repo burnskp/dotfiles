@@ -49,3 +49,7 @@ if [[ $commands[chezmoi] ]]; then
     chezmoi git commit  -- -m "$*" && chezmoi git push origin HEAD
   }
 fi
+
+function nn() {
+  nvim -c CreateNote\ $1
+}
