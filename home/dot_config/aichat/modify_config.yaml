@@ -15,6 +15,7 @@ fi
 
 cat << EOF
 keybindings: vi
+light_theme: true
 model: copilot:gpt-5
 repl_prelude: "session:temp"
 save_session: false

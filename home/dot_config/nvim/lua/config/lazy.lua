@@ -23,6 +23,7 @@ require("lazy").setup({
     lazy = false,
     version = false,
   },
+  install = { colorscheme = { "catppuccin-latte" },
   checker = {
     enabled = true,
     frequency = 259200,
