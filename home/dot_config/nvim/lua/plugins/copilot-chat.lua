@@ -17,13 +17,11 @@ return {
           }
         end
       end
-      if prompts["Commit"] then
-        prompts["Commit"].context = "git:staged"
-      end
       return prompts
     end
 
     opts.prompts = load_prompts()
+    opts.model = "claude-haiku-4.5"
     return opts
   end,
   keys = {
