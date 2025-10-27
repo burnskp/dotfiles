@@ -106,7 +106,7 @@
       "warning": 10,
       "critical": 5
     },
-    "format": "{icon}  {time}",
+    "format": "{icon}  {time} ({capacity}%)",
     "tooltip-format": "Power Draw: {power:.1f}W\nCapacity: {capacity}%\nCycles: {cycles}\nHealth: {health}"
   },
   "pulseaudio": {
