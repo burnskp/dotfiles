@@ -28,7 +28,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
     })
     chat.ask(chat.prompts().Review.prompt, {
       selection = require("CopilotChat.select").buffer,
-      context = 'git:staged',
+      context = "git:staged",
       model = "gpt-4.1",
     })
   end,
