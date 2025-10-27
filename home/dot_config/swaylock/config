@@ -1,5 +1,5 @@
-color=193549
-indicator-radius=100
+image=~/.config/sway/wallpaper/fw_cobalt2_large.png
+indicator-radius=140
 indicator-thickness=15
 inside-color=193549
 inside-clear-color=193549
