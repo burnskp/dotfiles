@@ -10,6 +10,8 @@
     "power-profiles-daemon",
     "cpu",
     "custom/spacer",
+    "temperature",
+    "custom/spacer",
     "memory",
     "custom/spacer",
     "disk",
@@ -59,7 +61,7 @@
     "tooltip": false,
     "format": "{icon}  {temperatureC}°",
     "hwmon-path": [
-      "/sys/class/hwmon/hwmon1/temp2_input"
+      "/sys/class/hwmon/hwmon8/temp2_input"
     ]
   },
   "memory": {
