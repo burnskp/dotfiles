@@ -11,7 +11,7 @@ return {
         end,
       },
     }
-    table.remove(opts.sections.lualine_x, 4)
+    table.remove(opts.sections.lualine_x, 3)
     opts.sections.lualine_y = { "filetype" }
     opts.sections.lualine_z = { "progress", "location" }
     return opts
