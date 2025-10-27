@@ -10,7 +10,6 @@ if [ "$(uname -o)" == "GNU/Linux" ] && grep -q Arch /etc/*release 2>&1 >/dev/nul
   alias pacsyu="sudo pacman -Syu"
   alias pacu="sudo pacman -U"
   alias pacz="pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
-  alias paru="paru -S"
   alias parus="paru -Ss"
   alias paruu="paru -Su"
   alias paruy="paru -Syu"
