@@ -1,0 +1,13 @@
+[Unit]
+Description=Pantheon Polkit Authentication Agent
+After=graphical-session.target
+
+[Service]
+Type=exec
+ExecCondition=/lib/systemd/systemd-xdg-autostart-condition "wlroots:sway:Wayfire:labwc:Hyprland" ""
+ExecStart=/usr/lib/policykit-1-pantheon/io.elementary.desktop.agent-polkit
+Restart=on-failure
+Slice=background-graphical.slice
+
+[Install]
+WantedBy=graphical-session.target

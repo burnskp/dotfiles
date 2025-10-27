@@ -1,8 +1,0 @@
-#!/bin/bash
-
-oauth_token=$(cat ~/.config/github-copilot/apps.json | jq -r .[].oauth_token)
-bearer_token=$(curl -sL https://api.github.com/copilot_internal/v2/token -H "Authorization: Bearer $oauth_token" -H "Content-Type: application/json" -H "Copilot-Integration-Id: vscode-chat" | jq -r ".token")
-export bearer_token
-yq -i '(.ai.providers[].password) = strenv(bearer_token)' ~/.config/k8sgpt/k8sgpt.yaml
-unset bearer_token
-k8sgpt -r "Copilot-Integration-Id:vscode-chat" -r "Editor-Version: k8sgpt/0.1.0" $@

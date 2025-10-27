@@ -1,5 +1,3 @@
-# style name or JSON path (default "auto")
-style: catppuccin-latte.json
 # mouse support (TUI-mode only)
 mouse: false
 # use pager to display markdown

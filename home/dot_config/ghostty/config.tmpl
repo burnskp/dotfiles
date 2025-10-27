@@ -1,11 +1,11 @@
 font-family = DejaVu Sans Mono
 font-feature = -calt, -liga, -dlig
-theme = Catppuccin Latte
+theme = cobalt2-custom
 window-decoration = none
 {{ if eq .chezmoi.os "darwin" -}}
 command = "/opt/homebrew/bin/tmux new-session -ADs $(hostname -s)"
 font-size = 21
 {{ else  -}}
 command = "tmux new-session -ADs $(hostname -s)"
-font-size = 19
+font-size = 20
 {{ end -}}

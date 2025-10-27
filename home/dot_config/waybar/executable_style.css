@@ -1,0 +1,130 @@
+* {
+  font-family: "DejaVu Sans", "Symbols Nerd Font";
+  font-size: 15px;
+  min-height: 22px;
+}
+
+window#waybar {
+  background-color: #0e3a59;
+  color: #f0f0f0;
+  padding: 0;
+  margin: 0;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+button {
+  /* Use box-shadow instead of border so the text isn't offset */
+  box-shadow: inset 0 -3px transparent;
+  /* Avoid rounded borders under each button name */
+  border: none;
+  border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+  background: inherit;
+  box-shadow: inset 0 -3px #f0f0f0;
+}
+
+#workspaces button {
+  padding: 0 0px;
+  color: #b0b0b0;
+  margin: 0 5px;
+}
+
+#workspaces button.focused {
+  color: #00ffff;
+}
+
+#WORKSPACES button.urgent {
+  color: #ff2600;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#mode,
+#scratchpad,
+#wireplumber,
+#mpd {
+  padding: 0 10px;
+  color: #f0f0f0;
+  background-color: #275d84;
+}
+
+#tray {
+  padding-left: 10px;
+  color: #f0f0f0;
+  background-color: #275d84;
+}
+
+#cpu {
+  padding-left: 2px;
+  padding-right: 10px;
+  background-color: #275d84;
+}
+
+#power-profiles-daemon {
+  padding-left: 10px;
+  background-color: #275d84;
+}
+
+#idle_inhibitor {
+  padding: 0 0px;
+  color: #f0f0f0;
+  background-color: #275d84;
+}
+
+#window,
+#workspaces {
+  margin: 0 4px;
+}
+
+@keyframes blink {
+  to {
+    background-color: #f0f0f0;
+    color: #193549;
+  }
+}
+
+#battery.critical:not(.charging) {
+  background-color: #ff2600;
+  color: #f0f0f0;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+label:focus {
+  background-color: #0e3a59;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: #ff8c00;
+}
+
+tooltip {
+  background: #1f4662;
+  border: #214561;
+}
+
+tooltip label {
+  color: #f0f0f0;
+  text-shadow: none;
+}

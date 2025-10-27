@@ -1,3 +1,4 @@
 data.location=~/.local/share/task
-include light-256.theme
+hooks.location=~/.config/task/hooks
+include custom.theme
 news.version=3.4.1

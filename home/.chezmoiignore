@@ -1,12 +1,23 @@
 .config/karabiner/assets
 .config/karabiner/automatic_backups
-{{ if eq .chezmoi.os "darwin" -}}
-.zsh/cachyos.zsh
-.npmrc
-.ssh/allow_signers
-{{ else -}}
+{{ if eq .chezmoi.os "linux" -}}
 .config/homebrew
 .config/karabiner
 .hammerspoon
 .zsh/macos.zsh
+{{ end -}}
+{{ if eq .chezmoi.os "darwin" -}}
+.config/environment.d/
+.config/foot
+.config/fuzzel
+.config/icc
+.config/mako
+.config/qutebrowser
+.config/sway
+.config/swayidle
+.config/swaylock
+.config/systemd
+.config/task
+.config/waybar
+.zsh/cachyos.zsh
 {{ end -}}

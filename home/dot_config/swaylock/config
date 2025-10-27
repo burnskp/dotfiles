@@ -1,0 +1,15 @@
+color=193549
+indicator-radius=100
+indicator-thickness=15
+inside-color=193549
+inside-clear-color=193549
+inside-caps-lock-color=193549
+inside-ver-color=193549
+inside-wrong-color=193549
+key-hl-color=1478db
+ring-color=0E3A59
+ring-clear-color=1478db
+ring-caps-lock-color=ff2c70
+ring-ver-color=1478db
+ring-wrong-color=ff2600
+separator-color=1478db

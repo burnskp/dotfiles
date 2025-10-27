@@ -15,7 +15,3 @@ common_subcommands = [
   "podman",
   "brew",
 ]
-
-[theme]
-name = "catppuccin-latte-mauve"
-debug = true
