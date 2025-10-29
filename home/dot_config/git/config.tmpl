@@ -1,4 +1,3 @@
-{{- $colorscheme := ternary "catppuccin-latte" "cobalt2" (eq (lower .theme) "light") -}}
 [alias]
   bm = branch --merged
   dd = diff --dirstat --find-copies --find-renames --histogram --color
@@ -9,7 +8,7 @@
   undo = reset --soft HEAD^
   unstage = reset HEAD --
 [core]
-   pager = delta --syntax-theme="{{ $colorscheme }}"
+   pager = delta
    editor = nvim
 [commit]
   gpgsign = true
@@ -22,14 +21,22 @@
 [gpg.ssh]
   defaultKeycommand = ssh-add -L | grep burnskp | awk '{print "key::"$1" "$2}'
 {{ end -}}
+{{ if eq .chezmoi.os "darwin" -}}
 [credential "https://github.com"]
   helper = /opt/homebrew/bin/gh auth git-credential
 [credential "https://gist.github.com"]
   helper = /opt/homebrew/bin/gh auth git-credential
+{{ end -}}
+[include]
+  path = ~/.config/git/catppuccin.gitconfig
 [delta]
+  {{ if eq .theme "light" -}}
+  features = line-numbers decorations catppuccin-latte
+  {{ else -}}
   features = line-numbers decorations
+  syntax-theme = cobalt2
+  {{ end -}}
   line-numbers = true
-  syntax-theme = {{ $colorscheme }}
   whitespace-error-style = 22 reverse
 [diff]
   algorithm = patience
@@ -47,7 +54,7 @@
 [init]
   defaultBranch = main
 [interactive]
-  diffFilter = delta --color-only --syntax-theme="{{ $colorscheme }}"
+  diffFilter = delta
 [merge]
   tool = diffview
   conflictstyle = zdiff3
