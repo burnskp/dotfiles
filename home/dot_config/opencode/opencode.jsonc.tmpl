@@ -1,7 +1,8 @@
+{{- $colorscheme := ternary "catppuccin-latte" "cobalt2" (eq (lower .theme) "light") -}}
 {
   "$schema": "https://opencode.ai/config.json",
   // Theme configuration
-  "theme": "cobalt2",
+  "theme": "{{ $colorscheme }}",
   "model": "github-copilot/claude-haiku-4.5",
   "autoupdate": true,
 }

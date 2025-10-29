@@ -23,7 +23,6 @@ require("lazy").setup({
     lazy = false,
     version = false,
   },
-  install = { colorscheme = { "cobalt2" } },
   checker = {
     enabled = true,
     frequency = 259200,

@@ -1,0 +1,22 @@
+font pango:DejaVuSansM Nerd Font 14
+
+default_border pixel 1
+hide_edge_borders --i3 smart
+workspace_layout tabbed
+
+# class                  border  backgr. text    indicator
+{{ if eq .theme "light" -}}
+client.focused           #e6e9ef #e6e9ef #4c4f69 #8839ef #7287fd
+client.focused_inactive  #ccd0da #ccd0da #4c4f69 #8839ef #9ca0b0
+client.unfocused         #ccd0da #ccd0da #4c4f69 #8839ef #9ca0b0
+client.urgent            #fe640b #fe640b #eff1f5 #9ca0b0 #fe640b
+client.placeholder       #ccd0da #ccd0da #4c4f69 #9ca0b0 #9ca0b0
+client.background        #e6e9ef
+{{ else -}}
+client.focused           #214561 #0088ff #ffffff #0088ff
+client.focused_inactive  #214561 #214561 #a6a6a6 #214561
+client.unfocused         #214561 #214561 #a6a6a6 #214561
+client.urgent            #1F4662 #ff0900 #ffffff #ff0900
+{{ end }}
+
+bar swaybar_command waybar

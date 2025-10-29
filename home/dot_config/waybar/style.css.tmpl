@@ -1,3 +1,9 @@
+{{ if eq .theme "light" -}}
+@import "catppuccin-latte.css";
+{{ else -}}
+@import "cobalt2.css";
+{{ end -}}
+
 * {
   font-family: "DejaVu Sans", "Symbols Nerd Font";
   font-size: 15px;
@@ -5,8 +11,8 @@
 }
 
 window#waybar {
-  background-color: #0e3a59;
-  color: #f0f0f0;
+  background-color: @crust;
+  color: @text;
   padding: 0;
   margin: 0;
 }
@@ -26,21 +32,21 @@ button {
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
   background: inherit;
-  box-shadow: inset 0 -3px #f0f0f0;
+  box-shadow: inset 0 -3px @text;
 }
 
 #workspaces button {
   padding: 0 0px;
-  color: #b0b0b0;
+  color: @text;
   margin: 0 5px;
 }
 
 #workspaces button.focused {
-  color: #00ffff;
+  color: @mauve;
 }
 
 #WORKSPACES button.urgent {
-  color: #ff2600;
+  color: @red;
 }
 
 #clock,
@@ -57,31 +63,31 @@ button:hover {
 #wireplumber,
 #mpd {
   padding: 0 10px;
-  color: #f0f0f0;
-  background-color: #275d84;
+  color: @text;
+  background-color: @surface0;
 }
 
 #tray {
   padding-left: 10px;
-  color: #f0f0f0;
-  background-color: #275d84;
+  color: @text;
+  background-color: @surface0;
 }
 
 #cpu {
   padding-left: 2px;
   padding-right: 10px;
-  background-color: #275d84;
+  background-color: @surface0;
 }
 
 #power-profiles-daemon {
   padding-left: 10px;
-  background-color: #275d84;
+  background-color: @surface0;
 }
 
 #idle_inhibitor {
   padding: 0 0px;
-  color: #f0f0f0;
-  background-color: #275d84;
+  color: @text;
+  background-color: @surface0;
 }
 
 #window,
@@ -91,14 +97,14 @@ button:hover {
 
 @keyframes blink {
   to {
-    background-color: #f0f0f0;
-    color: #193549;
+    background-color: @text;
+    color: @base;
   }
 }
 
 #battery.critical:not(.charging) {
-  background-color: #ff2600;
-  color: #f0f0f0;
+  background-color: @red;
+  color: @text;
   animation-name: blink;
   animation-duration: 0.5s;
   animation-timing-function: linear;
@@ -107,7 +113,7 @@ button:hover {
 }
 
 label:focus {
-  background-color: #0e3a59;
+  background-color: @crust;
 }
 
 #tray > .passive {
@@ -116,15 +122,15 @@ label:focus {
 
 #tray > .needs-attention {
   -gtk-icon-effect: highlight;
-  background-color: #ff8c00;
+  background-color: @peach;
 }
 
 tooltip {
-  background: #1f4662;
-  border: #214561;
+  background: @mantle;
+  border: @mantle;
 }
 
 tooltip label {
-  color: #f0f0f0;
+  color: @text;
   text-shadow: none;
 }

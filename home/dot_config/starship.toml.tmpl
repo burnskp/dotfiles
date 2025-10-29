@@ -1,3 +1,9 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+{{ if eq .theme "light" -}}
+palette = "catppuccin_latte"
+{{ end -}}
+
 {{ if eq .chezmoi.os "linux" -}}
 format = """
 $hostname \
@@ -34,9 +40,6 @@ $cmd_duration\
 $status
 """
 
-[directory]
-truncation_length = 4
-
 [cmd_duration]
 format = '[$duration]($style) '
 min_time = 5_000
@@ -47,9 +50,6 @@ format = '[$context]($style) '
 
 [fill]
 symbol = ' '
-
-[git_branch]
-format = '[$branch]($style) '
 
 [gcloud]
 symbol = '️ 󱇶 '
@@ -72,3 +72,54 @@ format = '[$status]($style) '
 [time]
 disabled = false
 format = '[$time]($style)'
+
+{{ if eq .theme "light" -}}
+
+[character]
+success_symbol = "[❯](peach)"
+error_symbol = "[❯](peach)"
+vimcmd_symbol = "[❮](subtext1)" # For use with zsh-vi-mode
+
+[directory]
+truncation_length = 4
+style = "bold lavender"
+
+
+[git_branch]
+format = '[$branch]($style) '
+style = "bold mauve"
+[palettes.catppuccin_latte]
+rosewater = "#dc8a78"
+flamingo = "#dd7878"
+pink = "#ea76cb"
+mauve = "#8839ef"
+red = "#d20f39"
+maroon = "#e64553"
+peach = "#fe640b"
+yellow = "#df8e1d"
+green = "#40a02b"
+teal = "#179299"
+sky = "#04a5e5"
+sapphire = "#209fb5"
+blue = "#1e66f5"
+lavender = "#7287fd"
+text = "#4c4f69"
+subtext1 = "#5c5f77"
+subtext0 = "#6c6f85"
+overlay2 = "#7c7f93"
+overlay1 = "#8c8fa1"
+overlay0 = "#9ca0b0"
+surface2 = "#acb0be"
+surface1 = "#bcc0cc"
+surface0 = "#ccd0da"
+base = "#eff1f5"
+mantle = "#e6e9ef"
+crust = "#dce0e8"
+
+{{ else -}}
+[directory]
+truncation_length = 4
+
+[git_branch]
+format = '[$branch]($style) '
+{{ end -}}

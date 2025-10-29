@@ -1,4 +1,8 @@
 data.location=~/.local/share/task
 hooks.location=~/.config/task/hooks
+{{ if eq .theme "light" -}}
+include light-256.theme
+{{ else -}}
 include custom.theme
+{{ end }}
 news.version=3.4.1

@@ -1,0 +1,38 @@
+#!/bin/bash
+set -euo pipefail
+FILE="$HOME/.config/aichat/config.yaml"
+if [[ -f "$FILE" ]]; then
+  API_KEY=$(yq -r ".clients[0].api_key" $FILE)
+else
+  API_KEY="PLACEHOLDER"
+fi
+
+if [[ "$(uname -o)" == "Darwin" ]]; then
+  API_BASE=https://api.business.githubcopilot.com
+else
+  API_BASE=https://api.githubcopilot.com
+fi
+
+if grep -Eq "theme = .*light" ~/.config/chezmoi/chezmoi.toml; then
+  light_theme=true
+fi
+
+cat << EOF
+keybindings: vi
+light_theme: ${light_theme:-false}
+model: copilot:gpt-5
+repl_prelude: "session:temp"
+save_session: false
+stream: true
+clients:
+  - type: openai-compatible
+    name: copilot
+    api_key: "$API_KEY"
+    api_base: $API_BASE
+    patch:
+      chat_completions:
+        '.*':
+          headers:
+            Copilot-Integration-Id: vscode-chat
+            Editor-Version: aichat/0.1.0
+EOF

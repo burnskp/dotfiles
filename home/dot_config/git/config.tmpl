@@ -1,3 +1,4 @@
+{{- $colorscheme := ternary "catppuccin-latte" "cobalt2" (eq (lower .theme) "light") -}}
 [alias]
   bm = branch --merged
   dd = diff --dirstat --find-copies --find-renames --histogram --color
@@ -8,7 +9,7 @@
   undo = reset --soft HEAD^
   unstage = reset HEAD --
 [core]
-   pager = delta --syntax-theme="cobalt2"
+   pager = delta --syntax-theme="{{ $colorscheme }}"
    editor = nvim
 [commit]
   gpgsign = true
@@ -28,7 +29,7 @@
 [delta]
   features = line-numbers decorations
   line-numbers = true
-  syntax-theme = cobalt2
+  syntax-theme = {{ $colorscheme }}
   whitespace-error-style = 22 reverse
 [diff]
   algorithm = patience
@@ -46,7 +47,7 @@
 [init]
   defaultBranch = main
 [interactive]
-  diffFilter = delta --color-only --syntax-theme="cobalt2"
+  diffFilter = delta --color-only --syntax-theme="{{ $colorscheme }}"
 [merge]
   tool = diffview
   conflictstyle = zdiff3
@@ -72,6 +73,6 @@
 [user]
   name = Kevin Burns
   email = {{ .email | quote }}
-{{ if .signingkey -}}
+{{ if .signingkey }}
   signingkey = {{ .signingkey | quote }}
-{{ end -}}
+{{ end }}

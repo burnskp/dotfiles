@@ -1,5 +1,6 @@
 {{- $email := promptStringOnce . "email" "Email address" -}}
 {{- $signingkey := promptStringOnce . "signingkey" "SSH Signing Key" -}}
+{{- $theme := promptStringOnce . "theme" "light/dark Theme" -}}
 
 [data]
   email = {{ $email | quote }}

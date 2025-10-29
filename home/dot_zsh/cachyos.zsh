@@ -1,5 +1,6 @@
 #!/usr/zsh
 if [ "$(uname -o)" == "GNU/Linux" ] && grep -q Arch /etc/*release 2>&1 >/dev/null; then
+  export UV_LINK_MODE=copy
   alias pac="sudo pacman -S"
   alias paci="pacman -Si"
   alias pacq="pacman -Q"

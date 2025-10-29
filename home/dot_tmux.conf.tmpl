@@ -1,5 +1,8 @@
 # List of plugins
 set -g @tpm_plugins 'fcsonline/tmux-thumbs \
+{{ if eq .theme "light" -}}
+catppuccin/tmux \
+{{ end -}}
 tmux-plugins/tmux-copycat \
 tmux-plugins/tmux-prefix-highlight \
 tmux-plugins/tpm'
@@ -19,7 +22,23 @@ set -g @thumbs-unique enabled
 set -g @thumbs-upcase-command 'echo {} | xsel -ib'
 
 # colors
+{{ if eq .theme "light" -}}
+set -g @catppuccin_flavor 'latte'
+set -g @catppuccin_window_text " #W"
+set -g @catppuccin_window_current_text " #W"
 
+set -g status-left ""
+set -g status-right '#{prefix_highlight} #[fg=#4c4f69]#{session_name} '
+set -g @thumbs-bg-color "#eff1f5"
+set -g @thumbs-fg-color "#40a02b"
+set -g @thumbs-hint-bg-color "#eff1f5"
+set -g @thumbs-hint-fg-color "#df8e1d"
+set -g @thumbs-multi-bg-color "#eff1f5"
+set -g @thumbs-multi-fg-color "#df8e1d"
+set -g @thumbs-select-bg-color "#eff1f5"
+set -g @thumbs-select-fg-color "#1e66f5"
+
+{{ else -}}
 set -g display-panes-active-colour default
 set -g display-panes-colour default
 set -g message-style bg=default,fg=default
@@ -49,6 +68,7 @@ set -g @thumbs-select-fg-color '#ffffff'
 set -g @thumbs-unique enabled
 set -g @thumbs-upcase-command 'tmux set-buffer -- {} && tmux paste-buffer'
 set -g @thumbs-regexp-1 '[a-z0-9]+-[^ ]+'
+{{ end -}}
 
 unbind C-b
 unbind f
