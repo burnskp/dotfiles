@@ -12,7 +12,11 @@ return {
       opencode = {
         cmd = { "opencode" },
         env = {
+          {{ if eq .theme "light" -}}
+          OPENCODE_THEME = "catppuccin",
+          {{ else -}}
           OPENCODE_THEME = "cobalt2",
+          {{ end -}}
           OPENCODE_MODEL = "github-copilot/claude-haiku-4.5",
         },
       },
