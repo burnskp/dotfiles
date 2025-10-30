@@ -7,6 +7,7 @@ alacritty
 alsa-firmware
 alsa-plugins
 alsa-utils
+amd-debug-tools
 amd-ucode
 apparmor
 aria2
@@ -16,6 +17,7 @@ base
 base-devel
 bash-completion
 bat-extras
+bc
 bind
 bluez
 bluez-hid2hci
@@ -27,6 +29,7 @@ btop
 btrfs-assistant
 btrfs-progs
 buildah
+bun-bin
 cachyos-fish-config
 cachyos-hello
 cachyos-hooks
@@ -79,6 +82,7 @@ geeqie
 ghostty
 git
 git-delta
+github-cli
 glances
 glow
 gnome-keyring
@@ -130,7 +134,9 @@ mesa-utils
 micro
 mkinitcpio
 modemmanager
+moreutils
 mtools
+mullvad-vpn
 nano
 nano-syntax-highlighting
 neofetch
@@ -180,6 +186,7 @@ rsync
 rtkit
 s-nail
 sbctl
+scrypt
 seahorse
 sg3_utils
 smartmontools
@@ -236,8 +243,10 @@ xf86-input-libinput
 xf86-video-amdgpu
 xfsprogs
 xl2tpd
+xmlstarlet
 xorg-server
 xorg-xdpyinfo
+xorg-xhost
 xorg-xinit
 xorg-xinput
 xorg-xkill
