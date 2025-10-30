@@ -66,7 +66,10 @@ setopt SHARE_HISTORY
 export GOPATH=$HOME/.local/share/go
 export GOBIN=$GOPATH/bin
 
+BUN_INSTALL="$HOME/.local/share/bun"
+
 path+="${GOBIN}"
+path+="${BUN_INSTALL}/bin"
 path+="${HOME}/.yarn/bin"
 path+="${HOME}/.cargo/bin"
 path+="/usr/local/sbin"

@@ -8,6 +8,7 @@
 .zsh/macos.zsh
 {{ end -}}
 {{ if eq .chezmoi.os "darwin" -}}
+.claude.json
 .config/environment.d/
 .config/foot
 .config/fuzzel
@@ -20,5 +21,6 @@
 .config/systemd
 .config/task
 .config/waybar
+.config/zathura
 .zsh/cachyos.zsh
 {{ end -}}
