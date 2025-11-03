@@ -1,4 +1,2 @@
 timeout 330 'swaylock'
-timeout 300 'swaymsg "output * power off"'
-after-resume 'swaymsg "output * power on"'
 before-sleep 'swaylock'
