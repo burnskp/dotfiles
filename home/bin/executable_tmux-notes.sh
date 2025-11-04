@@ -31,7 +31,7 @@ popup() {
   session="notes"
 
   if ! tmux has -t "$session" 2> /dev/null; then
-    session_id="$(tmux new-session -dP -s "$session" -F '#{session_id}' $HOME/bin/tmux-notes.sh _popup $1)"
+    session_id="$(tmux new-session -dP -s "$session" -F '#{session_id}' "$HOME/bin/tmux-notes.sh" _popup "$1")"
     tmux set-option -s -t "$session_id" key-table popup
     tmux set-option -s -t "$session_id" status off
     tmux set-option -s -t "$session_id" prefix None
@@ -40,6 +40,11 @@ popup() {
   fi
 
   exec tmux attach -t "$session" > /dev/null
+}
+
+commit_note() {
+  git -C "$NOTES_DIR" add "$NOTES_DIR"
+  git -C "$NOTES_DIR" commit -m "Update notes"
 }
 
 open_note() {
@@ -60,6 +65,7 @@ open_note() {
   fi
 
   rm -f "$lua_tmp"
+  commit_note
 }
 
 find_notes() {
@@ -85,10 +91,10 @@ grep_notes() {
 
 if [[ $1 == "_popup" ]]; then
   if [[ $2 == "grep" ]]; then
-    grep_notes $2
+    grep_notes "$2"
   else
     find_notes
   fi
 else
-  popup $1
+  popup "$1"
 fi
