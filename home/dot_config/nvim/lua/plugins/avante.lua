@@ -4,7 +4,7 @@ return {
     provider = "copilot",
     providers = {
       copilot = {
-        model = "gpt-5-codex",
+        model = "claude-haiku-4.5",
       },
     },
   },

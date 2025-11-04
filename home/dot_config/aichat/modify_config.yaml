@@ -20,7 +20,7 @@ fi
 cat << EOF
 keybindings: vi
 light_theme: ${light_theme:-false}
-model: copilot:gpt-5
+model: copilot:claude-haiku-4.5
 repl_prelude: "session:temp"
 save_session: false
 stream: true
