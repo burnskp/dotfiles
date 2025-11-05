@@ -11,7 +11,7 @@ function title-precmd() {
 
 function title-preexec() {
   cmd_name="${1%% *}"
-  if [[ ! ${excluded_commands[$cmd_name]} ]]; then
+  if [[ ! ${excluded_commands[(r)$cmd_name]} ]]; then
     print -n "\ek${cmd_name}\e\\"
   fi
 }
