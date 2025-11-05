@@ -14,10 +14,11 @@ return {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
-        ["json"] = { "fixjson" },
         ["*"] = { "trim_whitespace" },
-        ["markdown"] = { "mdformat", "markdownlint-cli2", "markdown-toc", "cbfmt" },
+        json = { "fixjson" },
+        markdown = { "mdformat", "markdownlint-cli2", "markdown-toc", "cbfmt" },
         ["markdown.mdx"] = { "mdformat", "markdownlint-cli2", "markdown-toc", "cbfmt" },
+        zsh = { "shfmt" },
       },
       formatters = {
         sfmt = {
