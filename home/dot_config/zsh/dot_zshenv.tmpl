@@ -104,7 +104,7 @@ check_paths+="${KREW_ROOT}/bin"
 check_paths+="${HOME}/.local/share/node/bin"
 
 for p in $check_paths; do
-  if [[ -d "$p" ]]; then
+  if [[ -d $p ]]; then
     path+="$p"
   fi
 done

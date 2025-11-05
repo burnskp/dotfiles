@@ -1,5 +1,5 @@
-if  [ $commands[colima] ]; then
-  if [[ $(($(sysctl -n hw.memsize) / 1024 / 1024 / 1024 )) -ge 64 ]]; then
+if [ $commands[colima] ]; then
+  if [[ $(($(sysctl -n hw.memsize) / 1024 / 1024 / 1024)) -ge 64 ]]; then
     mem=32
     cpu=12
   else

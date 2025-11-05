@@ -9,18 +9,18 @@ function diff() {
     return
   fi
 
-  git diff --no-index $1 $2;
+  git diff --no-index $1 $2
 }
 
 function cdgb() {
-  if git rev-parse --show-toplevel >/dev/null 2>&1; then
+  if git rev-parse --show-toplevel > /dev/null 2>&1; then
     cd $(git rev-parse --show-toplevel)
   else
     echo "Not in a git repo."
   fi
 }
 
-function addKeychainPass(){
+function addKeychainPass() {
   if ! [ "$1" ]; then
     echo "Usage: addKeyChainPass VARIABLE"
     return 1
@@ -39,14 +39,14 @@ function setVariableFromKeychain() {
 }
 
 if [[ $commands[chezmoi] ]]; then
-  function chgacmp () {
-    chezmoi git add . && \
-      chezmoi git commit -- -m "$*" && \
-      chezmoi git push origin HEAD
+  function chgacmp() {
+    chezmoi git add . \
+      && chezmoi git commit -- -m "$*" \
+      && chezmoi git push origin HEAD
   }
 
-  function chgcmp () {
-    chezmoi git commit  -- -m "$*" && chezmoi git push origin HEAD
+  function chgcmp() {
+    chezmoi git commit -- -m "$*" && chezmoi git push origin HEAD
   }
 fi
 

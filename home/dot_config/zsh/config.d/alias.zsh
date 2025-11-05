@@ -51,12 +51,11 @@ if [[ $commands[eza] ]]; then
   alias lu="eza -glF --git --group-directories-first"
 fi
 
-
-if  [ $commands[gsed] ]; then
+if [ $commands[gsed] ]; then
   alias sed='gsed'
 fi
 
-if  [ $commands[talosctl] ]; then
+if [ $commands[talosctl] ]; then
   alias tcg="talosctl config contexts"
   alias tcu="talosctl config context"
   alias tmem="talosctl memory"

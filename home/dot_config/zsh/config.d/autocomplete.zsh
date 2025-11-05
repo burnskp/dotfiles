@@ -13,7 +13,6 @@ zstyle ':completion:*' matcher-list '' \
   'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
   'r:|?=** m:{a-z\-}={A-Z\_}'
 
-
 # Enable menu selection when hitting tab twice
 zstyle ':completion:*' menu select
 

@@ -15,7 +15,7 @@ if [ $commands[task] ]; then
   }
 
   function td {
-    if [[ -z "$1" ]]; then
+    if [[ -z $1 ]]; then
       echo "Usage: td TASK_NUMBER"
       return 1
     fi
@@ -24,7 +24,7 @@ if [ $commands[task] ]; then
   }
 
   function tlater {
-    if [[ -z "$1" ]]; then
+    if [[ -z $1 ]]; then
       echo "Usage: tlater TASK_NUMBER"
       return 1
     fi
@@ -33,7 +33,7 @@ if [ $commands[task] ]; then
   }
 
   function tdel {
-    if [[ -z "$1" ]]; then
+    if [[ -z $1 ]]; then
       echo "Usage: tdel TASK_NUMBER"
       return 1
     fi
@@ -42,7 +42,7 @@ if [ $commands[task] ]; then
   }
 
   function tap {
-    if [[ -z "$2" ]]; then
+    if [[ -z $2 ]]; then
       echo "Usage: tap PROJECT DESCRIPTION"
       return 1
     fi
@@ -53,7 +53,7 @@ if [ $commands[task] ]; then
   }
 
   function tas {
-    if [[ -z "$1" ]]; then
+    if [[ -z $1 ]]; then
       echo "Usage: tas DESCRIPTION"
       return 1
     fi
@@ -62,7 +62,7 @@ if [ $commands[task] ]; then
   }
 
   function tlp {
-    if [[ -z "$1" ]]; then
+    if [[ -z $1 ]]; then
       echo "Usage: tlp PROJECT"
       return 1
     fi
@@ -70,7 +70,7 @@ if [ $commands[task] ]; then
   }
 
   function tdep {
-    if [[ -z "$2" ]]; then
+    if [[ -z $2 ]]; then
       echo "Usage: tdep TASK_NUMBER DEPENDENCY_TASK_NUMBER"
       return 1
     fi
