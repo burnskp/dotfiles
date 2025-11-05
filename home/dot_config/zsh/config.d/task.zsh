@@ -1,5 +1,5 @@
 #!/bin/zsh
-if  [ $commands[task] ]; then
+if [ $commands[task] ]; then
   alias ta="task add"
   alias th="task history"
   alias tl="task ls"
@@ -8,61 +8,73 @@ if  [ $commands[task] ]; then
   alias tp="task projects"
   alias tsum="task summary"
 
-  function td {
-  task $1 done
+  function tasksync {
+    if grep -q "^taskd" $HOME/.config/task/taskrc; then
+      task sync
+    fi
+  }
 
-  if grep -q "^taskd" $HOME/.config/task/taskrc; then
-  task sync
-  fi
+  function td {
+    if [[ -z "$1" ]]; then
+      echo "Usage: td TASK_NUMBER"
+      return 1
+    fi
+    task $1 done
+    tasksync
   }
 
   function tlater {
-  task $1 modify +later
-
-  if grep -q "^taskd" $HOME/.config/task/taskrc; then
-  task sync
-  fi
+    if [[ -z "$1" ]]; then
+      echo "Usage: tlater TASK_NUMBER"
+      return 1
+    fi
+    task $1 modify +later
+    tasksync
   }
-  function tdel {
-  task $1 delete
 
-  if grep -q "^taskd" $HOME/.config/task/taskrc; then
-  task sync
-  fi
+  function tdel {
+    if [[ -z "$1" ]]; then
+      echo "Usage: tdel TASK_NUMBER"
+      return 1
+    fi
+    task $1 delete
+    tasksync
   }
 
   function tap {
-  task add project:$*
-
-  if grep -q "^taskd" $HOME/.config/task/taskrc; then
-  task sync
-  fi
+    if [[ -z "$2" ]]; then
+      echo "Usage: tap PROJECT DESCRIPTION"
+      return 1
+    fi
+    local project="$1"
+    shift
+    task add "project:$project" "$@"
+    tasksync
   }
 
   function tas {
-  task add project:singletons $*
-
-  if grep -q "^taskd" $HOME/.config/task/taskrc; then
-  task sync
-  fi
+    if [[ -z "$1" ]]; then
+      echo "Usage: tas DESCRIPTION"
+      return 1
+    fi
+    task add project:singletons $*
+    tasksync
   }
 
   function tlp {
-  task ls project:$*
+    if [[ -z "$1" ]]; then
+      echo "Usage: tlp PROJECT"
+      return 1
+    fi
+    task ls "project:$1"
   }
 
   function tdep {
-  task $1 modify depends:"$2"
-
-  if grep -q "^taskd" $HOME/.config/task/taskrc; then
-  task sync
-  fi
+    if [[ -z "$2" ]]; then
+      echo "Usage: tdep TASK_NUMBER DEPENDENCY_TASK_NUMBER"
+      return 1
+    fi
+    task $1 modify depends:"$2"
+    tasksync
   }
-
-  # Autocomplete
-
-  zstyle ':completion:*:*:task:*' verbose yes
-  zstyle ':completion:*:*:task:*:descriptions' format '%U%B%d%b%u'
-  zstyle ':completion:*:*:task:*' group-name ''
-  compdef _task t=task
 fi
