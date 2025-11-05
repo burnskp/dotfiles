@@ -1,4 +1,4 @@
-FPATH="$HOME/git/dotfiles/zsh/completions:$FPATH"
+FPATH="$XDG_CONFIG_HOME/zsh/completions:$FPATH"
 
 # Enable smart autocompletion
 if ! [ -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION" ]; then
