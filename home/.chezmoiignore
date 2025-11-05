@@ -4,7 +4,7 @@
 {{ if eq .chezmoi.os "linux" -}}
 .config/homebrew
 .config/karabiner
-.hammerspoon
+.config/hammerspoon
 .zsh/macos.zsh
 {{ end -}}
 {{ if eq .chezmoi.os "darwin" -}}
