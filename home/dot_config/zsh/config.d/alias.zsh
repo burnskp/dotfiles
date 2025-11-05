@@ -14,7 +14,7 @@ alias sz="source ~/.zshrc"
 alias va='source .venv/bin/activate'
 alias vi="nvim"
 alias mi="NVIM_MINIMAL=true nvim"
-alias wget=wget --hsts-file="$HOME/.local/share/wget-hsts"
+alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
 
 alias fn="nvim -c Notes"
 alias gn="nvim -c NotesGrep"

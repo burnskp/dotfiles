@@ -9,6 +9,7 @@
 {{ end -}}
 {{ if eq .chezmoi.os "darwin" -}}
 .claude.json
+.config/docker
 .config/environment.d/
 .config/foot
 .config/fuzzel

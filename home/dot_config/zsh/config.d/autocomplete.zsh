@@ -1,6 +1,9 @@
 FPATH="$HOME/git/dotfiles/zsh/completions:$FPATH"
 
 # Enable smart autocompletion
+if ! [ -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION" ]; then
+  mkdir -p $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
+fi
 autoload -Uz compinit && compinit -u -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 setopt complete_in_word
 
