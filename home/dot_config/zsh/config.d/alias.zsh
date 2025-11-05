@@ -10,7 +10,7 @@ alias scpnh='scp -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null"
 alias sih="sudo -i -H"
 alias sshnh='ssh -o "StrictHostKeyChecking no" -o "UserKnownHostsFile /dev/null"'
 alias svi="sudo -e"
-alias sz="source ~/.zshrc"
+alias sz="source $XDG_CONFIG_HOME/zsh/.zshrc"
 alias va='source .venv/bin/activate'
 alias vi="nvim"
 alias mi="NVIM_MINIMAL=true nvim"
