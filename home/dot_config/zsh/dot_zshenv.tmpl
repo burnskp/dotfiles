@@ -1,4 +1,5 @@
 #!/bin/zsh
+umask 022
 
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -19,14 +20,11 @@ fi
 if [[ -S "$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh" ]]; then
   export SSH_AUTH_SOCK="$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
 fi
-{{ end -}}
-{{ if eq .chezmoi.os "linux" -}}
+{{ else -}}
 if [[ -S $XDG_RUNTIME_DIR/gcr/ssh ]]; then
   export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
 fi
 {{ end -}}
-
-umask 022
 
 set -o noclobber
 setopt nobeep
@@ -104,7 +102,7 @@ check_paths+="${KREW_ROOT}/bin"
 check_paths+="${HOME}/.local/share/node/bin"
 
 for p in $check_paths; do
-  if [[ -d $p ]]; then
+  if [[ -d "$p" ]]; then
     path+="$p"
   fi
 done

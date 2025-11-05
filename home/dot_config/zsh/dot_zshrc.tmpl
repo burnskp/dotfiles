@@ -27,3 +27,6 @@ source "$XDG_CONFIG_HOME/zsh/plugins/fast-syntax-highlighting/fast-syntax-highli
 source "$XDG_CONFIG_HOME/zsh/plugins/you-should-use/you-should-use.plugin.zsh"
 
 typeset -U PATH
+{{ if eq .chezmoi.os "darwin" -}}
+export PATH="/opt/homebrew/bin:${PATH/:/opt/homebrew/bin:/:/}"
+{{ end -}}
