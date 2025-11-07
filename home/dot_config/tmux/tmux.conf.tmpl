@@ -126,12 +126,13 @@ unbind s
 bind s run-shell ~/bin/tmux-switch-sessions.sh
 bind S display-popup -E "tmux list-sessions | cut -d":" -f1 | fzf | xargs tmux switch-client -t"
 bind m switch-client -t main
-bind t choose-tree
 bind b switch-client -l
 unbind n
 bind n display-popup -w 80% -h 80% -E ~/bin/tmux-notes.sh
 unbind N
 bind N display-popup -w 80% -h 80% -E ~/bin/tmux-notes.sh grep
+unbind t
+bind t display-popup -w 80% -h 80% -E ~/bin/tmux-journal.sh
 
 # application specific popups
 bind a display-popup -w 80% -h 80% -E ~/bin/tmux-aichat.sh

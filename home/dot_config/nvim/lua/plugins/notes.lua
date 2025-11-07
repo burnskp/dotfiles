@@ -2,6 +2,9 @@ return {
   {
     "burnskp/notes.nvim",
     opts = {
+      notesDir = "$XDG_DATA_HOME/notes/global",
+      projectNotesDir = "$XDG_DATA_HOME/notes/projects",
+      journalDir = "$XDG_DATA_HOME/notes/journal",
       git = {
         auto_commit = true,
         auto_push = true,
@@ -9,11 +12,14 @@ return {
     },
     cmd = {
       "CreateNote",
+      "Journal",
+      "JournalFind",
+      "JournalGrep",
+      "LastNote",
       "Notes",
       "NotesAll",
       "NotesAllGrep",
       "NotesGrep",
-      "LastNote",
       "ProjectNote",
       "ProjectNotes",
       "ProjectNotesGrep",
@@ -32,28 +38,10 @@ return {
       { "<leader>nS", "<cmd>ProjectNote scratch<CR>", desc = "Grep Project NotNote - Scratch" },
       { "<leader>nt", "<cmd>ProjectNote todo float<CR>", desc = "Project Note - Todo (Float)" },
       { "<leader>nT", "<cmd>ProjectNote todo<CR>", desc = "Grep Project NotNote - Todo" },
+      { "<leader>nt", "<cmd>Journal float<CR>", desc = "Today's Journal (Float)" },
+      { "<leader>nT", "<cmd>Journal<CR>", desc = "Today's Journal" },
+      { "<leader>nj", "<cmd>JournalGrep float<CR>", desc = "Grep Journal Entries (Float)" },
+      { "<leader>nJ", "<cmd>JournalGrep<CR>", desc = "Grep Journal Entries" },
     },
-  },
-  {
-    "folke/snacks.nvim",
-    opts = function(_, opts)
-      local keys = {
-        { icon = " ", key = "s", desc = "Search Notes", action = ":NotesGrep" },
-        { icon = " ", key = "n", desc = "Notes", action = ":Notes" },
-        { icon = " ", key = "e", desc = "New File", action = ":ene | startinsert" },
-      }
-
-      for _, key in ipairs(keys) do
-        local config_index = 2
-        for i = #opts.dashboard.preset.keys, 1, -1 do
-          if opts.dashboard.preset.keys[i].key == key.key then
-            table.remove(opts.dashboard.preset.keys, i)
-            break
-          end
-        end
-        table.insert(opts.dashboard.preset.keys, config_index, key)
-        config_index = config_index + 1
-      end
-    end,
   },
 }
