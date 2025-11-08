@@ -83,6 +83,7 @@ i3-wm
 i3blocks
 i3lock-color
 i3status
+inetutils
 intel-media-driver
 intel-ucode
 iptables-nft
@@ -139,6 +140,7 @@ ntp
 opencl-mesa
 opendesktop-fonts
 openssh
+otf-font-awesome
 pacman-contrib
 paru
 pavucontrol
@@ -163,6 +165,7 @@ ripgrep
 rofi
 rsync
 rtkit
+rustup
 s-nail
 sbctl
 sbsigntools
