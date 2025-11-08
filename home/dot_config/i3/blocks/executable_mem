@@ -1,0 +1,5 @@
+#!/bin/env bash
+source $HOME/.config/i3/colors
+memoryfree="$(free -h --si | grep Mem | awk '{print $7}')"
+
+widget '\uf538' "$memoryfree"
