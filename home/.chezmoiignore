@@ -11,6 +11,7 @@
 .claude.json
 .config/docker
 .config/environment.d/
+.config/firejail
 .config/foot
 .config/fuzzel
 .config/icc

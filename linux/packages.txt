@@ -41,6 +41,7 @@ cmake
 cmake-extras
 cpupower
 cryptsetup
+d-spy
 delve
 device-mapper
 dhclient
@@ -64,6 +65,7 @@ exfatprogs
 f2fs-tools
 feh
 ffmpegthumbnailer
+firejail
 foot
 fuzzel
 fwupd
@@ -225,7 +227,9 @@ wl-clip-persist
 wl-clipboard
 wmenu
 wpa_supplicant
+xdg-dbus-proxy
 xdg-desktop-portal
+xdg-desktop-portal-gtk
 xdg-desktop-portal-wlr
 xdg-user-dirs
 xf86-input-libinput

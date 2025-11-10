@@ -3,6 +3,6 @@
 Type=Application
 Name=Legcord
 Comment=Discord client with builtin client mod and theme support
-Exec=legcord --enable-features=UseOzonePlatform --ozone-platform=wayland
+Exec=/usr/local/bin/legcord --enable-features=UseOzonePlatform --ozone-platform=wayland
 Icon=legcord
 Categories=Internet;Network;InstantMessaging;
