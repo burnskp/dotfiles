@@ -2,6 +2,7 @@ accountsservice
 adobe-source-han-sans-cn-fonts
 adobe-source-han-sans-jp-fonts
 adobe-source-han-sans-kr-fonts
+adw-gtk-theme
 aichat
 alsa-firmware
 alsa-plugins
@@ -121,7 +122,9 @@ mesa-utils
 mkinitcpio
 modemmanager
 moreutils
+mpv
 mtools
+mullvad-browser-bin
 mullvad-vpn
 neofetch
 neovim
@@ -137,6 +140,7 @@ noto-fonts-emoji
 npm
 nss-mdns
 ntp
+nwg-look
 opencl-mesa
 opendesktop-fonts
 openssh
@@ -222,7 +226,6 @@ wl-clipboard
 wmenu
 wpa_supplicant
 xdg-desktop-portal
-xdg-desktop-portal-hyprland
 xdg-desktop-portal-wlr
 xdg-user-dirs
 xf86-input-libinput
