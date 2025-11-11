@@ -10,7 +10,7 @@ Type=exec
 ExecCondition=/lib/systemd/systemd-xdg-autostart-condition "wlroots:sway:Wayfire:labwc:Hyprland" ""
 # assuming configuration file is used
 ExecStart=swayidle
-Restart=on-failure
+Restart=always
 Slice=background-graphical.slice
 
 [Install]
