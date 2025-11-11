@@ -1,5 +1,5 @@
 #!/usr/zsh
-if [ "$(uname -o)" == "GNU/Linux" ] && grep -q Arch /etc/*release 2>&1 > /dev/null; then
+if [ "$(uname -o)" == "GNU/Linux" ] && grep -q Arch /etc/*release 2>&1 >/dev/null; then
   export UV_LINK_MODE=copy
   alias pac="sudo pacman -S"
   alias paci="pacman -Si"
@@ -14,4 +14,6 @@ if [ "$(uname -o)" == "GNU/Linux" ] && grep -q Arch /etc/*release 2>&1 > /dev/nu
   alias parus="paru -Ss"
   alias paruu="paru -Su"
   alias paruy="paru -Syu"
+  alias scu='systemctl --user'
+  alias ju='journalctl --user -u'
 fi

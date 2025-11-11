@@ -51,6 +51,7 @@ private-tmp
 dbus-user filter
 dbus-user.talk org.freedesktop.Notifications
 dbus-user.talk org.mozilla.*
+dbus-user.talk org.freedesktop.portal.*
 ignore dbus-user none
 ignore dbus-system none
 
