@@ -1,7 +1,11 @@
 #!/bin/bash
 OAUTH_TOKEN=$(cat ~/.config/github-copilot/apps.json | jq -r .[].oauth_token)
 API_TOKEN=$(curl -sL https://api.github.com/copilot_internal/v2/token -H "Authorization: Bearer $OAUTH_TOKEN" -H "Content-Type: application/json" -H "Copilot-Integration-Id: vscode-chat" | jq -r ".token")
-URL="https://api.business.githubcopilot.com/models"
+if [[ "$(uname -o)" == "Darwin" ]]; then
+  URL=https://api.business.githubcopilot.com
+else
+  URL=https://api.githubcopilot.com
+fi
 
 curl -sL -H "Accept: application/json" \
   -H "Authorization: Bearer $API_TOKEN" \
