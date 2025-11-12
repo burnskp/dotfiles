@@ -1,8 +1,13 @@
 {{- $colorscheme := ternary "catppuccin" "cobalt2" (eq (lower .theme) "light") -}}
 {
   "$schema": "https://opencode.ai/config.json",
-  // Theme configuration
   "theme": "{{ $colorscheme }}",
   "model": "github-copilot/claude-haiku-4.5",
   "autoupdate": true,
+  "lsp": {
+    "custom-lsp": {
+      "command": ["terraform-ls", "serve"],
+      "extensions": [".tf", ".hcl", ".tfvars"]
+    }
+  }
 }
