@@ -51,8 +51,6 @@ open_journal() {
   local lua_tmp
   lua_tmp=$(mktemp /tmp/note_lua.XXXXXX.lua)
   echo "$NOTE_LUA" >"$lua_tmp"
-
-  file="$JOURNAL_DIR/$(date +%Y)/$(date +%Y-%m-%d).md"
   nvim --cmd "luafile $lua_tmp" -c "Journal" +'nnoremap q :wq<CR>'
 
   rm -f "$lua_tmp"
