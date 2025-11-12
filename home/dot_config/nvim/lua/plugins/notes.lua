@@ -44,4 +44,30 @@ return {
       { "<leader>nJ", "<cmd>JournalGrep<CR>", desc = "Grep Journal Entries" },
     },
   },
+  {
+    "folke/snacks.nvim",
+    opts = function(_, opts)
+      local keys = {
+        { icon = " ", key = "e", desc = "New File", action = ":ene | startinsert" },
+        { icon = " ", key = "n", desc = "Notes", action = ":Notes" },
+        { icon = " ", key = "s", desc = "Search Notes", action = ":NotesGrep" },
+      }
+
+      opts.dashboard = opts.dashboard or {}
+      opts.dashboard.preset = opts.dashboard.preset or {}
+      opts.dashboard.preset.keys = opts.dashboard.preset.keys or {}
+
+      local config_index = 2
+      for _, key in ipairs(keys) do
+        for i = #opts.dashboard.preset.keys, 1, -1 do
+          if opts.dashboard.preset.keys[i].key == key.key then
+            table.remove(opts.dashboard.preset.keys, i)
+            break
+          end
+        end
+        table.insert(opts.dashboard.preset.keys, config_index, key)
+        config_index = config_index + 1
+      end
+    end,
+  },
 }
