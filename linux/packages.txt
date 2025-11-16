@@ -21,6 +21,7 @@ bluez-hid2hci
 bluez-libs
 bluez-utils
 brave-bin
+bridge-utils
 brightnessctl
 btrfs-assistant
 btrfs-progs
@@ -86,6 +87,9 @@ i3-wm
 i3blocks
 i3lock-color
 i3status
+incus
+incus-tools
+incus-ui
 inetutils
 intel-media-driver
 intel-ucode
@@ -105,6 +109,8 @@ libdvdcss
 libfido2
 libgsf
 libopenraw
+libvirt
+libvirt-python
 libwnck3
 linux-cachyos
 linux-cachyos-headers
@@ -143,6 +149,7 @@ npm
 nss-mdns
 ntp
 nwg-look
+openbsd-netcat
 opencl-mesa
 opendesktop-fonts
 openssh
@@ -163,9 +170,11 @@ pre-commit
 prettier
 python
 python-defusedxml
+python-lxml
 python-packaging
 python-uv
-qemu-full
+qemu-base
+qemu-desktop
 rebuild-detector
 ripgrep
 rofi
@@ -173,6 +182,7 @@ rsync
 rtkit
 rustup
 s-nail
+satty
 sbctl
 sbsigntools
 scrypt
@@ -189,6 +199,7 @@ swaybg
 swayidle
 swaylock
 swayosd
+swtpm
 sysfsutils
 sysstat
 systemd-boot-manager
