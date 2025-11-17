@@ -24,6 +24,9 @@ return {
         sfmt = {
           prepend_args = { "-ci", "-s", "-i", "2", "-bn", "-sr" },
         },
+        mdformat = {
+          prepend_args = { "--wrap", "120" },
+        },
       },
     },
   },
