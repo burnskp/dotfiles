@@ -5,6 +5,13 @@ set -euo pipefail
 readonly DATA="$HOME/.local/share/devcontainer"
 readonly CONTAINER="ghcr.io/burnskp/containers/dev:latest"
 
+if ! docker image inspect "$CONTAINER" 2>/dev/null; then
+    echo "Image not found locally. Pulling $CONTAINER..."
+    docker pull "$CONTAINER"
+else
+    docker pull "$CONTAINER" || true
+fi
+
 # Helper function to run docker container with common volumes
 run_container() {
   docker run --rm -it \
