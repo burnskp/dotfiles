@@ -1,28 +1,19 @@
-local function map(mode, lhs, rhs, opts)
-  local keys = require("lazy.core.handler").handlers.keys
-  ---@cast keys LazyKeysHandler
-  -- do not create the keymap if a lazy keys handler exists
-  if not keys.active[keys.parse({ lhs, mode = mode }).id] then
-    opts = opts or {}
-    opts.silent = opts.silent ~= false
-    if opts.remap and not vim.g.vscode then
-      opts.remap = nil
-    end
-    vim.keymap.set(mode, lhs, rhs, opts)
-  end
-end
-
-map("n", "<C-n>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
-map("n", "<C-p>", "<cmd>bprevious<cr>", { desc = "Previous Buffer" })
-map("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", { desc = "Show Diagnostics" })
-
--- Remove gj/gk lazyvim mapping override
-vim.keymap.del({ "n", "x" }, "j")
-vim.keymap.del({ "n", "x" }, "k")
-
--- Remove Move Line Up/Down mappings
-vim.keymap.del({ "i", "n", "x" }, "<M-j>")
-vim.keymap.del({ "i", "n", "x" }, "<M-k>")
-map({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to System Clipboard" })
-map("n", "<leader>p", '"+p', { desc = "Paste from System Clipboard" })
-map("n", "<leader>P", '"+{', { desc = "Paste from System Clipboard" })
+vim.keymap.set("n", "<C-n>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
+vim.keymap.set("n", "<C-p>", "<cmd>bprevious<cr>", { desc = "Previous Buffer" })
+vim.keymap.set("n", "<leader>P", '"+P', {})
+vim.keymap.set("n", "<leader>P", '"+{', { desc = "Paste from System Clipboard" })
+vim.keymap.set("n", "<leader>c", "<cmd>close<CR>", {})
+vim.keymap.set("n", "<leader>d", "<cmd>BufferClose<CR>", {})
+vim.keymap.set("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", { desc = "Show Diagnostics" })
+vim.keymap.set("n", "<leader>p", '"+p', { desc = "Paste from System Clipboard" })
+vim.keymap.set("n", "<leader>p", '"+p', {})
+vim.keymap.set("n", "<leader>wo", "<C-w>o", {})
+vim.keymap.set("n", "<leader>wp", "<cmd>pclose<cr>", {})
+vim.keymap.set("n", "<leader>wz", "<C-w>|<C-w>_", {})
+vim.keymap.set("n", "<leader>y", '"+y', {})
+vim.keymap.set("n", "ZZ", "<cmd>wqa!<cr>", {})
+vim.keymap.set("n", "[l", "<cmd>lprevious<CR>", {})
+vim.keymap.set("n", "[q", "<cmd>cprevious<CR>", {})
+vim.keymap.set("n", "]l", "<cmd>lnext<CR>", {})
+vim.keymap.set("n", "]q", "<cmd>cnext<CR>", {})
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to System Clipboard" })
