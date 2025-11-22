@@ -23,4 +23,4 @@ else
   percent="${percentage}"
 fi
 
-echo $(widget '\uf5df' "$percent")
+widget '\uf5df' "$percent"
