@@ -4,3 +4,5 @@
 # Syntax: simple "KEY=VAL" pairs on separate lines
 #
 WLR_RENDERER=vulkan
+ZDOTDIR="$HOME/.config/zsh"
+USERXSESSION="$HOME/.config/X11/xsession"

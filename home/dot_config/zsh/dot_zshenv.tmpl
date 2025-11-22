@@ -43,6 +43,7 @@ export GLAMOUR_STYLE="$HOME/.config/glamour/catppuccin-latte.json"
 export EDITOR="nvim"
 export SUDO_EDITOR="nvim"
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
+export TERMINAL=ghostty
 export HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd:cd ..:cd.."
 export HISTSIZE=25000
 export LESS=-R
@@ -84,11 +85,7 @@ export BUN_INSTALL="$HOME/.local/share/bun"
 export GOBIN=$GOPATH/bin
 export GOPATH=$HOME/.local/share/go
 
-{{ if eq .chezmoi.os "linux" -}}
-path="/usr/bin"
-{{ end -}}
-check_paths=("/usr/local/bin")
-check_paths+="${GOBIN}"
+check_paths="${GOBIN}"
 check_paths+="${BUN_INSTALL}/bin"
 check_paths+="${HOME}/.cargo/bin"
 check_paths+="${HOME}/.local/bin"
