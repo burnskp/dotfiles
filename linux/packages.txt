@@ -243,6 +243,7 @@ xorg-xinit
 xorg-xinput
 xorg-xkill
 xorg-xrandr
+xss-lock
 yubikey-manager
 zathura
 zathura-pdf-mupdf
