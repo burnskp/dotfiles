@@ -1,0 +1,13 @@
+xrandr --dpi 192
+xrandr -r 60
+xrdb -merge ~/.Xresources
+xset b off
+unclutter &
+picom &
+dunst &
+~/.local/bin/battery_notification.sh &
+dispwin -I ~/.config/icc/LG07B5.icc
+brightnessctl s 20%
+xinput set-prop "ELAN0124:00 04F3:3334 Touchpad" "libinput Tapping Enabled" 1
+xinput set-prop "ELAN0124:00 04F3:3334 Touchpad" "libinput Accel Speed" .25
+xinput set-prop "ELAN0124:00 04F3:3334 Touchpad" "libinput Natural Scrolling Enabled" 1
