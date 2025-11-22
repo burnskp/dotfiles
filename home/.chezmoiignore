@@ -14,7 +14,6 @@
 .config/firejail
 .config/foot
 .config/icc
-.config/qutebrowser
 .config/rofi
 .config/task
 .config/zathura
