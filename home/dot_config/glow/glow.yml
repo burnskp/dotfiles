@@ -1,7 +1,5 @@
-{{ if eq .theme "light" -}}
 # style name or JSON path (default "auto")
 style: {{ env "HOME" }}/.config/glamour/catppuccin-latte.json
-{{ end -}}
 # mouse support (TUI-mode only)
 mouse: false
 # use pager to display markdown

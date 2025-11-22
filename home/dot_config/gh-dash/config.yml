@@ -1,4 +1,3 @@
-{{ if eq .theme "light" -}}
 theme:
   colors:
     text:
@@ -15,4 +14,3 @@ theme:
       primary: "#1e66f5"
       secondary: "#bcc0cc"
       faint: "#ccd0da"
-{{ end -}}

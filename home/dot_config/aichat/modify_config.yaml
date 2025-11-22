@@ -13,13 +13,9 @@ else
   API_BASE=https://api.githubcopilot.com
 fi
 
-if grep -Eq "theme = .*light" ~/.config/chezmoi/chezmoi.toml; then
-  light_theme=true
-fi
-
 cat << EOF
 keybindings: vi
-light_theme: ${light_theme:-false}
+light_theme: true
 model: copilot:claude-haiku-4.5
 repl_prelude: "session:temp"
 save_session: false

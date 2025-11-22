@@ -8,7 +8,6 @@ configuration {
     window-format:              "{w} · {c} · {t}";
 }
 
-{{ if eq .theme "light" -}}
 * {
     background:     #e6e9ef;
     background-alt: #dce0e8;
@@ -17,16 +16,6 @@ configuration {
     active:         #1e66f5;
     urgent:         #d20f39;
 }
-{{ else -}}
-* {
-    background:     #193549;
-    background-alt: #214561;
-    foreground:     #fcfcfc;
-    selected:       #0088ff;
-    active:         #0088ff;
-    urgent:         #ff0900;
-}
-{{ end -}}
 
 * {
     border-colour:               var(selected);

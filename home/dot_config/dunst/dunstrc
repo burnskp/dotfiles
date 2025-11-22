@@ -16,7 +16,6 @@
     vertical_alignment = center
     offset = (4, 33)
 
-{{ if eq .theme "light" -}}
 [urgency_low]
 background = "#e6e9ef"
 foreground = "#4c4f69"
@@ -29,17 +28,3 @@ foreground = "#4c4f69"
 background = "#e6e9ef"
 foreground = "#4c4f69"
 timeout = 0
-{{ else -}}
-[urgency_low]
-background = "#214561"
-foreground = "#ffffff"
-
-[urgency_normal]
-background = "#1F4662"
-foreground = "#ffffff"
-
-[urgency_critical]
-background = "#ff0900"
-foreground = "#ffffff"
-timeout = 0
-{{ end -}}

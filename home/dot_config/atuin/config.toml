@@ -16,8 +16,5 @@ common_subcommands = [
   "brew",
 ]
 
-{{ if eq .theme "light" -}}
 [theme]
 name = "catppuccin-latte-mauve"
-debug = true
-{{ end -}}

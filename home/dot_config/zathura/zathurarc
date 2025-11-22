@@ -1,5 +1,3 @@
-{{if eq .theme "light" -}}
 include catppuccin-latte
-{{ end -}}
 set font 'monospace normal 14'
 

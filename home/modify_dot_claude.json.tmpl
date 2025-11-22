@@ -1,6 +1,2 @@
 #!/bin/bash
-{{ if eq .theme "light" }}
 jq '.theme = "light"'
-{{ else }}
-jq '.theme = "dark"'
-{{ end }}

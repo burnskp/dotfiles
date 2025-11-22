@@ -30,12 +30,7 @@
 [include]
   path = ~/.config/git/catppuccin.gitconfig
 [delta]
-  {{ if eq .theme "light" -}}
   features = line-numbers decorations catppuccin-latte
-  {{ else -}}
-  features = line-numbers decorations
-  syntax-theme = cobalt2
-  {{ end -}}
   line-numbers = true
   whitespace-error-style = 22 reverse
 [diff]

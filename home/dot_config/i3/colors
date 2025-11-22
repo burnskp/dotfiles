@@ -1,12 +1,6 @@
-{{ if eq .theme "light" -}}
 text='#4c4f69'
 textbg='#ccd0da'
 iconbg='#ccd0da'
-{{ else -}}
-text='#ffffff'
-textbg='#275D84'
-iconbg='#275D84'
-{{ end }}
 
 ICON="<span foreground='$text' background='$iconbg'>"
 TEXT="</span><span foreground='$text' background='$textbg'>"

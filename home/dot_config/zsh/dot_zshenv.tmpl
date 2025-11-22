@@ -38,12 +38,8 @@ setopt nonomatch
 setopt noshwordsplit
 setopt prompt_subst
 
-{{ if eq .theme "light" -}}
 export BAT_THEME="catppuccin-latte"
 export GLAMOUR_STYLE="$HOME/.config/glamour/catppuccin-latte.json"
-{{ else -}}
-export BAT_THEME="cobalt2"
-{{ end -}}
 export EDITOR="nvim"
 export SUDO_EDITOR="nvim"
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
