@@ -1,5 +1,5 @@
 [global]
-    browser = qutebrowser
+    browser = helium-browser
     dmenu = /usr/bin/rofi --show dmenu -p dunst:
     follow = mouse
     font = Noto Color Emoji 12, DejaVu Sans Mono 12

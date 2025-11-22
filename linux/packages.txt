@@ -20,7 +20,6 @@ bluez
 bluez-hid2hci
 bluez-libs
 bluez-utils
-brave-bin
 bridge-utils
 brightnessctl
 btrfs-assistant
@@ -78,6 +77,7 @@ go
 go-yq
 haveged
 hdparm
+helium-browser-bin
 hwdetect
 hwinfo
 i3-wm
@@ -129,8 +129,6 @@ modemmanager
 moreutils
 mpv
 mtools
-mullvad-browser-bin
-mullvad-vpn
 neofetch
 neovim
 netctl
@@ -209,7 +207,6 @@ ttf-nerd-fonts-symbols
 ttf-opensans
 ufw
 unclutter
-ungoogled-chromium-bin
 unrar
 unzip
 upower
