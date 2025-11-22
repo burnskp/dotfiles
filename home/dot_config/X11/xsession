@@ -1,6 +1,6 @@
 xrandr --dpi 192
 xrandr -r 60
-xrdb -merge ~/.Xresources
+xrdb -merge "$HOME/.config/X11/xresources"
 xset b off
 unclutter &
 picom &
