@@ -140,7 +140,9 @@ noto-fonts-emoji
 npm
 nss-mdns
 ntp
+nvtop
 nwg-look
+obs-studio-browser
 openbsd-netcat
 opencl-mesa
 opendesktop-fonts
