@@ -1,0 +1,12 @@
+flathub=(com.discordapp.Discord
+app.zen_browser.zen
+com.visualstudio.code
+com.fastmail.Fastmail)
+
+for pkg in ${flathub[@]}; do
+  if flatpak info "$pkg" >/dev/null 2>&1; then
+    flatpak update "$pkg"
+  else
+    flatpak install flathub "$pkg"
+  fi
+done

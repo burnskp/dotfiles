@@ -65,6 +65,7 @@ exfatprogs
 f2fs-tools
 feh
 ffmpegthumbnailer
+flatpak
 fwupd
 gammastep
 geeqie
@@ -97,7 +98,6 @@ jhead
 jrnl
 keyd
 lazygit
-legcord-bin
 less
 lib32-mesa
 lib32-opencl-mesa
