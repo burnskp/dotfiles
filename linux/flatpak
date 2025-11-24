@@ -1,7 +1,10 @@
-flathub=(com.discordapp.Discord
+flathub=(
 app.zen_browser.zen
+com.discordapp.Discord
+com.fastmail.Fastmail
+com.github.tchx84.Flatseal
 com.visualstudio.code
-com.fastmail.Fastmail)
+)
 
 for pkg in ${flathub[@]}; do
   if flatpak info "$pkg" >/dev/null 2>&1; then
