@@ -14,7 +14,7 @@
     alignment = left
     ignore_dbusclose = false
     vertical_alignment = center
-    offset = (4, 33)
+    offset = (6,6)
 
 [urgency_low]
 background = "#e6e9ef"
