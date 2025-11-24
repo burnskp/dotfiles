@@ -47,6 +47,8 @@ return {
           { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
           { icon = " ", key = "n", desc = "Notes", action = ":Notes" },
           { icon = " ", key = "s", desc = "Search Notes", action = ":NotesGrep" },
+          { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy" },
+          { icon = " ", key = "u", desc = "Lazy Update", action = ":Lazy update" },
           { icon = " ", key = "c", desc = "Config", action = pick_chezmoi },
           { icon = " ", key = "q", desc = "Quit", action = ":qa" },
         },
