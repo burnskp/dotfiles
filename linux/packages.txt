@@ -8,6 +8,7 @@ alsa-firmware
 alsa-plugins
 alsa-utils
 apparmor
+apparmor.d-git
 aria2
 atuin
 base
@@ -130,7 +131,6 @@ neofetch
 neovim
 netctl
 networkmanager
-networkmanager-openvpn
 nfs-utils
 nilfs-utils
 noto-color-emoji-fontconfig
@@ -194,6 +194,7 @@ sysfsutils
 sysstat
 systemd-boot-manager
 systemd-ukify
+tailscale
 task
 texinfo
 tmux
@@ -263,6 +264,7 @@ xorg-xvinfo
 xorg-xwd
 xorg-xwininfo
 xorg-xwud
+xsel
 xss-lock
 yubikey-manager
 zathura
