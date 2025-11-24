@@ -85,7 +85,7 @@ export BUN_INSTALL="$HOME/.local/share/bun"
 export GOBIN=$GOPATH/bin
 export GOPATH=$HOME/.local/share/go
 
-check_paths="${GOBIN}"
+check_paths=("${GOBIN}")
 check_paths+="${BUN_INSTALL}/bin"
 check_paths+="${HOME}/.cargo/bin"
 check_paths+="${HOME}/.local/bin"
