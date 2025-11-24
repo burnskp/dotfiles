@@ -65,7 +65,6 @@ exfatprogs
 f2fs-tools
 feh
 ffmpegthumbnailer
-firejail
 fwupd
 gammastep
 geeqie
