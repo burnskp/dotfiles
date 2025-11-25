@@ -8,12 +8,11 @@
 .zsh/macos.zsh
 {{ end -}}
 {{ if eq .chezmoi.os "darwin" -}}
-.claude.json
 .config/docker
 .config/dunst
-.config/firejail
-.config/foot
+.config/i3
 .config/icc
+.config/picom
 .config/rofi
 .config/task
 .config/zathura
