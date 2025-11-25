@@ -5,7 +5,7 @@ iconbg='#ccd0da'
 ICON="<span foreground='$text' background='$iconbg'>"
 TEXT="</span><span foreground='$text' background='$textbg'>"
 BLOCK="<span foreground='$text' background='$textbg'>"
-END="</span><span font='8'>  </span>"
+END="</span><span font='6'>  </span>"
 
 function widget {
   if [ "$2" ]; then
