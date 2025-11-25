@@ -100,13 +100,12 @@ keyd
 lazygit
 less
 lib32-mesa
-lib32-opencl-mesa
-lib32-vulkan-intel
-lib32-vulkan-radeon
 libdvdcss
 libfido2
 libgsf
 libopenraw
+libva-intel-driver
+libva-utils
 libvirt
 libvirt-python
 libwnck3
@@ -120,12 +119,14 @@ lvm2
 man-db
 man-pages
 mdadm
+mesa
 mesa-utils
 mkinitcpio
 modemmanager
 moreutils
 mpv
 mtools
+mullvad-vpn
 neofetch
 neovim
 netctl
@@ -143,7 +144,6 @@ nvtop
 nwg-look
 obs-studio-browser
 openbsd-netcat
-opencl-mesa
 opendesktop-fonts
 openssh
 otf-font-awesome
@@ -168,6 +168,7 @@ python-packaging
 python-uv
 qemu-base
 qemu-desktop
+qemu-full
 qt5-quickcontrols2
 rebuild-detector
 ripgrep
@@ -195,7 +196,6 @@ sysfsutils
 sysstat
 systemd-boot-manager
 systemd-ukify
-tailscale
 task
 texinfo
 tmux
@@ -215,9 +215,9 @@ usb_modeswitch
 usbutils
 vim
 virt-manager
+virt-viewer
 vpl-gpu-rt
 vulkan-intel
-vulkan-radeon
 wget
 which
 wireless-regdb
