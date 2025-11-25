@@ -11,6 +11,7 @@ awesome-terminal-fonts
 base
 base-devel
 bat-extras
+bc
 bind
 bluez
 bluez-hid2hci
@@ -56,6 +57,7 @@ feh
 ffmpegthumbnailer
 flatpak
 fuse2
+fzf
 ghostty
 git
 git-delta
@@ -162,6 +164,7 @@ sof-firmware
 starship
 sudo
 sysfsutils
+sysstat
 tailscale
 task
 texinfo
