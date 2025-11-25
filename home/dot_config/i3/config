@@ -150,6 +150,7 @@ mode "resize" {
 
 assign [class="Helium"] $ws2
 
+assign [class="discord"] $ws3
 assign [class="legcord"] $ws3
 
 # Start i3bar to display a workspace bar (plus the system information i3status
