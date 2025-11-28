@@ -3,12 +3,6 @@ set $browser helium-browser
 
 font pango:DejaVuSansM Nerd Font 12
 
-for_window [class="^.*"] border pixel 0
-
-for_window [class="zenity"] floating enable
-for_window [class="lxqt-openssh-askpass"] floating enable
-for_window [class="Dunst"] floating enable
-for_window [class="Lich.rbw"] floating enable
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
@@ -41,8 +35,9 @@ bindsym $mod+r exec rofi -show drun
 
 # Application shortcuts
 bindsym $mod+o exec i3lock --nofork -F -i ~/.config/i3/wallpaper/flatppuccin_4k_macchiato_mauve.png --radius 140 --ring-width=9 --inside-color=00000000 --ring-color=7287fd --insidever-color=00000000 --ringver-color=00000000 --insidewrong-color=00000000 --ringwrong-color=e64553 --line-color=00000000 --keyhl-color=40a02b --bshl-color=dc8a78 --separator-color=00000000 --verif-color=eff1f5 --wrong-color=ea76cb --modif-color=4c4f69 --layout-color=4c4f69 
-bindsym $mod+p exec $browser
 bindsym $mod+F12 exec systemctl power
+bindsym $mod+a exec toggle-chatgpt.sh
+
 
 # change focus
 bindsym $mod+h focus left
@@ -80,7 +75,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod+p focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -130,25 +125,20 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+# Manage Windows
+for_window [class="^.*"] border pixel 0
+for_window [class="zenity"] floating enable
+for_window [class="lxqt-openssh-askpass"] floating enable
+for_window [class="Dunst"] floating enable
+for_window [class="Lich.rbw"] floating enable
+for_window [instance="chatgpt.com"] floating enable, move to scratchpad, resize set 1800 1200, border pixel 2
+exec_always --no-startup-id \
+  "pgrep -f 'chromium --class ChatGPT --name ChatGPT --app=https://chatgpt.com' >/dev/null || \
+   chromium --class ChatGPT --name ChatGPT --app=https://chatgpt.com"
 
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
-}
-
-#bindsym $mod+r mode "resize"
 
 # Assign clients to specific workspaces
-
-
-assign [class="Helium"] $ws2
+assign [instance="helium"] $ws2
 
 assign [class="discord"] $ws3
 assign [class="legcord"] $ws3

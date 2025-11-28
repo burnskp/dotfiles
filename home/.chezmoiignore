@@ -16,5 +16,6 @@
 .config/rofi
 .config/task
 .config/zathura
+.local/bin/toggle-chatgpt.sh
 .zsh/cachyos.zsh
 {{ end -}}
