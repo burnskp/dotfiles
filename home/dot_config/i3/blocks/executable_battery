@@ -4,7 +4,7 @@ source $HOME/.config/i3/colors
 BAT="${BLOCK_INSTANCE:-BAT0}"
 upower="$(upower -i /org/freedesktop/UPower/devices/battery_${BAT})"
 status="$(echo "$upower" | grep state | awk '{print $2}')"
-percentage="$(echo "$upower" | grep percentage | awk '{print $2}')"
+percentage="$(echo "$upower" | grep percentage | awk '{print $2}' | cut -d. -f1)"
 
 tte=$(echo "$upower" | grep 'time to' | awk '{print $4}')
 
