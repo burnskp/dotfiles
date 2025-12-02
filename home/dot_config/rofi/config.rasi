@@ -1,6 +1,6 @@
 configuration {
-    font: "DejaVu Sans Mono 12";
-    dpi: 1;
+    font: "DejaVu Sans Mono 14";
+    dpi: 192;
     modi:                       "drun";
     show-icons:                 false;
     display-drun:               "Apps";
