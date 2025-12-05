@@ -37,7 +37,7 @@ bindsym $mod+r exec rofi -show drun
 # Application shortcuts
 bindsym $mod+o exec i3lock --nofork -F -i ~/.local/share/wallpaper/flatppuccin_4k_macchiato_mauve.png --radius 140 --ring-width=9 --inside-color=00000000 --ring-color=7287fd --insidever-color=00000000 --ringver-color=00000000 --insidewrong-color=00000000 --ringwrong-color=e64553 --line-color=00000000 --keyhl-color=40a02b --bshl-color=dc8a78 --separator-color=00000000 --verif-color=eff1f5 --wrong-color=ea76cb --modif-color=4c4f69 --layout-color=4c4f69
 bindsym $mod+F12 exec systemctl power
-bindsym $mod+a exec toggle-chatgpt.sh
+bindsym $mod+a exec toggle-ai.sh
 
 
 # change focus
@@ -132,11 +132,7 @@ for_window [class="zenity"] floating enable
 for_window [class="lxqt-openssh-askpass"] floating enable
 for_window [class="Dunst"] floating enable
 for_window [class="Lich.rbw"] floating enable
-for_window [instance="chatgpt.com"] floating enable, move to scratchpad, resize set 1800 1200, border pixel 2
-exec_always --no-startup-id \
-  "pgrep -f 'chromium --class ChatGPT --name ChatGPT --app=https://chatgpt.com' >/dev/null || \
-   chromium --class ChatGPT --name ChatGPT --app=https://chatgpt.com"
-
+for_window [instance="gemini.google.com"] floating enable, move to scratchpad, resize set 1800 1200, border pixel 2
 
 # Assign clients to specific workspaces
 assign [instance="helium"] $ws2
