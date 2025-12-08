@@ -2,9 +2,9 @@ return {
   {
     "burnskp/notes.nvim",
     opts = {
-      notesDir = "$XDG_DATA_HOME/obsidian/main",
-      projectNotesDir = "$XDG_DATA_HOME/obsidian/main/projects",
-      journalDir = "$XDG_DATA_HOME/obsidian/main/journal",
+      notesDir = "~/.local/share/notes/global",
+      projectNotesDir = "~/.local/share/notes/project",
+      journalDir = "~/.local/share/notes/journal",
       git = {
         auto_commit = false,
         auto_push = false,
