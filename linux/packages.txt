@@ -13,6 +13,7 @@ base-devel
 bat-extras
 bc
 bind
+biome
 bluez
 bluez-hid2hci
 bluez-libs
@@ -20,6 +21,7 @@ bluez-utils
 brightnessctl
 btrfs-assistant
 btrfs-progs
+bun-bin
 cachyos-hooks
 cachyos-keyring
 cachyos-mirrorlist
@@ -58,6 +60,7 @@ ffmpegthumbnailer
 flatpak
 fuse2
 fzf
+geeqie
 ghostty
 git
 git-delta
@@ -111,6 +114,8 @@ man-db
 man-pages
 mesa-utils
 mkinitcpio
+moonlight-qt
+mpv
 mtools
 neovim
 netctl
@@ -123,6 +128,7 @@ noto-fonts-cjk
 noto-fonts-emoji
 npm
 nss-mdns
+ntfs-3g
 ntp
 nvtop
 opencl-mesa
@@ -145,6 +151,8 @@ python
 python-defusedxml
 python-packaging
 python-uv
+qemu-full
+rclone
 rebuild-detector
 reflector
 ripgrep
@@ -155,6 +163,7 @@ rustup
 s-nail
 sbctl
 sbsigntools
+scrot
 sddm
 seahorse
 sg3_utils
@@ -162,10 +171,11 @@ smartmontools
 snapper
 sof-firmware
 starship
+strace
 sudo
+swtpm
 sysfsutils
 sysstat
-tailscale
 task
 texinfo
 tmux
@@ -184,6 +194,7 @@ upower
 usb_modeswitch
 usbutils
 vim
+virt-manager
 vlc-plugins-all
 vpl-gpu-rt
 vulkan-intel
@@ -193,12 +204,14 @@ wireless-regdb
 wireplumber
 wpa_supplicant
 xcolor
+xdg-desktop-portal-gtk
 xdg-user-dirs
 xf86-input-libinput
 xfsprogs
 xl2tpd
 xorg-server
 xorg-xdpyinfo
+xorg-xev
 xorg-xhost
 xorg-xinit
 xorg-xinput
