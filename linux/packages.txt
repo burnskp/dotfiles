@@ -117,6 +117,7 @@ mkinitcpio
 moonlight-qt
 mpv
 mtools
+ncdu
 neovim
 netctl
 networkmanager
@@ -131,6 +132,7 @@ nss-mdns
 ntfs-3g
 ntp
 nvtop
+obsidian
 opencl-mesa
 openssh
 os-prober
@@ -151,7 +153,6 @@ python
 python-defusedxml
 python-packaging
 python-uv
-qemu-full
 rclone
 rebuild-detector
 reflector
@@ -194,10 +195,10 @@ upower
 usb_modeswitch
 usbutils
 vim
-virt-manager
 vlc-plugins-all
 vpl-gpu-rt
 vulkan-intel
+vulkan-tools
 wget
 which
 wireless-regdb
