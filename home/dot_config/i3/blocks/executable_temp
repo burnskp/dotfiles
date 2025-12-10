@@ -2,10 +2,10 @@
 source "$HOME/.config/i3/colors"
 
 output=$(sensors)
-cpu="$(echo "$output" | grep Package | awk '{print $4}' | tr -d '°+')"
+cpu="$(echo "$output" | grep Package | awk '{print $4}' | tr -d 'C°+')"
 
 if [[ "$cpu" ]]; then
-  widget '\uf2c9' "$(printf "%02d°" "$cpu")"
+  widget '\uf2c9' "$(printf "%02.0f°" "$cpu")"
 
   if [[ "$BLOCK_BUTTON" ]]; then
     cpu="$(echo "$output" | grep temp4 | awk '{print $2}' | tr -d '°+')"
