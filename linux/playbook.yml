@@ -1,0 +1,115 @@
+---
+- name: CachyOS System Setup
+  hosts: localhost
+  connection: local
+  become: true
+  vars:
+    # User to configure (defaults to the user running the playbook)
+    target_user: "{{ ansible_facts['user_id'] }}"
+    
+    flatpak_packages:
+      - com.discordapp.Discord
+      - com.fastmail.Fastmail
+      - com.github.tchx84.Flatseal
+      - com.visualstudio.code
+
+    system_services:
+      - docker
+      - incus
+      - keyd
+      - apparmor
+      - ufw
+      - power-profiles-daemon
+
+    user_groups:
+      - audio
+      - docker
+      - incus
+      - video
+
+  tasks:
+    - name: Update package cache and upgrade system
+      pacman:
+        update_cache: yes
+        upgrade: yes
+
+    - name: Read packages.txt
+      command: cat packages.txt
+      register: packages_list
+      changed_when: false
+      check_mode: no
+
+    - name: Install packages from packages.txt
+      pacman:
+        name: "{{ packages_list.stdout_lines }}"
+        state: present
+
+    - name: Ensure Flathub remote exists
+      community.general.flatpak_remote:
+        name: flathub
+        state: present
+        flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+
+    - name: Install Flatpak applications
+      community.general.flatpak:
+        name: "{{ item }}"
+        state: present
+        remote: flathub
+      loop: "{{ flatpak_packages }}"
+
+    - name: Synchronize etc/ directory
+      copy:
+        src: etc/
+        dest: /etc/
+        owner: root
+        group: root
+        mode: preserve
+
+    - name: Synchronize usr/ directory
+      copy:
+        src: usr/
+        dest: /usr/
+        owner: root
+        group: root
+        mode: preserve
+
+    - name: Add user to groups
+      user:
+        name: "{{ target_user }}"
+        groups: "{{ user_groups }}"
+        append: yes
+
+    - name: Enable and start system services
+      systemd:
+        name: "{{ item }}"
+        enabled: yes
+        state: started
+        daemon_reload: yes
+      loop: "{{ system_services }}"
+      ignore_errors: true
+
+    - name: Check if Snapper home config exists
+      stat:
+        path: /etc/snapper/configs/root
+      register: snapper_root_config
+
+    - name: Create Snapper root config
+      command: snapper -c root create-config /
+      when: not snapper_root_config.stat.exists
+      ignore_errors: true
+
+    - name: Check if Snapper home config exists
+      stat:
+        path: /etc/snapper/configs/home
+      register: snapper_home_config
+
+    - name: Create Snapper home config
+      command: snapper -c home create-config /home
+      when: not snapper_home_config.stat.exists
+      ignore_errors: true
+
+    - name: Initialize Chezmoi
+      command: chezmoi init --apply https://github.com/burnskp/dotfiles.git
+      become: false
+      args:
+        creates: "{{ ansible_facts['env']['HOME'] }}/.local/share/chezmoi"

@@ -32,6 +32,7 @@ cachyos-settings
 cachyos-snapper-support
 cachyos-v3-mirrorlist
 cachyos-v4-mirrorlist
+calc
 cantarell-fonts
 chezmoi
 chwd
@@ -52,6 +53,7 @@ e2fsprogs
 efibootmgr
 efitools
 ethtool
+evince
 exfatprogs
 eza
 f2fs-tools
@@ -59,6 +61,7 @@ feh
 ffmpegthumbnailer
 flatpak
 fuse2
+fwupd
 fzf
 geeqie
 ghostty
@@ -82,9 +85,12 @@ i3-wm
 i3blocks
 i3lock-color
 i3status
+incus
 inetutils
+intel-gpu-tools
 intel-media-driver
 intel-ucode
+iotop
 iptables-nft
 iwd
 jfsutils
@@ -148,6 +154,7 @@ plocate
 plymouth
 poppler-glib
 power-profiles-daemon
+powertop
 pre-commit
 python
 python-defusedxml
