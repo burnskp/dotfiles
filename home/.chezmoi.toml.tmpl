@@ -1,6 +1,8 @@
 {{- $email := promptStringOnce . "email" "Email address" -}}
 {{- $signingkey := promptStringOnce . "signingkey" "SSH Signing Key" -}}
+{{- $machinetype := promptStringOnce . "machinetype" "Machine Type" -}}
 
 [data]
   email = {{ $email | quote }}
   signingkey = {{ $signingkey | quote }}
+  machinetype = {{ $machinetype | quote }}

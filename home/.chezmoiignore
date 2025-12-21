@@ -22,3 +22,17 @@
 .xsession
 .zsh/cachyos.zsh
 {{ end -}}
+{{ if eq .machinetype "server" -}}
+.Xresources
+.config/dunst
+.config/i3
+.config/icc
+.config/ghostty
+.config/picom
+.config/rofi
+.config/task
+.config/zathura
+.i3blocks.conf
+.local/bin/toggle-ai.sh
+.xsession
+{{ end -}}
