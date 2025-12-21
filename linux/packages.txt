@@ -3,6 +3,7 @@ aichat
 alsa-firmware
 alsa-plugins
 alsa-utils
+ansible
 apparmor
 apparmor.d-git
 aria2
@@ -57,6 +58,7 @@ evince
 exfatprogs
 eza
 f2fs-tools
+fastfetch
 feh
 ffmpegthumbnailer
 flatpak
@@ -121,6 +123,7 @@ man-pages
 mesa-utils
 mkinitcpio
 moonlight-qt
+mosh
 mpv
 mtools
 ncdu
@@ -202,7 +205,6 @@ upower
 usb_modeswitch
 usbutils
 vim
-vlc-plugins-all
 vpl-gpu-rt
 vulkan-intel
 vulkan-tools
