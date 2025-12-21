@@ -14,12 +14,13 @@
       - com.visualstudio.code
 
     system_services:
+      - apparmor
       - docker
       - incus
       - keyd
-      - apparmor
-      - ufw
       - power-profiles-daemon
+      - tailscaled
+      - ufw
 
     user_groups:
       - audio

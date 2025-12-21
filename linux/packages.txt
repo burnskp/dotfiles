@@ -26,7 +26,6 @@ bun-bin
 cachyos-hooks
 cachyos-keyring
 cachyos-mirrorlist
-cachyos-picom-config
 cachyos-plymouth-bootanimation
 cachyos-rate-mirrors
 cachyos-settings
@@ -187,6 +186,7 @@ sudo
 swtpm
 sysfsutils
 sysstat
+tailscale
 task
 texinfo
 tmux
