@@ -1,4 +1,5 @@
 #!/bin/bash
+TARGET="${BLOCK_INSTANCE:-/}"
 source $HOME/.config/i3/colors
-disk=$(btrfs fi usage / 2>/dev/null| grep 'Free (estimated)' | awk '{print $3}')
+disk=$(df -h "$TARGET"  --output=avail,target  | grep "$TARGET" | awk '{print $1}')
 widget '\uf0a0' "$disk"
