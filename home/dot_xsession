@@ -4,7 +4,7 @@ xset b off
 unclutter &
 picom &
 dunst &
-~/.local/bin/battery_notification.sh &
+/usr/local/bin/battery_notification.sh &
 dispwin -I ~/.local/share/icc/LG07B5.icc
 brightnessctl s 20%
 feh --no-fehbg --bg-fill ~/.local/share/wallpaper/flatppuccin_4k_latte_mauve.png
