@@ -19,8 +19,6 @@ bluez-hid2hci
 bluez-libs
 bluez-utils
 brightnessctl
-btrfs-progs
-buildah
 bun-bin
 cachyos-hooks
 cachyos-kernel-manager
@@ -45,6 +43,8 @@ diffutils
 dmidecode
 dnscrypt-proxy
 dnsmasq
+docker
+docker-buildx
 dosfstools
 dunst
 e2fsprogs
@@ -136,7 +136,6 @@ pipewire-alsa
 pipewire-pulse
 pkgfile
 plymouth
-podman
 power-profiles-daemon
 powertop
 pre-commit
