@@ -17,3 +17,4 @@ xss-lock --transfer-sleep-lock -- i3lock --nofork \
   --line-color=00000000 --keyhl-color=40a02b --bshl-color=dc8a78 \
   --separator-color=00000000 --verif-color=eff1f5 --wrong-color=ea76cb \
    --modif-color=4c4f69 --layout-color=4c4f69 &
+cp $XAUTHORITY ~/.cache/.Xauthority 
