@@ -1,5 +1,4 @@
 {
 	"auths": {},
-	"detachKeys": "ctrl-z,z",
-	"currentContext": "rootless"
+	"detachKeys": "ctrl-z,z"
 }
