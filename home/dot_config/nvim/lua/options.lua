@@ -1,4 +1,5 @@
 vim.g.autoformat = true
+vim.g.mapleader = " "
 
 vim.opt.laststatus = 3
 vim.opt.autoindent = true
@@ -73,5 +74,3 @@ vim.g.markdown_recommended_style = 0
 vim.g.editorconfig = {}
 vim.g.editorconfig.trim_trailing_whitespace = true
 vim.g.editorconfig.tab_width = 2
-
-vim.cmd.colorscheme "catppuccin-latte"

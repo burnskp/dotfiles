@@ -120,7 +120,7 @@ moonlight-qt
 mpv
 mtools
 ncdu
-neovim
+neovim-nightly-bin
 netctl
 networkmanager
 noto-color-emoji-fontconfig
