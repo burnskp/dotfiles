@@ -9,7 +9,6 @@ if [[ $commands[fzf] ]]; then
 --color=gutter:-1 --tmux"
 
   alias fp="fzf --ansi --style full --preview 'bat --color=always --style=plain {}' --no-scrollbar"
-  alias zp=alias zp='cd ~/projects/$(fd . -t d --maxdepth 1 ~/projects --exec basename | fzf)'
 
   function gpr() {
     fzf --ansi \
