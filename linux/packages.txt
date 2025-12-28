@@ -57,12 +57,13 @@ eza
 f2fs-tools
 fastfetch
 feh
+fio
 flatpak
+fuse-overlayfs
 fuse2
 fwupd
 fzf
 geeqie
-ghostty
 git
 git-delta
 github-cli
@@ -70,6 +71,7 @@ glow
 gnome-keyring
 go
 go-yq
+gptfdisk
 gst-plugin-va
 haveged
 helium-browser-bin
@@ -114,6 +116,7 @@ mesa
 mesa-utils
 mkinitcpio
 modemmanager
+moonlight-qt
 mpv
 mtools
 ncdu
@@ -160,6 +163,7 @@ sg3_utils
 smartmontools
 sof-firmware
 starship
+steam
 strace
 sudo
 sysfsutils
