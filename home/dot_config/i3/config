@@ -1,4 +1,5 @@
 set $mod Mod4
+set $term alacritty
 set $browser helium-browser
 
 font pango:DejaVuSansM Nerd Font 12
@@ -24,8 +25,8 @@ client.background        #e6e9ef
 floating_modifier $mod
 
 # start a terminal in the domain of the currently active window
-bindsym $mod+Return exec ghostty -e tmux new-session -ADs main
-bindsym $mod+Shift+Return exec ghostty
+bindsym $mod+Return exec $term -e tmux new-session -ADs main
+bindsym $mod+Shift+Return exec $term
 
 # kill focused window
 bindsym $mod+Shift+q kill
