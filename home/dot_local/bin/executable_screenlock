@@ -1,0 +1,11 @@
+#!/bin/bash
+WALLPAPER=~/.local/share/wallpaper/flatppuccin_4k_macchiato_mauve.png 
+i3lock --nofork \
+  -F -i $WALLPAPER \
+  --radius 140 --ring-width=9 \
+  --inside-color=00000000 --ring-color=7287fd \
+  --insidever-color=00000000 --ringver-color=00000000 \
+  --insidewrong-color=00000000 --ringwrong-color=e64553 \
+  --line-color=00000000 --keyhl-color=40a02b --bshl-color=dc8a78 \
+  --separator-color=00000000 --verif-color=eff1f5 --wrong-color=ea76cb \
+   --modif-color=4c4f69 --layout-color=4c4f69

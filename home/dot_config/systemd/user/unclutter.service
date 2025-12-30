@@ -1,0 +1,12 @@
+[Unit]
+Description=Hide cursor when not in use
+After=graphical-session.target
+
+[Service]
+Type=exec
+ExecStart=unclutter
+Restart=on-failure
+Slice=background-graphical.slice
+
+[Install]
+WantedBy=graphical-session.target

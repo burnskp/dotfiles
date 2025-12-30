@@ -1,0 +1,12 @@
+[Unit]
+Description=Picom Compositor
+After=graphical-session.target
+
+[Service]
+Type=exec
+ExecStart=dunst
+Restart=on-failure
+Slice=background-graphical.slice
+
+[Install]
+WantedBy=graphical-session.target

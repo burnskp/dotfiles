@@ -1,6 +1,7 @@
 set $mod Mod4
 set $term alacritty
 set $browser helium-browser
+set $wallpaper ~/.local/share/wallpaper/flatppuccin_4k_latte_mauve.png
 
 font pango:DejaVuSansM Nerd Font 12
 
@@ -36,7 +37,7 @@ bindsym $mod+r exec rofi -show drun
 
 
 # Application shortcuts
-bindsym $mod+o exec i3lock --nofork -F -i ~/.local/share/wallpaper/flatppuccin_4k_macchiato_mauve.png --radius 140 --ring-width=9 --inside-color=00000000 --ring-color=7287fd --insidever-color=00000000 --ringver-color=00000000 --insidewrong-color=00000000 --ringwrong-color=e64553 --line-color=00000000 --keyhl-color=40a02b --bshl-color=dc8a78 --separator-color=00000000 --verif-color=eff1f5 --wrong-color=ea76cb --modif-color=4c4f69 --layout-color=4c4f69
+bindsym $mod+o exec screensaver
 bindsym $mod+F12 exec systemctl power
 bindsym $mod+a exec toggle-ai.sh
 
@@ -165,3 +166,12 @@ bar {
     urgent_workspace   #dce0e8 #d20f39 #eff1f5
   }
 }
+
+exec_always --no-startup-id xrdb -merge ~/.config/xorg/xresources
+exec --no-startup-id xrandr --dpi 192
+exec --no-startup-id xrandr -r 60
+exec --no-startup-id xset b off
+exec --no-startup-id dispwin -I ~/.local/share/icc/LG07B5.icc
+exec --no-startup-id brightnessctl s 20%
+exec --no-startup-id feh --no-fehbg --bg-fill $wallpaper
+exec_always --no-startup-id exec systemctl --user start --no-block i3-session.target

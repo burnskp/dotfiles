@@ -15,9 +15,11 @@
 .config/icc
 .config/picom
 .config/rofi
+.config/systemd
 .config/task
 .config/zathura
 .i3blocks.conf
+.local/bin/screensaver
 .local/bin/toggle-ai.sh
 .xsession
 .zsh/cachyos.zsh

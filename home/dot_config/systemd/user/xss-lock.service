@@ -1,0 +1,12 @@
+[Unit]
+Description=Auto lock screen
+After=graphical-session.target
+
+[Service]
+Type=exec
+ExecStart=xss-lock %h/.local/bin/screensaver
+Restart=on-failure
+Slice=background-graphical.slice
+
+[Install]
+WantedBy=graphical-session.target
