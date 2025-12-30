@@ -2,7 +2,7 @@
 source $HOME/.config/i3/colors
 
 BAT="${BLOCK_INSTANCE:-BAT0}"
-upower="$(upower -i /org/freedesktop/UPower/devices/battery_${BAT})"
+upower="$(upower -b)"
 status="$(echo "$upower" | grep state | awk '{print $2}')"
 percentage="$(echo "$upower" | grep percentage | awk '{print $2}' | cut -d. -f1)"
 

@@ -1,22 +1,24 @@
 #!/bin/bash
 source "$HOME/.config/i3/colors"
+CPU=hwmon5/temp1_input
+NVME=hwmon3/temp2_input
+WIFI=hwmon6/temp1_input
 
-output=$(sensors)
-cpu="$(echo "$output" | grep Package | awk '{print $4}' | tr -d 'C°+')"
+function get_temp() {
+awk '{printf "%2.0f°\n", $1/1000}' /sys/class/hwmon/$1
+}
+
+cpu=$(get_temp $CPU)
 
 if [[ "$cpu" ]]; then
-  widget '\uf2c9' "$(printf "%02.0f°" "$cpu")"
+  widget '\uf2c9' "$cpu"
 
   if [[ "$BLOCK_BUTTON" ]]; then
-    cpu="$(echo "$output" | grep temp4 | awk '{print $2}' | tr -d '°+')"
-    unknown="$(echo "$output" | grep temp2 | awk '{print $2}' | tr -d '°+')"
-    tctl="$(echo "$output" | grep Tctl | awk '{print $2}' | tr -d '°+')"
-    memory="$(echo "$output" | grep temp3 | awk '{print $2}' | tr -d '°+')"
-    gpu="$(echo "$output" | grep edge | awk '{print $2}' | tr -d '°+')"
-    ssd="$(echo "$output" | grep Composite | awk '{print $2}' | tr -d '°+')"
-    amb="$(echo "$output" | grep temp1 | awk '{print $2}' | tr -d '°+')"
-
-    output="CPU: $cpu\nTCL: $tctl\nUNK: $unknown\nMEM: $memory\nGPU: $gpu\nSSD: $ssd\nAMB: $amb"
+    output="
+ CPU: $cpu
+NVME: $(get_temp $NVME)
+WIFI: $(get_temp $WIFI)
+"
     notify-send "Temperatures" "$output"
   fi
 fi
