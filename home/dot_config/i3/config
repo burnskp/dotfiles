@@ -149,7 +149,7 @@ assign [class="obsidian"] $ws4
 # finds out, if available)
 bindsym $mod+b bar mode toggle
 bar {
-  status_command i3blocks
+  status_command i3blocks -c ~/.config/i3/blocks.conf
   position top
   mode hide
   modifier none
@@ -171,7 +171,6 @@ exec_always --no-startup-id xrdb -merge ~/.config/xorg/xresources
 exec --no-startup-id xrandr --dpi 192
 exec --no-startup-id xrandr -r 60
 exec --no-startup-id xset b off
-exec --no-startup-id dispwin -I ~/.local/share/icc/LG07B5.icc
 exec --no-startup-id brightnessctl s 20%
 exec --no-startup-id feh --no-fehbg --bg-fill $wallpaper
 exec_always --no-startup-id exec systemctl --user start --no-block i3-session.target

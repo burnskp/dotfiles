@@ -8,7 +8,6 @@
 .zsh/macos.zsh
 {{ end -}}
 {{ if eq .chezmoi.os "darwin" -}}
-.Xresources
 .config/docker
 .config/dunst
 .config/i3
@@ -18,10 +17,8 @@
 .config/systemd
 .config/task
 .config/zathura
-.i3blocks.conf
 .local/bin/screensaver
 .local/bin/toggle-ai.sh
-.xsession
 .zsh/cachyos.zsh
 {{ end -}}
 {{ if eq .machinetype "server" -}}
