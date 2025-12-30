@@ -1,3 +1,5 @@
+accountsservice
+alacritty
 alsa-firmware
 alsa-plugins
 alsa-utils
@@ -13,13 +15,11 @@ bat
 bat-extras
 bc
 bind
-biome
 bluez
 bluez-hid2hci
 bluez-libs
 bluez-utils
 brightnessctl
-bun-bin
 cachyos-hooks
 cachyos-kernel-manager
 cachyos-keyring
@@ -30,8 +30,8 @@ cachyos-rate-mirrors
 cachyos-settings
 cachyos-v3-mirrorlist
 cachyos-v4-mirrorlist
-cachyos-wallpapers
 calc
+cantarell-fonts
 chezmoi
 chwd
 cpupower
@@ -72,7 +72,6 @@ gnome-keyring
 go
 go-yq
 gptfdisk
-gst-plugin-va
 haveged
 helium-browser-bin
 hwdetect
@@ -81,7 +80,6 @@ i3-wm
 i3blocks
 i3lock-color
 i3status
-incus
 inetutils
 intel-media-driver
 intel-ucode
@@ -90,6 +88,7 @@ iptables-nft
 iwd
 jfsutils
 jrnl
+kdiskmark
 keyd
 lazygit
 less
@@ -116,7 +115,6 @@ mesa
 mesa-utils
 mkinitcpio
 modemmanager
-moonlight-qt
 mpv
 mtools
 ncdu
@@ -124,6 +122,8 @@ neovim-nightly-bin
 netctl
 networkmanager
 noto-color-emoji-fontconfig
+noto-fonts
+noto-fonts-cjk
 noto-fonts-emoji
 nss-mdns
 ntp
@@ -176,7 +176,10 @@ tmux
 ttf-bitstream-vera
 ttf-dejavu
 ttf-dejavu-nerd
+ttf-liberation
+ttf-meslo-nerd
 ttf-nerd-fonts-symbols
+ttf-opensans
 ufw
 unclutter
 unrar
@@ -194,6 +197,7 @@ wireless-regdb
 wireplumber
 wpa_supplicant
 xcolor
+xdg-desktop-portal
 xdg-desktop-portal-gtk
 xdg-user-dirs
 xdg-utils
