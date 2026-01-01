@@ -37,7 +37,7 @@ bindsym $mod+r exec rofi -show drun
 
 
 # Application shortcuts
-bindsym $mod+o exec screensaver
+bindsym $mod+o exec screenlock
 bindsym $mod+F12 exec systemctl power
 bindsym $mod+a exec toggle-ai.sh
 
