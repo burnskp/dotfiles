@@ -14,6 +14,10 @@ local pick_grep = function()
   end
 end
 
+vim.keymap.set("n", "<C-h>", "<C-w>h", {})
+vim.keymap.set("n", "<C-j>", "<C-w>j", {})
+vim.keymap.set("n", "<C-k>", "<C-w>k", {})
+vim.keymap.set("n", "<C-l>", "<C-w>l", {})
 vim.keymap.set("n", "<C-n>", "<cmd>bn<cr>", {})
 vim.keymap.set("n", "<C-p>", "<cmd>bp<cr>", {})
 vim.keymap.set("n", "<c-.>",      function() Snacks.scratch() end, {})
