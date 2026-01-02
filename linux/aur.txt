@@ -1,2 +1,3 @@
 1password
+vicinae-bin
 xdg-ninja

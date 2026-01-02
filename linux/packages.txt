@@ -152,7 +152,6 @@ rclone
 rebuild-detector
 reflector
 ripgrep
-rofi
 rsync
 rtkit
 rustup
@@ -200,6 +199,7 @@ which
 wireless-regdb
 wireplumber
 wpa_supplicant
+xclip
 xcolor
 xdg-desktop-portal
 xdg-desktop-portal-gtk

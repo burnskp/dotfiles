@@ -29,19 +29,18 @@ floating_modifier $mod
 bindsym $mod+Return exec $term -e tmux new-session -ADs main
 bindsym $mod+Shift+Return exec $term
 
-# Apps
-bindsym $mod+b exec helium-browser --profile-directory=Default
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start rofi (a program launcher)
-bindsym $mod+space exec rofi -show drun
 
 # Application shortcuts
-bindsym $mod+o exec screenlock
 bindsym $mod+F12 exec systemctl power
+bindsym $mod+backslash exec vicinae vicinae://extensions/vicinae/clipboard/history
 bindsym $mod+a exec toggle-ai.sh
+bindsym $mod+b exec helium-browser --profile-directory=Default
+bindsym $mod+o exec screenlock
+bindsym $mod+space exec vicinae toggle
 
 # change focus
 bindsym $mod+h focus left
