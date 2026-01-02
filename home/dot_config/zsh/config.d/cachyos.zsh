@@ -5,6 +5,8 @@ if [ "$(uname -o)" == "GNU/Linux" ] && grep -q Arch /etc/*release 2>&1 >/dev/nul
   alias pac="sudo pacman -S"
   alias paci="pacman -Si"
   alias pacq="pacman -Q"
+  alias pacqi="pacman -Qi"
+  alias pacql="pacman -Ql"
   alias pacr="sudo pacman -Rs"
   alias pacrz="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns"
   alias pacs="pacman -Ss"
@@ -16,5 +18,5 @@ if [ "$(uname -o)" == "GNU/Linux" ] && grep -q Arch /etc/*release 2>&1 >/dev/nul
   alias paruu="paru -Su"
   alias paruy="paru -Syu"
   alias scu='systemctl --user'
-  alias ju='journalctl --user -u'
+  alias jcu='journalctl --user -u'
 fi
