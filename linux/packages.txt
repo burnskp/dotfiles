@@ -59,6 +59,7 @@ fastfetch
 feh
 fio
 flatpak
+fprintd
 fuse-overlayfs
 fuse2
 fwupd
@@ -139,6 +140,7 @@ pipewire-alsa
 pipewire-pulse
 pkgfile
 plymouth
+polkit-gnome
 power-profiles-daemon
 powertop
 pre-commit
