@@ -6,7 +6,8 @@ After=graphical-session.target
 [Service]
 Type=exec
 ExecStart=/usr/local/bin/battery_notification.sh
-Restart=on-failure
+Restart=always
+RestartSec=2
 Slice=background-graphical.slice
 
 [Install]

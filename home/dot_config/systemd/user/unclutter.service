@@ -5,7 +5,8 @@ After=graphical-session.target
 [Service]
 Type=exec
 ExecStart=unclutter
-Restart=on-failure
+Restart=always
+RestartSec=2
 Slice=background-graphical.slice
 
 [Install]
