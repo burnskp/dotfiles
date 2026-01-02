@@ -13,7 +13,6 @@
 .config/i3
 .config/icc
 .config/picom
-.config/rofi
 .config/systemd
 .config/task
 .config/zathura
