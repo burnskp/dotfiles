@@ -3,7 +3,7 @@ Version=1.0
 Name=Helium Browser
 GenericName=Web Browser
 Comment=Access the Internet
-Exec=helium-browser %U
+Exec=helium-browser --profile-directory=Default %U
 StartupNotify=true
 StartupWMClass=helium
 Terminal=false
@@ -19,4 +19,4 @@ Exec=helium-browser --profile-directory=Default
 
 [Desktop Action new-private-window]
 Name=New Incognito Window
-Exec=helium-browser --incognito
+Exec=helium-browser --profile-directory=Default --incognito
