@@ -97,6 +97,7 @@ lib32-mesa
 lib32-opencl-mesa
 lib32-vulkan-intel
 libfido2
+libnotify
 libva-intel-driver
 libva-utils
 libwnck3
@@ -175,6 +176,7 @@ tailscale
 task
 texinfo
 tmux
+tree-sitter-cli
 ttf-bitstream-vera
 ttf-dejavu
 ttf-dejavu-nerd
@@ -205,6 +207,7 @@ xdg-user-dirs
 xdg-utils
 xf86-input-libinput
 xfsprogs
+xiccd
 xl2tpd
 xorg-server
 xorg-xdpyinfo
