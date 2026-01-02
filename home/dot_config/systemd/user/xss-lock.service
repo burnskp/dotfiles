@@ -4,7 +4,7 @@ After=graphical-session.target
 
 [Service]
 Type=exec
-ExecStart=xss-lock %h/.local/bin/screensaver
+ExecStart=xss-lock -l -s ${XDG_SESSION_ID} --  %h/.local/bin/screenlock
 Restart=on-failure
 Slice=background-graphical.slice
 

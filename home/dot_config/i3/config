@@ -173,4 +173,5 @@ exec --no-startup-id xrandr -r 60
 exec --no-startup-id xset b off
 exec --no-startup-id brightnessctl s 20%
 exec --no-startup-id feh --no-fehbg --bg-fill $wallpaper
+exec --no-startup-id systemctl --user import-environment
 exec_always --no-startup-id exec systemctl --user start --no-block i3-session.target
