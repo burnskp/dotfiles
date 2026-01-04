@@ -72,6 +72,7 @@ glow
 gnome-keyring
 go
 go-yq
+gocryptfs
 gptfdisk
 haveged
 helium-browser-bin
@@ -81,6 +82,7 @@ i3-wm
 i3blocks
 i3lock-color
 i3status
+incus
 inetutils
 intel-media-driver
 intel-ucode
@@ -117,6 +119,7 @@ mesa
 mesa-utils
 mkinitcpio
 modemmanager
+moonlight-qt
 mpv
 mtools
 ncdu
