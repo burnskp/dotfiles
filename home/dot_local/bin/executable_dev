@@ -166,7 +166,7 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-ensure_image_freshness "$force_pull" "$skip_auto_pull"
+
 
 if git -C "$(dirname "$(realpath "$PWD")")" rev-parse 2> /dev/null; then
   root="$(git -C "$(dirname "$(realpath "$PWD")")" rev-parse --show-toplevel)"
@@ -174,12 +174,22 @@ else
   root="$PWD"
 fi
 container_dir="$(basename "$root")"
+
+if [ "${TMUX+x}" ]; then
+  unset TMUX
+  echo "Opening a new terminal"
+  alacritty -T "dev - $container_dir" -e zsh -lc dev &
+  exit
+fi
+
+ensure_image_freshness "$force_pull" "$skip_auto_pull"
+
 docker run --rm -it \
   -v $SSH_AUTH_SOCK:/ssh-agent \
   -e SSH_AUTH_SOCK=/ssh-agent \
   -v "$XDG_CONFIG_HOME/git":/home/ubuntu/.config/git:ro \
   -v "$DATA:/data" \
   -v "$root:/work/$container_dir" \
-  --entrypoint "zsh" \
+  --entrypoint "tmux" \
   -w "/work/$container_dir" \
   "$CONTAINER"
