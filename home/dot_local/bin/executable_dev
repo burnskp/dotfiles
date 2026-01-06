@@ -178,7 +178,7 @@ container_dir="$(basename "$root")"
 if [ "${TMUX+x}" ]; then
   unset TMUX
   echo "Opening a new terminal"
-  alacritty -T "dev - $container_dir" -e zsh -lc dev &
+  alacritty --working-directory "$PWD" -T "dev - $container_dir" -e zsh -lc dev &
   exit
 fi
 
