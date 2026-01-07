@@ -125,6 +125,7 @@ for_window [class="lxqt-openssh-askpass"] floating enable
 for_window [class="Dunst"] floating enable
 for_window [class="Lich.rbw"] floating enable
 for_window [instance="gemini.google.com"] floating enable, move to scratchpad, resize set 1800 1200, border pixel 2
+for_window [instance="claude.ai"] floating enable, move to scratchpad, resize set 1800 1200, border pixel 2
 
 # Assign clients to specific workspaces
 assign [instance="helium"] $ws2
