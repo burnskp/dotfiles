@@ -13,7 +13,6 @@ require("nvim-treesitter").install({
   "gitignore",
   "json",
   "json5",
-  "jsonc",
   "lua",
   "make",
   "markdown",
