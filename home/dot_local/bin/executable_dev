@@ -175,8 +175,9 @@ else
 fi
 container_dir="$(basename "$root")"
 
-if [ "${TMUX+x}" ]; then
+if [ "${TMUX+x}" ] || [ "${TERM_PROGRAM+x}" = "WezTermx" ]; then
   unset TMUX
+  unset TERM_PROGRAM
   echo "Opening a new terminal"
   alacritty --working-directory "$PWD" -T "dev - $container_dir" -e zsh -lc dev &
   exit
