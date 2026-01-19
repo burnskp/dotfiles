@@ -3,6 +3,7 @@ local M = {}
 local wezterm = require("wezterm")
 local act = wezterm.action
 local mux = wezterm.mux
+local notes = require("notes")
 
 local search_direction = {
   BACKWARD = 0,
@@ -182,9 +183,11 @@ function M.config(config)
     -- Tabs
     { key = "c", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
     { key = "q", mods = "LEADER", action = act.CloseCurrentTab({ confirm = true }) },
-    { key = "p", mods = "LEADER", action = act.ActivateTabRelative(-1) },
-    { key = "n", mods = "LEADER", action = act.ActivateTabRelative(1) },
     { key = "l", mods = "LEADER", action = act.ActivateLastTab },
+
+    -- Notes
+    { key = "n", mods = "LEADER", action = notes.action.OpenNotes },
+    { key = "t", mods = "LEADER", action = notes.action.OpenJournal },
 
     -- Panes
     {
