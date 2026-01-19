@@ -80,6 +80,10 @@ if [ $commands[talosctl] ]; then
   source <(talosctl completion zsh)
 fi
 
+if [ $commands[docker] ]; then
+  source <(docker completion zsh)
+fi
+
 if [ $commands[aws_completer] ]; then
   autoload bashcompinit && bashcompinit
   autoload -Uz compinit && compinit
