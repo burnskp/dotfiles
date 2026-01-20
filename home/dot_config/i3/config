@@ -1,5 +1,5 @@
 set $mod Mod4
-set $term alacritty
+set $term ghostty
 set $browser helium-browser
 set $wallpaper ~/.local/share/wallpaper/flatppuccin_4k_latte_mauve.png
 

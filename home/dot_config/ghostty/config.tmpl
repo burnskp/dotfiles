@@ -1,0 +1,11 @@
+font-family = DejaVuSansM Nerd Font Mono
+theme = Catppuccin Latte
+
+window-decoration = none
+{{ if eq .chezmoi.os "darwin" -}}
+command = "/opt/homebrew/bin/tmux new-session -ADs main"
+font-size = 21
+{{ else  -}}
+font-size = 16
+async-backend = epoll
+{{ end -}}

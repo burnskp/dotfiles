@@ -65,6 +65,7 @@ fuse2
 fwupd
 fzf
 geeqie
+ghostty
 git
 git-delta
 github-cli
