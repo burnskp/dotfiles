@@ -167,6 +167,7 @@ seahorse
 sg3_utils
 smartmontools
 sof-firmware
+sqlitebrowser
 starship
 steam
 strace
@@ -185,6 +186,7 @@ ttf-dejavu-nerd
 ttf-liberation
 ttf-meslo-nerd
 ttf-nerd-fonts-symbols
+ttf-nerd-fonts-symbols-mono
 ttf-opensans
 ufw
 unclutter
@@ -197,6 +199,7 @@ vim
 vpl-gpu-rt
 vulkan-intel
 vulkan-tools
+wezterm
 wget
 which
 wireless-regdb
