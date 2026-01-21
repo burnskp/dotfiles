@@ -196,7 +196,6 @@ upower
 usb_modeswitch
 usbutils
 vim
-viu
 vpl-gpu-rt
 vulkan-intel
 vulkan-tools
