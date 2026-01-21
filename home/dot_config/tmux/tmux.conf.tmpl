@@ -162,6 +162,7 @@ set -g pane-base-index 1
 set-option -g status-interval 5
 
 set-option -a terminal-overrides ",*:RGB"
+set -ga terminal-features ",*:hyperlinks,*:usstyle,*:overline,*:clipboard,*:ccolour,*:cstyle,*:strikethrough,*:sync"
 
 {{ if eq .chezmoi.os "darwin" -}}
 set-environment -g PATH "/opt/homebrew/bin:/bin:/usr/bin"
