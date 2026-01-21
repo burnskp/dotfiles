@@ -1,5 +1,4 @@
 accountsservice
-alacritty
 alsa-firmware
 alsa-plugins
 alsa-utils
@@ -197,10 +196,10 @@ upower
 usb_modeswitch
 usbutils
 vim
+viu
 vpl-gpu-rt
 vulkan-intel
 vulkan-tools
-wezterm
 wget
 which
 wireless-regdb
@@ -227,6 +226,7 @@ xorg-xrandr
 xorg-xset
 xsel
 xss-lock
+yazi
 yubikey-manager
 zoxide
 zsh

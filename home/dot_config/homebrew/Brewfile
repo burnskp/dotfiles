@@ -78,7 +78,6 @@ cask "rar"
 cask "raycast"
 cask "secretive"
 cask "visual-studio-code"
-cask "wezterm"
 cask "zed"
 mas "Microsoft Excel", id: 462058435
 mas "Microsoft PowerPoint", id: 462062816

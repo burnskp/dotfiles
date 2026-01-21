@@ -175,15 +175,18 @@ else
 fi
 container_dir="$(basename "$root")"
 
-if [ "${TMUX+x}" ] || [ "${TERM_PROGRAM+x}" = "WezTerm" ]; then
+if [ "${TMUX+x}" ]; then
   unset TMUX
-  unset TERM_PROGRAM
   echo "Opening a new terminal"
-  alacritty --working-directory "$PWD" -T "dev - $container_dir" -e zsh -lc dev &
+  ghostty --working-directory="$PWD" --title="dev - $container_dir" -e zsh -lc dev &
   exit
 fi
 
 ensure_image_freshness "$force_pull" "$skip_auto_pull"
+
+if [[ "${TERMINAL:-}" == "ghostty" ]]; then
+  TERM=xterm-ghostty
+fi
 
 docker run --rm -it \
   --security-opt label=disable \
@@ -193,6 +196,7 @@ docker run --rm -it \
   --device=/dev/fuse \
   -v "$SSH_AUTH_SOCK:/ssh-agent" \
   -e SSH_AUTH_SOCK=/ssh-agent \
+  -e TERM \
   -v "$XDG_CONFIG_HOME/git":/home/ubuntu/.config/git:ro \
   -v "$DATA:/data" \
   -v "$root:/work/$container_dir" \
