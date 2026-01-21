@@ -54,20 +54,24 @@
       loop: "{{ flatpak_packages }}"
 
     - name: Synchronize etc/ directory
-      copy:
+      synchronize:
         src: etc/
         dest: /etc/
-        owner: root
-        group: root
-        mode: preserve
+        delete: no
+        checksum: yes
+        times: no
+        rsync_opts:
+          - "--chown=root:root"
 
     - name: Synchronize usr/ directory
-      copy:
+      synchronize:
         src: usr/
         dest: /usr/
-        owner: root
-        group: root
-        mode: preserve
+        delete: no
+        checksum: yes
+        times: no
+        rsync_opts:
+          - "--chown=root:root"
 
     - name: Update kernel boot options (preserving UUID)
       lineinfile:
