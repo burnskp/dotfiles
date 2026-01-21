@@ -7,6 +7,9 @@
     # User to configure (the user who invoked sudo, not root)
     target_user: "{{ lookup('env', 'SUDO_USER') | default(lookup('env', 'USER'), true) }}"
 
+    # Kernel boot options (appended after root=UUID=... rw)
+    kernel_options: "zswap.enabled=0 nowatchdog splash intel_iommu=on iommu=pt mitigations=off kernel.split_lock_mitigate=0 rcutree.enable_rcu_lazy=1 lsm=landlock,lockdown,yama,integrity,apparmor,bpf"
+
     flatpak_packages:
       - com.discordapp.Discord
       - com.fastmail.Fastmail
@@ -65,6 +68,21 @@
         owner: root
         group: root
         mode: preserve
+
+    - name: Update kernel boot options (preserving UUID)
+      lineinfile:
+        path: /boot/loader/entries/linux-cachyos.conf
+        regexp: '^options root=UUID=([a-f0-9-]+) rw.*'
+        line: 'options root=UUID=\1 rw {{ kernel_options }}'
+        backrefs: yes
+      when: kernel_options is defined
+
+    - name: Ensure intel-ucode initrd is present
+      lineinfile:
+        path: /boot/loader/entries/linux-cachyos.conf
+        regexp: '^initrd /intel-ucode\.img'
+        line: 'initrd /intel-ucode.img'
+        insertbefore: '^initrd /initramfs-linux-cachyos\.img'
 
     - name: Add user to groups
       user:
