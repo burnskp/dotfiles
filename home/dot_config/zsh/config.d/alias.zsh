@@ -11,8 +11,8 @@ alias vi="nvim"
 alias mi="NVIM_MINIMAL=true nvim"
 alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
 
-alias fn="nvim -c Notes"
-alias gn="nvim -c NotesGrep"
+alias nf="nvim -c Notes"
+alias ng="nvim -c NotesGrep"
 
 if [[ $commands[bat] ]]; then
   alias bathelp='bat --plain --language=help'
