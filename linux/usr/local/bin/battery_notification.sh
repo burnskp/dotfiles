@@ -1,14 +1,23 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -e
 
 THRESHOLD=10
 NOTIFIED=false
 
-while true; do
-  BATTERY=$(cat /sys/class/power_supply/BAT*/capacity)
-  STATUS=$(cat /sys/class/power_supply/BAT*/status)
+# Find the first battery
+BAT_PATH=$(echo /sys/class/power_supply/BAT* | cut -d' ' -f1)
 
-  if [ "$STATUS" != "Charging" ] && [ "$BATTERY" -le "$THRESHOLD" ]; then
-    if [ "$NOTIFIED" = false ]; then
+if [[ ! -d "$BAT_PATH" ]]; then
+  echo "No battery found"
+  exit 1
+fi
+
+while true; do
+  BATTERY=$(cat "$BAT_PATH/capacity")
+  STATUS=$(cat "$BAT_PATH/status")
+
+  if [[ "$STATUS" != "Charging" ]] && [[ "$BATTERY" -le "$THRESHOLD" ]]; then
+    if [[ "$NOTIFIED" = false ]]; then
       notify-send -u critical -t 0 "Battery Low" "Battery at ${BATTERY}%"
       NOTIFIED=true
     fi
