@@ -28,7 +28,6 @@ fi
 
 set -o noclobber
 setopt nobeep
-setopt completeinword
 setopt correct
 setopt extended_glob
 setopt hash_list_all
@@ -81,12 +80,12 @@ export TERMINFO="$XDG_DATA_HOME/terminfo"
 export TERMINFO_DIRS="$XDG_DATA_HOME/terminfo:/usr/share/terminfo"
 export W3M_DIR="$XDG_DATA_HOME/w3m"
 export BUN_INSTALL="$HOME/.local/share/bun"
-export GOBIN=$GOPATH/bin
 export GOPATH=$HOME/.local/share/go
+export GOBIN=$GOPATH/bin
 
 check_paths=("${GOBIN}")
 check_paths+="${BUN_INSTALL}/bin"
-check_paths+="${HOME}/.cargo/bin"
+check_paths+="${CARGO_HOME}/bin"
 check_paths+="${HOME}/.local/bin"
 check_paths+="${HOME}/.local/share/node/bin"
 check_paths+="${HOME}/.yarn/bin"

@@ -68,8 +68,6 @@ gss() {
 }
 
 grbm() {
-  local current
-  current=$(git rev-parse --abbrev-ref HEAD)
   git fetch origin main && \
     git rebase origin/main
 }
@@ -87,7 +85,7 @@ gpu() {
   git pull origin "$(git rev-parse --abbrev-ref HEAD)"
 }
 
-gr() {
+gbd() {
   if git rev-parse --show-toplevel >/dev/null 2>&1; then
     cd "$(git rev-parse --show-toplevel)"
   else

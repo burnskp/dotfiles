@@ -5,7 +5,7 @@
 .config/homebrew
 .config/karabiner
 .config/hammerspoon
-.zsh/macos.zsh
+.config/zsh/config.d/macos.zsh
 {{ end -}}
 {{ if eq .chezmoi.os "darwin" -}}
 .config/docker
@@ -18,7 +18,7 @@
 .config/zathura
 .local/bin/screensaver
 .local/bin/toggle-ai.sh
-.zsh/cachyos.zsh
+.config/zsh/config.d/cachyos.zsh
 {{ end -}}
 {{ if eq .machinetype "server" -}}
 .Xresources

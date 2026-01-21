@@ -38,6 +38,7 @@ if [[ $commands[fzf] ]]; then
   }
 
   function zg() {
+    local dir list selected
     dir="$HOME/git"
     list=$(fd -t d -H -I '^\.git$' --base-directory "$dir" | sed -e 's|/.git/||' -e "s,/,: ," | sort -u)
     if [[ $# -eq 1 ]]; then
@@ -52,6 +53,7 @@ if [[ $commands[fzf] ]]; then
   }
 
   function zp() {
+    local dir list selected
     dir="$HOME/projects"
     list=$(fd -t d -H -d 1 --base-directory "$dir" | sort -u | sed 's:/$::')
     if [[ $# -eq 1 ]]; then

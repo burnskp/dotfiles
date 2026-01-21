@@ -1,5 +1,5 @@
 typeset -a excluded_commands
-excluded_commands=('ls' 'cd' 'echo' 'pwd', 'git', 'cat', 'bat')
+excluded_commands=('ls' 'cd' 'echo' 'pwd' 'git' 'cat' 'bat')
 
 function title-precmd() {
   if [[ $PWD == "$HOME" ]]; then

@@ -1,9 +1,7 @@
 FPATH="$XDG_CONFIG_HOME/zsh/completions:$FPATH"
 
 # Enable smart autocompletion
-if ! [ -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION" ]; then
-  mkdir -p $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
-fi
+mkdir -p $XDG_CACHE_HOME/zsh
 autoload -Uz compinit && compinit -u -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 setopt complete_in_word
 
@@ -27,7 +25,7 @@ zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
 
 # Enable the use of auto completion cache to speed up some functions, such as pacman
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
+zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh
 
 # Allow 1 mistake in auto completion (fuzzy)
 zstyle ':completion:*' completer _complete _match _approximate
@@ -41,7 +39,7 @@ zstyle ':completion:*:cd:*' ignore-parents parent pwd
 zstyle ':completion:*:*:ssh*' users
 zstyle ':completion:*:*:scp*' users
 
-# Only complete hosts that are in the ~/.ssh/config file
+# Only complete hosts from known_hosts files
 zstyle -e ':completion::*:*:*:hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
 
 # Pass urls as literals if glob fails
@@ -59,10 +57,6 @@ if [ $commands[flux] ]; then
   source <(flux completion zsh)
 fi
 
-if [ $commands[gcloud] ]; then
-  source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
-  source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
-fi
 
 if [ $commands[helm] ]; then
   source <(helm completion zsh)
@@ -86,6 +80,5 @@ fi
 
 if [ $commands[aws_completer] ]; then
   autoload bashcompinit && bashcompinit
-  autoload -Uz compinit && compinit
-  complete -C '/usr/local/bin/aws_completer' aws
+  complete -C "$commands[aws_completer]" aws
 fi

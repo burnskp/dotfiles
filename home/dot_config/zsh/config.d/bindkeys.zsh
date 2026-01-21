@@ -8,7 +8,6 @@ bindkey "\e[3~" delete-char          # Del
 bindkey "\e[Z" reverse-menu-complete # Shift+n
 bindkey '^P' up-history
 bindkey '^N' down-history
-bindkey '^r' history-incremental-search-backward
 bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line
 

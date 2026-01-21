@@ -17,3 +17,27 @@ fi
 FPATH="/opt/homebrew/share/zsh-completions:$FPATH"
 FPATH="/opt/homebrew/share/zsh/site-functions:$FPATH"
 alias brewup='brew bundle install --file ~/.config/homebrew/Brewfile'
+
+if [ $commands[gcloud] ]; then
+  source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+  source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+fi
+
+function addKeychainPass() {
+  if ! [ "$1" ]; then
+    echo "Usage: addKeyChainPass VARIABLE"
+    return 1
+  fi
+  local value
+  echo -n "Enter secret value: "
+  read -s value
+  security add-generic-password -a "$USER" -s "$1" -w "$value"
+}
+
+function setVariableFromKeychain() {
+  if ! [ "$1" ]; then
+    echo "Usage: setVariableFromKeychain VARIABLE"
+    return 1
+  fi
+  export "$1"=$(security find-generic-password -a "$USER" -s "$1" -w)
+}
