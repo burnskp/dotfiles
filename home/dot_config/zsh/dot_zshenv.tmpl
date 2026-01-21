@@ -100,5 +100,9 @@ for p in $check_paths; do
   fi
 done
 
+if [[ -n $GHOSTTY_RESOURCES_DIR ]]; then
+  source "$GHOSTTY_RESOURCES_DIR"/shell-integration/zsh/ghostty-integration
+fi
+
 typeset -U PATH
 export PATH
