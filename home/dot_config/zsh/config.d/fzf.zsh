@@ -1,4 +1,8 @@
 #!/bin/zsh
+
+: ${GIT_REPOS_DIR:=$HOME/git}
+: ${PROJECTS_DIR:=$HOME/projects}
+
 if [[ $commands[fzf] ]]; then
   source <(fzf --zsh)
   export FZF_DEFAULT_OPTS="--style full --ansi --no-scrollbar \
@@ -39,7 +43,7 @@ if [[ $commands[fzf] ]]; then
 
   function zg() {
     local dir list selected
-    dir="$HOME/git"
+    dir="$GIT_REPOS_DIR"
     list=$(fd -t d -H -I '^\.git$' --base-directory "$dir" | sed -e 's|/.git/||' -e "s,/,: ," | sort -u)
     if [[ $# -eq 1 ]]; then
       selected=$(echo "$list" | fzf -1 -q "$1")
@@ -54,7 +58,7 @@ if [[ $commands[fzf] ]]; then
 
   function zp() {
     local dir list selected
-    dir="$HOME/projects"
+    dir="$PROJECTS_DIR"
     list=$(fd -t d -H -d 1 --base-directory "$dir" | sort -u | sed 's:/$::')
     if [[ $# -eq 1 ]]; then
       selected=$(echo "$list" | fzf -1 -q "$1")

@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# projects directory (override with PROJECTS_DIR env var)
+: ${PROJECTS_DIR:=$HOME/projects}
+
 # basic git aliases
 alias ga="git add"
 alias gac="git commit -a"
@@ -123,11 +126,11 @@ FZF-EOF" --preview-window=right:60%
 }
 
 # worktree functions (stores worktrees in ~/worktree/BRANCH)
-# assumes single repo under /work
+# assumes single repo under $PROJECTS_DIR
 
 wt() {
   local branch="$1"
-  local repo_dir="/work/"*(/Y1)
+  local repo_dir="$PROJECTS_DIR/"*(/Y1)
   local worktree_dir="$HOME/worktree/$branch"
 
   if [[ -z "$branch" ]]; then
@@ -136,7 +139,7 @@ wt() {
   fi
 
   if [[ ! -d "$repo_dir/.git" ]]; then
-    echo "Error: No git repository found under /work"
+    echo "Error: No git repository found under $PROJECTS_DIR"
     return 1
   fi
 
@@ -151,7 +154,7 @@ wt() {
 
 wtb() {
   local branch="$1"
-  local repo_dir="/work/"*(/Y1)
+  local repo_dir="$PROJECTS_DIR/"*(/Y1)
   local worktree_dir="$HOME/worktree/$branch"
 
   if [[ -z "$branch" ]]; then
@@ -186,7 +189,7 @@ wts() {
 wtd() {
   local current_dir="$PWD"
   local worktree_base="$HOME/worktree"
-  local repo_dir="/work/"*(/Y1)
+  local repo_dir="$PROJECTS_DIR/"*(/Y1)
 
   if [[ "$current_dir" != "$worktree_base"/* ]]; then
     echo "Error: Not in a worktree directory"
@@ -202,12 +205,12 @@ wtd() {
 }
 
 wtl() {
-  local repo_dir="/work/"*(/Y1)
+  local repo_dir="$PROJECTS_DIR/"*(/Y1)
   git -C "$repo_dir" worktree list
 }
 
 wtr() {
-  local repo_dir="/work/"*(/Y1)
+  local repo_dir="$PROJECTS_DIR/"*(/Y1)
   cd "$repo_dir"
 }
 
@@ -231,7 +234,7 @@ wtpr() {
 }
 
 wtclean() {
-  local repo_dir="/work/"*(/Y1)
+  local repo_dir="$PROJECTS_DIR/"*(/Y1)
   local worktree_base="$HOME/worktree"
 
   git -C "$repo_dir" fetch origin main
@@ -248,7 +251,7 @@ wtclean() {
 
 # tab completion for worktree commands
 _wt_complete() {
-  local repo_dir="/work/"*(/NY1)
+  local repo_dir="$PROJECTS_DIR/"*(/NY1)
   local branches
   branches=(${(f)"$(git -C "$repo_dir" branch --format='%(refname:short)' 2>/dev/null)"})
   _describe 'branch' branches
