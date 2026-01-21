@@ -1,5 +1,6 @@
 #!/bin/bash
-repos="$HOME/git"
+: "${GIT_REPOS_DIR:=$HOME/git}"
+repos="$GIT_REPOS_DIR"
 
 export FZF_DEFAULT_OPTS="--ansi --no-scrollbar \
   --color=bg+:#CCD0DA,bg:#EFF1F5,spinner:#DC8A78,hl:#D20F39 \

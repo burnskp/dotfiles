@@ -43,7 +43,7 @@ popup() {
 commit_note() {
   git -C "$JOURNAL_DIR" add "$JOURNAL_DIR"
   git -C "$JOURNAL_DIR" commit -m "Update notes"
-  git -C "$JOURNAL_DIR" push ORIGIN
+  git -C "$JOURNAL_DIR" push origin
 }
 
 open_journal() {
