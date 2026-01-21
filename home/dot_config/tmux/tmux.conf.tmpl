@@ -21,7 +21,7 @@ set -g @thumbs-regexp-1 '[a-zA-Z0-9\./-]+:[a-zA-Z0-9\./-]+'
 set -g @thumbs-regexp-2 '[a-z]+(?:-[a-z0-9]+)+-[a-z0-9]+'
 set -g @thumbs-regexp-3 '[a-z]+(?:-[a-z0-9]+)'
 set -g @thumbs-unique enabled
-set -g @thumbs-upcase-command 'echo {} | xsel -ib'
+set -g @thumbs-upcase-command 'tmux set-buffer -w -- {}'
 
 # colors
 set -g @catppuccin_flavor 'latte'
