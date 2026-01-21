@@ -4,9 +4,9 @@
   connection: local
   become: true
   vars:
-    # User to configure (defaults to the user running the playbook)
-    target_user: "{{ ansible_facts['user_id'] }}"
-    
+    # User to configure (the user who invoked sudo, not root)
+    target_user: "{{ lookup('env', 'SUDO_USER') | default(lookup('env', 'USER'), true) }}"
+
     flatpak_packages:
       - com.discordapp.Discord
       - com.fastmail.Fastmail
@@ -32,15 +32,9 @@
         update_cache: yes
         upgrade: yes
 
-    - name: Read packages.txt
-      command: cat packages.txt
-      register: packages_list
-      changed_when: false
-      check_mode: no
-
     - name: Install packages from packages.txt
       pacman:
-        name: "{{ packages_list.stdout_lines }}"
+        name: "{{ lookup('file', 'packages.txt').splitlines() }}"
         state: present
 
     - name: Ensure Flathub remote exists
@@ -90,4 +84,12 @@
         state: started
         daemon_reload: yes
       loop: "{{ system_services }}"
+      register: service_results
+      failed_when: false
+
+    - name: Report any service failures
+      fail:
+        msg: "Service {{ item.item }} failed to start: {{ item.msg | default('unknown error') }}"
+      loop: "{{ service_results.results }}"
+      when: item.failed | default(false)
       ignore_errors: true
