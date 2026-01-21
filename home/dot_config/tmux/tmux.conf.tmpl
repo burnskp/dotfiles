@@ -161,8 +161,8 @@ set -g pane-base-index 1
 # Change status line more often
 set-option -g status-interval 5
 
-set-option -a terminal-overrides ",*:RGB"
-set -ga terminal-features ",*:hyperlinks,*:usstyle,*:overline,*:clipboard,*:ccolour,*:cstyle,*:strikethrough,*:sync"
+set -as terminal-features ",xterm-ghostty:clipboard:extkeys:focus:hyperlinks:osc7:overline:RGB:strikethrough:sync:usstyle"
+
 
 {{ if eq .chezmoi.os "darwin" -}}
 set-environment -g PATH "/opt/homebrew/bin:/bin:/usr/bin"
