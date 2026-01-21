@@ -1,7 +1,0 @@
-#!/bin/bash
-
-oauth_token=$(cat ~/.config/github-copilot/apps.json | jq -r .[].oauth_token)
-OPENAI_API_KEY=$(curl -sL https://api.github.com/copilot_internal/v2/token -H "Authorization: Bearer $oauth_token" -H "Content-Type: application/json" -H "Copilot-Integration-Id: vscode-chat" | jq -r ".token")
-export OPENAI_API_KEY
-aider
-unset OPENAI_API_KEY
