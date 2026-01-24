@@ -47,6 +47,17 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
+# Resize Windows
+bindsym $mod+Mod1+h resize grow left  10 px or 10 ppt
+bindsym $mod+Mod1+j resize grow right  10 px or 10 ppt
+bindsym $mod+Mod1+k resize grow up  10 px or 10 ppt
+bindsym $mod+Mod1+l resize grow down  10 px or 10 ppt
+bindsym $mod+Ctrl+h resize shrink left  10 px or 10 ppt
+bindsym $mod+Ctrl+j resize shrink right  10 px or 10 ppt
+bindsym $mod+Ctrl+k resize shrink up  10 px or 10 ppt
+bindsym $mod+Ctrl+l resize shrink down  10 px or 10 ppt
+
+
 # move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
@@ -126,6 +137,7 @@ for_window [class="Dunst"] floating enable
 for_window [class="Lich.rbw"] floating enable
 for_window [instance="gemini.google.com"] floating enable, move to scratchpad, resize set 1800 1200, border pixel 2
 for_window [instance="claude.ai"] floating enable, move to scratchpad, resize set 1800 1200, border pixel 2
+for_window [class="Xdg-desktop-portal-gtk"] floating enable, resize set 900 600, move position center
 
 # Assign clients to specific workspaces
 assign [instance="helium"] $ws2
