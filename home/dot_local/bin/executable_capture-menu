@@ -9,6 +9,8 @@ mkdir -p "$SCREENSHOT_DIR" "$VIDEO_DIR"
 target=$(echo -e "Selection\nWindow\nFull Screen" | rofi -dmenu -p "Capture target")
 [[ -z "$target" ]] && exit 0
 
+sleep 0.15
+
 timestamp=$(date +%Y%m%d-%H%M%S)
 
 get_geometry() {
