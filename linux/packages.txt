@@ -57,6 +57,7 @@ f2fs-tools
 fastfetch
 feh
 fio
+flameshot
 flatpak
 fprintd
 fuse-overlayfs
@@ -82,6 +83,7 @@ i3-wm
 i3blocks
 i3lock-color
 i3status
+imagemagick
 incus
 inetutils
 intel-media-driver
@@ -112,7 +114,6 @@ logrotate
 lsb-release
 lsscsi
 lvm2
-maim
 man-db
 man-pages
 mdadm
@@ -156,14 +157,12 @@ rclone
 rebuild-detector
 reflector
 ripgrep
-rofi
 rsync
 rtkit
 rustup
 s-nail
 sbctl
 sbsigntools
-scrot
 sddm
 seahorse
 sg3_utils
