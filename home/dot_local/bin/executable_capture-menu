@@ -1,0 +1,99 @@
+#!/bin/bash
+
+SCREENSHOT_DIR="$HOME/pictures/captures"
+VIDEO_DIR="$HOME/video/captures"
+PID_FILE="/tmp/screen-recording.pid"
+
+mkdir -p "$SCREENSHOT_DIR" "$VIDEO_DIR"
+
+# Check if a recording is in progress
+if [[ -f "$PID_FILE" ]] && kill -0 "$(cat "$PID_FILE")" 2>/dev/null; then
+    choice=$(echo -e "Stop Recording\nCancel" | rofi -dmenu -p "Recording in progress")
+    if [[ "$choice" == "Stop Recording" ]]; then
+        kill -SIGINT "$(cat "$PID_FILE")"
+        rm -f "$PID_FILE"
+        notify-send "Recording stopped" "Saved to $VIDEO_DIR"
+    fi
+    exit 0
+fi
+
+# Main menu
+mode=$(echo -e "Screenshot\nFrozen Screenshot\nScreen Recording" | rofi -dmenu -p "Capture mode")
+[[ -z "$mode" ]] && exit 0
+
+# Target menu
+target=$(echo -e "Selection\nWindow\nFull Screen" | rofi -dmenu -p "Capture target")
+[[ -z "$target" ]] && exit 0
+
+timestamp=$(date +%Y%m%d-%H%M%S)
+
+get_geometry() {
+    case "$target" in
+        "Selection")
+            slop -f "%x %y %w %h" || exit 1
+            ;;
+        "Window")
+            eval "$(xdotool getactivewindow getwindowgeometry --shell)"
+            echo "$X $Y $WIDTH $HEIGHT"
+            ;;
+        "Full Screen")
+            read -r sw sh < <(xdpyinfo | awk '/dimensions:/ {split($2,a,"x"); print a[1], a[2]}')
+            echo "0 0 $sw $sh"
+            ;;
+    esac
+}
+
+case "$mode" in
+    "Screenshot")
+        outfile="$SCREENSHOT_DIR/$timestamp.png"
+        case "$target" in
+            "Selection")    maim -s "$outfile" ;;
+            "Window")       maim -i "$(xdotool getactivewindow)" "$outfile" ;;
+            "Full Screen")  maim "$outfile" ;;
+        esac
+        if [[ -f "$outfile" ]]; then
+            xclip -selection clipboard -t image/png < "$outfile"
+            notify-send "Screenshot saved" "$outfile (copied to clipboard)"
+        fi
+        ;;
+
+    "Frozen Screenshot")
+        # Capture full screen, display it, select from frozen image
+        tmpfile=$(mktemp /tmp/frozen-XXXXXX.png)
+        maim "$tmpfile"
+        
+        # Display frozen screen
+        feh --fullscreen --class feh-frozen "$tmpfile" &
+        feh_pid=$!
+        sleep 0.3  # let feh fully render
+        
+        # Select region from frozen screen
+        geometry=$(slop -f "%g") || { kill $feh_pid 2>/dev/null; rm "$tmpfile"; exit 1; }
+        kill $feh_pid 2>/dev/null
+        
+        # Crop the original screenshot
+        outfile="$SCREENSHOT_DIR/$timestamp.png"
+        convert "$tmpfile" -crop "$geometry" +repage "$outfile"
+        rm "$tmpfile"
+        
+        xclip -selection clipboard -t image/png < "$outfile"
+        notify-send "Frozen screenshot saved" "$outfile (copied to clipboard)"
+        ;;
+
+    "Screen Recording")
+        outfile="$VIDEO_DIR/$timestamp.mp4"
+        read -r x y w h < <(get_geometry)
+        
+        # Ensure even dimensions (required by x264)
+        w=$((w + w % 2))
+        h=$((h + h % 2))
+        
+        notify-send "Recording started" "Press capture key again to stop"
+        
+        ffmpeg -f x11grab -framerate 30 -video_size "${w}x${h}" -i ":0.0+${x},${y}" \
+            -c:v libx264 -preset ultrafast -crf 23 \
+            "$outfile" &
+        
+        echo $! > "$PID_FILE"
+        ;;
+esac

@@ -112,6 +112,7 @@ logrotate
 lsb-release
 lsscsi
 lvm2
+maim
 man-db
 man-pages
 mdadm
@@ -155,6 +156,7 @@ rclone
 rebuild-detector
 reflector
 ripgrep
+rofi
 rsync
 rtkit
 rustup
@@ -226,6 +228,7 @@ xorg-xset
 xsel
 xss-lock
 yazi
+yt-dlp
 yubikey-manager
 zoxide
 zsh
