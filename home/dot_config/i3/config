@@ -28,7 +28,8 @@ floating_modifier $mod
 # start a terminal in the domain of the currently active window
 bindsym $mod+Return exec $term -e tmux new-session -ADs main
 bindsym $mod+Shift+Return exec $term
-bindsym $mod+p exec flameshot gui
+bindsym $mod+p exec --no-startup-id ~/.local/bin/capture-menu
+bindsym $mod+Shift+p exec --no-startup-id ~/.local/bin/record-menu
 
 
 # kill focused window

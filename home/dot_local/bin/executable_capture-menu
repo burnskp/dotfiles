@@ -1,0 +1,39 @@
+#!/bin/bash
+
+SCREENSHOT_DIR="$HOME/pictures/captures"
+outfile="$SCREENSHOT_DIR/$timestamp.png"
+
+mkdir -p "$SCREENSHOT_DIR" "$VIDEO_DIR"
+
+# Target menu
+target=$(echo -e "Selection\nWindow\nFull Screen" | rofi -dmenu -p "Capture target")
+[[ -z "$target" ]] && exit 0
+
+timestamp=$(date +%Y%m%d-%H%M%S)
+
+get_geometry() {
+    case "$target" in
+        "Selection")
+            slop -f "%x %y %w %h" || exit 1
+            ;;
+        "Window")
+            eval "$(xdotool getactivewindow getwindowgeometry --shell)"
+            echo "$X $Y $WIDTH $HEIGHT"
+            ;;
+        "Full Screen")
+            read -r sw sh < <(xdpyinfo | awk '/dimensions:/ {split($2,a,"x"); print a[1], a[2]}')
+            echo "0 0 $sw $sh"
+            ;;
+    esac
+}
+
+case "$target" in
+    "Selection")    maim -s "$outfile" ;;
+    "Window")       maim -i "$(xdotool getactivewindow)" "$outfile" ;;
+    "Full Screen")  maim "$outfile" ;;
+esac
+
+if [[ -f "$outfile" ]]; then
+    xclip -selection clipboard -t image/png < "$outfile"
+    notify-send "Screenshot saved" "$outfile (copied to clipboard)"
+fi

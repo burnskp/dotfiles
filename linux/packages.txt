@@ -75,6 +75,7 @@ go
 go-yq
 gocryptfs
 gptfdisk
+gpu-screen-recorder
 haveged
 helium-browser-bin
 hwdetect
@@ -114,6 +115,7 @@ logrotate
 lsb-release
 lsscsi
 lvm2
+maim
 man-db
 man-pages
 mdadm
@@ -157,6 +159,7 @@ rclone
 rebuild-detector
 reflector
 ripgrep
+rofi
 rsync
 rtkit
 rustup
@@ -166,6 +169,7 @@ sbsigntools
 sddm
 seahorse
 sg3_utils
+slop
 smartmontools
 sof-firmware
 sqlitebrowser
@@ -211,6 +215,7 @@ xdg-desktop-portal
 xdg-desktop-portal-gtk
 xdg-user-dirs
 xdg-utils
+xdotool
 xf86-input-libinput
 xfsprogs
 xiccd

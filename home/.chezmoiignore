@@ -18,6 +18,8 @@
 .config/zathura
 .local/bin/screensaver
 .local/bin/toggle-ai.sh
+.local/bin/capture-menu
+.local/bin/record-menu
 .config/zsh/config.d/cachyos.zsh
 {{ end -}}
 {{ if eq .machinetype "server" -}}
