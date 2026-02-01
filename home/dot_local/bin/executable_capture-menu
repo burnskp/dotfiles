@@ -1,7 +1,6 @@
 #!/bin/bash
 
 SCREENSHOT_DIR="$HOME/pictures/captures"
-outfile="$SCREENSHOT_DIR/$timestamp.png"
 
 mkdir -p "$SCREENSHOT_DIR" "$VIDEO_DIR"
 
@@ -12,6 +11,7 @@ target=$(echo -e "Selection\nWindow\nFull Screen" | rofi -dmenu -p "Capture targ
 sleep 0.15
 
 timestamp=$(date +%Y%m%d-%H%M%S)
+OUTFILE="$SCREENSHOT_DIR/$timestamp.png"
 
 get_geometry() {
     case "$target" in
@@ -30,12 +30,12 @@ get_geometry() {
 }
 
 case "$target" in
-    "Selection")    maim -s "$outfile" ;;
-    "Window")       maim -i "$(xdotool getactivewindow)" "$outfile" ;;
-    "Full Screen")  maim "$outfile" ;;
+    "Selection")    maim -s "$OUTFILE" ;;
+    "Window")       maim -i "$(xdotool getactivewindow)" "$OUTFILE" ;;
+    "Full Screen")  maim "$OUTFILE" ;;
 esac
 
-if [[ -f "$outfile" ]]; then
-    xclip -selection clipboard -t image/png < "$outfile"
-    notify-send "Screenshot saved" "$outfile (copied to clipboard)"
+if [[ -f "$OUTFILE" ]]; then
+    xclip -selection clipboard -t image/png < "$OUTFILE"
+    notify-send "Screenshot saved" "$OUTFILE"
 fi
