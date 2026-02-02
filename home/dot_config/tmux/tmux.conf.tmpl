@@ -42,8 +42,8 @@ unbind C-b
 unbind f
 set -g prefix C-Space
 
-set-option -g focus-events on
-set-option -g renumber-windows on
+set -g focus-events on
+set -g renumber-windows on
 
 # screen ^C c
 unbind ^C
@@ -88,13 +88,6 @@ bind-key -T copy-mode-vi 'v' send -X begin-selection
 bind-key -T copy-mode-vi 'y' send -X copy-selection-and-cancel
 bind-key -T copy-mode-vi 'r' send -X rectangle-toggle
 
-# Navigate sessions / windows
-unbind s
-bind s run-shell tmux-switch-sessions.sh
-bind S display-popup -E "tmux list-sessions | cut -d":" -f1 | fzf | xargs tmux switch-client -t"
-bind m switch-client -t main
-bind b switch-client -l
-
 # application specific popups
 unbind n
 bind n display-popup -w 80% -h 80% -E tmux-notes.sh
@@ -104,7 +97,7 @@ unbind t
 bind t display-popup -w 80% -h 80% -E tmux-journal.sh
 
 # shortcut for synchronize-panes toggle
-bind C-s set-window-option synchronize-panes
+bind C-s setw synchronize-panes
 
 # Integrate using C-h/j/k/l to move between vim and tmux panes
 version_pat='s/^tmux[^0-9]*([.0-9]+).*/\1/p'
@@ -131,15 +124,13 @@ setw -g automatic-rename on
 setw -g allow-rename on
 
 # Switch to new session when current one is destroyed
-set-option -g detach-on-destroy off
+set -g detach-on-destroy off
 
 # Up history limit
 set -g history-limit 50000
 
 # remove delay when pressing <esc>
 set -s escape-time 0
-
-set -g set-titles off
 
 # Set window notifications
 set -g visual-activity off
@@ -148,10 +139,10 @@ set -g visual-silence on
 
 # Start at 1 instead of 0
 set -g base-index 1
-set -g pane-base-index 1
+setw -g pane-base-index 1
 
 # Change status line more often
-set-option -g status-interval 5
+set -g status-interval 5
 
 set -as terminal-features ",xterm-ghostty:clipboard:extkeys:focus:hyperlinks:osc7:overline:RGB:strikethrough:sync:usstyle"
 
