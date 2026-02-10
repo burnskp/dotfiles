@@ -1,4 +1,0 @@
-1password
-1password-cli
-vicinae-bin
-xdg-ninja

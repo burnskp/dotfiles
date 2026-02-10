@@ -1,5 +1,0 @@
-#!/bin/bash
-TARGET="${BLOCK_INSTANCE:-/}"
-source $HOME/.config/i3/colors
-disk=$(df -h "$TARGET"  --output=avail,target  | grep "$TARGET" | awk '{print $1}')
-widget '\uf0a0' "$disk"

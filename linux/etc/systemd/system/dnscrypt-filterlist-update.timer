@@ -1,9 +1,0 @@
-[Unit]
-Description=Run 15min after boot and every 48 hours (DNSCrypt Filterlist Update)
-
-[Timer]
-OnBootSec=15min
-OnUnitActiveSec=48h
-
-[Install]
-WantedBy=timers.target

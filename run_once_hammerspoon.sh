@@ -1,0 +1,2 @@
+#!/bin/bash
+defaults write org.hammerspoon.Hammerspoon MJConfigFile "$XDG_CONFIG_HOME/hammerspoon/init.lua"

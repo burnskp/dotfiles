@@ -1,0 +1,9 @@
+{{- $email := promptStringOnce . "email" "Email address" -}}
+{{- $signingkey := promptStringOnce . "signingkey" "SSH Signing Key (format: key::TYPE KEY, e.g., key::ssh-ed25519 AAAA...)" -}}
+{{- if and $signingkey (not (regexMatch "^key::\\S+\\s+\\S+" $signingkey)) -}}
+{{-   fail "Invalid signing key format. Expected: key::TYPE KEY (e.g., key::ssh-ed25519 AAAA...)" -}}
+{{- end -}}
+
+[data]
+  email = {{ $email | quote }}
+  signingkey = {{ $signingkey | quote }}
