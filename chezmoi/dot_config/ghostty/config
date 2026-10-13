@@ -1,0 +1,10 @@
+font-family = CommitMono Nerd Font Mono
+font-feature = cv02
+font-feature = cv06
+font-size = 24
+mouse-hide-while-typing = true
+mouse-reporting = false
+shell-integration = detect
+shell-integration-features = no-cursor
+theme = catppuccin-latte.conf
+window-decoration = none

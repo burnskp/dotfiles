@@ -1,0 +1,12 @@
+theme = "catppuccin-latte"
+tab_width = 2
+wrap_lines = true
+hunk_headers = true
+menu_bar = false
+sidebar = "auto"
+agent_notes = true
+prompt_save_view_preferences = false
+color_moved = true
+
+[vcs]
+watch = true

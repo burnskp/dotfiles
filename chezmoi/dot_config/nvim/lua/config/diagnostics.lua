@@ -1,0 +1,23 @@
+local sev = vim.diagnostic.severity
+
+vim.diagnostic.config({
+  severity_sort = true,
+  float = {
+    border = "rounded",
+    source = true,
+  },
+  signs = {
+    text = {
+      [sev.ERROR] = "E",
+      [sev.WARN] = "W",
+      [sev.INFO] = "I",
+      [sev.HINT] = "H",
+    },
+  },
+  underline = true,
+  update_in_insert = false,
+  virtual_text = {
+    spacing = 2,
+    source = "if_many",
+  },
+})
