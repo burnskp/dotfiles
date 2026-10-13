@@ -1,107 +1,61 @@
-# Improved shell history for zsh, bash, fish and nushell
 brew "atuin"
-# Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Bash scripts that integrate bat with various command-line tools
 brew "bat-extras"
-# GNU File, Shell, and Text utilities
+brew "chezmoi"
 brew "coreutils"
-# Zstandard is a real-time compression algorithm
 brew "zstd"
-# Suite of command-line tools for converting to and working with CSV
 brew "csvkit"
-# Convert text between DOS, UNIX, and Mac formats
 brew "dos2unix"
-# Modern, maintained replacement for ls
 brew "eza"
-# Simple, fast and user-friendly alternative to find
 brew "fd"
-# Command-line fuzzy finder written in Go
 brew "fzf"
-# GitHub command-line tool
 brew "gh"
-# Distributed revision control system
 brew "git"
-# Syntax-highlighting pager for git and diff output
 brew "git-delta"
-# Small git utilities
 brew "git-extras"
-# Git extension for versioning large files
 brew "git-lfs"
-# Render markdown on the CLI
 brew "glow"
-# GNU implementation of the famous stream editor
 brew "gnu-sed"
-# GNU Privacy Guard (OpenPGP)
 brew "gnupg"
-# Agent multiplexer that lives in your terminal
 brew "herdr"
-# Review-first terminal diff viewer for agent-authored changesets
 brew "hunk"
-# Tools and libraries to manipulate images in select formats
 brew "imagemagick"
-# Lightweight and flexible command-line JSON processor
 brew "jq"
-# Package manager for the Lua programming language
 brew "luarocks"
-# Mac App Store command-line interface
 brew "mas"
-# NCurses Disk Usage
 brew "ncdu"
-# Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# Pinentry for GPG on Mac
 brew "pinentry-mac"
-# Fast Git hook manager written in Rust, drop-in alternative to pre-commit
 brew "prek"
-# Search tool like grep and The Silver Searcher
 brew "ripgrep"
-# Cross-shell prompt for astronauts
 brew "starship"
-# Parser generator tool
 brew "tree-sitter-cli"
-# Internet file retriever
 brew "wget"
-# Check your $HOME for unwanted files and directories
 brew "xdg-ninja"
-# Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
-# Shell extension to navigate your filesystem faster
 brew "zoxide"
-# UNIX shell (command interpreter)
 brew "zsh"
-# Auto-close and delete matching delimiters in zsh
 brew "zsh-autopair"
-# Additional completion definitions for zsh
 brew "zsh-completions"
-# Feature-rich syntax highlighting for Zsh
 brew "zsh-fast-syntax-highlighting"
-# Zsh port of Fish shell's history search
 brew "zsh-history-substring-search"
-# ZSH plugin that reminds you to use existing aliases for commands you just typed
 brew "zsh-you-should-use"
-# Password manager that keeps all passwords secure behind one password
 cask "1password"
-# Command-line interface for 1Password
 cask "1password-cli"
-# Display calibration software for Calibrite, ColorChecker and X-Rite devices
+cask "bartender"
 cask "calibrite-profiler"
-# Collect, organise, edit and annotate documents
 cask "devonthink"
 cask "font-commit-mono"
 cask "font-commit-mono-nerd-font"
 cask "font-symbols-only-nerd-font"
-# Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
-# System monitoring app
+cask "helium-browser"
 cask "istat-menus"
-# Keyboard customiser
 cask "karabiner-elements"
-# Host-based application firewall
 cask "little-snitch"
-# Scheduling application focusing on organisation
 cask "omnifocus"
-# Control your tools with a few keystrokes
 cask "raycast"
-# Store SSH keys in the Secure Enclave
 cask "secretive"
+mas "GoodLinks", id: 1474335294
+mas "Tailscale", id: 1475387142
+mas "Xcode", id: 497799835
