@@ -6,7 +6,7 @@ export ATUIN_NOBIND="true"
 eval "$(atuin init zsh)"
 
 # My dotfiles
-for i in $XDG_CONFIG_HOME/zsh/config.d/*.zsh; do
+for i in $XDG_CONFIG_HOME/zsh/*.zsh; do
   source "$i"
 done
 

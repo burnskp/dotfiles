@@ -1,6 +1,9 @@
 FPATH="/opt/homebrew/share/zsh-completions:$FPATH"
 FPATH="/opt/homebrew/share/zsh/site-functions:$FPATH"
 
+alias brewdump="brew bundle dump --no-describe -g -f"
+alias brewup="brew bundle install -g"
+
 function addKeychainPass() {
   if ! [ "$1" ]; then
     echo "Usage: addKeyChainPass VARIABLE"
